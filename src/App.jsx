@@ -19,6 +19,7 @@ import ExpensesPG from "./Pages/ExpensesPG";
 import AdmissionsPG from "./Pages/AdmissionsPG";
 import AppLayout from "./ui/AppLayout";
 import ErrorPG from "./Pages/ErrorPG";
+import PageNotFound from "./Pages/PageNotFound";
 
 // const router = createBrowserRouter([
 //   {
@@ -53,18 +54,20 @@ import ErrorPG from "./Pages/ErrorPG";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<AppLayout />} errorElement={<ErrorPG />}>
-      <Route index element={<Navigate replace to="home" />} />
-      <Route path="home" element={<HomePG />} />
-      <Route path="expenses" element={<ExpensesPG />} />
-      <Route path="admissions" element={<AdmissionsPG />} />
-      <Route path="*" element={<ErrorPG />} />
+      <Route errorElement={<ErrorPG />}>
+        <Route index element={<Navigate replace to="home" />} />
+        <Route path="home" element={<HomePG />} />
+        <Route path="expenses" element={<ExpensesPG />} />
+        <Route path="admissions" element={<AdmissionsPG />} />
+        <Route path="*" element={<PageNotFound />} />
+      </Route>
     </Route>,
   ),
 );
 
 // COMPONENT START///////////////////////////////////////////////
 export default function App() {
-  // STATE & VARIABLES
+  // STATE & VARIABLES`     kkkkkkkkkkkkkkkkkk;
 
   // FUNCTIONS
 
