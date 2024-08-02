@@ -17,26 +17,38 @@ import ExpensesPG from "./Pages/ExpensesPG";
 import AdmissionsPG from "./Pages/AdmissionsPG";
 
 import AppLayout from "./ui/AppLayout";
+import ErrorPG from "./Pages/ErrorPG";
 
 const router = createBrowserRouter([
   {
+    path: "/",
     element: <AppLayout />,
+    errorElement: <ErrorPG />,
     children: [
       {
         index: true,
-        element: <Navigate replace to="home" />,
+        element: <Navigate replace to="/home" />,
+        errorElement: <ErrorPG />,
       },
       {
-        path: "home",
+        path: "/home",
         element: <HomePG />,
+        errorElement: <ErrorPG />,
       },
       {
-        path: "expenses",
+        path: "/expenses",
         element: <ExpensesPG />,
+        errorElement: <ErrorPG />,
       },
       {
-        path: "admissions",
+        path: "/admissions",
         element: <AdmissionsPG />,
+        errorElement: <ErrorPG />,
+      },
+      {
+        path: "*", // Catch-all for unknown URLs
+        element: <ErrorPG />,
+        errorElement: <ErrorPG />,
       },
     ],
   },
