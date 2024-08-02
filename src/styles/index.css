@@ -15,15 +15,10 @@ body {
     "Open Sans",
     "Helvetica Neue",
     sans-serif;
-
-  height: 100vh;
   overflow: hidden;
   margin: 0px;
+  padding: 0px;
 }
 :root {
-  height: 100%;
-  width: 100%;
-  background: linear-gradient(to right, #bae5fd4b, #38bff864);
-
-  position: relative;
+  height: 100vh;
 }
