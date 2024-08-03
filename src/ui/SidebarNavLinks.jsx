@@ -11,15 +11,16 @@ export const SidebarNavLinks = ({ NavLinksArr }) => {
       {NavLinksArr.map((val, i) => (
         <li
           key={i}
-          className="mb-[5px] flex h-[40px] w-[100%] flex-row rounded-[5px] bg-slate-500"
+          className="mb-[8px] flex h-[40px] w-[100%] flex-row rounded-[5px] transition-all duration-300 ease-in-out"
         >
           <NavLink
             to={`/${val.url}`}
             className={({ isActive }) =>
-              `flex-rows flex w-[100%] rounded-[5px] bg-white ${isActive ? "bg-green-400" : ""}`
+              `duration-180 grid w-[100%] grid-cols-[30px_1fr] items-center rounded-[5px] pl-[10px] font-semibold transition-all ease-in-out hover:bg-gray-100 ${isActive ? "border-[1px] border-cyan-400 bg-sky-100 text-cyan-500" : "border-[1px] border-gray-200 bg-stone-50 text-black/60"}`
             }
           >
-            {val.icon} {val.label}
+            <span className="">{val.icon} </span>
+            <spans>{val.label}</spans>
           </NavLink>
         </li>
       ))}
