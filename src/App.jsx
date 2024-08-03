@@ -20,6 +20,7 @@ import AdmissionsPG from "./Pages/AdmissionsPG";
 import AppLayout from "./ui/AppLayout";
 import ErrorPG from "./Pages/ErrorPG";
 import PageNotFound from "./Pages/PageNotFound";
+import PropertyDetailsPG from "./Pages/PropertyDetailsPG";
 
 // const router = createBrowserRouter([
 //   {
@@ -59,6 +60,7 @@ const router = createBrowserRouter(
         <Route path="home" element={<HomePG />} />
         <Route path="expenses" element={<ExpensesPG />} />
         <Route path="admissions" element={<AdmissionsPG />} />
+        <Route path="property-details" element={<PropertyDetailsPG />} />
         <Route path="*" element={<PageNotFound />} />
       </Route>
     </Route>,

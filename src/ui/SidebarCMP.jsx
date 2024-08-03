@@ -1,6 +1,7 @@
-import { HiOutlineCash, HiOutlineHome, HiOutlineSave } from "react-icons/hi";
+import { HiOutlineHome, HiOutlineSave } from "react-icons/hi";
 import { Logo } from "./Logo";
 import { SidebarNavLinks } from "./SidebarNavLinks";
+import { HiOutlineBanknotes } from "react-icons/hi2";
 
 // COMPONENT START///////////////////////////////////////////////
 export default function Sidebar() {
@@ -19,7 +20,16 @@ export default function Sidebar() {
         <SidebarNavLinks
           NavLinksArr={[
             { url: "home", label: "Home", icon: <HiOutlineHome /> },
-            { url: "expenses", label: "Expenses", icon: <HiOutlineCash /> },
+            {
+              url: "property-details",
+              label: "Property Details",
+              icon: <HiOutlineSave />,
+            },
+            {
+              url: "expenses",
+              label: "Expenses",
+              icon: <HiOutlineBanknotes />,
+            },
             { url: "admissions", label: "Admissions", icon: <HiOutlineSave /> },
           ]}
         />

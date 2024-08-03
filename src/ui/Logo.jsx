@@ -1,4 +1,4 @@
-import { HiCubeTransparent } from "react-icons/hi";
+import { AiFillSafetyCertificate } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 
 // COMPONENT END/////////////////////////////////////////////////
@@ -10,7 +10,7 @@ export const Logo = () => {
   // FUNCTIONS
   // JSX//////////////////////////////////////////
   return (
-    <HiCubeTransparent
+    <AiFillSafetyCertificate
       style={{
         height: "90%",
         borderRadius: "1000px",
