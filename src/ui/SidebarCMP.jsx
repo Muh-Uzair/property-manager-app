@@ -1,5 +1,6 @@
-import { NavLink, Link } from "react-router-dom";
-import { HiCubeTransparent } from "react-icons/hi";
+import { HiOutlineCash, HiOutlineHome, HiOutlineSave } from "react-icons/hi";
+import { Logo } from "./Logo";
+import { SidebarNavLinks } from "./SidebarNavLinks";
 
 // COMPONENT START///////////////////////////////////////////////
 export default function Sidebar() {
@@ -9,38 +10,23 @@ export default function Sidebar() {
 
   // JSX//////////////////////////////////////////
   return (
-    <aside className="grid h-[100%] grid-rows-[auto_1fr] justify-center border-[1px] border-stone-200 bg-white">
-      <Link to={"/home"}>
-        <div className="h-[100px] w-[100px] justify-center rounded-full bg-black hover:cursor-pointer">
-          <HiCubeTransparent
-            style={{
-              height: "100px",
-              width: "100px",
+    <aside className="grid h-[100%] grid-rows-[auto_1fr] border-[1px] border-stone-200 bg-white">
+      <div className="flex h-[110px] items-center justify-center">
+        <Logo />
+      </div>
 
-              borderRadius: "1000px",
-              padding: "10px",
-            }}
-            size={"80px"}
-            color="38bdf8"
-          />
-        </div>
-      </Link>
-
-      <nav className="w-[100%] bg-red-300">
-        <ul>
-          <li>
-            <NavLink to={"/home"}>Home</NavLink>
-          </li>
-          <li>
-            <NavLink to={"/expenses"}>Expenses</NavLink>
-          </li>
-          <li>
-            <NavLink to={"/admissions"}>Admissions</NavLink>
-          </li>
-        </ul>
+      <nav className="flex w-[100%] justify-center bg-red-300 p-[10px]">
+        <SidebarNavLinks
+          NavLinksArr={[
+            { url: "home", label: "Home", icon: <HiOutlineHome /> },
+            { url: "expenses", label: "Expenses", icon: <HiOutlineCash /> },
+            { url: "admissions", label: "Admissions", icon: <HiOutlineSave /> },
+          ]}
+        />
       </nav>
     </aside>
   );
-  // JSX//////////////////////////////////////////
+  // JSX//////////////////////L///////////////////
 }
+
 // COMPONENT END/////////////////////////////////////////////////
