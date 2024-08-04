@@ -21,6 +21,7 @@ import AppLayout from "./ui/AppLayout";
 import ErrorPG from "./Pages/ErrorPG";
 import PageNotFound from "./Pages/PageNotFound";
 import PropertyDetailsPG from "./Pages/PropertyDetailsPG";
+import LoginPG from "./ui/LoginPG";
 
 // const router = createBrowserRouter([
 //   {
@@ -54,15 +55,19 @@ import PropertyDetailsPG from "./Pages/PropertyDetailsPG";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<AppLayout />} errorElement={<ErrorPG />}>
-      <Route errorElement={<ErrorPG />}>
-        <Route index element={<Navigate replace to="home" />} />
-        <Route path="home" element={<HomePG />} />
-        <Route path="expenses" element={<ExpensesPG />} />
-        <Route path="admissions" element={<AdmissionsPG />} />
-        <Route path="property-details" element={<PropertyDetailsPG />} />
-        <Route path="*" element={<PageNotFound />} />
+    <Route>
+      <Route path="login" element={<LoginPG />} />
+      <Route path="/" element={<AppLayout />} errorElement={<ErrorPG />}>
+        <Route errorElement={<ErrorPG />}>
+          <Route index element={<Navigate replace to="home" />} />
+          <Route path="home" element={<HomePG />} />
+          <Route path="expenses" element={<ExpensesPG />} />
+          <Route path="admissions" element={<AdmissionsPG />} />
+          <Route path="property-details" element={<PropertyDetailsPG />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Route>
       </Route>
+      ,
     </Route>,
   ),
 );

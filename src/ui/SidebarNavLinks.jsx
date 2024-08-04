@@ -16,11 +16,11 @@ export const SidebarNavLinks = ({ NavLinksArr }) => {
           <NavLink
             to={`/${val.url}`}
             className={({ isActive }) =>
-              `duration-180 grid w-[100%] grid-cols-[30px_1fr] items-center rounded-[5px] pl-[10px] font-semibold transition-all ease-in-out hover:bg-gray-100 ${isActive ? "border-[1px] border-cyan-400 bg-sky-100 text-cyan-500" : "border-[1px] border-gray-200 bg-stone-50 text-black/60"}`
+              `duration-180 grid w-[100%] grid-cols-[25px_1fr] items-center rounded-[5px] pl-[12px] font-semibold transition-all ease-in-out ${isActive ? "border-[1px] border-cyan-400 bg-sky-100 text-cyan-500" : "border-[1px] border-gray-200 bg-stone-50 text-black/60 hover:bg-gray-100"}`
             }
           >
             <span className="">{val.icon} </span>
-            <spans>{val.label}</spans>
+            <span>{val.label}</span>
           </NavLink>
         </li>
       ))}
