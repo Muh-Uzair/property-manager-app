@@ -23,6 +23,7 @@ import ErrorPG from "./Pages/ErrorPG";
 import PageNotFound from "./Pages/PageNotFound";
 import PropertyDetailsPG from "./Pages/PropertyDetailsPG";
 import LoginPG from "./ui/LoginPG";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const queryClient = new QueryClient();
 
@@ -84,6 +85,7 @@ export default function App() {
   // JSX//////////////////////////////////////////]
   return (
     <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
       <RouterProvider router={router} />;
     </QueryClientProvider>
   );

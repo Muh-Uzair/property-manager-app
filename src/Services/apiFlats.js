@@ -3,16 +3,11 @@ import supabase from "../../supabase";
 // FUNCTION
 export const uploadAllFlats = async (flatsDataArr) => {
   console.log(flatsDataArr);
-  const { data, error } = await supabase
-    .from("flats")
-    .insert(flatsDataArr)
-    .select();
+  const { error } = await supabase.from("flats").insert(flatsDataArr).select();
 
   if (error) {
     throw new Error(error);
   }
-
-  return data;
 };
 
 // FUNCTION
@@ -27,3 +22,10 @@ export const getAllFlats = async () => {
 };
 
 // FUNCTION
+export const deleteAllFlats = async () => {
+  const { error } = await supabase.from("flats").delete().neq("id", -2000);
+
+  if (error) {
+    throw new Error(error);
+  }
+};
