@@ -7,6 +7,7 @@ export const roomsDataArr = [
     status: "occupied",
     rent: 7000,
     owner_id: null,
+    image: "",
   },
   {
     id: 1002,
@@ -16,6 +17,7 @@ export const roomsDataArr = [
     status: "occupied",
     rent: 7000,
     owner_id: null,
+    image: "",
   },
   {
     id: 1003,
@@ -25,6 +27,7 @@ export const roomsDataArr = [
     status: "occupied",
     rent: 7000,
     owner_id: null,
+    image: "",
   },
   {
     id: 1004,
@@ -34,6 +37,7 @@ export const roomsDataArr = [
     status: "occupied",
     rent: 7000,
     owner_id: null,
+    image: "",
   },
   {
     id: 1005,
@@ -43,6 +47,7 @@ export const roomsDataArr = [
     status: "occupied",
     rent: 7000,
     owner_id: null,
+    image: "",
   },
   {
     id: 1006,
@@ -52,6 +57,7 @@ export const roomsDataArr = [
     status: "occupied",
     rent: 10000,
     owner_id: null,
+    image: "",
   },
   {
     id: 1007,
@@ -61,6 +67,7 @@ export const roomsDataArr = [
     status: "occupied",
     rent: 10000,
     owner_id: null,
+    image: "",
   },
   {
     id: 1008,
@@ -70,6 +77,7 @@ export const roomsDataArr = [
     status: "unoccupied",
     rent: 10000,
     owner_id: null,
+    image: "",
   },
   {
     id: 1009,
@@ -79,6 +87,7 @@ export const roomsDataArr = [
     status: "occupied",
     rent: 10000,
     owner_id: null,
+    image: "",
   },
   {
     id: 1010,
@@ -88,7 +97,6 @@ export const roomsDataArr = [
     status: "unoccupied",
     rent: 10000,
     owner_id: null,
+    image: "",
   },
 ];
-
-// 8 rooms occupied

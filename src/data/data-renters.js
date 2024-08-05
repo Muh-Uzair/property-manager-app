@@ -10,6 +10,7 @@ export const rentersDataArr = [
     marital_status: "unmarried",
     rent_property: "room", // room || flat || shop
     propertyID: [null],
+    image: "",
   },
   {
     id: 7401,
@@ -22,6 +23,7 @@ export const rentersDataArr = [
     marital_status: "married",
     rent_property: "flat",
     propertyID: [null],
+    image: "",
   },
   {
     id: 86137,
@@ -34,6 +36,7 @@ export const rentersDataArr = [
     marital_status: "unmarried",
     rent_property: "room",
     propertyID: [null],
+    image: "",
   },
   {
     id: 56350,
@@ -46,6 +49,7 @@ export const rentersDataArr = [
     marital_status: "unmarried",
     rent_property: "flat",
     propertyID: [null],
+    image: "",
   },
   {
     id: 79403,
@@ -58,6 +62,7 @@ export const rentersDataArr = [
     marital_status: "unmarried",
     rent_property: "flat",
     propertyID: [null],
+    image: "",
   },
   {
     id: 3409,
@@ -70,6 +75,7 @@ export const rentersDataArr = [
     marital_status: "unmarried",
     rent_property: "flat",
     propertyID: [null],
+    image: "",
   },
   {
     id: 98540,
@@ -82,6 +88,7 @@ export const rentersDataArr = [
     marital_status: "married",
     rent_property: "room",
     propertyID: [null],
+    image: "",
   },
   {
     id: 22303,
@@ -94,6 +101,7 @@ export const rentersDataArr = [
     marital_status: "married",
     rent_property: "flat",
     propertyID: [null],
+    image: "",
   },
   {
     id: 46698,
@@ -106,6 +114,7 @@ export const rentersDataArr = [
     marital_status: "married",
     rent_property: "flat",
     propertyID: [null],
+    image: "",
   },
   {
     id: 52063,
@@ -118,6 +127,7 @@ export const rentersDataArr = [
     marital_status: "married",
     rent_property: "room",
     propertyID: [null],
+    image: "",
   },
   {
     id: 77467,
@@ -130,6 +140,7 @@ export const rentersDataArr = [
     marital_status: "married",
     rent_property: "flat",
     propertyID: [null],
+    image: "",
   },
   {
     id: 74692,
@@ -142,6 +153,7 @@ export const rentersDataArr = [
     marital_status: "married",
     rent_property: "room",
     propertyID: [null],
+    image: "",
   },
   {
     id: 50953,
@@ -154,6 +166,7 @@ export const rentersDataArr = [
     marital_status: "unmarried",
     rent_property: "flat",
     propertyID: [null],
+    image: "",
   },
   {
     id: 26097,
@@ -166,6 +179,7 @@ export const rentersDataArr = [
     marital_status: "unmarried",
     rent_property: "shop",
     propertyID: [null],
+    image: "",
   },
   {
     id: 32417,
@@ -178,6 +192,7 @@ export const rentersDataArr = [
     marital_status: "married",
     rent_property: "flat",
     propertyID: [null],
+    image: "",
   },
   {
     id: 88790,
@@ -190,6 +205,7 @@ export const rentersDataArr = [
     marital_status: "unmarried",
     rent_property: "room",
     propertyID: [null],
+    image: "",
   },
   {
     id: 44839,
@@ -202,6 +218,7 @@ export const rentersDataArr = [
     marital_status: "unmarried",
     rent_property: "flat",
     propertyID: [null],
+    image: "",
   },
   {
     id: 99123,
@@ -214,6 +231,7 @@ export const rentersDataArr = [
     marital_status: "married",
     rent_property: "shop",
     propertyID: [null],
+    image: "",
   },
   {
     id: 76325,
@@ -226,7 +244,6 @@ export const rentersDataArr = [
     marital_status: "married",
     rent_property: "room",
     propertyID: [null],
+    image: "",
   },
 ];
-
-// 20 total renters

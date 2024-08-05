@@ -7,6 +7,7 @@ export const shopsDataArr = [
     status: "unoccupied",
     rent: 5000,
     owner_id: null,
+    image: "",
   },
   {
     id: 2002,
@@ -16,6 +17,7 @@ export const shopsDataArr = [
     status: "occupied",
     rent: 5000,
     owner_id: null,
+    image: "",
   },
   {
     id: 2003,
@@ -25,6 +27,7 @@ export const shopsDataArr = [
     status: "occupied",
     rent: 5000,
     owner_id: null,
+    image: "",
   },
   {
     id: 2004,
@@ -34,6 +37,7 @@ export const shopsDataArr = [
     status: "occupied",
     rent: 5000,
     owner_id: null,
+    image: "",
   },
   {
     id: 2005,
@@ -43,6 +47,7 @@ export const shopsDataArr = [
     status: "occupied",
     rent: 5000,
     owner_id: null,
+    image: "",
   },
   {
     id: 2006,
@@ -52,6 +57,7 @@ export const shopsDataArr = [
     status: "occupied",
     rent: 5000,
     owner_id: null,
+    image: "",
   },
   {
     id: 2007,
@@ -61,6 +67,7 @@ export const shopsDataArr = [
     status: "occupied",
     rent: 5000,
     owner_id: null,
+    image: "",
   },
   {
     id: 2008,
@@ -70,6 +77,7 @@ export const shopsDataArr = [
     status: "occupied",
     rent: 5000,
     owner_id: null,
+    image: "",
   },
   {
     id: 2009,
@@ -79,6 +87,7 @@ export const shopsDataArr = [
     status: "occupied",
     rent: 5000,
     owner_id: null,
+    image: "",
   },
   {
     id: 2010,
@@ -88,6 +97,7 @@ export const shopsDataArr = [
     status: "occupied",
     rent: 5000,
     owner_id: null,
+    image: "",
   },
   {
     id: 2011,
@@ -97,6 +107,7 @@ export const shopsDataArr = [
     status: "occupied",
     rent: 2000,
     owner_id: null,
+    image: "",
   },
   {
     id: 2012,
@@ -106,6 +117,7 @@ export const shopsDataArr = [
     status: "occupied",
     rent: 2000,
     owner_id: null,
+    image: "",
   },
   {
     id: 2013,
@@ -115,6 +127,7 @@ export const shopsDataArr = [
     status: "unoccupied",
     rent: 2000,
     owner_id: null,
+    image: "",
   },
   {
     id: 2014,
@@ -124,6 +137,7 @@ export const shopsDataArr = [
     status: "occupied",
     rent: 2000,
     owner_id: null,
+    image: "",
   },
   {
     id: 2015,
@@ -133,6 +147,7 @@ export const shopsDataArr = [
     status: "occupied",
     rent: 2000,
     owner_id: null,
+    image: "",
   },
   {
     id: 2016,
@@ -142,6 +157,7 @@ export const shopsDataArr = [
     status: "occupied",
     rent: 2000,
     owner_id: null,
+    image: "",
   },
   {
     id: 2017,
@@ -151,6 +167,7 @@ export const shopsDataArr = [
     status: "occupied",
     rent: 2000,
     owner_id: null,
+    image: "",
   },
   {
     id: 2018,
@@ -160,6 +177,7 @@ export const shopsDataArr = [
     status: "unoccupied",
     rent: 2000,
     owner_id: null,
+    image: "",
   },
   {
     id: 2019,
@@ -169,6 +187,7 @@ export const shopsDataArr = [
     status: "unoccupied",
     rent: 2000,
     owner_id: null,
+    image: "",
   },
   {
     id: 2020,
@@ -178,7 +197,6 @@ export const shopsDataArr = [
     status: "occupied",
     rent: 2000,
     owner_id: null,
+    image: "",
   },
 ];
-
-// 15 shops occupied

@@ -7,6 +7,7 @@ export const flatsDataArr = [
     status: "unoccupied",
     rent: 15000,
     owner_id: null,
+    image: "",
   },
   {
     id: 3002,
@@ -16,6 +17,7 @@ export const flatsDataArr = [
     status: "unoccupied",
     rent: 15000,
     owner_id: null,
+    image: "",
   },
   {
     id: 3003,
@@ -25,6 +27,7 @@ export const flatsDataArr = [
     status: "occupied",
     rent: 15000,
     owner_id: null,
+    image: "",
   },
   {
     id: 3004,
@@ -34,6 +37,7 @@ export const flatsDataArr = [
     status: "occupied",
     rent: 15000,
     owner_id: null,
+    image: "",
   },
   {
     id: 3005,
@@ -43,6 +47,7 @@ export const flatsDataArr = [
     status: "occupied",
     rent: 15000,
     owner_id: null,
+    image: "",
   },
   {
     id: 3006,
@@ -52,6 +57,7 @@ export const flatsDataArr = [
     status: "unoccupied",
     rent: 18000,
     owner_id: null,
+    image: "",
   },
   {
     id: 3007,
@@ -61,6 +67,7 @@ export const flatsDataArr = [
     status: "occupied",
     rent: 18000,
     owner_id: null,
+    image: "",
   },
   {
     id: 3008,
@@ -70,6 +77,7 @@ export const flatsDataArr = [
     status: "unoccupied",
     rent: 18000,
     owner_id: null,
+    image: "",
   },
   {
     id: 3009,
@@ -79,6 +87,7 @@ export const flatsDataArr = [
     status: "unoccupied",
     rent: 18000,
     owner_id: null,
+    image: "",
   },
   {
     id: 3010,
@@ -88,6 +97,7 @@ export const flatsDataArr = [
     status: "occupied",
     rent: 18000,
     owner_id: null,
+    image: "",
   },
   {
     id: 3011,
@@ -97,6 +107,7 @@ export const flatsDataArr = [
     status: "occupied",
     rent: 20000,
     owner_id: null,
+    image: "",
   },
   {
     id: 3012,
@@ -106,6 +117,7 @@ export const flatsDataArr = [
     status: "unoccupied",
     rent: 20000,
     owner_id: null,
+    image: "",
   },
   {
     id: 3013,
@@ -115,6 +127,7 @@ export const flatsDataArr = [
     status: "unoccupied",
     rent: 20000,
     owner_id: null,
+    image: "",
   },
   {
     id: 3014,
@@ -124,6 +137,7 @@ export const flatsDataArr = [
     status: "occupied",
     rent: 20000,
     owner_id: null,
+    image: "",
   },
   {
     id: 3015,
@@ -133,6 +147,7 @@ export const flatsDataArr = [
     status: "occupied",
     rent: 20000,
     owner_id: null,
+    image: "",
   },
   {
     id: 3016,
@@ -142,7 +157,6 @@ export const flatsDataArr = [
     status: "occupied",
     rent: 20000,
     owner_id: null,
+    image: "",
   },
 ];
-
-// 9 fats occupied

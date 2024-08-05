@@ -13,6 +13,7 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import HomePG from "./Pages/HomePG";
 import ExpensesPG from "./Pages/ExpensesPG";
@@ -22,6 +23,8 @@ import ErrorPG from "./Pages/ErrorPG";
 import PageNotFound from "./Pages/PageNotFound";
 import PropertyDetailsPG from "./Pages/PropertyDetailsPG";
 import LoginPG from "./ui/LoginPG";
+
+const queryClient = new QueryClient();
 
 // const router = createBrowserRouter([
 //   {
@@ -78,8 +81,12 @@ export default function App() {
 
   // FUNCTIONS
 
-  // JSX//////////////////////////////////////////
-  return <RouterProvider router={router} />;
+  // JSX//////////////////////////////////////////]
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />;
+    </QueryClientProvider>
+  );
   // JSX//////////////////////////////////////////
 }
 // COMPONENT END/////////////////////////////////////////////////
