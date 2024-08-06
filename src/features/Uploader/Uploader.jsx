@@ -25,8 +25,6 @@ const Uploader = () => {
 
   // FUNCTIONS
   const uploadButtonClicked = () => {
-    console.log("clicked");
-
     mutateUploadAllRooms(roomsDataArr);
     mutateUploadAllShops(shopsDataArr);
     mutateUploadAllFlats(flatsDataArr);

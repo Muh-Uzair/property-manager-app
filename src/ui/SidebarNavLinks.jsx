@@ -7,16 +7,16 @@ export const SidebarNavLinks = ({ NavLinksArr }) => {
   // FUNCTIONS
   // JSX//////////////////////////////////////////
   return (
-    <ul className="flex w-[100%] flex-col items-center">
+    <ul className="w-[100%]">
       {NavLinksArr.map((val, i) => (
         <li
           key={i}
-          className="mb-[8px] flex h-[40px] w-[100%] flex-row rounded-[5px] transition-all duration-300 ease-in-out"
+          className="flex h-[42px] w-[100%] flex-row transition-all duration-300 ease-in-out"
         >
           <NavLink
             to={`/${val.url}`}
             className={({ isActive }) =>
-              `duration-180 grid w-[100%] grid-cols-[25px_1fr] items-center rounded-[5px] pl-[12px] font-semibold transition-all ease-in-out ${isActive ? "border-[1px] border-cyan-400 bg-sky-100 text-cyan-500" : "border-[1px] border-gray-200 bg-stone-50 text-black/60 hover:bg-gray-100"}`
+              `duration-180 grid w-[100%] grid-cols-[25px_1fr] items-center pl-[12px] font-[500] text-white transition-all ease-in-out ${isActive ? "bg-sky-600" : "hover:bg-sky-700"}`
             }
           >
             <span className="">{val.icon} </span>
