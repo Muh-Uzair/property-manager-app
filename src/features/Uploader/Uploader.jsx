@@ -1,37 +1,48 @@
-// import { useUploadAllFlats } from "./useUploadFlats";
 // import { flatsDataArr } from "../../data/data-flats";
 
 import { useUploadAllRooms } from "./useUploadAllRooms";
-import { roomsDataArr } from "../../data/data-rooms";
+import { useUploadAllShops } from "./useUploadAllShops";
+import { useUploadAllFlats } from "./useUploadAllFlats";
 
-// import { useDeleteAllFlats } from "./useDeleteAllFlats";
-// import { useEffect } from "react";
+import { roomsDataArr } from "../../data/data-rooms";
+import { shopsDataArr } from "../../data/data-shops";
+import { flatsDataArr } from "../../data/data-flats";
+import { useUploadAllRenters } from "./useUploadAllRenters";
+import { rentersDataArr } from "../../data/data-renters";
+import { useUploadAllRentings } from "./useUploadAllRentings";
+import { allRentingsDataArr } from "../../data/data-allRentings";
 
 // COMPONENT START///////////////////////////////////////////////
 const Uploader = () => {
   // STATE & VARIABLES
 
-  // const { mutateUploadAllFlats, flatsUploadStatus } = useUploadAllFlats();
-  // const { mutateDeleteAllFlats, statusDeletingFlats } = useDeleteAllFlats();
   const { mutateUploadAllRooms, statusRoomsUpload } = useUploadAllRooms();
+  const { mutateUploadAllShops, statusShopsUpload } = useUploadAllShops();
+  const { mutateUploadAllFlats, statusFlatsUpload } = useUploadAllFlats();
+  const { mutateUploadAllRenters, statusRentersUpload } = useUploadAllRenters();
+  const { mutateUploadAllRentings, statusAllRentingsUpload } =
+    useUploadAllRentings();
 
   // FUNCTIONS
   const uploadButtonClicked = () => {
     console.log("clicked");
-    // mutateDeleteAllFlats();
-    mutateUploadAllRooms(roomsDataArr);
-  };
 
-  // useEffect(() => {
-  //   const uploadAllFlats = () => {
-  //     mutateUploadAllFlats(flatsDataArr);
-  //   };
-  //   if (statusDeletingFlats === "success") uploadAllFlats();
-  // }, [statusDeletingFlats, mutateUploadAllFlats]);
+    mutateUploadAllRooms(roomsDataArr);
+    mutateUploadAllShops(shopsDataArr);
+    mutateUploadAllFlats(flatsDataArr);
+    mutateUploadAllRenters(rentersDataArr);
+    mutateUploadAllRentings(allRentingsDataArr);
+  };
 
   return (
     <button
-      disabled={statusRoomsUpload === "pending"}
+      disabled={
+        statusRoomsUpload === "pending" ||
+        statusShopsUpload === "pending" ||
+        statusFlatsUpload === "pending" ||
+        statusRentersUpload === "pending" ||
+        statusAllRentingsUpload === "pending"
+      }
       onClick={() => uploadButtonClicked()}
       className="rounded-[5px] border-[1px] border-cyan-400 bg-sky-100 px-[20px] py-2 text-xl font-semibold text-cyan-500 transition hover:bg-sky-200"
     >
