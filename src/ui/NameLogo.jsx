@@ -6,21 +6,26 @@ import { Logo } from "./Logo";
 export function NameLogo() {
   // STATE & VARIABLES
 
-  const navigate = useNavigate();
-
   // FUNCTIONS
 
   // JSX//////////////////////////////////////////
   return (
     <div className="flex items-center pl-[10px]">
       <Logo size={"30px"} color={"0ea5e9"} />
-      <spans
-        className="cursor-pointer pl-[5px] text-[20px] font-bold text-sky-500"
-        onClick={() => navigate("/home")}
-      >
-        PROPLE
-      </spans>
+      <NamePropleLogo />
     </div>
   );
   // JSX//////////////////////////////////////////
 }
+
+const NamePropleLogo = () => {
+  const navigate = useNavigate();
+  return (
+    <spans
+      className="cursor-pointer pl-[5px] text-[20px] font-bold text-sky-500"
+      onClick={() => navigate("/home")}
+    >
+      PROPLE
+    </spans>
+  );
+};
