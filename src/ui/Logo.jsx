@@ -11,6 +11,12 @@ export const Logo = ({ size, color }) => {
   // JSX//////////////////////////////////////////
   return (
     <AiFillSafetyCertificate
+      style={{
+        cursor: "pointer",
+        border: `2px solid #${color}`,
+        borderRadius: "4px",
+        padding: "1px",
+      }}
       size={size}
       color={color}
       onClick={() => navigate("home")}
@@ -27,6 +33,6 @@ Logo.propTypes = {
 
 // Default Props (optional)
 Logo.defaultProps = {
-  size: "30px", // Provide a default value for `size` if not passed
+  size: "31px", // Provide a default value for `size` if not passed
   color: "0ea5e9",
 };
