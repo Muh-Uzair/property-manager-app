@@ -1,4 +1,4 @@
-import { useUploadAllFlats } from "./useUpploadFlats";
+import { useUploadAllFlats } from "./useUploadFlats";
 import { flatsDataArr } from "../../data/data-flats";
 
 import { useDeleteAllFlats } from "./useDeleteAllFlats";

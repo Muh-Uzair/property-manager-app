@@ -9,7 +9,7 @@ export const rentersDataArr = [
     occupation: "plumber",
     marital_status: "unmarried",
     rent_property: "room", // room || flat || shop
-    propertyID: [null],
+    propertyID: [1001, 2005],
     image: "",
   },
   {
@@ -22,7 +22,7 @@ export const rentersDataArr = [
     occupation: "Human resources officer",
     marital_status: "married",
     rent_property: "flat",
-    propertyID: [null],
+    propertyID: [3007, 1005],
     image: "",
   },
   {
@@ -35,7 +35,7 @@ export const rentersDataArr = [
     occupation: "Administrator, sports",
     marital_status: "unmarried",
     rent_property: "room",
-    propertyID: [null],
+    propertyID: [2014],
     image: "",
   },
   {
@@ -48,7 +48,7 @@ export const rentersDataArr = [
     occupation: "Medical technical officer",
     marital_status: "unmarried",
     rent_property: "flat",
-    propertyID: [null],
+    propertyID: [3004, 2003],
     image: "",
   },
   {
@@ -61,22 +61,10 @@ export const rentersDataArr = [
     occupation: "Furniture designer",
     marital_status: "unmarried",
     rent_property: "flat",
-    propertyID: [null],
+    propertyID: [3003],
     image: "",
   },
-  {
-    id: 3409,
-    name: "Amanda",
-    contact_info: "+1-108-372-2900x1083",
-    nationality: "France",
-    id_card_number: "5883945514",
-    renter_from: "17, May 2015",
-    occupation: "Forensic scientist",
-    marital_status: "unmarried",
-    rent_property: "flat",
-    propertyID: [null],
-    image: "",
-  },
+
   {
     id: 98540,
     name: "Mike",
@@ -87,7 +75,7 @@ export const rentersDataArr = [
     occupation: "Quarry manager",
     marital_status: "married",
     rent_property: "room",
-    propertyID: [null],
+    propertyID: [1006],
     image: "",
   },
   {
@@ -100,7 +88,7 @@ export const rentersDataArr = [
     occupation: "Barrister's clerk",
     marital_status: "married",
     rent_property: "flat",
-    propertyID: [null],
+    propertyID: [3014, 2004],
     image: "",
   },
   {
@@ -113,7 +101,7 @@ export const rentersDataArr = [
     occupation: "Water quality scientist",
     marital_status: "married",
     rent_property: "flat",
-    propertyID: [null],
+    propertyID: [3008, 2013],
     image: "",
   },
   {
@@ -126,7 +114,7 @@ export const rentersDataArr = [
     occupation: "Ecologist",
     marital_status: "married",
     rent_property: "room",
-    propertyID: [null],
+    propertyID: [1009, 2012],
     image: "",
   },
   {
@@ -139,7 +127,7 @@ export const rentersDataArr = [
     occupation: "Glass blower/designer",
     marital_status: "married",
     rent_property: "flat",
-    propertyID: [null],
+    propertyID: [1007, 2006],
     image: "",
   },
   {
@@ -152,7 +140,7 @@ export const rentersDataArr = [
     occupation: "Insurance underwriter",
     marital_status: "married",
     rent_property: "room",
-    propertyID: [null],
+    propertyID: [3005, 1003, 2008],
     image: "",
   },
   {
@@ -165,7 +153,7 @@ export const rentersDataArr = [
     occupation: "Risk manager",
     marital_status: "unmarried",
     rent_property: "flat",
-    propertyID: [null],
+    propertyID: [3010, 2009],
     image: "",
   },
   {
@@ -178,7 +166,7 @@ export const rentersDataArr = [
     occupation: "Investment banker, corporate",
     marital_status: "unmarried",
     rent_property: "shop",
-    propertyID: [null],
+    propertyID: [2007, 2002],
     image: "",
   },
   {
@@ -191,7 +179,7 @@ export const rentersDataArr = [
     occupation: "Graphic designer",
     marital_status: "married",
     rent_property: "flat",
-    propertyID: [null],
+    propertyID: [3015],
     image: "",
   },
   {
@@ -204,7 +192,7 @@ export const rentersDataArr = [
     occupation: "Software engineer",
     marital_status: "unmarried",
     rent_property: "room",
-    propertyID: [null],
+    propertyID: [2015, 1004],
     image: "",
   },
   {
@@ -217,7 +205,7 @@ export const rentersDataArr = [
     occupation: "Chef",
     marital_status: "unmarried",
     rent_property: "flat",
-    propertyID: [null],
+    propertyID: [3016],
     image: "",
   },
   {
@@ -230,7 +218,7 @@ export const rentersDataArr = [
     occupation: "Teacher",
     marital_status: "married",
     rent_property: "shop",
-    propertyID: [null],
+    propertyID: [2011, 2020],
     image: "",
   },
   {
@@ -243,7 +231,7 @@ export const rentersDataArr = [
     occupation: "Marketing manager",
     marital_status: "married",
     rent_property: "room",
-    propertyID: [null],
+    propertyID: [1010],
     image: "",
   },
 ];

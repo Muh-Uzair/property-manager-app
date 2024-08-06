@@ -6,7 +6,7 @@ export const flatsDataArr = [
     size: "10*31",
     status: "unoccupied",
     rent: 15000,
-    owner_id: null,
+    renter_id: null,
     image: "",
   },
   {
@@ -16,7 +16,7 @@ export const flatsDataArr = [
     size: "10*31",
     status: "unoccupied",
     rent: 15000,
-    owner_id: null,
+    renter_id: null,
     image: "",
   },
   {
@@ -26,7 +26,7 @@ export const flatsDataArr = [
     size: "10*31",
     status: "occupied",
     rent: 15000,
-    owner_id: null,
+    renter_id: 79403,
     image: "",
   },
   {
@@ -36,7 +36,7 @@ export const flatsDataArr = [
     size: "10*31",
     status: "occupied",
     rent: 15000,
-    owner_id: null,
+    renter_id: 56350,
     image: "",
   },
   {
@@ -46,7 +46,7 @@ export const flatsDataArr = [
     size: "10*31",
     status: "occupied",
     rent: 15000,
-    owner_id: null,
+    renter_id: 74692,
     image: "",
   },
   {
@@ -56,7 +56,7 @@ export const flatsDataArr = [
     size: "12*40",
     status: "unoccupied",
     rent: 18000,
-    owner_id: null,
+    renter_id: null,
     image: "",
   },
   {
@@ -66,7 +66,7 @@ export const flatsDataArr = [
     size: "12*40",
     status: "occupied",
     rent: 18000,
-    owner_id: null,
+    renter_id: 7401,
     image: "",
   },
   {
@@ -74,9 +74,9 @@ export const flatsDataArr = [
     flat_number: "8",
     floor: 4,
     size: "12*40",
-    status: "unoccupied",
+    status: "occupied",
     rent: 18000,
-    owner_id: null,
+    renter_id: 46698,
     image: "",
   },
   {
@@ -86,7 +86,7 @@ export const flatsDataArr = [
     size: "12*40",
     status: "unoccupied",
     rent: 18000,
-    owner_id: null,
+    renter_id: null,
     image: "",
   },
   {
@@ -96,7 +96,7 @@ export const flatsDataArr = [
     size: "12*40",
     status: "occupied",
     rent: 18000,
-    owner_id: null,
+    renter_id: 50953,
     image: "",
   },
   {
@@ -104,9 +104,9 @@ export const flatsDataArr = [
     flat_number: "11",
     floor: 5,
     size: "13*50",
-    status: "occupied",
+    status: "unoccupied",
     rent: 20000,
-    owner_id: null,
+    renter_id: null,
     image: "",
   },
   {
@@ -116,7 +116,7 @@ export const flatsDataArr = [
     size: "13*50",
     status: "unoccupied",
     rent: 20000,
-    owner_id: null,
+    renter_id: null,
     image: "",
   },
   {
@@ -126,7 +126,7 @@ export const flatsDataArr = [
     size: "13*50",
     status: "unoccupied",
     rent: 20000,
-    owner_id: null,
+    renter_id: null,
     image: "",
   },
   {
@@ -136,7 +136,7 @@ export const flatsDataArr = [
     size: "13*50",
     status: "occupied",
     rent: 20000,
-    owner_id: null,
+    renter_id: 22303,
     image: "",
   },
   {
@@ -146,7 +146,7 @@ export const flatsDataArr = [
     size: "13*50",
     status: "occupied",
     rent: 20000,
-    owner_id: null,
+    renter_id: 32417,
     image: "",
   },
   {
@@ -156,7 +156,7 @@ export const flatsDataArr = [
     size: "13*50",
     status: "occupied",
     rent: 20000,
-    owner_id: null,
+    renter_id: 44839,
     image: "",
   },
 ];

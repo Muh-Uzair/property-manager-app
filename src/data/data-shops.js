@@ -6,7 +6,7 @@ export const shopsDataArr = [
     size: "5*10",
     status: "unoccupied",
     rent: 5000,
-    owner_id: null,
+    renter_id: null,
     image: "",
   },
   {
@@ -16,7 +16,7 @@ export const shopsDataArr = [
     size: "5*10",
     status: "occupied",
     rent: 5000,
-    owner_id: null,
+    renter_id: 26097,
     image: "",
   },
   {
@@ -26,7 +26,7 @@ export const shopsDataArr = [
     size: "5*10",
     status: "occupied",
     rent: 5000,
-    owner_id: null,
+    renter_id: 56350,
     image: "",
   },
   {
@@ -36,7 +36,7 @@ export const shopsDataArr = [
     size: "5*10",
     status: "occupied",
     rent: 5000,
-    owner_id: null,
+    renter_id: 22303,
     image: "",
   },
   {
@@ -46,7 +46,7 @@ export const shopsDataArr = [
     size: "5*10",
     status: "occupied",
     rent: 5000,
-    owner_id: null,
+    renter_id: 98386,
     image: "",
   },
   {
@@ -56,7 +56,7 @@ export const shopsDataArr = [
     size: "5*10",
     status: "occupied",
     rent: 5000,
-    owner_id: null,
+    renter_id: 77467,
     image: "",
   },
   {
@@ -66,7 +66,7 @@ export const shopsDataArr = [
     size: "5*10",
     status: "occupied",
     rent: 5000,
-    owner_id: null,
+    renter_id: 26097,
     image: "",
   },
   {
@@ -76,7 +76,7 @@ export const shopsDataArr = [
     size: "5*10",
     status: "occupied",
     rent: 5000,
-    owner_id: null,
+    renter_id: 74692,
     image: "",
   },
   {
@@ -86,7 +86,7 @@ export const shopsDataArr = [
     size: "5*10",
     status: "occupied",
     rent: 5000,
-    owner_id: null,
+    renter_id: 50953,
     image: "",
   },
   {
@@ -94,9 +94,9 @@ export const shopsDataArr = [
     shop_number: "G-10",
     floor: "ground",
     size: "5*10",
-    status: "occupied",
+    status: "unoccupied",
     rent: 5000,
-    owner_id: null,
+    renter_id: null,
     image: "",
   },
   {
@@ -106,7 +106,7 @@ export const shopsDataArr = [
     size: "5*10",
     status: "occupied",
     rent: 2000,
-    owner_id: null,
+    renter_id: 99123,
     image: "",
   },
   {
@@ -116,7 +116,7 @@ export const shopsDataArr = [
     size: "5*10",
     status: "occupied",
     rent: 2000,
-    owner_id: null,
+    renter_id: 52063,
     image: "",
   },
   {
@@ -124,9 +124,9 @@ export const shopsDataArr = [
     shop_number: "B-3",
     floor: "basement",
     size: "5*10",
-    status: "unoccupied",
+    status: "occupied",
     rent: 2000,
-    owner_id: null,
+    renter_id: 46698,
     image: "",
   },
   {
@@ -136,7 +136,7 @@ export const shopsDataArr = [
     size: "5*10",
     status: "occupied",
     rent: 2000,
-    owner_id: null,
+    renter_id: 86137,
     image: "",
   },
   {
@@ -146,7 +146,7 @@ export const shopsDataArr = [
     size: "5*10",
     status: "occupied",
     rent: 2000,
-    owner_id: null,
+    renter_id: 88790,
     image: "",
   },
   {
@@ -154,9 +154,9 @@ export const shopsDataArr = [
     shop_number: "B-6",
     floor: "basement",
     size: "5*10",
-    status: "occupied",
+    status: "unoccupied",
     rent: 2000,
-    owner_id: null,
+    renter_id: null,
     image: "",
   },
   {
@@ -164,9 +164,9 @@ export const shopsDataArr = [
     shop_number: "B-7",
     floor: "basement",
     size: "5*10",
-    status: "occupied",
+    status: "unoccupied",
     rent: 2000,
-    owner_id: null,
+    renter_id: null,
     image: "",
   },
   {
@@ -176,7 +176,7 @@ export const shopsDataArr = [
     size: "5*10",
     status: "unoccupied",
     rent: 2000,
-    owner_id: null,
+    renter_id: null,
     image: "",
   },
   {
@@ -186,7 +186,7 @@ export const shopsDataArr = [
     size: "5*10",
     status: "unoccupied",
     rent: 2000,
-    owner_id: null,
+    renter_id: null,
     image: "",
   },
   {
@@ -196,7 +196,7 @@ export const shopsDataArr = [
     size: "5*10",
     status: "occupied",
     rent: 2000,
-    owner_id: null,
+    renter_id: 99123,
     image: "",
   },
 ];

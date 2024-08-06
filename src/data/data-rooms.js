@@ -6,7 +6,7 @@ export const roomsDataArr = [
     size: "5*5",
     status: "occupied",
     rent: 7000,
-    owner_id: null,
+    renter_id: 98386,
     image: "",
   },
   {
@@ -16,7 +16,7 @@ export const roomsDataArr = [
     size: "5*5",
     status: "occupied",
     rent: 7000,
-    owner_id: null,
+    renter_id: 86137,
     image: "",
   },
   {
@@ -26,7 +26,7 @@ export const roomsDataArr = [
     size: "5*5",
     status: "occupied",
     rent: 7000,
-    owner_id: null,
+    renter_id: 74692,
     image: "",
   },
   {
@@ -36,7 +36,7 @@ export const roomsDataArr = [
     size: "5*5",
     status: "occupied",
     rent: 7000,
-    owner_id: null,
+    renter_id: 88790,
     image: "",
   },
   {
@@ -46,7 +46,7 @@ export const roomsDataArr = [
     size: "5*5",
     status: "occupied",
     rent: 7000,
-    owner_id: null,
+    renter_id: 7401,
     image: "",
   },
   {
@@ -56,7 +56,7 @@ export const roomsDataArr = [
     size: "5*10",
     status: "occupied",
     rent: 10000,
-    owner_id: null,
+    renter_id: 98540,
     image: "",
   },
   {
@@ -66,7 +66,7 @@ export const roomsDataArr = [
     size: "5*10",
     status: "occupied",
     rent: 10000,
-    owner_id: null,
+    renter_id: 77467,
     image: "",
   },
   {
@@ -76,7 +76,7 @@ export const roomsDataArr = [
     size: "5*10",
     status: "unoccupied",
     rent: 10000,
-    owner_id: null,
+    renter_id: null,
     image: "",
   },
   {
@@ -86,7 +86,7 @@ export const roomsDataArr = [
     size: "5*10",
     status: "occupied",
     rent: 10000,
-    owner_id: null,
+    renter_id: 52063,
     image: "",
   },
   {
@@ -94,9 +94,9 @@ export const roomsDataArr = [
     room_number: "10",
     floor: 1,
     size: "5*10",
-    status: "unoccupied",
+    status: "occupied",
     rent: 10000,
-    owner_id: null,
+    renter_id: 76325,
     image: "",
   },
 ];
