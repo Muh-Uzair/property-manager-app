@@ -1,8 +1,8 @@
-import { brandColor500 } from "../styles/globalStyles";
 import { NameLogo } from "./NameLogo";
 import { TbUser } from "react-icons/tb";
 
 import Uploader from "../features/Uploader/Uploader";
+import { brandColor500 } from "../styles/globalStyles";
 
 // COMPONENT START///////////////////////////////////////////////
 export function Header() {
@@ -24,8 +24,11 @@ export function Header() {
 
 const UserDetails = () => {
   return (
-    <div className="bg-light-gray-1 flex h-[35px] w-[35px] items-center justify-center rounded-full">
-      <TbUser size={"20px"} color={brandColor500} />
+    <div
+      className={`flex h-[35px] w-[35px] items-center justify-center rounded-full`}
+      style={{ backgroundColor: `${brandColor500}` }}
+    >
+      <TbUser size={"20px"} color={"white"} />
     </div>
   );
 };

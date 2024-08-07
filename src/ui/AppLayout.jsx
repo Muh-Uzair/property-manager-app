@@ -16,7 +16,7 @@ export default function AppLayout() {
         <aside className="rounded-br-[5px] rounded-tr-[5px] bg-sky-500">
           <Sidebar />
         </aside>
-        <main className="bg-white p-[10px]">
+        <main className="bg-white px-[30px] py-[10px]">
           <Outlet />
         </main>
       </div>

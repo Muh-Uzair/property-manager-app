@@ -1,24 +1,21 @@
-import Table from "../ui/Table";
+import TableHeader from "./TableHeader";
 
 // COMPONENT START///////////////////////////////////////////////
-export default function PropertyDetailsPG() {
-  // STATE & VARIABLES
-
-  // FUNCTIONS
-
+export default function Table() {
   // JSX//////////////////////////////////////////
   return (
-    <>
-      {/* page heading */}
-      <div>
-        <span className="text-[30px] font-semibold">Flats</span>
-      </div>
-      {/* property table */}
-      <Table
+    <div>
+      {/* table header */}
+      <TableHeader
         colLabels={["IMAGE", "FLAT NO", "STATUS", "FLOOR", "RENT", "RENTER"]}
         colSize={["1fr", "1fr", "1fr", "1fr", "1fr", "1fr"]}
+        backgroundColor={"#38bdf8"}
       />
-    </>
+      {/* table body */}
+      <div>table body</div>
+      {/* table footer */}
+      <footer>table footer</footer>
+    </div>
   );
   // JSX//////////////////////////////////////////
 }
