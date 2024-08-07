@@ -14,7 +14,7 @@ export default function Table() {
       {/* table body */}
       <div>table body</div>
       {/* table footer */}
-      <footer>table footer</footer>
+      <footer>table footerr</footer>
     </div>
   );
   // JSX//////////////////////////////////////////
