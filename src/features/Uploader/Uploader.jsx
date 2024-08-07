@@ -3,6 +3,7 @@
 import { useUploadAllRooms } from "./useUploadAllRooms";
 import { useUploadAllShops } from "./useUploadAllShops";
 import { useUploadAllFlats } from "./useUploadAllFlats";
+import { BsDatabaseUp } from "react-icons/bs";
 
 import { roomsDataArr } from "../../data/data-rooms";
 import { shopsDataArr } from "../../data/data-shops";
@@ -42,9 +43,12 @@ const Uploader = () => {
         statusAllRentingsUpload === "pending"
       }
       onClick={() => uploadButtonClicked()}
-      className="rounded-[5px] border-[1px] border-cyan-400 bg-sky-100 px-[20px] py-2 text-xl font-semibold text-cyan-500 transition hover:bg-sky-200"
+      className="flex items-center gap-[5px] rounded-[5px] border-[1px] border-sky-500 px-[5px] text-sky-500 transition-all duration-150 hover:bg-sky-100 active:bg-sky-200/70"
     >
-      Upload
+      <span>
+        <BsDatabaseUp />
+      </span>
+      <span className="font-semibold">UPLOAD DATA</span>
     </button>
   );
 };

@@ -1,11 +1,3 @@
-// import {
-//   BrowserRouter,
-//   Navigate,
-//   Route,
-//   RouterProvider,
-//   Routes,
-// } from "react-router-dom";
-
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -24,38 +16,6 @@ import PageNotFound from "./Pages/PageNotFound";
 import PropertyDetailsPG from "./Pages/PropertyDetailsPG";
 import LoginPG from "./ui/LoginPG";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-
-const queryClient = new QueryClient();
-
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <AppLayout />,
-//     errorElement: <ErrorPG />,
-//     children: [
-//       {
-//         index: true,
-//         element: <Navigate replace to="/home" />,
-//       },
-//       {
-//         path: "home",
-//         element: <HomePG />,
-//       },
-//       {
-//         path: "expenses",
-//         element: <ExpensesPG />,
-//       },
-//       {
-//         path: "admissions",
-//         element: <AdmissionsPG />,
-//       },
-//       {
-//         path: "*", // Catch-all for unknown URLs
-//         element: <ErrorPG />,
-//       },
-//     ],
-//   },
-// ]);
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -76,9 +36,11 @@ const router = createBrowserRouter(
   ),
 );
 
+const queryClient = new QueryClient();
+
 // COMPONENT START///////////////////////////////////////////////
 export default function App() {
-  // STATE & VARIABLES`     kkkkkkkkkkkkkkkkkk;
+  // STATE & VARIABLES`
 
   // FUNCTIONS
 
@@ -115,3 +77,44 @@ export default function App() {
 //   );
 //
 // }
+
+//////////////////////////////////////
+//////////////////////////////////////
+
+// const router = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: <AppLayout />,
+//     errorElement: <ErrorPG />,
+//     children: [
+//       {
+//         index: true,
+//         element: <Navigate replace to="/home" />,
+//       },
+//       {
+//         path: "home",
+//         element: <HomePG />,
+//       },
+//       {
+//         path: "expenses",
+//         element: <ExpensesPG />,
+//       },
+//       {
+//         path: "admissions",
+//         element: <AdmissionsPG />,
+//       },
+//       {
+//         path: "*", // Catch-all for unknown URLs
+//         element: <ErrorPG />,
+//       },
+//     ],
+//   },
+// ]);
+
+// import {
+//   BrowserRouter,
+//   Navigate,
+//   Route,
+//   RouterProvider,
+//   Routes,
+// } from "react-router-dom";

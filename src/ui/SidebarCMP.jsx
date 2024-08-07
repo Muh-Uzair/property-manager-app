@@ -1,6 +1,8 @@
-import { HiOutlineHome, HiOutlineSave } from "react-icons/hi";
+import { HiOutlineHome } from "react-icons/hi";
 import { SidebarNavLinks } from "./SidebarNavLinks";
 import { HiOutlineBanknotes } from "react-icons/hi2";
+import { TbClipboardText } from "react-icons/tb";
+import { HiMiniArrowLeftOnRectangle } from "react-icons/hi2";
 // import Uploader from "../features/Uploader/Uploader";
 
 // COMPONENT START///////////////////////////////////////////////
@@ -19,14 +21,18 @@ export default function Sidebar() {
             {
               url: "property-details",
               label: "Property Details",
-              icon: <HiOutlineSave />,
+              icon: <TbClipboardText />,
             },
             {
               url: "expenses",
               label: "Expenses",
               icon: <HiOutlineBanknotes />,
             },
-            { url: "admissions", label: "Admissions", icon: <HiOutlineSave /> },
+            {
+              url: "admissions",
+              label: "Admissions",
+              icon: <HiMiniArrowLeftOnRectangle />,
+            },
           ]}
         />
       </nav>

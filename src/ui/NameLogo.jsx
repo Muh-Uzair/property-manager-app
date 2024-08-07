@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Logo } from "./Logo";
+import { brandColor500 } from "../styles/globalStyles";
 
 // COMPONENT END/////////////////////////////////////////////////
 // COMPONENT START///////////////////////////////////////////////
@@ -11,7 +12,7 @@ export function NameLogo() {
   // JSX//////////////////////////////////////////
   return (
     <div className="flex items-center pl-[10px]">
-      <Logo size={"30px"} color={"0ea5e9"} />
+      <Logo size={"30px"} color={brandColor500} />
       <NamePropleLogo />
     </div>
   );
@@ -21,11 +22,12 @@ export function NameLogo() {
 const NamePropleLogo = () => {
   const navigate = useNavigate();
   return (
-    <spans
-      className="cursor-pointer pl-[5px] text-[20px] font-bold text-sky-500"
+    <span
+      className={`cursor-pointer pl-[5px] text-[20px] font-bold`}
+      style={{ color: brandColor500 }}
       onClick={() => navigate("/home")}
     >
       PROPLE
-    </spans>
+    </span>
   );
 };

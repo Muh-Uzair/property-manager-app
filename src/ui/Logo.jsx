@@ -3,7 +3,7 @@ import { AiFillSafetyCertificate } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 
 // COMPONENT START///////////////////////////////////////////////
-export const Logo = ({ size, color }) => {
+export const Logo = ({ size = "31px", color = "0ea5e9" }) => {
   // STATE & VARIABLES
   const navigate = useNavigate();
 
@@ -29,10 +29,4 @@ export const Logo = ({ size, color }) => {
 Logo.propTypes = {
   size: PropTypes.string, // Validate that `size` is a number and is required
   color: PropTypes.string,
-};
-
-// Default Props (optional)
-Logo.defaultProps = {
-  size: "31px", // Provide a default value for `size` if not passed
-  color: "0ea5e9",
 };
