@@ -14,9 +14,26 @@ export default function Table() {
       {/* table body */}
       <div>table body</div>
       {/* table footer */}
-      <footer>table footerr</footer>
+      <TableFooter />
     </div>
   );
   // JSX//////////////////////////////////////////
 }
 // COMPONENT END/////////////////////////////////////////////////
+
+// COMPONENT START
+function TableFooter() {
+  // VARIABLES
+
+  // FUNCTIONS
+
+  // JSX
+  return (
+    <footer className="rounded-b-[8px] bg-gray-200">
+      <button>back</button>
+      <button>next</button>
+    </footer>
+  );
+  // JSX
+}
+// COMPONENT END
