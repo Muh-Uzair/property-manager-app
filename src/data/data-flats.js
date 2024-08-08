@@ -1,3 +1,6 @@
+const flatImageURL =
+  "https://ibtqqypbjddszazggxmp.supabase.co/storage/v1/object/sign/flats-images/cabin-001.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJmbGF0cy1pbWFnZXMvY2FiaW4tMDAxLmpwZyIsImlhdCI6MTcyMzExNjIwNSwiZXhwIjoxNzU0NjUyMjA1fQ.r-MfHOUgsIIzT888CG-Nb1ekoO7eg-l35AO_nxe_0FU&t=2024-08-08T11%3A23%3A25.434Z";
+
 export const flatsDataArr = [
   {
     id: 3001,
@@ -7,7 +10,7 @@ export const flatsDataArr = [
     status: "unoccupied",
     rent: 15000,
     renter_id: null,
-    image: "",
+    image: flatImageURL,
   },
   {
     id: 3002,
@@ -17,7 +20,7 @@ export const flatsDataArr = [
     status: "unoccupied",
     rent: 15000,
     renter_id: null,
-    image: "",
+    image: flatImageURL,
   },
   {
     id: 3003,
@@ -27,7 +30,7 @@ export const flatsDataArr = [
     status: "occupied",
     rent: 15000,
     renter_id: 79403,
-    image: "",
+    image: flatImageURL,
   },
   {
     id: 3004,
@@ -37,7 +40,7 @@ export const flatsDataArr = [
     status: "occupied",
     rent: 15000,
     renter_id: 56350,
-    image: "",
+    image: flatImageURL,
   },
   {
     id: 3005,
@@ -47,7 +50,7 @@ export const flatsDataArr = [
     status: "occupied",
     rent: 15000,
     renter_id: 74692,
-    image: "",
+    image: flatImageURL,
   },
   {
     id: 3006,
@@ -57,7 +60,7 @@ export const flatsDataArr = [
     status: "unoccupied",
     rent: 18000,
     renter_id: null,
-    image: "",
+    image: flatImageURL,
   },
   {
     id: 3007,
@@ -67,7 +70,7 @@ export const flatsDataArr = [
     status: "occupied",
     rent: 18000,
     renter_id: 7401,
-    image: "",
+    image: flatImageURL,
   },
   {
     id: 3008,
@@ -77,7 +80,7 @@ export const flatsDataArr = [
     status: "occupied",
     rent: 18000,
     renter_id: 46698,
-    image: "",
+    image: flatImageURL,
   },
   {
     id: 3009,
@@ -87,7 +90,7 @@ export const flatsDataArr = [
     status: "unoccupied",
     rent: 18000,
     renter_id: null,
-    image: "",
+    image: flatImageURL,
   },
   {
     id: 3010,
@@ -97,7 +100,7 @@ export const flatsDataArr = [
     status: "occupied",
     rent: 18000,
     renter_id: 50953,
-    image: "",
+    image: flatImageURL,
   },
   {
     id: 3011,
@@ -107,7 +110,7 @@ export const flatsDataArr = [
     status: "unoccupied",
     rent: 20000,
     renter_id: null,
-    image: "",
+    image: flatImageURL,
   },
   {
     id: 3012,
@@ -117,7 +120,7 @@ export const flatsDataArr = [
     status: "unoccupied",
     rent: 20000,
     renter_id: null,
-    image: "",
+    image: flatImageURL,
   },
   {
     id: 3013,
@@ -127,7 +130,7 @@ export const flatsDataArr = [
     status: "unoccupied",
     rent: 20000,
     renter_id: null,
-    image: "",
+    image: flatImageURL,
   },
   {
     id: 3014,
@@ -137,7 +140,7 @@ export const flatsDataArr = [
     status: "occupied",
     rent: 20000,
     renter_id: 22303,
-    image: "",
+    image: flatImageURL,
   },
   {
     id: 3015,
@@ -147,7 +150,7 @@ export const flatsDataArr = [
     status: "occupied",
     rent: 20000,
     renter_id: 32417,
-    image: "",
+    image: flatImageURL,
   },
   {
     id: 3016,
@@ -157,6 +160,6 @@ export const flatsDataArr = [
     status: "occupied",
     rent: 20000,
     renter_id: 44839,
-    image: "",
+    image: flatImageURL,
   },
 ];

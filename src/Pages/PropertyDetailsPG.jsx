@@ -14,6 +14,7 @@ export default function PropertyDetailsPG() {
         <span className="text-[30px] font-bold">Flats</span>
       </div>
       {/* property table */}
+
       <PropertyDetailsTable />
     </div>
   );
