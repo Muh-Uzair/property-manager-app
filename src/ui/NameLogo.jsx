@@ -12,7 +12,7 @@ export function NameLogo() {
   // JSX//////////////////////////////////////////
   return (
     <div className="flex items-center pl-[10px]">
-      <Logo size={"30px"} color={brandColor500} />
+      <Logo size={"30px"} />
       <NamePropleLogo />
     </div>
   );

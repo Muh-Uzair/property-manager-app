@@ -1,9 +1,10 @@
 import PropTypes from "prop-types";
 import { AiFillSafetyCertificate } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import { brandColor500 } from "../styles/globalStyles";
 
 // COMPONENT START///////////////////////////////////////////////
-export const Logo = ({ size = "31px", color = "0ea5e9" }) => {
+export const Logo = ({ size = "31px" }) => {
   // STATE & VARIABLES
   const navigate = useNavigate();
 
@@ -13,12 +14,12 @@ export const Logo = ({ size = "31px", color = "0ea5e9" }) => {
     <AiFillSafetyCertificate
       style={{
         cursor: "pointer",
-        border: `2px solid #${color}`,
+        border: `2px solid ${brandColor500}`,
         borderRadius: "4px",
         padding: "1px",
       }}
       size={size}
-      color={color}
+      color={brandColor500}
       onClick={() => navigate("home")}
     />
   );
@@ -28,5 +29,4 @@ export const Logo = ({ size = "31px", color = "0ea5e9" }) => {
 // Prop validation
 Logo.propTypes = {
   size: PropTypes.string, // Validate that `size` is a number and is required
-  color: PropTypes.string,
 };
