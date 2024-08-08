@@ -14,3 +14,12 @@ export const deleteAllFlats = async () => {
 
   if (error) throw new Error(`Error in deleting all flats : ${error?.message}`);
 };
+
+// FUNCTION
+export const getAllFlats = async () => {
+  let { data: dataFlats, error } = await supabase.from("flats").select("*");
+
+  if (error) throw new Error(`Error in deleting all flats : ${error?.message}`);
+
+  return dataFlats;
+};

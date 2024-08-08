@@ -1,4 +1,4 @@
-import Table from "../ui/Table";
+import PropertyDetailsTable from "../features/ShowPropertyDetails/PropertyDetailsTable";
 
 // COMPONENT START///////////////////////////////////////////////
 export default function PropertyDetailsPG() {
@@ -8,17 +8,14 @@ export default function PropertyDetailsPG() {
 
   // JSX//////////////////////////////////////////
   return (
-    <>
+    <div className="flex flex-col gap-[20px]">
       {/* page heading */}
       <div>
-        <span className="text-[30px] font-semibold">Flats</span>
+        <span className="text-[30px] font-bold">Flats</span>
       </div>
       {/* property table */}
-      <Table
-        colLabels={["IMAGE", "FLAT NO", "STATUS", "FLOOR", "RENT", "RENTER"]}
-        colSize={["1fr", "1fr", "1fr", "1fr", "1fr", "1fr"]}
-      />
-    </>
+      <PropertyDetailsTable />
+    </div>
   );
   // JSX//////////////////////////////////////////
 }

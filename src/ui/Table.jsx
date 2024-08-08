@@ -1,10 +1,12 @@
 import TableHeader from "./TableHeader";
+import TableFooter from "./TableFooter";
+import PropTypes from "prop-types";
 
 // COMPONENT START///////////////////////////////////////////////
-export default function Table() {
+export default function Table({ dataFlats }) {
   // JSX//////////////////////////////////////////
   return (
-    <div>
+    <>
       {/* table header */}
       <TableHeader
         colLabels={["IMAGE", "FLAT NO", "STATUS", "FLOOR", "RENT", "RENTER"]}
@@ -12,28 +14,21 @@ export default function Table() {
         backgroundColor={"#38bdf8"}
       />
       {/* table body */}
-      <div>table body</div>
+
+      <TableBody dataFlats={dataFlats} />
       {/* table footer */}
       <TableFooter />
-    </div>
+    </>
   );
   // JSX//////////////////////////////////////////
 }
 // COMPONENT END/////////////////////////////////////////////////
 
-// COMPONENT START
-function TableFooter() {
-  // VARIABLES
-
-  // FUNCTIONS
-
-  // JSX
-  return (
-    <footer className="rounded-b-[8px] bg-gray-200">
-      <button>back</button>
-      <button>next</button>
-    </footer>
-  );
-  // JSX
+function TableBody() {
+  return <div>table body</div>;
 }
-// COMPONENT END
+
+// PropTypes
+Table.propTypes = {
+  dataFlats: PropTypes.array.isRequired,
+};
