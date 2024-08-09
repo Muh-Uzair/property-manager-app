@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { HiEllipsisVertical } from "react-icons/hi2";
 import TableRowItem from "./TableRowItem";
 import { useGetRenterOnID } from "../features/ShowPropertyDetails/useGetRenterOnID";
+import { CircularProgress } from "@mui/material";
 
 // COMPONENT START
 export default function TableBody({ dataProperty, colSize }) {
@@ -79,11 +80,13 @@ function TableItemRenter({ renter_id }) {
 
   return (
     <span className="font-bold text-gray-500">
-      {statusRenter === "pending"
-        ? "Loading..."
-        : dataRenter
-          ? dataRenter
-          : "-"}
+      {statusRenter === "pending" ? (
+        <CircularProgress size={10} />
+      ) : dataRenter ? (
+        dataRenter
+      ) : (
+        "-"
+      )}
     </span>
   );
 }

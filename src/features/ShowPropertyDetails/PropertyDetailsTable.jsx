@@ -4,8 +4,19 @@ import TableHeader from "../../ui/TableHeader";
 import TableFooter from "../../ui/TableFooter";
 import TableBody from "../../ui/TableBody";
 import { useParams } from "react-router-dom";
+import CircularProgress from "@mui/material/CircularProgress";
+import { createTheme, ThemeProvider } from "@mui/material";
+import { brandColor500 } from "../../styles/globalStyles";
 
 const colSize = ["1fr", "1fr", "1fr", "1fr", "1fr", "1fr", "1fr"];
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: brandColor500,
+    },
+  },
+});
 
 // COMPONENT START
 export default function PropertyDetailsTable() {
@@ -17,35 +28,49 @@ export default function PropertyDetailsTable() {
   // FUNCTIONS
 
   // JSX
-  if (statusProperty === "pending") return <span>Loading..</span>;
-  return (
-    <Table role={"table"}>
-      {/* table header */}
-      <TableHeader
-        colLabels={[
-          "IMAGE",
-          `${propertyType?.toLocaleUpperCase().slice(0, -1)} NO`,
-          "STATUS",
-          "FLOOR",
-          "RENT",
-          "RENTER",
-        ]}
-        colSize={colSize}
-        backgroundColor={"#38bdf8"}
-        role={"table-header"}
-      />
+  if (!dataProperty.length > 0 && statusProperty === "success")
+    return <span>Error in fetching data</span>;
+  if (statusProperty === "pending")
+    return (
+      <ThemeProvider theme={theme}>
+        <div className="flex h-[100%] items-center justify-center">
+          <CircularProgress thickness={4} color="primary" />
+        </div>
+      </ThemeProvider>
+    );
 
-      {/* table body */}
-      <TableBody
-        dataProperty={dataProperty}
-        colSize={colSize}
-        role={"table-body"}
-      />
+  if (dataProperty.length > 0 && statusProperty === "success") {
+    return (
+      <ThemeProvider theme={theme}>
+        <Table role={"table"}>
+          {/* table header */}
+          <TableHeader
+            colLabels={[
+              "IMAGE",
+              `${propertyType?.toLocaleUpperCase().slice(0, -1)} NO`,
+              "STATUS",
+              "FLOOR",
+              "RENT",
+              "RENTER",
+            ]}
+            colSize={colSize}
+            backgroundColor={"#38bdf8"}
+            role={"table-header"}
+          />
 
-      {/* table footer */}
-      <TableFooter role={"table-footer"} />
-    </Table>
-  );
+          {/* table body */}
+          <TableBody
+            dataProperty={dataProperty}
+            colSize={colSize}
+            role={"table-body"}
+          />
+
+          {/* table footer */}
+          <TableFooter role={"table-footer"} />
+        </Table>
+      </ThemeProvider>
+    );
+  }
   // JSX
 }
 // COMPONENT END

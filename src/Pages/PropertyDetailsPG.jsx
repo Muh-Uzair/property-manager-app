@@ -10,16 +10,13 @@ export default function PropertyDetailsPG() {
 
   // JSX//////////////////////////////////////////
   return (
-    <div className="flex flex-col gap-[20px]">
+    <div className="flex h-[100%] flex-col gap-[20px]">
       <div className="flex items-center justify-between">
-        {/* page heading */}
-
         <PropertyTypeHeading />
         <PropertyChangeButtons buttonLabelsArr={["FLATS", "ROOMS", "SHOPS"]} />
       </div>
 
       {/* property table */}
-
       <PropertyDetailsTable />
     </div>
   );
@@ -33,7 +30,9 @@ function PropertyTypeHeading() {
   return (
     <div>
       <span className="text-[30px] font-bold">
-        {`${propertyType?.charAt(0).toUpperCase()}${propertyType?.slice(1).toLowerCase()}`}
+        {!propertyType && "Flats"}
+        {propertyType &&
+          `${propertyType?.charAt(0).toUpperCase()}${propertyType?.slice(1).toLowerCase()}`}
       </span>
     </div>
   );
