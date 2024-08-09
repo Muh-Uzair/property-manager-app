@@ -3,12 +3,15 @@ import { useGetAllFlats } from "./useGetAllFlats";
 import TableHeader from "../../ui/TableHeader";
 import TableFooter from "../../ui/TableFooter";
 import TableBody from "../../ui/TableBody";
+import { useParams } from "react-router-dom";
 
 const colSize = ["1fr", "1fr", "1fr", "1fr", "1fr", "1fr", "1fr"];
 
 // COMPONENT START
 export default function PropertyDetailsTable() {
   // VARIABLES
+  const { propertyType } = useParams();
+
   const { dataFlats, statusFlats } = useGetAllFlats();
 
   // FUNCTIONS
@@ -19,7 +22,14 @@ export default function PropertyDetailsTable() {
     <Table role={"table"}>
       {/* table header */}
       <TableHeader
-        colLabels={["IMAGE", "FLAT NO", "STATUS", "FLOOR", "RENT", "RENTER"]}
+        colLabels={[
+          "IMAGE",
+          `${propertyType?.toLocaleUpperCase().slice(0, -1)} NO`,
+          "STATUS",
+          "FLOOR",
+          "RENT",
+          "RENTER",
+        ]}
         colSize={colSize}
         backgroundColor={"#38bdf8"}
         role={"table-header"}

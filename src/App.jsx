@@ -28,6 +28,10 @@ const router = createBrowserRouter(
           <Route path="expenses" element={<ExpensesPG />} />
           <Route path="admissions" element={<AdmissionsPG />} />
           <Route path="property-details" element={<PropertyDetailsPG />} />
+          <Route
+            path="property-details/:propertyType"
+            element={<PropertyDetailsPG />}
+          />
           <Route path="*" element={<PageNotFound />} />
         </Route>
       </Route>

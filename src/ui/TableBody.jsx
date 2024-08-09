@@ -26,7 +26,7 @@ export default function TableBody({ dataFlats, colSize }) {
 
           <TableRow>
             <span
-              className={`rounded-lg px-[7px] ${val.status === "occupied" ? "bg-green-200 text-green-600" : "bg-blue-200 text-blue-500"}`}
+              className={`rounded-lg px-[7px] ${val.status === "occupied" ? "bg-green-200 text-green-600" : "bg-red-200 text-red-500"}`}
             >
               {val.status}
             </span>

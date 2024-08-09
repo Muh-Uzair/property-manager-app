@@ -14,7 +14,7 @@ export const SidebarNavLinks = ({ NavLinksArr }) => {
           className="flex h-[42px] w-[100%] flex-row transition-all duration-300 ease-in-out"
         >
           <NavLink
-            to={`/${val.url}`}
+            to={`${val.url}`}
             className={({ isActive }) =>
               `duration-180 grid w-[100%] grid-cols-[25px_1fr] items-center pl-[12px] font-[500] text-white transition-all ease-in-out ${isActive ? "bg-sky-600" : "hover:bg-sky-700"}`
             }
