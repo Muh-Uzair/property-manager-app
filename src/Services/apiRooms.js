@@ -14,3 +14,12 @@ export const deleteAllRooms = async () => {
 
   if (error) throw new Error(`Error in deleting all rooms : ${error?.message}`);
 };
+
+// FUNCTION
+export const getAllRooms = async () => {
+  let { data: dataRooms, error } = await supabase.from("rooms").select("*");
+
+  if (error) throw new Error(`Error in fetching all rooms : ${error?.message}`);
+
+  return dataRooms;
+};

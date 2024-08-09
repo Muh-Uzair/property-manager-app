@@ -1,6 +1,9 @@
 const flatImageURL =
   "https://ibtqqypbjddszazggxmp.supabase.co/storage/v1/object/sign/flats-images/cabin-001.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJmbGF0cy1pbWFnZXMvY2FiaW4tMDAxLmpwZyIsImlhdCI6MTcyMzExNjIwNSwiZXhwIjoxNzU0NjUyMjA1fQ.r-MfHOUgsIIzT888CG-Nb1ekoO7eg-l35AO_nxe_0FU&t=2024-08-08T11%3A23%3A25.434Z";
 
+const flatImageURL2 =
+  "https://ibtqqypbjddszazggxmp.supabase.co/storage/v1/object/sign/flats-images/cabin-004.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJmbGF0cy1pbWFnZXMvY2FiaW4tMDA0LmpwZyIsImlhdCI6MTcyMzE4MTc5MCwiZXhwIjoxNzU0NzE3NzkwfQ.ENO6IFcBqO9zLlFf4anxh8ljjcRrfq7rPo3v-NS-hZc&t=2024-08-09T05%3A36%3A31.415Z";
+
 export const flatsDataArr = [
   {
     id: 3001,
@@ -20,7 +23,7 @@ export const flatsDataArr = [
     status: "unoccupied",
     rent: 15000,
     renter_id: null,
-    image: flatImageURL,
+    image: flatImageURL2,
   },
   {
     id: 3003,
@@ -30,7 +33,7 @@ export const flatsDataArr = [
     status: "occupied",
     rent: 15000,
     renter_id: 79403,
-    image: flatImageURL,
+    image: flatImageURL2,
   },
   {
     id: 3004,
@@ -50,7 +53,7 @@ export const flatsDataArr = [
     status: "occupied",
     rent: 15000,
     renter_id: 74692,
-    image: flatImageURL,
+    image: flatImageURL2,
   },
   {
     id: 3006,
@@ -70,7 +73,7 @@ export const flatsDataArr = [
     status: "occupied",
     rent: 18000,
     renter_id: 7401,
-    image: flatImageURL,
+    image: flatImageURL2,
   },
   {
     id: 3008,
@@ -110,7 +113,7 @@ export const flatsDataArr = [
     status: "unoccupied",
     rent: 20000,
     renter_id: null,
-    image: flatImageURL,
+    image: flatImageURL2,
   },
   {
     id: 3012,
@@ -140,7 +143,7 @@ export const flatsDataArr = [
     status: "occupied",
     rent: 20000,
     renter_id: 22303,
-    image: flatImageURL,
+    image: flatImageURL2,
   },
   {
     id: 3015,
@@ -150,7 +153,7 @@ export const flatsDataArr = [
     status: "occupied",
     rent: 20000,
     renter_id: 32417,
-    image: flatImageURL,
+    image: flatImageURL2,
   },
   {
     id: 3016,

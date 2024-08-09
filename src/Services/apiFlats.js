@@ -19,7 +19,7 @@ export const deleteAllFlats = async () => {
 export const getAllFlats = async () => {
   let { data: dataFlats, error } = await supabase.from("flats").select("*");
 
-  if (error) throw new Error(`Error in deleting all flats : ${error?.message}`);
+  if (error) throw new Error(`Error in fetching all flats : ${error?.message}`);
 
   return dataFlats;
 };

@@ -1,8 +1,9 @@
 import PropTypes from "prop-types";
 import { HiEllipsisVertical } from "react-icons/hi2";
+import TableRowItem from "./TableRowItem";
 
 // COMPONENT START
-export default function TableBody({ dataFlats, colSize }) {
+export default function TableBody({ dataProperty, colSize }) {
   // VARIABLES
 
   // FUNCTIONS
@@ -10,7 +11,8 @@ export default function TableBody({ dataFlats, colSize }) {
   // JSX
   return (
     <div className="border-x-[1px] border-gray-200 text-[12px] font-semibold text-gray-400">
-      {dataFlats.map((val) => (
+      {dataProperty?.map((val) => (
+        // Table Row
         <div
           className="grid h-[50px] border-b-[1px] border-gray-100"
           key={val.id}
@@ -18,37 +20,39 @@ export default function TableBody({ dataFlats, colSize }) {
             gridTemplateColumns: `${colSize.join(" ")}`,
           }}
         >
-          <TableRow>
+          <TableRowItem>
             <img className="h-[40px] rounded-[3px]" src={`${val.image}`} />
-          </TableRow>
+          </TableRowItem>
 
-          <TableRow>{val.flat_number}</TableRow>
+          <TableRowItem>
+            {val.flat_number || val.room_number || val.shop_number}
+          </TableRowItem>
 
-          <TableRow>
+          <TableRowItem>
             <span
-              className={`rounded-lg px-[7px] ${val.status === "occupied" ? "bg-green-200 text-green-600" : "bg-red-200 text-red-500"}`}
+              className={`rounded-lg px-[7px] ${val.status !== "occupied" ? "bg-sky-100 text-sky-500" : "bg-blue-300 text-blue-700"}`}
             >
               {val.status}
             </span>
-          </TableRow>
+          </TableRowItem>
 
-          <TableRow>
+          <TableRowItem>
             <div className="flex items-center justify-center">{val.floor}</div>
-          </TableRow>
+          </TableRowItem>
 
-          <TableRow>
+          <TableRowItem>
             <div className="flex items-center justify-center">{val.rent}</div>
-          </TableRow>
+          </TableRowItem>
 
-          <TableRow>{val.renter_id ? val.renter_id : "-"}</TableRow>
+          <TableRowItem>{val.renter_id ? val.renter_id : "-"}</TableRowItem>
 
-          <TableRow>
+          <TableRowItem>
             <HiEllipsisVertical
               size={"30px"}
               color="gray"
               className="cursor-pointer rounded-full p-[5px] hover:bg-gray-50 active:bg-gray-100"
             />
-          </TableRow>
+          </TableRowItem>
         </div>
       ))}
     </div>
@@ -58,14 +62,6 @@ export default function TableBody({ dataFlats, colSize }) {
 // COMPONENT END
 
 TableBody.propTypes = {
-  dataFlats: PropTypes.array.isRequired,
+  dataProperty: PropTypes.array.isRequired,
   colSize: PropTypes.array.isRequired,
-};
-
-const TableRow = ({ children }) => {
-  return <div className="flex items-center justify-center">{children}</div>;
-};
-
-TableRow.propTypes = {
-  children: PropTypes.node.isRequired,
 };

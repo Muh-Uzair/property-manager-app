@@ -1,3 +1,9 @@
+const shopImageURL =
+  "https://ibtqqypbjddszazggxmp.supabase.co/storage/v1/object/sign/flats-images/cabin-001.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJmbGF0cy1pbWFnZXMvY2FiaW4tMDAxLmpwZyIsImlhdCI6MTcyMzExNjIwNSwiZXhwIjoxNzU0NjUyMjA1fQ.r-MfHOUgsIIzT888CG-Nb1ekoO7eg-l35AO_nxe_0FU&t=2024-08-08T11%3A23%3A25.434Z";
+
+const shopImageURL2 =
+  "https://ibtqqypbjddszazggxmp.supabase.co/storage/v1/object/sign/flats-images/cabin-004.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJmbGF0cy1pbWFnZXMvY2FiaW4tMDA0LmpwZyIsImlhdCI6MTcyMzE4MTc5MCwiZXhwIjoxNzU0NzE3NzkwfQ.ENO6IFcBqO9zLlFf4anxh8ljjcRrfq7rPo3v-NS-hZc&t=2024-08-09T05%3A36%3A31.415Z";
+
 export const shopsDataArr = [
   {
     id: 2001,
@@ -7,7 +13,7 @@ export const shopsDataArr = [
     status: "unoccupied",
     rent: 5000,
     renter_id: null,
-    image: "",
+    image: shopImageURL,
   },
   {
     id: 2002,
@@ -17,7 +23,7 @@ export const shopsDataArr = [
     status: "occupied",
     rent: 5000,
     renter_id: 26097,
-    image: "",
+    image: shopImageURL2,
   },
   {
     id: 2003,
@@ -27,7 +33,7 @@ export const shopsDataArr = [
     status: "occupied",
     rent: 5000,
     renter_id: 56350,
-    image: "",
+    image: shopImageURL2,
   },
   {
     id: 2004,
@@ -37,7 +43,7 @@ export const shopsDataArr = [
     status: "occupied",
     rent: 5000,
     renter_id: 22303,
-    image: "",
+    image: shopImageURL,
   },
   {
     id: 2005,
@@ -47,7 +53,7 @@ export const shopsDataArr = [
     status: "occupied",
     rent: 5000,
     renter_id: 98386,
-    image: "",
+    image: shopImageURL,
   },
   {
     id: 2006,
@@ -57,7 +63,7 @@ export const shopsDataArr = [
     status: "occupied",
     rent: 5000,
     renter_id: 77467,
-    image: "",
+    image: shopImageURL,
   },
   {
     id: 2007,
@@ -67,7 +73,7 @@ export const shopsDataArr = [
     status: "occupied",
     rent: 5000,
     renter_id: 26097,
-    image: "",
+    image: shopImageURL2,
   },
   {
     id: 2008,
@@ -77,7 +83,7 @@ export const shopsDataArr = [
     status: "occupied",
     rent: 5000,
     renter_id: 74692,
-    image: "",
+    image: shopImageURL2,
   },
   {
     id: 2009,
@@ -87,7 +93,7 @@ export const shopsDataArr = [
     status: "occupied",
     rent: 5000,
     renter_id: 50953,
-    image: "",
+    image: shopImageURL,
   },
   {
     id: 2010,
@@ -97,7 +103,7 @@ export const shopsDataArr = [
     status: "unoccupied",
     rent: 5000,
     renter_id: null,
-    image: "",
+    image: shopImageURL,
   },
   {
     id: 2011,
@@ -107,7 +113,7 @@ export const shopsDataArr = [
     status: "occupied",
     rent: 2000,
     renter_id: 99123,
-    image: "",
+    image: shopImageURL2,
   },
   {
     id: 2012,
@@ -117,7 +123,7 @@ export const shopsDataArr = [
     status: "occupied",
     rent: 2000,
     renter_id: 52063,
-    image: "",
+    image: shopImageURL,
   },
   {
     id: 2013,
@@ -127,7 +133,7 @@ export const shopsDataArr = [
     status: "occupied",
     rent: 2000,
     renter_id: 46698,
-    image: "",
+    image: shopImageURL,
   },
   {
     id: 2014,
@@ -137,7 +143,7 @@ export const shopsDataArr = [
     status: "occupied",
     rent: 2000,
     renter_id: 86137,
-    image: "",
+    image: shopImageURL2,
   },
   {
     id: 2015,
@@ -147,7 +153,7 @@ export const shopsDataArr = [
     status: "occupied",
     rent: 2000,
     renter_id: 88790,
-    image: "",
+    image: shopImageURL,
   },
   {
     id: 2016,
@@ -157,7 +163,7 @@ export const shopsDataArr = [
     status: "unoccupied",
     rent: 2000,
     renter_id: null,
-    image: "",
+    image: shopImageURL,
   },
   {
     id: 2017,
@@ -167,7 +173,7 @@ export const shopsDataArr = [
     status: "unoccupied",
     rent: 2000,
     renter_id: null,
-    image: "",
+    image: shopImageURL2,
   },
   {
     id: 2018,
@@ -177,7 +183,7 @@ export const shopsDataArr = [
     status: "unoccupied",
     rent: 2000,
     renter_id: null,
-    image: "",
+    image: shopImageURL,
   },
   {
     id: 2019,
@@ -187,7 +193,7 @@ export const shopsDataArr = [
     status: "unoccupied",
     rent: 2000,
     renter_id: null,
-    image: "",
+    image: shopImageURL2,
   },
   {
     id: 2020,
@@ -197,6 +203,6 @@ export const shopsDataArr = [
     status: "occupied",
     rent: 2000,
     renter_id: 99123,
-    image: "",
+    image: shopImageURL,
   },
 ];

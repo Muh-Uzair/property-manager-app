@@ -7,6 +7,8 @@ export default function PropertyChangeButtons({ buttonLabelsArr }) {
   const navigate = useNavigate();
 
   // FUNCTIONS
+
+  // FUNCTION
   useEffect(() => {
     navigate("/property-details/flats");
   }, [navigate]);
@@ -14,7 +16,7 @@ export default function PropertyChangeButtons({ buttonLabelsArr }) {
   return (
     <div className="flex items-center gap-[3px] rounded-[5px] bg-gray-100 px-[10px] py-[5px] text-[12px] font-semibold text-gray-400">
       {buttonLabelsArr.map((val, i) => (
-        <button key={i} className="">
+        <button key={i}>
           <NavLink
             to={`/property-details/${val.toLowerCase()}`}
             className={({ isActive }) =>

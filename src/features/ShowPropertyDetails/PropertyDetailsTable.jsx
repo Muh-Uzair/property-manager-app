@@ -1,5 +1,5 @@
 import Table from "../../ui/Table";
-import { useGetAllFlats } from "./useGetAllFlats";
+import { useGetPropertyData } from "./useGetPropertyData";
 import TableHeader from "../../ui/TableHeader";
 import TableFooter from "../../ui/TableFooter";
 import TableBody from "../../ui/TableBody";
@@ -12,12 +12,12 @@ export default function PropertyDetailsTable() {
   // VARIABLES
   const { propertyType } = useParams();
 
-  const { dataFlats, statusFlats } = useGetAllFlats();
+  const { dataProperty = [], statusProperty } = useGetPropertyData();
 
   // FUNCTIONS
 
   // JSX
-  if (statusFlats === "pending") return <span>Loading..</span>;
+  if (statusProperty === "pending") return <span>Loading..</span>;
   return (
     <Table role={"table"}>
       {/* table header */}
@@ -36,7 +36,11 @@ export default function PropertyDetailsTable() {
       />
 
       {/* table body */}
-      <TableBody dataFlats={dataFlats} colSize={colSize} role={"table-body"} />
+      <TableBody
+        dataProperty={dataProperty}
+        colSize={colSize}
+        role={"table-body"}
+      />
 
       {/* table footer */}
       <TableFooter role={"table-footer"} />

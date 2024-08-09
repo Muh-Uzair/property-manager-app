@@ -1,3 +1,9 @@
+const roomImageURL =
+  "https://ibtqqypbjddszazggxmp.supabase.co/storage/v1/object/sign/flats-images/cabin-001.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJmbGF0cy1pbWFnZXMvY2FiaW4tMDAxLmpwZyIsImlhdCI6MTcyMzExNjIwNSwiZXhwIjoxNzU0NjUyMjA1fQ.r-MfHOUgsIIzT888CG-Nb1ekoO7eg-l35AO_nxe_0FU&t=2024-08-08T11%3A23%3A25.434Z";
+
+const roomImageURL2 =
+  "https://ibtqqypbjddszazggxmp.supabase.co/storage/v1/object/sign/flats-images/cabin-004.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJmbGF0cy1pbWFnZXMvY2FiaW4tMDA0LmpwZyIsImlhdCI6MTcyMzE4MTc5MCwiZXhwIjoxNzU0NzE3NzkwfQ.ENO6IFcBqO9zLlFf4anxh8ljjcRrfq7rPo3v-NS-hZc&t=2024-08-09T05%3A36%3A31.415Z";
+
 export const roomsDataArr = [
   {
     id: 1001,
@@ -7,7 +13,7 @@ export const roomsDataArr = [
     status: "occupied",
     rent: 7000,
     renter_id: 98386,
-    image: "",
+    image: roomImageURL,
   },
   {
     id: 1002,
@@ -17,7 +23,7 @@ export const roomsDataArr = [
     status: "occupied",
     rent: 7000,
     renter_id: 86137,
-    image: "",
+    image: roomImageURL,
   },
   {
     id: 1003,
@@ -27,7 +33,7 @@ export const roomsDataArr = [
     status: "occupied",
     rent: 7000,
     renter_id: 74692,
-    image: "",
+    image: roomImageURL,
   },
   {
     id: 1004,
@@ -37,7 +43,7 @@ export const roomsDataArr = [
     status: "occupied",
     rent: 7000,
     renter_id: 88790,
-    image: "",
+    image: roomImageURL,
   },
   {
     id: 1005,
@@ -47,7 +53,7 @@ export const roomsDataArr = [
     status: "occupied",
     rent: 7000,
     renter_id: 7401,
-    image: "",
+    image: roomImageURL,
   },
   {
     id: 1006,
@@ -57,7 +63,7 @@ export const roomsDataArr = [
     status: "occupied",
     rent: 10000,
     renter_id: 98540,
-    image: "",
+    image: roomImageURL2,
   },
   {
     id: 1007,
@@ -67,7 +73,7 @@ export const roomsDataArr = [
     status: "occupied",
     rent: 10000,
     renter_id: 77467,
-    image: "",
+    image: roomImageURL,
   },
   {
     id: 1008,
@@ -77,7 +83,7 @@ export const roomsDataArr = [
     status: "unoccupied",
     rent: 10000,
     renter_id: null,
-    image: "",
+    image: roomImageURL2,
   },
   {
     id: 1009,
@@ -87,7 +93,7 @@ export const roomsDataArr = [
     status: "occupied",
     rent: 10000,
     renter_id: 52063,
-    image: "",
+    image: roomImageURL2,
   },
   {
     id: 1010,
@@ -97,6 +103,6 @@ export const roomsDataArr = [
     status: "occupied",
     rent: 10000,
     renter_id: 76325,
-    image: "",
+    image: roomImageURL,
   },
 ];
