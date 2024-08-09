@@ -18,3 +18,17 @@ export const deleteAllRenters = async () => {
   if (error)
     throw new Error(`Error in deleting all renters : ${error?.message}`);
 };
+
+// FUNCTION
+export const getRenterOnID = async (renter_id) => {
+  const { data: dataRenter, error } = await supabase
+    .from("renters")
+    .select("name")
+    .eq("id", renter_id);
+
+  if (error) throw new Error("Unable to get renter based on id");
+
+  const { name: renterName } = dataRenter[0];
+
+  return renterName;
+};

@@ -13,7 +13,7 @@ export default function TableFooter() {
   // JSX
   return (
     <footer className="flex h-[30px] items-center justify-between gap-[10px] rounded-b-[8px] border-[1px] border-gray-200 bg-gray-100 px-[20px]">
-      <div>
+      <div className="flex items-center justify-center">
         <span className="text-[11px] font-semibold text-gray-600">
           YOU ARE CURRENTLY ON PAGE 1 OUT OF 30
         </span>

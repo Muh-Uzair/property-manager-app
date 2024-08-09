@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { HiEllipsisVertical } from "react-icons/hi2";
 import TableRowItem from "./TableRowItem";
+import { useGetRenterOnID } from "../features/ShowPropertyDetails/useGetRenterOnID";
 
 // COMPONENT START
 export default function TableBody({ dataProperty, colSize }) {
@@ -44,7 +45,13 @@ export default function TableBody({ dataProperty, colSize }) {
             <div className="flex items-center justify-center">{val.rent}</div>
           </TableRowItem>
 
-          <TableRowItem>{val.renter_id ? val.renter_id : "-"}</TableRowItem>
+          <TableRowItem>
+            {val?.renter_id ? (
+              <TableItemRenter renter_id={val?.renter_id} />
+            ) : (
+              <span>{"-"}</span>
+            )}
+          </TableRowItem>
 
           <TableRowItem>
             <HiEllipsisVertical
@@ -64,4 +71,23 @@ export default function TableBody({ dataProperty, colSize }) {
 TableBody.propTypes = {
   dataProperty: PropTypes.array.isRequired,
   colSize: PropTypes.array.isRequired,
+};
+
+// COMPONENT START
+function TableItemRenter({ renter_id }) {
+  const { dataRenter, statusRenter } = useGetRenterOnID(renter_id);
+
+  return (
+    <span className="font-bold text-gray-500">
+      {statusRenter === "pending"
+        ? "Loading..."
+        : dataRenter
+          ? dataRenter
+          : "-"}
+    </span>
+  );
+}
+
+TableItemRenter.propTypes = {
+  renter_id: PropTypes.number.isRequired,
 };
