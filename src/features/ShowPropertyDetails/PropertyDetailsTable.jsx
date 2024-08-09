@@ -34,7 +34,11 @@ export default function PropertyDetailsTable() {
     return (
       <ThemeProvider theme={theme}>
         <div className="flex h-[100%] items-center justify-center">
-          <CircularProgress thickness={4} color="primary" />
+          <CircularProgress
+            thickness={4}
+            color="primary"
+            disableShrink={true}
+          />
         </div>
       </ThemeProvider>
     );

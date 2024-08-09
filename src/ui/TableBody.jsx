@@ -81,7 +81,7 @@ function TableItemRenter({ renter_id }) {
   return (
     <span className="font-bold text-gray-500">
       {statusRenter === "pending" ? (
-        <CircularProgress size={10} />
+        <CircularProgress size={10} disableShrink={true} />
       ) : dataRenter ? (
         dataRenter
       ) : (
