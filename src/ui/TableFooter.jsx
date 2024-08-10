@@ -5,7 +5,7 @@ import { HiChevronRight } from "react-icons/hi";
 const paginationIconSize = "15px";
 
 // COMPONENT START
-export default function TableFooter() {
+export default function TableFooter({ totalProperty }) {
   // VARIABLES
 
   // FUNCTIONS
@@ -15,7 +15,8 @@ export default function TableFooter() {
     <footer className="flex h-[30px] items-center justify-between gap-[10px] rounded-b-[8px] border-[1px] border-gray-200 bg-gray-100 px-[20px]">
       <div className="flex items-center justify-center">
         <span className="text-[11px] font-semibold text-gray-600">
-          YOU ARE CURRENTLY ON PAGE 1 OUT OF 30
+          YOU ARE CURRENTLY ON PAGE <b> 1 </b>OUT OF{" "}
+          {Math.ceil(totalProperty / 10)}
         </span>
       </div>
       <div className="flex gap-[20px]">
@@ -35,6 +36,11 @@ export default function TableFooter() {
   // JSX
 }
 // COMPONENT END
+
+// PropTypes
+TableFooter.propTypes = {
+  totalProperty: PropTypes.number.isRequired,
+};
 
 const PaginationButton = ({ label, icon, type }) => {
   return (

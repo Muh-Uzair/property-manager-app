@@ -9,7 +9,7 @@ export const useGetPropertyData = () => {
   const { propertyType = "flats" } = useParams();
 
   // FUNCTION
-  const { data: dataProperty, status: statusProperty } = useQuery({
+  const { data, status: statusProperty } = useQuery({
     queryFn: async () => {
       if (propertyType === "flats") {
         return await getAllFlats();
@@ -24,5 +24,16 @@ export const useGetPropertyData = () => {
     queryKey: ["propertyData", propertyType],
   });
 
-  return { dataProperty, statusProperty };
+  if (propertyType === "flats") {
+    const { dataFlats: dataProperty, totalFlats: totalProperty } = data || {}; // De-structure flats data
+    return { statusProperty, data: { dataProperty, totalProperty } };
+  }
+  if (propertyType === "rooms") {
+    const { dataRooms: dataProperty, totalRooms: totalProperty } = data || {}; // De-structure rooms data
+    return { statusProperty, data: { dataProperty, totalProperty } };
+  }
+  if (propertyType === "shops") {
+    const { dataShops: dataProperty, totalShops: totalProperty } = data || {}; // De-structure shops data
+    return { statusProperty, data: { dataProperty, totalProperty } };
+  }
 };

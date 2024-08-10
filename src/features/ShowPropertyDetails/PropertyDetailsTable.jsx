@@ -23,12 +23,15 @@ export default function PropertyDetailsTable() {
   // VARIABLES
   const { propertyType } = useParams();
 
-  const { dataProperty = [], statusProperty } = useGetPropertyData();
+  const {
+    statusProperty,
+    data: { dataProperty = {}, totalProperty = null },
+  } = useGetPropertyData();
 
   // FUNCTIONS
 
   // JSX
-  if (!dataProperty.length > 0 && statusProperty === "success")
+  if (!dataProperty?.length > 0 && statusProperty === "success")
     return <span>Error in fetching data</span>;
   if (statusProperty === "pending")
     return (
@@ -70,7 +73,7 @@ export default function PropertyDetailsTable() {
           />
 
           {/* table footer */}
-          <TableFooter role={"table-footer"} />
+          <TableFooter role={"table-footer"} totalProperty={totalProperty} />
         </Table>
       </ThemeProvider>
     );

@@ -32,9 +32,9 @@ export default function TableBody({ dataProperty, colSize }) {
 
           <TableRowItem>
             <span
-              className={`rounded-lg px-[7px] ${val.status !== "occupied" ? "bg-sky-100 text-sky-500" : "bg-blue-300 text-blue-700"}`}
+              className={`flex items-center justify-center rounded-lg px-[7px] text-[10px] font-bold ${val.status !== "occupied" ? "bg-sky-100 text-sky-500" : "bg-blue-300 text-blue-700"}`}
             >
-              {val.status}
+              {val.status.toUpperCase()}
             </span>
           </TableRowItem>
 

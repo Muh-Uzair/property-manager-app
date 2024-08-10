@@ -17,9 +17,13 @@ export const deleteAllFlats = async () => {
 
 // FUNCTION
 export const getAllFlats = async () => {
-  let { data: dataFlats, error } = await supabase.from("flats").select("*");
+  let {
+    data: dataFlats,
+    error,
+    count: totalFlats,
+  } = await supabase.from("flats").select("*", { count: "exact" });
 
   if (error) throw new Error(`Error in fetching all flats : ${error?.message}`);
 
-  return dataFlats;
+  return { dataFlats, totalFlats };
 };
