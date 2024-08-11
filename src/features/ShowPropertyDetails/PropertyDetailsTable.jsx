@@ -31,8 +31,12 @@ export default function PropertyDetailsTable() {
   // FUNCTIONS
 
   // JSX
+
+  /*if data does not arrive */
   if (!dataProperty?.length > 0 && statusProperty === "success")
     return <span>Error in fetching data</span>;
+
+  /*when data is loading */
   if (statusProperty === "pending")
     return (
       <ThemeProvider theme={theme}>
@@ -46,6 +50,7 @@ export default function PropertyDetailsTable() {
       </ThemeProvider>
     );
 
+  /*when data has arrived */
   if (dataProperty.length > 0 && statusProperty === "success") {
     return (
       <ThemeProvider theme={theme}>

@@ -16,14 +16,31 @@ export const deleteAllRooms = async () => {
 };
 
 // FUNCTION
-export const getAllRooms = async () => {
+export const getAllRooms = async (currPage) => {
+  const from = (currPage - 1) * 10;
+  const to = currPage * 10 - 1;
   let {
     data: dataRooms,
     error,
     count: totalRooms,
-  } = await supabase.from("rooms").select("*", { count: "exact" });
+  } = await supabase
+    .from("rooms")
+    .select("*", { count: "exact" })
+    .range(from, to);
 
   if (error) throw new Error(`Error in fetching all rooms : ${error?.message}`);
 
   return { dataRooms, totalRooms };
+};
+
+// FUNCTION
+export const getTotalRoomsQuantity = async () => {
+  let { count: totalRoomsQuantity, error } = await supabase
+    .from("rooms")
+    .select("*", { count: "exact" });
+
+  if (error)
+    throw new Error(`Unable to fetch rooms quantity : ${error?.message}`);
+
+  return { totalRoomsQuantity };
 };
