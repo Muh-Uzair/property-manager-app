@@ -16,10 +16,31 @@ export const deleteAllShops = async () => {
 };
 
 // FUNCTION
-export const getAllShops = async () => {
-  let { data: dataShops, error } = await supabase.from("shops").select("*");
+export const getAllShops = async (currPage) => {
+  const from = (currPage - 1) * 10;
+  const to = currPage * 10 - 1;
+  let {
+    data: dataShops,
+    error,
+    count: totalShops,
+  } = await supabase
+    .from("shops")
+    .select("*", { count: "exact" })
+    .range(from, to);
 
   if (error) throw new Error(`Error in fetching all shops : ${error?.message}`);
 
-  return dataShops;
+  return { dataShops, totalShops };
+};
+
+// FUNCTION
+export const getTotalShopsQuantity = async () => {
+  let { count: totalShopsQuantity, error } = await supabase
+    .from("shops")
+    .select("*", { count: "exact" });
+
+  if (error)
+    throw new Error(`Unable to fetch shops quantity : ${error?.message}`);
+
+  return { totalShopsQuantity };
 };

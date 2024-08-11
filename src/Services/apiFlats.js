@@ -16,10 +16,33 @@ export const deleteAllFlats = async () => {
 };
 
 // FUNCTION
-export const getAllFlats = async () => {
-  let { data: dataFlats, error } = await supabase.from("flats").select("*");
+export const getAllFlats = async (currPage) => {
+  // VARIABLES
+  const from = (currPage - 1) * 10;
+  const to = currPage * 10 - 1;
+
+  let {
+    data: dataFlats,
+    error,
+    count: totalFlats,
+  } = await supabase
+    .from("flats")
+    .select("*", { count: "exact" })
+    .range(from, to);
 
   if (error) throw new Error(`Error in fetching all flats : ${error?.message}`);
 
-  return dataFlats;
+  return { dataFlats, totalFlats };
+};
+
+// FUNCTION
+export const getTotalFlatsQuantity = async () => {
+  let { count: totalFlatsQuantity, error } = await supabase
+    .from("flats")
+    .select("*", { count: "exact" });
+
+  if (error)
+    throw new Error(`Unable to fetch flats quantity : ${error?.message}`);
+
+  return { totalFlatsQuantity };
 };

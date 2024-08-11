@@ -10,7 +10,7 @@ export function Header() {
   // FUNCTIONS
   // JSX//////////////////////////////////////////
   return (
-    <header className="flex justify-between border-b-[1px] border-sky-200 bg-gray-100">
+    <header className="flex justify-between bg-gray-100">
       <NameLogo />
 
       <div className="flex items-center gap-[18px] pr-[20px]">
