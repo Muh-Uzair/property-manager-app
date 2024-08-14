@@ -1,3 +1,5 @@
+import Heading from "../../ui/Heading";
+
 // COMPONENT START
 export default function SinglePropertyDetails() {
   // VARIABLES
@@ -5,7 +7,18 @@ export default function SinglePropertyDetails() {
   // FUNCTIONS
 
   // JSX
-  return <div>Single Property Details</div>;
+  return (
+    <div>
+      <div>
+        <Heading type="primary" headingText="Property Details" />
+        <div className="h-[100px] w-[100px] bg-slate-400"></div>
+      </div>
+      <div>
+        <Heading type="primary" headingText="Renter Details" />
+        <div className="h-[100px] w-[100px] bg-slate-400"></div>
+      </div>
+    </div>
+  );
   // JSX
 }
 // COMPONENT END

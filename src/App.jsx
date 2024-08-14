@@ -17,6 +17,7 @@ import PageNotFound from "./Pages/PageNotFound";
 import PropertyDetailsPG from "./Pages/PropertyDetailsPG";
 import LoginPG from "./ui/LoginPG";
 import SinglePropertyDetails from "../src/features/ShowPropertyDetails/SinglePropertyDetails";
+import PropertyEdit from "./features/ShowPropertyDetails/PropertyEdit";
 
 // Property details feature done
 
@@ -38,6 +39,10 @@ const router = createBrowserRouter(
           <Route
             path="property-details/:propertyType/:propertyId"
             element={<SinglePropertyDetails />}
+          />
+          <Route
+            path="property-details/:propertyType/editProperty"
+            element={<PropertyEdit />}
           />
           <Route path="*" element={<PageNotFound />} />
         </Route>
