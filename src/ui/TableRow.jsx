@@ -3,6 +3,8 @@ import TableItemRenter from "../features/ShowPropertyDetails/TableItemRenter";
 import TableRowItem from "./TableRowItem";
 import PropTypes from "prop-types";
 import { TbListDetails } from "react-icons/tb";
+import { useNavigate } from "react-router-dom";
+import { GoPencil } from "react-icons/go";
 
 // COMPONENT START
 export default function TableRow({
@@ -57,12 +59,15 @@ export default function TableRow({
 
       <TableRowItem>
         <div className="relative">
-          <HiEllipsisVertical
-            size={"20px"}
-            color="gray"
-            className="cursor-pointer rounded-[5px] hover:bg-gray-50 active:bg-gray-100"
-            onClick={() => toggleOptionMenu(val.id)}
-          />
+          {val.status === "occupied" && (
+            <HiEllipsisVertical
+              size={"20px"}
+              color="gray"
+              className="cursor-pointer rounded-[5px] hover:bg-gray-50 active:bg-gray-100"
+              onClick={() => toggleOptionMenu(val.id)}
+            />
+          )}
+
           {optionsMenuOpen.menuOpenStatus === true &&
             val.id === optionsMenuOpen.rowId && (
               <TableOptionsMenu
@@ -70,9 +75,9 @@ export default function TableRow({
                   {
                     icon: <TbListDetails />,
                     label: "Details",
+                    url: `${val.id}`,
                   },
-                  { icon: <TbListDetails />, label: "Details" },
-                  { icon: <TbListDetails />, label: "Details" },
+                  { icon: <GoPencil />, label: "Edit", url: "editProperty" },
                 ]}
               />
             )}
@@ -101,19 +106,24 @@ TableRow.propTypes = {
 
 // COMPONENT START
 function TableOptionsMenu({ menuOptionsBtns }) {
+  // VARIABLES
+  const navigate = useNavigate();
+
   // FUNCTIONS
 
   // FUNCTION
-  const changeUrl = () => {};
+  const changeUrl = (url) => {
+    navigate(url);
+  };
 
   // JSX
   return (
-    <div className="absolute bottom-[-90px] left-[-110px] z-[100] flex w-[100px] flex-col rounded-[5px] border-[1px] bg-white">
+    <div className="absolute bottom-[-60px] right-[20px] z-[100] flex flex-col rounded-[5px] border-[1px] bg-white">
       {menuOptionsBtns.map((val, i) => (
         <button
-          className="flex h-[30px] items-center justify-start gap-[10px] pl-[10px] hover:bg-sky-100 hover:text-brand-color-500 active:bg-sky-200"
+          className="flex h-[30px] min-w-[100px] items-center justify-start gap-[10px] px-[10px] hover:bg-sky-100 hover:text-brand-color-500 active:bg-sky-200"
           key={i}
-          onClick={() => changeUrl()}
+          onClick={() => changeUrl(val.url)}
         >
           <span>{val.icon}</span> <span>{val.label}</span>
         </button>
