@@ -20,7 +20,7 @@ export default function PropertyChangeButtons({ buttonLabelsArr }) {
           <NavLink
             to={`/property-details/${val.toLowerCase()}`}
             className={({ isActive }) =>
-              `rounded-[5px] px-[10px] ${isActive ? "bg-sky-200 text-sky-500" : "transition-all hover:rounded-[5px] hover:bg-sky-300 hover:text-white"}`
+              `rounded-[3px] px-[10px] py-[2px] ${isActive ? "bg-sky-200 text-sky-500" : "transition-all hover:rounded-[3px] hover:bg-sky-300 hover:text-white"}`
             }
           >
             {val}

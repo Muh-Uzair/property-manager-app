@@ -6,6 +6,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import HomePG from "./Pages/HomePG";
 import ExpensesPG from "./Pages/ExpensesPG";
@@ -15,7 +16,7 @@ import ErrorPG from "./Pages/ErrorPG";
 import PageNotFound from "./Pages/PageNotFound";
 import PropertyDetailsPG from "./Pages/PropertyDetailsPG";
 import LoginPG from "./ui/LoginPG";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import SinglePropertyDetails from "../src/features/ShowPropertyDetails/SinglePropertyDetails";
 
 // Property details feature done
 
@@ -33,6 +34,10 @@ const router = createBrowserRouter(
           <Route
             path="property-details/:propertyType"
             element={<PropertyDetailsPG />}
+          />
+          <Route
+            path="property-details/:propertyType/:propertyId"
+            element={<SinglePropertyDetails />}
           />
           <Route path="*" element={<PageNotFound />} />
         </Route>
