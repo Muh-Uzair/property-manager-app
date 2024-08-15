@@ -47,7 +47,7 @@ export const getTotalRoomsQuantity = async () => {
 
 // FUNCTION
 export const getRoomDataOnId = async (roomId) => {
-  let { data: data, error } = await supabase
+  let { data = {}, error } = await supabase
     .from("rooms")
     .select()
     .eq("id", roomId);

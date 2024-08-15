@@ -26,7 +26,7 @@ export default function SinglePropertyDetails() {
         {/* portion :  property details */}
         <PropertyDetails
           propertyType={propertyType}
-          dataSingleProperty={dataSingleProperty}
+          dataSingleProperty={dataSingleProperty || {}}
           statusSingleProperty={statusSingleProperty}
         />
 
