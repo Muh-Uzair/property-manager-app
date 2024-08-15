@@ -46,3 +46,12 @@ export const getTotalFlatsQuantity = async () => {
 
   return { totalFlatsQuantity };
 };
+
+// FUNCTION
+export const getFlatDataOnId = async (flatId) => {
+  let { data, error } = await supabase.from("flats").select().eq("id", flatId);
+
+  if (error) throw new Error(`Unable to fetch flat data : ${error?.message}`);
+
+  return { data };
+};
