@@ -13,8 +13,6 @@ export default function SinglePropertyDetails() {
     useGetSinglePropertyDetails();
   dataSingleProperty = dataSingleProperty?.data?.[0];
 
-  console.log(dataSingleProperty);
-
   // FUNCTIONS
 
   // JSX
@@ -26,7 +24,7 @@ export default function SinglePropertyDetails() {
         {/* portion :  property details */}
         <PropertyDetails
           propertyType={propertyType}
-          dataSingleProperty={dataSingleProperty}
+          dataSingleProperty={dataSingleProperty || {}}
           statusSingleProperty={statusSingleProperty}
         />
 
