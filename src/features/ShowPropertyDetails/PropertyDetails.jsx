@@ -28,7 +28,7 @@ export default function PropertyDetails({
       </Heading>
       {/* Image + details */}
       <div
-        className={`h-[100%] w-[100%] rounded-[8px] bg-sky-200 p-[16px] ${statusSingleProperty === "pending" ? "flex items-center justify-center" : statusSingleProperty === "success" ? "flex gap-[20px]" : ""}`}
+        className={`h-[100%] w-[100%] rounded-[8px] bg-sky-200/80 p-[16px] ${statusSingleProperty === "pending" ? "flex items-center justify-center" : statusSingleProperty === "success" ? "flex gap-[20px]" : ""}`}
       >
         {statusSingleProperty === "pending" && <span>Loading...</span>}
         {statusSingleProperty === "success" && (
@@ -41,13 +41,13 @@ export default function PropertyDetails({
               />
             </div>
             {/* details div*/}
-            <div className="">
+            <div className="grid w-[40%] grid-cols-2 gap-[20px]">
               <DetailsItem
-                itemHeading="Id Number"
+                itemHeading="Id No"
                 itemValue={dataSingleProperty.id}
               />
               <DetailsItem
-                itemHeading={`${propertyType.charAt(0).toLocaleUpperCase()}${propertyType.slice(1, propertyType.length - 1)} Number`}
+                itemHeading={`${propertyType.charAt(0).toLocaleUpperCase()}${propertyType.slice(1, propertyType.length - 1)} No`}
                 itemValue={
                   dataSingleProperty.flat_number ||
                   dataSingleProperty.room_number ||
@@ -63,6 +63,16 @@ export default function PropertyDetails({
               <DetailsItem
                 itemHeading="Floor"
                 itemValue={dataSingleProperty.floor}
+              />
+
+              <DetailsItem
+                itemHeading="Size"
+                itemValue={dataSingleProperty.size}
+              />
+
+              <DetailsItem
+                itemHeading="Status"
+                itemValue={dataSingleProperty.status}
               />
             </div>
           </>
@@ -82,7 +92,7 @@ DetailsItem.propTypes = {
 
 function DetailsItem({ itemHeading, itemValue }) {
   return (
-    <div className="mb-4 flex flex-col">
+    <div className="flex flex-col items-center justify-center rounded-[8px] bg-sky-300/60">
       <Heading type="medium_small" headingColor={"text-brand-color-600"}>
         {itemHeading}
       </Heading>
