@@ -1,22 +1,29 @@
 import PropTypes from "prop-types";
 
 const primary = "text-[30px] font-bold";
+const medium_small = "text-[20px] font-semibold";
 
 // COMPONENT START
-export default function Heading({ type, headingText = "", children = null }) {
+export default function Heading({ type, children, headingColor }) {
   // VARIABLES
 
   // FUNCTIONS
 
   // JSX
-  if (headingText.length === 0 && children && type.length > 0) {
+
+  if (type === "primary") {
     return (
       <span className={type === "primary" ? primary : ""}>{children}</span>
     );
   }
-  if (headingText.length > 0 && !children) {
+
+  if (type === "medium_small") {
     return (
-      <span className={type === "primary" ? primary : ""}>{headingText}</span>
+      <span
+        className={`${medium_small} ${headingColor.length > 0 ? headingColor : ""}`}
+      >
+        {children}
+      </span>
     );
   }
 
@@ -26,6 +33,6 @@ export default function Heading({ type, headingText = "", children = null }) {
 
 Heading.propTypes = {
   type: PropTypes.string.isRequired, // Ensure 'type' is a required string
-  headingText: PropTypes.string, // 'headingText' is an optional string
-  children: PropTypes.node, // 'children' can be any renderable content
+  children: PropTypes.node.isRequired, // 'children' can be any renderable content
+  headingColor: PropTypes.string,
 };
