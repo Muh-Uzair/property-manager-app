@@ -44,3 +44,15 @@ export const getTotalRoomsQuantity = async () => {
 
   return { totalRoomsQuantity };
 };
+
+// FUNCTION
+export const getRoomDataOnId = async (roomId) => {
+  let { data = {}, error } = await supabase
+    .from("rooms")
+    .select()
+    .eq("id", roomId);
+
+  if (error) throw new Error(`Unable to fetch room data : ${error?.message}`);
+
+  return { data };
+};
