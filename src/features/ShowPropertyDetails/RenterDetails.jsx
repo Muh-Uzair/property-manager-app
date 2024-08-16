@@ -18,8 +18,6 @@ export default function RenterDetails({ renterId }) {
     useGetRenterDetailsOnId(renterId);
   dataRenterDetails = dataRenterDetails[0];
 
-  console.log(dataRenterDetails);
-
   // FUNCTIONS
 
   // JSX
@@ -34,50 +32,58 @@ export default function RenterDetails({ renterId }) {
         {statusRenterDetails === "success" && (
           <>
             {/*detail items*/}
-            <div className="grid h-[100%] grid-cols-3 grid-rows-4 gap-[16px]">
-              {/* id car no */}
-              <RenterDetailItem
-                icon={
-                  <HiMiniIdentification size={`28px`} color={brandColor500} />
-                }
-                itemHeading={"ID CARD NO"}
-                itemValue={dataRenterDetails?.id_card_number}
-              />
-              {/* contact info */}
-              <RenterDetailItem
-                icon={<FaPhoneAlt size={`28px`} color={brandColor500} />}
-                itemHeading={"CONTACT"}
-                itemValue={dataRenterDetails?.contact_info}
-              />
-              {/* marital status */}
-              <RenterDetailItem
-                icon={<FaHeart size={`28px`} color={brandColor500} />}
-                itemHeading={"MARITAL STATUS"}
-                itemValue={
-                  dataRenterDetails?.marital_status === "unmarried"
-                    ? "single"
-                    : "married"
-                }
-              />
-              {/* name */}
-              <RenterDetailItem
-                icon={<FaUser size={`28px`} color={brandColor500} />}
-                itemHeading={"NAME"}
-                itemValue={dataRenterDetails?.name}
-              />
-              {/* nationality  */}
-              <RenterDetailItem
-                icon={<FaFlag size={`28px`} color={brandColor500} />}
-                itemHeading={"NATIONALITY"}
-                itemValue={dataRenterDetails?.nationality}
-              />
-              {/* occupation */}
-              <RenterDetailItem
-                icon={<MdWork size={`28px`} color={brandColor500} />}
-                itemHeading={"OCCUPATION"}
-                itemValue={dataRenterDetails?.occupation}
-              />
+            <div className="grid grid-rows-2 gap-[16px]">
+              <div className="grid h-[100%] grid-cols-3 grid-rows-2 gap-[16px]">
+                {/* id car no */}
+                <RenterDetailItem
+                  icon={
+                    <HiMiniIdentification size={`28px`} color={brandColor500} />
+                  }
+                  itemHeading={"ID CARD NO"}
+                  itemValue={dataRenterDetails?.id_card_number}
+                />
+                {/* contact info */}
+                <RenterDetailItem
+                  icon={<FaPhoneAlt size={`28px`} color={brandColor500} />}
+                  itemHeading={"CONTACT"}
+                  itemValue={dataRenterDetails?.contact_info}
+                />
+                {/* marital status */}
+                <RenterDetailItem
+                  icon={<FaHeart size={`28px`} color={brandColor500} />}
+                  itemHeading={"MARITAL STATUS"}
+                  itemValue={
+                    dataRenterDetails?.marital_status === "unmarried"
+                      ? "single"
+                      : "married"
+                  }
+                />
+                {/* name */}
+                <RenterDetailItem
+                  icon={<FaUser size={`28px`} color={brandColor500} />}
+                  itemHeading={"NAME"}
+                  itemValue={dataRenterDetails?.name}
+                />
+                {/* nationality  */}
+                <RenterDetailItem
+                  icon={<FaFlag size={`28px`} color={brandColor500} />}
+                  itemHeading={"NATIONALITY"}
+                  itemValue={dataRenterDetails?.nationality}
+                />
+                {/* occupation */}
+                <RenterDetailItem
+                  icon={<MdWork size={`28px`} color={brandColor500} />}
+                  itemHeading={"OCCUPATION"}
+                  itemValue={dataRenterDetails?.occupation}
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-[16px]">
+                <div className="rounded-[8px] bg-red-400"></div>
+                <div className="rounded-[8px] bg-red-600"></div>
+              </div>
             </div>
+
             {/* renter image div */}
             <div className="h-[100%] rounded-[8px] bg-gray-400/50"></div>
           </>
@@ -103,9 +109,7 @@ function RenterDetailItem({ icon, itemHeading, itemValue }) {
         <span className="rounded-full bg-sky-200 p-[10px]"> {icon} </span>
       </div>
       <div className="flex flex-col justify-center">
-        <span className={`text-nowrap text-[15px] font-semibold`}>
-          {itemHeading}
-        </span>
+        <span className={`text-[15px] font-semibold`}>{itemHeading}</span>
         <span className="text-[13px] font-semibold text-gray-600">
           {itemValue}
         </span>

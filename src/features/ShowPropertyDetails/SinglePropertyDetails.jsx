@@ -13,6 +13,8 @@ export default function SinglePropertyDetails() {
     useGetSinglePropertyDetails();
   dataSingleProperty = dataSingleProperty?.data?.[0];
 
+  dataSingleProperty;
+
   // FUNCTIONS
 
   // JSX
@@ -22,6 +24,7 @@ export default function SinglePropertyDetails() {
       {/* Property & renter details */}
       <div className="grid w-[80%] grid-rows-[1fr_1fr] gap-[10px]">
         {/* portion :  property details */}
+
         <PropertyDetails
           propertyType={propertyType}
           dataSingleProperty={dataSingleProperty || {}}
@@ -29,6 +32,7 @@ export default function SinglePropertyDetails() {
         />
 
         {/*Renter details portion*/}
+
         <RenterDetails renterId={dataSingleProperty?.renter_id || 0} />
       </div>
 
