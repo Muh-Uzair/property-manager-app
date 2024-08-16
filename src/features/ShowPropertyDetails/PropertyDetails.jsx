@@ -34,7 +34,7 @@ export default function PropertyDetails({
         {statusSingleProperty === "success" && (
           <>
             {/* Img div */}
-            <div className="h-[100%] w-[60%] rounded-[8px] bg-gray-400">
+            <div className="h-[100%] w-[60%] rounded-[8px] bg-gray-100">
               <img
                 className="h-full max-h-[330px] w-full rounded-[8px] object-cover"
                 src={dataSingleProperty.image}
