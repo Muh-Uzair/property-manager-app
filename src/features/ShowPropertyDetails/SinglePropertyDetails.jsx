@@ -29,7 +29,7 @@ export default function SinglePropertyDetails() {
         />
 
         {/*Renter details portion*/}
-        <RenterDetails renterId={dataSingleProperty?.renter_id} />
+        <RenterDetails renterId={dataSingleProperty?.renter_id || 0} />
       </div>
 
       {/*property rent details*/}
