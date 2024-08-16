@@ -17,7 +17,7 @@ import PropertyDetailsPG from "./Pages/PropertyDetailsPG";
 import LoginPG from "./ui/LoginPG";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
-// Property details feature done
+// some tenant details done
 
 const router = createBrowserRouter(
   createRoutesFromElements(
