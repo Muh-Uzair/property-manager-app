@@ -45,5 +45,5 @@ export const getRenterDetailsOnId = async (renterId) => {
   if (error)
     throw new Error(`Unable to fetch renter details: ${error?.message}`);
 
-  return data;
+  return { data };
 };
