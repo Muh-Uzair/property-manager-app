@@ -37,10 +37,9 @@ export default function OtherPropertiesRented({
       {otherRentedProperties.length > 0 && (
         <main>
           {otherRentedProperties.map((val, i) => (
-            <>
+            <span key={i}>
               {Number(otherRentedPropertiesId[i]) !== Number(propertyId) && (
                 <button
-                  key={i}
                   className="mb-[5px] flex items-center gap-[5px] rounded-[5px] border-[1px] border-sky-500 px-[5px] text-sky-500 transition-all duration-150 hover:bg-sky-100 active:bg-sky-200/70"
                   onClick={() =>
                     navigate(
@@ -68,7 +67,7 @@ export default function OtherPropertiesRented({
                   <span className="text-[15px] font-semibold uppercase text-sky-500">{`${val} ${otherRentedPropertiesId[i]}`}</span>
                 </button>
               )}
-            </>
+            </span>
           ))}
         </main>
       )}

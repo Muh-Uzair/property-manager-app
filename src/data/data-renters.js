@@ -99,7 +99,7 @@ export const rentersDataArr = [
     renter_from: "21, May 2024",
     occupation: "Water quality scientist",
     marital_status: "married",
-    rent_property: { rent_property: ["flat", "room"] },
+    rent_property: { rent_property: ["flat", "shop"] },
     propertyID: { property_id: [3008, 2013] },
     image: "",
   },
