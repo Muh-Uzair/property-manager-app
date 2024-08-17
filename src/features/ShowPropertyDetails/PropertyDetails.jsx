@@ -35,10 +35,10 @@ export default function PropertyDetails({
           <>
             {/* Img div */}
             <div className="h-[100%] w-[60%] rounded-[8px] bg-gray-100">
-              <img
+              {/* <img
                 className="h-full max-h-[330px] w-full rounded-[8px] object-cover"
                 src={dataSingleProperty?.image}
-              />
+              /> */}
             </div>
             {/* details div*/}
             <div className="grid w-[40%] grid-cols-2 gap-[20px]">
