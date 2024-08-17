@@ -1,22 +1,23 @@
-import Portion from "../../ui/Portion";
-import Heading from "../../ui/Heading";
+import Portion from "../../../ui/Portion";
+import Heading from "../../../ui/Heading";
 import PropTypes from "prop-types";
-import { useGetRenterDetailsOnId } from "./useGetRenterDetailsOnId";
+import { useGetRenterDetailsOnId } from "../useGetRenterDetailsOnId";
 import { HiMiniIdentification } from "react-icons/hi2";
-import { brandColor500 } from "../../styles/globalStyles";
+import { brandColor500 } from "../../../styles/globalStyles";
 import { FaFlag, FaHeart, FaPhoneAlt, FaUser } from "react-icons/fa";
 import { MdWork } from "react-icons/md";
+import OtherPropertiesRented from "./OtherPropertiesRented";
+import RenterDetailItem from "./RenterDetailItem";
 
 // COMPONENT START
 RenterDetails.propTypes = {
   renterId: PropTypes.number.isRequired,
 };
-
 export default function RenterDetails({ renterId }) {
   // VARIABLES
-  let { dataRenterDetails = [], statusRenterDetails } =
+  let { dataRenterDetails, statusRenterDetails } =
     useGetRenterDetailsOnId(renterId);
-  dataRenterDetails = dataRenterDetails[0];
+  dataRenterDetails = dataRenterDetails?.data?.[0];
 
   // FUNCTIONS
 
@@ -29,7 +30,7 @@ export default function RenterDetails({ renterId }) {
         className={`h-[100%] w-[100%] rounded-[8px] bg-gray-100 p-[16px] ${statusRenterDetails === "pending" ? "flex items-center justify-center" : "grid grid-cols-[1fr_30%] gap-[16px]"}`}
       >
         {statusRenterDetails === "pending" && <span>Loading...</span>}
-        {statusRenterDetails === "success" && (
+        {statusRenterDetails === "success" && dataRenterDetails && (
           <>
             {/*detail items*/}
             <div className="grid grid-rows-2 gap-[16px]">
@@ -79,7 +80,15 @@ export default function RenterDetails({ renterId }) {
               </div>
 
               <div className="grid grid-cols-2 gap-[16px]">
-                <div className="rounded-[8px] bg-red-400"></div>
+                <OtherPropertiesRented
+                  otherRentedProperties={
+                    dataRenterDetails?.rent_property?.rent_property
+                  }
+                  otherRentedPropertiesId={
+                    dataRenterDetails?.propertyID?.property_id
+                  }
+                />
+
                 <div className="rounded-[8px] bg-red-600"></div>
               </div>
             </div>
@@ -90,31 +99,6 @@ export default function RenterDetails({ renterId }) {
         )}
       </div>
     </Portion>
-  );
-}
-// COMPONENT END
-
-// COMPONENT START
-RenterDetailItem.propTypes = {
-  icon: PropTypes.node,
-  itemHeading: PropTypes.string,
-  itemValue: PropTypes.string,
-};
-
-function RenterDetailItem({ icon, itemHeading, itemValue }) {
-  // JSX
-  return (
-    <div className="grid grid-cols-[70px_1fr] rounded-[5px] bg-gray-200">
-      <div className="flex items-center justify-center">
-        <span className="rounded-full bg-sky-200 p-[10px]"> {icon} </span>
-      </div>
-      <div className="flex flex-col justify-center">
-        <span className={`text-[15px] font-semibold`}>{itemHeading}</span>
-        <span className="text-[13px] font-semibold text-gray-600">
-          {itemValue}
-        </span>
-      </div>
-    </div>
   );
 }
 // COMPONENT END

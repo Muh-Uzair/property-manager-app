@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useGetSinglePropertyDetails } from "./useGetSinglePropertyDetails";
-import RenterDetails from "./RenterDetails";
 import RentDetails from "./RentDetails";
 import PropertyDetails from "./PropertyDetails";
+import RenterDetails from "./tenenat-details/RenterDetails";
 
 // COMPONENT START
 export default function SinglePropertyDetails() {
@@ -12,8 +12,6 @@ export default function SinglePropertyDetails() {
   let { dataSingleProperty, statusSingleProperty } =
     useGetSinglePropertyDetails();
   dataSingleProperty = dataSingleProperty?.data?.[0];
-
-  dataSingleProperty;
 
   // FUNCTIONS
 
@@ -32,8 +30,11 @@ export default function SinglePropertyDetails() {
         />
 
         {/*Renter details portion*/}
+        {dataSingleProperty && (
+          <RenterDetails renterId={dataSingleProperty?.renter_id} />
+        )}
 
-        <RenterDetails renterId={dataSingleProperty?.renter_id || 0} />
+        <div></div>
       </div>
 
       {/*property rent details*/}
