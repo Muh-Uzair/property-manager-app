@@ -18,7 +18,7 @@ export default function SinglePropertyDetails() {
   // JSX
 
   return (
-    <div className="flex h-[100%] gap-[20px]">
+    <div className="l flex h-[100%] gap-[20px]">
       {/* Property & renter details */}
       <div className="grid w-[80%] grid-rows-[1fr_1fr] gap-[10px]">
         {/* portion :  property details */}
@@ -33,8 +33,6 @@ export default function SinglePropertyDetails() {
         {dataSingleProperty && (
           <RenterDetails renterId={dataSingleProperty?.renter_id} />
         )}
-
-        <div></div>
       </div>
 
       {/*property rent details*/}

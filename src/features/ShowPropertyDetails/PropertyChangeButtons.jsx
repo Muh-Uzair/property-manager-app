@@ -1,17 +1,18 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useEffect } from "react";
 
 export default function PropertyChangeButtons({ buttonLabelsArr }) {
   // VARIABLES
   const navigate = useNavigate();
+  const { propertyType } = useParams();
 
   // FUNCTIONS
 
   // FUNCTION
   useEffect(() => {
-    navigate("/property-details/flats");
-  }, [navigate]);
+    if (!propertyType) navigate("/property-details/flats");
+  }, [navigate, propertyType]);
 
   return (
     <div className="flex items-center gap-[3px] rounded-[5px] bg-gray-100 px-[10px] py-[5px] text-[12px] font-semibold text-gray-400">
