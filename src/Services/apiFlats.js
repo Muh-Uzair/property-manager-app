@@ -60,7 +60,7 @@ export const getFlatDataOnId = async (flatId) => {
 export const getFlatNameOnId = async (flatId) => {
   let { data, error } = await supabase
     .from("flats")
-    .select("name")
+    .select("flat_number")
     .eq("id", flatId);
 
   if (error) throw new Error(`Unable to fetch flat name : ${error.message}`);
