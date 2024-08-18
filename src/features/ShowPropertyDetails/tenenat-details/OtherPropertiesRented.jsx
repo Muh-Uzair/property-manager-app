@@ -1,17 +1,41 @@
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { MdBedroomChild, MdHomeWork } from "react-icons/md";
 import { brandColor500 } from "../../../styles/globalStyles";
 import TenantDetailsIcon from "./TenantDetailsIcon";
 import { useNavigate, useParams } from "react-router-dom";
 import { FaBuilding, FaStore } from "react-icons/fa";
+import { getFlatNameOnId } from "../../../Services/apiFlats";
+import { getRoomNameOnId } from "../../../Services/apiRooms";
+import { getShopNameOnId } from "../../../Services/apiShops";
 
 const rentPropIconSize = "15px";
+
+// FUNCTION
+const apiGetPropertyName = async (propertyType, propertyId) => {
+  const getNameFunctions = {
+    flat: getFlatNameOnId,
+    room: getRoomNameOnId,
+    shop: getShopNameOnId,
+  };
+
+  const propertyName = await getNameFunctions[propertyType](propertyId);
+
+  const propertyNumberKey = {
+    flat: "flat_number",
+    room: "room_number",
+    shop: "shop_number",
+  };
+
+  return propertyName[0][propertyNumberKey[propertyType]];
+};
 
 // COMPONENT START
 OtherPropertiesRented.propTypes = {
   otherRentedProperties: PropTypes.array,
   otherRentedPropertiesId: PropTypes.array,
 };
+
 export default function OtherPropertiesRented({
   otherRentedProperties,
   otherRentedPropertiesId,
@@ -20,7 +44,26 @@ export default function OtherPropertiesRented({
   const { propertyId } = useParams();
   const navigate = useNavigate();
 
-  // FUNCTIONS
+  // STATE
+  const [propertyNames, setPropertyNames] = useState({});
+
+  // EFFECTS
+  useEffect(() => {
+    const fetchPropertyNames = async () => {
+      const names = {};
+      for (let i = 0; i < otherRentedProperties.length; i++) {
+        const val = otherRentedProperties[i];
+        const id = otherRentedPropertiesId[i];
+        if (Number(id) !== Number(propertyId)) {
+          const name = await apiGetPropertyName(val, id);
+          names[id] = name;
+        }
+      }
+      setPropertyNames(names);
+    };
+
+    fetchPropertyNames();
+  }, [otherRentedProperties, otherRentedPropertiesId, propertyId]);
 
   // JSX
   return (
@@ -64,7 +107,9 @@ export default function OtherPropertiesRented({
                       <></>
                     )}
                   </>
-                  <span className="text-[15px] font-semibold uppercase text-sky-500">{`${val} ${otherRentedPropertiesId[i]}`}</span>
+                  <span className="text-[15px] font-semibold uppercase text-sky-500">
+                    {`${val} ${propertyNames[otherRentedPropertiesId[i]] || ""}`}
+                  </span>
                 </button>
               )}
             </span>

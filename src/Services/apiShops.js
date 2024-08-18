@@ -61,7 +61,7 @@ export const getShopDataOnId = async (shopId) => {
 export const getShopNameOnId = async (shopId) => {
   let { data, error } = await supabase
     .from("shops")
-    .select("name")
+    .select("shop_number")
     .eq("id", shopId);
 
   if (error) throw new Error(`Unable to fetch shop name : ${error.message}`);
