@@ -21,6 +21,8 @@ export const deleteAllRenters = async () => {
 
 // FUNCTION
 export const getRenterOnID = async (renter_id) => {
+  if (!renter_id) return {};
+
   const { data: dataRenter, error } = await supabase
     .from("renters")
     .select("name")
@@ -35,6 +37,8 @@ export const getRenterOnID = async (renter_id) => {
 
 // FUNCTION
 export const getRenterDetailsOnId = async (renterId) => {
+  if (!renterId) return {};
+
   const { data, error } = await supabase
     .from("renters")
     .select(

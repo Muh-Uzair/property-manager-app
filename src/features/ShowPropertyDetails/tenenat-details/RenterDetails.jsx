@@ -8,7 +8,7 @@ import RenterFromCMP from "./RenterFromCmp";
 
 // COMPONENT START
 RenterDetails.propTypes = {
-  renterId: PropTypes.number.isRequired,
+  renterId: PropTypes.number,
 };
 export default function RenterDetails({ renterId }) {
   // VARIABLES
