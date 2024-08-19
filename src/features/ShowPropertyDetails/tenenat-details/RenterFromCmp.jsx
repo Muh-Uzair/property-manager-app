@@ -17,9 +17,11 @@ export default function RenterFromCMP({ dataRenterDetails }) {
           <GiHourglass size={"28px"} />
         </span>
         {/* heading */}
-        <h1 className="uppercase">Property Rental Duration</h1>
+        <h3 className="uppercase">Property Rental Duration</h3>
       </header>
-      <span className="text-[18px] font-bold text-gray-600">{`${dataRenterDetails.name} rented this property ${formatDistanceStrict(dataRenterDetails.renter_from, new Date(new Date().toLocaleDateString()))} ago`}</span>
+      {dataRenterDetails.renter_from && (
+        <span className="text-[18px] font-bold text-gray-600">{`${dataRenterDetails.name} rented this property almost ${formatDistanceStrict(new Date(dataRenterDetails.renter_from), new Date())} ago`}</span>
+      )}
     </div>
   );
 }
