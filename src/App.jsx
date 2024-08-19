@@ -19,7 +19,7 @@ import LoginPG from "./ui/LoginPG";
 import SinglePropertyDetails from "../src/features/ShowPropertyDetails/SinglePropertyDetails";
 import PropertyEdit from "./features/ShowPropertyDetails/PropertyEdit";
 
-// some tenant details done
+// propertyId error removed
 
 const router = createBrowserRouter(
   createRoutesFromElements(
