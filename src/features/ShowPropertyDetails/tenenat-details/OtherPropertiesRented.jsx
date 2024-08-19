@@ -1,41 +1,19 @@
-import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { MdBedroomChild, MdHomeWork } from "react-icons/md";
 import { brandColor500 } from "../../../styles/globalStyles";
 import TenantDetailsIcon from "./TenantDetailsIcon";
 import { useNavigate, useParams } from "react-router-dom";
 import { FaBuilding, FaStore } from "react-icons/fa";
-import { getFlatNameOnId } from "../../../Services/apiFlats";
-import { getRoomNameOnId } from "../../../Services/apiRooms";
-import { getShopNameOnId } from "../../../Services/apiShops";
+import { useEffect, useState } from "react";
+import { apiGetPropertyName } from "./apiOtherRentedProperties";
 
 const rentPropIconSize = "15px";
-
-// FUNCTION
-const apiGetPropertyName = async (propertyType, propertyId) => {
-  const getNameFunctions = {
-    flat: getFlatNameOnId,
-    room: getRoomNameOnId,
-    shop: getShopNameOnId,
-  };
-
-  const propertyName = await getNameFunctions[propertyType](propertyId);
-
-  const propertyNumberKey = {
-    flat: "flat_number",
-    room: "room_number",
-    shop: "shop_number",
-  };
-
-  return propertyName[0][propertyNumberKey[propertyType]];
-};
 
 // COMPONENT START
 OtherPropertiesRented.propTypes = {
   otherRentedProperties: PropTypes.array,
   otherRentedPropertiesId: PropTypes.array,
 };
-
 export default function OtherPropertiesRented({
   otherRentedProperties,
   otherRentedPropertiesId,
@@ -43,27 +21,23 @@ export default function OtherPropertiesRented({
   // VARIABLES
   const { propertyId } = useParams();
   const navigate = useNavigate();
+  const [propertyNamesArr, setPropertyNamesArr] = useState([]);
 
-  // STATE
-  const [propertyNames, setPropertyNames] = useState({});
-
-  // EFFECTS
+  // FUNCTION
   useEffect(() => {
-    const fetchPropertyNames = async () => {
-      const names = {};
+    const getPropertyName = async () => {
+      const namesArr = [];
       for (let i = 0; i < otherRentedProperties.length; i++) {
-        const val = otherRentedProperties[i];
-        const id = otherRentedPropertiesId[i];
-        if (Number(id) !== Number(propertyId)) {
-          const name = await apiGetPropertyName(val, id);
-          names[id] = name;
-        }
+        const propertyName = await apiGetPropertyName(
+          otherRentedProperties[i],
+          otherRentedPropertiesId[i],
+        );
+        namesArr.push(propertyName);
       }
-      setPropertyNames(names);
+      setPropertyNamesArr(namesArr);
     };
-
-    fetchPropertyNames();
-  }, [otherRentedProperties, otherRentedPropertiesId, propertyId]);
+    if (propertyId) getPropertyName();
+  }, [propertyId, otherRentedProperties, otherRentedPropertiesId]);
 
   // JSX
   return (
@@ -77,39 +51,42 @@ export default function OtherPropertiesRented({
           OTHER RENTED PROPERTIES
         </span>
       </header>
+      {otherRentedProperties.length === 1 && (
+        <span className="font-semibold text-gray-500">
+          X has no other rented properties
+        </span>
+      )}
       {otherRentedProperties.length > 0 && (
         <main>
-          {otherRentedProperties.map((val, i) => (
+          {propertyNamesArr.map((val, i) => (
             <span key={i}>
               {Number(otherRentedPropertiesId[i]) !== Number(propertyId) && (
                 <button
                   className="mb-[5px] flex items-center gap-[5px] rounded-[5px] border-[1px] border-sky-500 px-[5px] text-sky-500 transition-all duration-150 hover:bg-sky-100 active:bg-sky-200/70"
                   onClick={() =>
                     navigate(
-                      `/property-details/${val}s/${otherRentedPropertiesId[i]}`,
+                      `/property-details/${otherRentedProperties[i]}s/${otherRentedPropertiesId[i]}`,
                     )
                   }
                 >
                   <>
-                    {val === "flat" ? (
+                    {otherRentedProperties[i] === "flat" ? (
                       <FaBuilding
                         size={rentPropIconSize}
                         color={brandColor500}
                       />
-                    ) : val === "room" ? (
+                    ) : otherRentedProperties[i] === "room" ? (
                       <MdBedroomChild
                         size={rentPropIconSize}
                         color={brandColor500}
                       />
-                    ) : val === "shop" ? (
+                    ) : otherRentedProperties[i] === "shop" ? (
                       <FaStore size={rentPropIconSize} color={brandColor500} />
                     ) : (
                       <></>
                     )}
                   </>
-                  <span className="text-[15px] font-semibold uppercase text-sky-500">
-                    {`${val} ${propertyNames[otherRentedPropertiesId[i]] || ""}`}
-                  </span>
+                  <span className="text-[15px] font-semibold uppercase text-sky-500">{`${otherRentedProperties[i]} ${val}`}</span>
                 </button>
               )}
             </span>
