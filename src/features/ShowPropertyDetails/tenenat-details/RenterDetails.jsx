@@ -32,8 +32,8 @@ export default function RenterDetails({ renterId }) {
         {statusRenterDetails === "pending" && <span>Loading...</span>}
         {statusRenterDetails === "success" && dataRenterDetails && (
           <>
-            {/*detail items*/}
             <div className="grid grid-rows-2 gap-[16px]">
+              {/*detail items*/}
               <div className="grid h-[100%] grid-cols-3 grid-rows-2 gap-[16px]">
                 {/* id car no */}
                 <RenterDetailItem
