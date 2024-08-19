@@ -47,14 +47,24 @@ export const getTotalShopsQuantity = async () => {
 
 // FUNCTION
 export const getShopDataOnId = async (shopId) => {
-  let { data: data, error } = await supabase
+  let { data, error } = await supabase
     .from("shops")
     .select()
-    .eq("id", shopId);
+    .eq("id", Number(shopId));
 
   if (error) throw new Error(`Unable to fetch shop data : ${error?.message}`);
 
-  console.log(data);
+  return { data };
+};
 
-  return data.data;
+// FUNCTION
+export const getShopNameOnId = async (shopId) => {
+  let { data, error } = await supabase
+    .from("shops")
+    .select("shop_number")
+    .eq("id", shopId);
+
+  if (error) throw new Error(`Unable to fetch shop name : ${error.message}`);
+
+  return data;
 };

@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useGetSinglePropertyDetails } from "./useGetSinglePropertyDetails";
-import RenterDetails from "./RenterDetails";
 import RentDetails from "./RentDetails";
 import PropertyDetails from "./PropertyDetails";
+import RenterDetails from "./tenenat-details/RenterDetails";
 
 // COMPONENT START
 export default function SinglePropertyDetails() {
@@ -18,10 +18,11 @@ export default function SinglePropertyDetails() {
   // JSX
 
   return (
-    <div className="flex h-[100%] gap-[20px]">
+    <div className="l flex h-[100%] gap-[20px]">
       {/* Property & renter details */}
       <div className="grid w-[80%] grid-rows-[1fr_1fr] gap-[10px]">
         {/* portion :  property details */}
+
         <PropertyDetails
           propertyType={propertyType}
           dataSingleProperty={dataSingleProperty || {}}
@@ -29,7 +30,7 @@ export default function SinglePropertyDetails() {
         />
 
         {/*Renter details portion*/}
-        <RenterDetails renterId={dataSingleProperty?.renter_id || 0} />
+        <RenterDetails renterId={dataSingleProperty?.renter_id} />
       </div>
 
       {/*property rent details*/}

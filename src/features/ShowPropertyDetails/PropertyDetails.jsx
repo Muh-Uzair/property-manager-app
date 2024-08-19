@@ -35,44 +35,44 @@ export default function PropertyDetails({
           <>
             {/* Img div */}
             <div className="h-[100%] w-[60%] rounded-[8px] bg-gray-100">
-              <img
+              {/* <img
                 className="h-full max-h-[330px] w-full rounded-[8px] object-cover"
-                src={dataSingleProperty.image}
-              />
+                src={dataSingleProperty?.image}
+              /> */}
             </div>
             {/* details div*/}
             <div className="grid w-[40%] grid-cols-2 gap-[20px]">
               <DetailsItem
                 itemHeading="Id No"
-                itemValue={dataSingleProperty.id}
+                itemValue={dataSingleProperty?.id}
               />
               <DetailsItem
                 itemHeading={`${propertyType.charAt(0).toLocaleUpperCase()}${propertyType.slice(1, propertyType.length - 1)} No`}
                 itemValue={
-                  dataSingleProperty.flat_number ||
-                  dataSingleProperty.room_number ||
-                  dataSingleProperty.shop_number
+                  dataSingleProperty?.flat_number ||
+                  dataSingleProperty?.room_number ||
+                  dataSingleProperty?.shop_number
                 }
               />
 
               <DetailsItem
                 itemHeading="Rent"
-                itemValue={dataSingleProperty.rent}
+                itemValue={dataSingleProperty?.rent}
               />
 
               <DetailsItem
                 itemHeading="Floor"
-                itemValue={dataSingleProperty.floor}
+                itemValue={dataSingleProperty?.floor}
               />
 
               <DetailsItem
                 itemHeading="Size"
-                itemValue={dataSingleProperty.size}
+                itemValue={dataSingleProperty?.size}
               />
 
               <DetailsItem
                 itemHeading="Status"
-                itemValue={dataSingleProperty.status}
+                itemValue={dataSingleProperty?.status}
               />
             </div>
           </>
