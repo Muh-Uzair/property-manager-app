@@ -14,7 +14,7 @@ export default function RenterDetails({ renterId }) {
   // VARIABLES
   let { dataRenterDetails, statusRenterDetails } =
     useGetRenterDetailsOnId(renterId);
-  dataRenterDetails = dataRenterDetails?.data?.[0];
+  dataRenterDetails = dataRenterDetails?.data?.[0] || {};
 
   // FUNCTIONS
 
@@ -37,11 +37,12 @@ export default function RenterDetails({ renterId }) {
               <div className="grid grid-cols-2 gap-[16px]">
                 <OtherPropertiesRented
                   otherRentedProperties={
-                    dataRenterDetails?.rent_property?.rent_property
+                    dataRenterDetails?.rent_property?.rent_property || []
                   }
                   otherRentedPropertiesId={
-                    dataRenterDetails?.propertyID?.property_id
+                    dataRenterDetails?.propertyID?.property_id || []
                   }
+                  dataRenterDetails={dataRenterDetails}
                 />
 
                 <RenterFromCMP dataRenterDetails={dataRenterDetails} />

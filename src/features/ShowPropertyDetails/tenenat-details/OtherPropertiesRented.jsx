@@ -13,10 +13,12 @@ const rentPropIconSize = "15px";
 OtherPropertiesRented.propTypes = {
   otherRentedProperties: PropTypes.array,
   otherRentedPropertiesId: PropTypes.array,
+  dataRenterDetails: PropTypes.object,
 };
 export default function OtherPropertiesRented({
   otherRentedProperties,
   otherRentedPropertiesId,
+  dataRenterDetails,
 }) {
   // VARIABLES
   const { propertyId } = useParams();
@@ -51,12 +53,12 @@ export default function OtherPropertiesRented({
           OTHER RENTED PROPERTIES
         </span>
       </header>
-      {otherRentedProperties.length === 1 && (
+      {otherRentedProperties?.length && otherRentedProperties?.length === 1 && (
         <span className="font-semibold text-gray-500">
-          X has no other rented properties
+          {dataRenterDetails?.name} has no other rented properties
         </span>
       )}
-      {otherRentedProperties.length > 0 && (
+      {otherRentedProperties?.length && otherRentedProperties?.length > 0 && (
         <main>
           {propertyNamesArr.map((val, i) => (
             <span key={i}>
