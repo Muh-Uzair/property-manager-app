@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import Portion from "../../ui/Portion";
 import Heading from "../../ui/Heading";
+import DetailsItem from "./PropertyDetailsItem";
 
 // COMPONENT START
 PropertyDetails.propTypes = {
@@ -79,25 +80,6 @@ export default function PropertyDetails({
         )}
       </div>
     </Portion>
-  );
-}
-// COMPONENT END
-
-// COMPONENT START
-DetailsItem.propTypes = {
-  itemHeading: PropTypes.string.isRequired,
-  itemValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-    .isRequired,
-};
-
-function DetailsItem({ itemHeading, itemValue }) {
-  return (
-    <div className="flex flex-col items-center justify-center rounded-[8px] bg-sky-300/60">
-      <Heading type="medium_small" headingColor={"text-brand-color-600"}>
-        {itemHeading}
-      </Heading>
-      <span className="font-bold text-gray-500">{itemValue}</span>
-    </div>
   );
 }
 // COMPONENT END
