@@ -19,7 +19,7 @@ import LoginPG from "./ui/LoginPG";
 import SinglePropertyDetails from "../src/features/ShowPropertyDetails/SinglePropertyDetails";
 import PropertyEdit from "./features/ShowPropertyDetails/PropertyEdit";
 
-// propertyId error removed
+// back btn | katie error removed
 
 const router = createBrowserRouter(
   createRoutesFromElements(
