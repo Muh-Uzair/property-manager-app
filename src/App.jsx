@@ -19,7 +19,7 @@ import LoginPG from "./ui/LoginPG";
 import SinglePropertyDetails from "./features/ShowPropertyDetails/showSinglePropertyDetails/SinglePropertyDetails";
 import PropertyEdit from "./features/ShowPropertyDetails/PropertyEdit";
 
-// back btn | katie error removed
+// new branch refactor
 
 const router = createBrowserRouter(
   createRoutesFromElements(
