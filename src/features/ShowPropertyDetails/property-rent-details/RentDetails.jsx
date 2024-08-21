@@ -1,12 +1,13 @@
-import Portion from "../../ui/Portion";
-import Heading from "../../ui/Heading";
+import Portion from "../../../ui/Portion";
+import Heading from "../../../ui/Heading";
+import DisplayRentDetails from "./DisplayRentDetails";
 
 export default function RentDetails() {
   return (
     <Portion type="horizontal" gap={5} width="w-[100%]">
       <Heading type="primary">Rent Details</Heading>
       {/* rent details */}
-      <div className="h-[100%] w-[100%] rounded-[8px] bg-gray-100">hello</div>
+      <DisplayRentDetails />
     </Portion>
   );
 }
