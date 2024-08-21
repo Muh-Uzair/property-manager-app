@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getRenterDetailsOnId } from "../../Services/apiRenters";
+import { getRenterDetailsOnId } from "../../../../Services/apiRenters";
 
 export const useGetRenterDetailsOnId = (renterId) => {
   const { data: dataRenterDetails, status: statusRenterDetails } = useQuery({

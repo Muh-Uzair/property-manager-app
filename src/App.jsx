@@ -16,7 +16,7 @@ import ErrorPG from "./Pages/ErrorPG";
 import PageNotFound from "./Pages/PageNotFound";
 import PropertyDetailsPG from "./Pages/PropertyDetailsPG";
 import LoginPG from "./ui/LoginPG";
-import SinglePropertyDetails from "../src/features/ShowPropertyDetails/SinglePropertyDetails";
+import SinglePropertyDetails from "./features/ShowPropertyDetails/showSinglePropertyDetails/SinglePropertyDetails";
 import PropertyEdit from "./features/ShowPropertyDetails/PropertyEdit";
 
 // back btn | katie error removed

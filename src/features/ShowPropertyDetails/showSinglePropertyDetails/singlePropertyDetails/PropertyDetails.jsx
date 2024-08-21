@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
-import Portion from "../../ui/Portion";
-import Heading from "../../ui/Heading";
-import DetailsItem from "./PropertyDetailsItem";
+
+import Portion from "../../../../ui/Portion";
+import Heading from "../../../../ui/Heading";
+import SinglePropertyDetailsItem from "./SinglePropertyDetailsItem";
 
 // COMPONENT START
 PropertyDetails.propTypes = {
@@ -43,11 +44,11 @@ export default function PropertyDetails({
             </div>
             {/* details div*/}
             <div className="grid w-[40%] grid-cols-2 gap-[20px]">
-              <DetailsItem
+              <SinglePropertyDetailsItem
                 itemHeading="Id No"
                 itemValue={dataSingleProperty?.id}
               />
-              <DetailsItem
+              <SinglePropertyDetailsItem
                 itemHeading={`${propertyType.charAt(0).toLocaleUpperCase()}${propertyType.slice(1, propertyType.length - 1)} No`}
                 itemValue={
                   dataSingleProperty?.flat_number ||
@@ -56,22 +57,22 @@ export default function PropertyDetails({
                 }
               />
 
-              <DetailsItem
+              <SinglePropertyDetailsItem
                 itemHeading="Rent"
                 itemValue={dataSingleProperty?.rent}
               />
 
-              <DetailsItem
+              <SinglePropertyDetailsItem
                 itemHeading="Floor"
                 itemValue={dataSingleProperty?.floor}
               />
 
-              <DetailsItem
+              <SinglePropertyDetailsItem
                 itemHeading="Size"
                 itemValue={dataSingleProperty?.size}
               />
 
-              <DetailsItem
+              <SinglePropertyDetailsItem
                 itemHeading="Status"
                 itemValue={dataSingleProperty?.status}
               />

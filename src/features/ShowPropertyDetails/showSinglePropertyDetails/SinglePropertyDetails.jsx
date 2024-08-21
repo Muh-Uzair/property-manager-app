@@ -1,10 +1,12 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { useGetSinglePropertyDetails } from "./useGetSinglePropertyDetails";
-import RentDetails from "./property-rent-details/RentDetails";
-import PropertyDetails from "./PropertyDetails";
-import RenterDetails from "./renter-tenenat-details/RenterDetails";
 import { HiOutlineArrowLongLeft } from "react-icons/hi2";
 import { createContext } from "react";
+
+import RentDetails from "./rentDetails/RentDetails";
+import PropertyDetails from "./singlePropertyDetails/PropertyDetails";
+import TenantDetails from "./tenantDetails/TenantDetails";
+
+import { useGetSinglePropertyDetails } from "./useGetSinglePropertyDetails";
 
 export const ContextSingleProperty = createContext();
 
@@ -36,7 +38,6 @@ export default function SinglePropertyDetails() {
         </button>
         <div className="flex h-[100%] gap-[20px]">
           {/* Property & renter details */}
-
           <div className="grid w-[80%] grid-rows-[1fr_1fr] gap-[10px]">
             {/* portion :  property details */}
 
@@ -47,7 +48,7 @@ export default function SinglePropertyDetails() {
             />
 
             {/*Renter details portion*/}
-            <RenterDetails renterId={dataSingleProperty?.renter_id} />
+            <TenantDetails renterId={dataSingleProperty?.renter_id} />
           </div>
 
           {/*property rent details*/}

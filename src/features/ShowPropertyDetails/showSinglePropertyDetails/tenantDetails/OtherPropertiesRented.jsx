@@ -1,10 +1,12 @@
 import PropTypes from "prop-types";
 import { MdBedroomChild, MdHomeWork } from "react-icons/md";
-import { brandColor500 } from "../../../styles/globalStyles";
-import TenantDetailsIcon from "./TenantDetailsIcon";
 import { useNavigate, useParams } from "react-router-dom";
 import { FaBuilding, FaStore } from "react-icons/fa";
 import { useEffect, useState } from "react";
+
+import TenantDetailsIcon from "./TenantDetailsIcon";
+
+import { brandColor500 } from "../../../../styles/globalStyles";
 import { apiGetPropertyName } from "./apiOtherRentedProperties";
 
 const rentPropIconSize = "15px";

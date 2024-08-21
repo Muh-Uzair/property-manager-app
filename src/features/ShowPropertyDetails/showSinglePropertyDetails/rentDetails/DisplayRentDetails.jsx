@@ -17,12 +17,9 @@ export default function DisplayRentDetails() {
               key={i}
               className="grid grid-cols-2 grid-rows-2 gap-1 rounded-[3px] bg-sky-200/80 p-[5px]"
             >
-              <spam className={innerElementStyles}>
-                <span>
-                  {" "}
-                  <span>month : {`${val.month}`} </span>
-                </span>
-              </spam>
+              <span className={innerElementStyles}>
+                <span>month : {`${val.month}`} </span>
+              </span>
               <span className={innerElementStyles}>
                 {" "}
                 rent : {dataSingleProperty.rent}{" "}

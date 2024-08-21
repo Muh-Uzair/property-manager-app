@@ -1,13 +1,14 @@
-import TenantItemHeading from "./TenantItemHeading";
 import PropTypes from "prop-types";
 
+import TenantItemHeading from "./TenantItemHeading";
+
 // COMPONENT START
-RenterDetailItem.propTypes = {
+TenantDetailItem.propTypes = {
   icon: PropTypes.node,
   itemHeading: PropTypes.string,
   itemValue: PropTypes.string,
 };
-export default function RenterDetailItem({ icon, itemHeading, itemValue }) {
+export default function TenantDetailItem({ icon, itemHeading, itemValue }) {
   // JSX
   return (
     <div className="grid grid-cols-[70px_1fr] rounded-[5px] bg-gray-200">

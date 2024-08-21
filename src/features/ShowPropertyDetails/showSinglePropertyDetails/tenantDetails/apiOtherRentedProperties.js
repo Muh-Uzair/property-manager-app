@@ -1,6 +1,6 @@
-import { getFlatNameOnId } from "../../../Services/apiFlats";
-import { getRoomNameOnId } from "../../../Services/apiRooms";
-import { getShopNameOnId } from "../../../Services/apiShops";
+import { getFlatNameOnId } from "../../../../Services/apiFlats";
+import { getRoomNameOnId } from "../../../../Services/apiRooms";
+import { getShopNameOnId } from "../../../../Services/apiShops";
 
 // FUNCTION
 export const apiGetPropertyName = async (propertyType, propertyId) => {

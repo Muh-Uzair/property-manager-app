@@ -3,10 +3,10 @@ import { formatDistanceStrict } from "date-fns";
 import { GiHourglass } from "react-icons/gi";
 
 // COMPONENT START
-RenterFromCMP.propTypes = {
+RentDuration.propTypes = {
   dataRenterDetails: PropTypes.object.isRequired,
 };
-export default function RenterFromCMP({ dataRenterDetails }) {
+export default function RentDuration({ dataRenterDetails }) {
   // JSX
   return (
     <div className="flex flex-col gap-[15px] rounded-[8px] bg-gray-200 p-[10px]">
