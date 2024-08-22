@@ -27,7 +27,7 @@ export default function TenantDetails({ renterId }) {
       <div className="grid grid-rows-[auto_1fr]">
         <Heading type="primary">Tenant Details</Heading>
         <div
-          className={`h-[100%] w-[100%] rounded-[8px] bg-gray-100 p-[16px] ${statusRenterDetails === "pending" ? "flex items-center justify-center" : "grid grid-cols-[1fr_30%] gap-[16px]"}`}
+          className={`h-[100%] w-[100%] rounded-[8px] bg-gray-100 p-[16px] ${statusRenterDetails === "pending" ? "flex items-center justify-center" : "grid grid-cols-[1fr_300px] gap-[16px]"}`}
         >
           {statusRenterDetails === "pending" && <span>Loading...</span>}
           {statusRenterDetails === "success" && dataRenterDetails && (
