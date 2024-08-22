@@ -36,12 +36,6 @@ export default function Sidebar() {
           ]}
         />
       </nav>
-      <div className="flex h-[100px] w-[100%] items-center justify-center">
-        {/* <button className="rounded-[5px] border-[1px] border-cyan-400 bg-sky-100 px-[20px] py-2 text-xl font-semibold text-cyan-500 transition hover:bg-sky-200">
-          Upload
-        </button> */}
-        {/* <Uploader /> */}
-      </div>
     </>
   );
   // JSX//////////////////////L///////////////////
