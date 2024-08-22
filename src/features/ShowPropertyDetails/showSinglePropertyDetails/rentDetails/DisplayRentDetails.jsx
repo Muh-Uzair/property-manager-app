@@ -27,13 +27,16 @@ export default function DisplayRentDetails() {
               <span className={innerElementStyles}>
                 status :{" "}
                 {val.paid ? (
-                  <span className="ml-[5px] rounded-full bg-green-300 px-[10px] font-bold text-green-700">
+                  <span
+                    className="ml-[5px] rounded-full px-[10px] font-bold text-green-700"
+                    style={{ backgroundColor: "#89ff2e" }}
+                  >
                     paid
                   </span>
                 ) : val.paid === null ? (
                   <span className="ml-[5px]">not started</span>
                 ) : (
-                  <span className="ml-[5px] rounded-full bg-red-300 px-[10px] font-bold text-red-700">
+                  <span className="ml-[5px] rounded-full bg-red-700 px-[10px] font-bold text-red-200">
                     unpaid
                   </span>
                 )}

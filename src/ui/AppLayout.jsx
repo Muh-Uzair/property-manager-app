@@ -16,7 +16,7 @@ export default function AppLayout() {
         <aside className="bg-sky-500">
           <Sidebar />
         </aside>
-        <main className="bg-red-400 px-[20px] py-[10px]">
+        <main className="px-[20px] py-[10px]">
           <Outlet />
         </main>
       </div>

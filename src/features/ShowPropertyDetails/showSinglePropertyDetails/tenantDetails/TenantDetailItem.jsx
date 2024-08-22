@@ -1,12 +1,19 @@
 import PropTypes from "prop-types";
 
-import TenantItemHeading from "./TenantItemHeading";
+// import TenantItemHeading from "./TenantItemHeading";
+import Heading from "../../../../ui/Heading";
 
 // COMPONENT START
 TenantDetailItem.propTypes = {
   icon: PropTypes.node,
   itemHeading: PropTypes.string,
-  itemValue: PropTypes.string,
+  itemValue: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.element,
+    PropTypes.node,
+    // You can add other types here as needed
+  ]),
 };
 export default function TenantDetailItem({ icon, itemHeading, itemValue }) {
   // JSX
@@ -17,7 +24,9 @@ export default function TenantDetailItem({ icon, itemHeading, itemValue }) {
       </div>
       <div className="flex flex-col justify-center">
         {/* <span className={`text-[15px] font-semibold`}>{itemHeading}</span> */}
-        <TenantItemHeading itemHeading={itemHeading} />
+        <Heading type={"medium"} uppercase={true}>
+          {itemHeading}
+        </Heading>
         <span className="text-[13px] font-semibold text-gray-600">
           {itemValue}
         </span>

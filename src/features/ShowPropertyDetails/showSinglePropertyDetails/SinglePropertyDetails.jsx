@@ -29,7 +29,7 @@ export default function SinglePropertyDetails() {
         dataSingleProperty,
       }}
     >
-      <div className="grid h-[100%] grid-rows-[auto_1fr] bg-green-300">
+      <div className="grid h-[100%] grid-rows-[auto_1fr]">
         <button
           className="flex h-[22px] w-[40px] items-center justify-center rounded-[3px] bg-sky-400 text-white hover:bg-sky-400/80"
           onClick={() => navigate(-1)}

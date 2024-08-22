@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { formatDistanceStrict } from "date-fns";
 import { GiHourglass } from "react-icons/gi";
+import Heading from "../../../../ui/Heading";
 
 // COMPONENT START
 RentDuration.propTypes = {
@@ -17,7 +18,14 @@ export default function RentDuration({ dataRenterDetails }) {
           <GiHourglass size={"28px"} />
         </span>
         {/* heading */}
-        <h3 className="uppercase">Property Rental Duration</h3>
+        <Heading
+          type="medium_large"
+          uppercase={true}
+          bold={true}
+          headingColor="text-sky-200"
+        >
+          Property Rental Duration
+        </Heading>
       </header>
       {dataRenterDetails.renter_from && (
         <span className="text-[18px] font-bold text-gray-600">{`${dataRenterDetails.name} rented this property almost ${formatDistanceStrict(new Date(dataRenterDetails.renter_from), new Date())} ago`}</span>

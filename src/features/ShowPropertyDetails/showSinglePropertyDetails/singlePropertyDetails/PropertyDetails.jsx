@@ -30,24 +30,25 @@ export default function PropertyDetails({
       </Heading>
       {/* Image + details */}
       <div
-        className={`h-[100%] w-[100%] rounded-[8px] bg-sky-200/80 p-[16px] ${statusSingleProperty === "pending" ? "flex items-center justify-center" : statusSingleProperty === "success" ? "flex gap-[20px]" : ""}`}
+        className={`rounded-[8px] bg-sky-200/80 p-[16px] ${statusSingleProperty === "pending" ? "flex items-center justify-center" : statusSingleProperty === "success" ? "grid grid-cols-[60%_1fr] gap-[16px]" : ""}`}
       >
         {statusSingleProperty === "pending" && <span>Loading...</span>}
         {statusSingleProperty === "success" && (
           <>
             {/* Img div */}
-            <div className="h-[100%] w-[60%] rounded-[8px] bg-gray-100">
+            <div className="rounded-[8px] bg-gray-100">
               {/* <img
                 className="h-full max-h-[330px] w-full rounded-[8px] object-cover"
                 src={dataSingleProperty?.image}
               /> */}
             </div>
             {/* details div*/}
-            <div className="grid w-[40%] grid-cols-2 gap-[20px]">
+            <div className="grid grid-cols-2 gap-[16px]">
               <SinglePropertyDetailsItem
                 itemHeading="Id No"
                 itemValue={dataSingleProperty?.id}
               />
+
               <SinglePropertyDetailsItem
                 itemHeading={`${propertyType.charAt(0).toLocaleUpperCase()}${propertyType.slice(1, propertyType.length - 1)} No`}
                 itemValue={
