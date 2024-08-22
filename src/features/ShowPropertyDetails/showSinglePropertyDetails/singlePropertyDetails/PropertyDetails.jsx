@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-import Portion from "../../../../ui/Portion";
+// import Portion from "../../../../ui/Portion";
 import Heading from "../../../../ui/Heading";
 import SinglePropertyDetailsItem from "./SinglePropertyDetailsItem";
 
@@ -23,7 +23,7 @@ export default function PropertyDetails({
   // JSX
 
   return (
-    <Portion type="horizontal" gap={5} width="w-[100%]">
+    <div className="grid grid-rows-[auto_1fr]">
       <Heading type="primary">
         {" "}
         {`${propertyType.charAt(0).toLocaleUpperCase()}${propertyType.slice(1, propertyType.length - 1)} Details`}
@@ -80,7 +80,7 @@ export default function PropertyDetails({
           </>
         )}
       </div>
-    </Portion>
+    </div>
   );
 }
 // COMPONENT END

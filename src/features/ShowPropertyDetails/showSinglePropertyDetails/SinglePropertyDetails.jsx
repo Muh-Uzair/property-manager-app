@@ -29,16 +29,16 @@ export default function SinglePropertyDetails() {
         dataSingleProperty,
       }}
     >
-      <div className="">
+      <div className="grid h-[100%] grid-rows-[auto_1fr] bg-green-300">
         <button
-          className="flex items-center justify-center rounded-[5px] bg-sky-400 px-[8px] text-white hover:bg-sky-400/80"
+          className="flex h-[22px] w-[40px] items-center justify-center rounded-[3px] bg-sky-400 text-white hover:bg-sky-400/80"
           onClick={() => navigate(-1)}
         >
           <HiOutlineArrowLongLeft size={"25px"} />
         </button>
-        <div className="flex h-[100%] gap-[20px]">
+        <div className="grid h-[100%] grid-cols-[1fr_20%] gap-[16px]">
           {/* Property & renter details */}
-          <div className="grid w-[80%] grid-rows-[1fr_1fr] gap-[10px]">
+          <div className="grid grid-rows-[1fr_1fr] gap-[10px]">
             {/* portion :  property details */}
 
             <PropertyDetails
@@ -52,7 +52,7 @@ export default function SinglePropertyDetails() {
           </div>
 
           {/*property rent details*/}
-          <div className="w-[20%]">
+          <div className="rentDetails">
             {/* Rent details portion */}
             <RentDetails dataSingleProperty={dataSingleProperty || {}} />
           </div>
