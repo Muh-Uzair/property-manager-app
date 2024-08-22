@@ -31,7 +31,7 @@ export default function SinglePropertyDetails() {
     >
       <div className="">
         <button
-          className="text-sky-700 hover:text-sky-400"
+          className="flex items-center justify-center rounded-[5px] bg-sky-400 px-[8px] text-white hover:bg-sky-400/80"
           onClick={() => navigate(-1)}
         >
           <HiOutlineArrowLongLeft size={"25px"} />

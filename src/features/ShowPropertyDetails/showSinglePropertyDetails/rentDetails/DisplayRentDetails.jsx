@@ -6,7 +6,7 @@ const innerElementStyles =
 
 export default function DisplayRentDetails() {
   const { dataSingleProperty = {} } = useContext(ContextSingleProperty);
-  const { rent_details } = dataSingleProperty;
+  const { rent_details } = dataSingleProperty || {};
 
   return (
     <div className="h-[100%] w-[100%] rounded-[8px] bg-gray-100 p-[10px] text-white">
