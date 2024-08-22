@@ -13,7 +13,11 @@ export default function SinglePropertyDetailsItem({ itemHeading, itemValue }) {
 
   return (
     <div className="flex flex-col items-center justify-center rounded-[8px] bg-sky-300/60">
-      <Heading type="medium_small" headingColor={"text-brand-color-600"}>
+      <Heading
+        type="medium_large"
+        headingColor={"text-brand-color-600"}
+        uppercase={true}
+      >
         {itemHeading}
       </Heading>
       <span className="font-bold text-gray-500">{itemValue}</span>
