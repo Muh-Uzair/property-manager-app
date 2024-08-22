@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { HiOutlineArrowLongLeft } from "react-icons/hi2";
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 import RentDetails from "./rentDetails/RentDetails";
 import PropertyDetails from "./singlePropertyDetails/PropertyDetails";
@@ -14,10 +14,13 @@ export const ContextSingleProperty = createContext();
 export default function SinglePropertyDetails() {
   // VARIABLES
   const { propertyType } = useParams();
+
   let { dataSingleProperty = {}, statusSingleProperty } =
     useGetSinglePropertyDetails();
   dataSingleProperty = dataSingleProperty?.data?.[0];
   const navigate = useNavigate();
+
+  const [isLoading, setIsLoading] = useState("pending");
 
   // FUNCTIONS
 
@@ -27,6 +30,8 @@ export default function SinglePropertyDetails() {
     <ContextSingleProperty.Provider
       value={{
         dataSingleProperty,
+        isLoading,
+        setIsLoading,
       }}
     >
       <div className="grid h-[100%] grid-rows-[auto_1fr]">
@@ -36,7 +41,7 @@ export default function SinglePropertyDetails() {
         >
           <HiOutlineArrowLongLeft size={"25px"} />
         </button>
-        <div className="grid h-[100%] grid-cols-[1fr_20%] gap-[16px]">
+        <div className="grid h-[100%] grid-cols-[1fr_300px] gap-[16px]">
           {/* Property & renter details */}
           <div className="grid grid-rows-[1fr_1fr] gap-[10px]">
             {/* portion :  property details */}

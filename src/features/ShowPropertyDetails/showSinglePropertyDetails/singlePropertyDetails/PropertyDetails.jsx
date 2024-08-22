@@ -30,7 +30,7 @@ export default function PropertyDetails({
       </Heading>
       {/* Image + details */}
       <div
-        className={`rounded-[8px] bg-sky-200/80 p-[16px] ${statusSingleProperty === "pending" ? "flex items-center justify-center" : statusSingleProperty === "success" ? "grid grid-cols-[60%_1fr] gap-[16px]" : ""}`}
+        className={`rounded-[8px] bg-sky-200/80 p-[16px] ${statusSingleProperty === "pending" ? "flex items-center justify-center" : statusSingleProperty === "success" ? "grid grid-cols-[1fr_380px] gap-[16px]" : ""}`}
       >
         {statusSingleProperty === "pending" && <span>Loading...</span>}
         {statusSingleProperty === "success" && (
