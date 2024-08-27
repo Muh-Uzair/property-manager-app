@@ -7,6 +7,8 @@ import RentDuration from "./RentDuration";
 import AllTenantDetailsItem from "./AllTenantDetailsItem";
 
 import { useGetRenterDetailsOnId } from "./useGetRenterDetailsOnId";
+import { useContext, useEffect } from "react";
+import { ContextSingleProperty } from "../SinglePropertyDetails";
 
 // COMPONENT START
 TenantDetails.propTypes = {
@@ -18,7 +20,19 @@ export default function TenantDetails({ renterId }) {
     useGetRenterDetailsOnId(renterId);
   dataRenterDetails = dataRenterDetails?.data?.[0] || {};
 
+  const { setIsLoading } = useContext(ContextSingleProperty);
+
   // FUNCTIONS
+  useEffect(() => {
+    function setLoadingState() {
+      setIsLoading("success");
+    }
+    if (
+      dataRenterDetails &&
+      dataRenterDetails?.rent_property?.rent_property.length === 1
+    )
+      setLoadingState();
+  }, [dataRenterDetails.rent_property, setIsLoading, dataRenterDetails]);
 
   // JSX
 
