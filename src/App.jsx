@@ -19,7 +19,7 @@ import LoginPG from "./ui/LoginPG";
 import SinglePropertyDetails from "./features/ShowPropertyDetails/showSinglePropertyDetails/SinglePropertyDetails";
 import PropertyEdit from "./features/ShowPropertyDetails/PropertyEdit";
 
-// new branch refactor
+// refactor branch merged
 
 const router = createBrowserRouter(
   createRoutesFromElements(
