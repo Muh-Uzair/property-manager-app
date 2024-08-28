@@ -79,6 +79,6 @@ export default function AllTenantDetailsItem({ dataRenterDetails }) {
   }
 }
 AllTenantDetailsItem.propTypes = {
-  dataRenterDetails: PropTypes.object.isRequired,
+  dataRenterDetails: PropTypes.object,
 };
 // COMPONENT END

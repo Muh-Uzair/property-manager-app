@@ -155,7 +155,6 @@ export const allRentingsDataArr = [
     renting_start_date: "18, Nov 2014",
   },
 
-  // Renters with Multiple Rentings
   {
     id: 26,
     renter_id: 98386,

@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
 
-// import Portion from "../../../../ui/Portion";
 import Heading from "../../../../ui/Heading";
 import SinglePropertyDetailsItem from "./SinglePropertyDetailsItem";
 import { useContext } from "react";
@@ -13,7 +12,8 @@ export default function PropertyDetails() {
   // VARIABLES
   const { propertyType } = useParams();
 
-  const { dataSingleProperty = {} } = useContext(ContextSingleProperty);
+  let { dataSingleProperty } = useContext(ContextSingleProperty);
+  dataSingleProperty = dataSingleProperty?.data?.[0];
 
   // FUNCTIONS
 
@@ -27,7 +27,7 @@ export default function PropertyDetails() {
       </Heading>
       {/* Image + details */}
       <div
-        className={`"grid gap-[16px]" grid-cols-[1fr_380px] rounded-[8px] bg-sky-200/80 p-[16px]`}
+        className={`grid grid-cols-[1fr_380px] gap-[16px] rounded-[8px] bg-sky-200/80 p-[16px]`}
       >
         {/* Img div */}
         <div className="rounded-[8px] bg-gray-100">
@@ -35,6 +35,7 @@ export default function PropertyDetails() {
                 className="h-full max-h-[330px] w-full rounded-[8px] object-cover"
                 src={dataSingleProperty?.image}
               /> */}
+          img
         </div>
         {/* details div*/}
         <div className="grid grid-cols-2 gap-[16px]">
