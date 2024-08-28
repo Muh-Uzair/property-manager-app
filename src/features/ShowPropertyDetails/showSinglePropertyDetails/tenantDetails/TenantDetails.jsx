@@ -38,15 +38,7 @@ export default function TenantDetails() {
 
             {/* other rented properties && renter from  */}
             <div className="grid grid-cols-2 gap-[16px]">
-              <OtherPropertiesRented
-                otherRentedProperties={
-                  dataRenterDetails?.rent_property?.rent_property || []
-                }
-                otherRentedPropertiesId={
-                  dataRenterDetails?.propertyID?.property_id || []
-                }
-                dataRenterDetails={dataRenterDetails}
-              />
+              <OtherPropertiesRented dataRenterDetails={dataRenterDetails} />
 
               <RentDuration dataRenterDetails={dataRenterDetails} />
             </div>

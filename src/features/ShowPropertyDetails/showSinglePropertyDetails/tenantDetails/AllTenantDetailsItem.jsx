@@ -61,7 +61,7 @@ export default function AllTenantDetailsItem({ dataRenterDetails }) {
             <div className="grid grid-cols-[28px_1fr] items-center">
               {" "}
               <CountryFlag
-                code={getCode(dataRenterDetails?.nationality)}
+                code={getCode(dataRenterDetails?.nationality || "UK")}
                 size={18}
               />{" "}
               {dataRenterDetails?.nationality || ""}
