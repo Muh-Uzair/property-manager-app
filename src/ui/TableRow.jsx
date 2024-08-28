@@ -25,15 +25,18 @@ export default function TableRow({
         gridTemplateColumns: `${colSize.join(" ")}`,
       }}
     >
+      {/* property image */}
       <TableRowItem>
         {/* <img className="h-[40px] rounded-[3px]" src={`${val.image}`} /> */}
         img
       </TableRowItem>
 
+      {/* property number */}
       <TableRowItem>
         {val.flat_number || val.room_number || val.shop_number}
       </TableRowItem>
 
+      {/* property status */}
       <TableRowItem>
         <span
           className={`flex items-center justify-center rounded-lg px-[7px] text-[10px] font-bold ${val.status !== "occupied" ? "bg-sky-100 text-sky-500" : "bg-blue-300 text-blue-700"}`}
@@ -42,14 +45,17 @@ export default function TableRow({
         </span>
       </TableRowItem>
 
+      {/* property floor number */}
       <TableRowItem>
         <div className="flex items-center justify-center">{val.floor}</div>
       </TableRowItem>
 
+      {/* property rent */}
       <TableRowItem>
         <div className="flex items-center justify-center">{val.rent}</div>
       </TableRowItem>
 
+      {/* tenant name */}
       <TableRowItem>
         {val?.renter_id ? (
           <TableItemRenter renter_id={val?.renter_id} />
