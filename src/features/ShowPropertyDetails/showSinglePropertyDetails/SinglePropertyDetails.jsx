@@ -16,23 +16,12 @@ export default function SinglePropertyDetails() {
 
   const navigate = useNavigate();
 
-  let { dataSingleProperty = {} } = useGetSinglePropertyDetails();
-  dataSingleProperty = dataSingleProperty?.data?.[0];
+  // let { dataSingleProperty = {} } = useGetSinglePropertyDetails();
+  // dataSingleProperty = dataSingleProperty?.data?.[0];
 
-  // const {
-  //   dataSingleProperty,
-  //   dataTenantDetails,
-  //   statusTenantDetails,
-  //   dataOtherRentedPropertiesNames,
-  //   statusOtherRentedPropertiesNames,
-  // } = useGetSinglePropertyDetails();
+  const x = useGetSinglePropertyDetails();
 
-  // if (dataSingleProperty) console.log(dataSingleProperty);
-
-  // if (dataTenantDetails && statusTenantDetails) console.log(dataTenantDetails);
-
-  // if (dataOtherRentedPropertiesNames && statusOtherRentedPropertiesNames)
-  //   console.log(dataOtherRentedPropertiesNames);
+  console.log(x);
 
   // FUNCTIONS
 
@@ -45,11 +34,7 @@ export default function SinglePropertyDetails() {
   //   return <span>LOADING...</span>;
 
   return (
-    <ContextSingleProperty.Provider
-      value={{
-        dataSingleProperty,
-      }}
-    >
+    <ContextSingleProperty.Provider value={{}}>
       <div className="grid h-[100%] grid-rows-[auto_1fr]">
         {/* back button */}
         <button
