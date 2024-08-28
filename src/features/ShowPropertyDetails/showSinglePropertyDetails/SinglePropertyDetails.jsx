@@ -5,6 +5,7 @@ import { createContext } from "react";
 import RentDetails from "./rentDetails/RentDetails";
 import PropertyDetails from "./singlePropertyDetails/PropertyDetails";
 import TenantDetails from "./tenantDetails/TenantDetails";
+import LoadingSpinner from "../../../ui/LoadingSpinner";
 
 import { useGetSinglePropertyDetails } from "./useGetSinglePropertyDetails";
 
@@ -37,7 +38,11 @@ export default function SinglePropertyDetails() {
     statusTenantDetails === "pending" ||
     statusOtherRentedPropertiesNames === "pending"
   )
-    return <span>LOADING...</span>;
+    return (
+      <div className="flex h-[100%] items-center justify-center">
+        <LoadingSpinner />
+      </div>
+    );
 
   if (
     statusSingleProperty === "success" ||

@@ -1,6 +1,6 @@
 import { useGetRenterOnID } from "./useGetRenterOnID";
-import { CircularProgress } from "@mui/material";
 import PropTypes from "prop-types";
+import LoadingSpinner from "../../ui/LoadingSpinner";
 
 // COMPONENT START
 export default function TableItemRenter({ renter_id }) {
@@ -9,7 +9,7 @@ export default function TableItemRenter({ renter_id }) {
   return (
     <span className="font-bold text-gray-500">
       {statusRenter === "pending" ? (
-        <CircularProgress size={10} disableShrink={true} />
+        <LoadingSpinner size={15} />
       ) : dataRenter ? (
         dataRenter
       ) : (
