@@ -14,27 +14,12 @@ import { ContextSingleProperty } from "../SinglePropertyDetails";
 
 export default function TenantDetails() {
   // VARIABLES
-  // let { dataRenterDetails, statusRenterDetails } =
-  //   useGetRenterDetailsOnId(renterId);
-  // dataRenterDetails = dataRenterDetails?.data?.[0] || {};
-
-  // const { setIsLoading } = useContext(ContextSingleProperty);
-
-  const { dataTenantDetails: dataRenterDetails = {} } = useContext(
+  let { dataTenantDetails: dataRenterDetails } = useContext(
     ContextSingleProperty,
   );
+  dataRenterDetails = dataRenterDetails?.data?.[0];
 
   // FUNCTIONS
-  // useEffect(() => {
-  //   function setLoadingState() {
-  //     setIsLoading("success");
-  //   }
-  //   if (
-  //     dataRenterDetails &&
-  //     dataRenterDetails?.rent_property?.rent_property.length === 1
-  //   )
-  //     setLoadingState();
-  // }, [dataRenterDetails.rent_property, setIsLoading, dataRenterDetails]);
 
   // JSX
 
@@ -43,7 +28,7 @@ export default function TenantDetails() {
       <div className="grid grid-rows-[auto_1fr]">
         <Heading type="primary">Tenant Details</Heading>
         <div
-          className={`"grid gap-[16px]" h-[100%] w-[100%] grid-cols-[1fr_300px] rounded-[8px] bg-gray-100 p-[16px]`}
+          className={`grid h-[100%] w-[100%] grid-cols-[1fr_300px] gap-[16px] rounded-[8px] bg-gray-100 p-[16px]`}
         >
           {/* {statusRenterDetails === "pending" && <span>Loading...</span>} */}
 

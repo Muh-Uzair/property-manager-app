@@ -43,10 +43,12 @@ export const useGetSinglePropertyDetails = () => {
   // 3 : if this renter has more than 1 properties rented , so api call for other properties as well
   let rentPropertiesArr = [];
   let propertyIdArr = [];
+  let tenantName = "";
   if (dataTenantDetails) {
     rentPropertiesArr =
       dataTenantDetails?.data?.[0]?.rent_property?.rent_property;
     propertyIdArr = dataTenantDetails?.data?.[0]?.propertyID?.property_id;
+    tenantName = dataTenantDetails?.data?.[0]?.name;
   }
   let {
     data: dataOtherRentedPropertiesNames = [],
@@ -63,7 +65,11 @@ export const useGetSinglePropertyDetails = () => {
               propertyIdArr[i],
             );
 
-            rentedPropertiesNames.push(propertyName);
+            rentedPropertiesNames.push([
+              rentPropertiesArr[i],
+              propertyIdArr[i],
+              propertyName,
+            ]);
           }
         }
         return rentedPropertiesNames;
@@ -72,7 +78,7 @@ export const useGetSinglePropertyDetails = () => {
         return [];
       }
     },
-    queryKey: ["x"],
+    queryKey: [tenantName, propertyIdArr, propertyId],
   });
 
   return {

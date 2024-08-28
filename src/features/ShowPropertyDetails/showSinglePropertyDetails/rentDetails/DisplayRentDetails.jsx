@@ -5,7 +5,8 @@ const innerElementStyles =
   "align-center flex justify-center text-nowrap rounded-[3px] bg-sky-500 p-[2px]";
 
 export default function DisplayRentDetails() {
-  const { dataSingleProperty = {} } = useContext(ContextSingleProperty);
+  let { dataSingleProperty = {} } = useContext(ContextSingleProperty);
+  dataSingleProperty = dataSingleProperty?.data?.[0];
   const { rent_details } = dataSingleProperty || {};
 
   return (

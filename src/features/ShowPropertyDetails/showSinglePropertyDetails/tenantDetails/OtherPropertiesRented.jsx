@@ -16,7 +16,6 @@ OtherPropertiesRented.propTypes = {
 };
 export default function OtherPropertiesRented({
   otherRentedProperties,
-  otherRentedPropertiesId,
   dataRenterDetails,
 }) {
   // VARIABLES
@@ -48,10 +47,7 @@ export default function OtherPropertiesRented({
 
         {/* Have other rented properties */}
         {otherRentedProperties?.length && otherRentedProperties?.length > 1 && (
-          <OtherRentedPropertiesBtns
-            otherRentedPropertiesId={otherRentedPropertiesId}
-            otherRentedProperties={otherRentedProperties}
-          />
+          <OtherRentedPropertiesBtns />
         )}
       </div>
     );

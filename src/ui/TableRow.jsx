@@ -26,7 +26,7 @@ export default function TableRow({
       }}
     >
       <TableRowItem>
-        <img className="h-[40px] rounded-[3px]" src={`${val.image}`} />
+        <img className="h-[40px] rounded-[3px]" />
       </TableRowItem>
 
       <TableRowItem>
