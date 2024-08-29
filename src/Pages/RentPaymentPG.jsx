@@ -1,3 +1,5 @@
+import RentPayment from "../features/RentPaymentFeature/RentPayment";
+
 // COMPONENT START
 export default function RentPaymentPG() {
   // VARIABLES
@@ -5,7 +7,7 @@ export default function RentPaymentPG() {
   // FUNCTIONS
 
   // JSX
-  return <div>rent payment cmp</div>;
+  return <RentPayment />;
   // JSX
 }
 // COMPONENT END

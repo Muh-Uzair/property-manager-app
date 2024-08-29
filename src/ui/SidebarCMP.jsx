@@ -3,7 +3,7 @@ import { SidebarNavLinks } from "./SidebarNavLinks";
 import { HiOutlineBanknotes } from "react-icons/hi2";
 import { TbClipboardText } from "react-icons/tb";
 import { HiMiniArrowLeftOnRectangle } from "react-icons/hi2";
-// import Uploader from "../features/Uploader/Uploader";
+import { MdAttachMoney } from "react-icons/md";
 
 // COMPONENT START///////////////////////////////////////////////
 export default function Sidebar() {
@@ -24,6 +24,11 @@ export default function Sidebar() {
               icon: <TbClipboardText />,
             },
             {
+              url: "rentPayment",
+              label: "Rent Payment",
+              icon: <MdAttachMoney />,
+            },
+            {
               url: "expenses",
               label: "Expenses",
               icon: <HiOutlineBanknotes />,
@@ -31,11 +36,6 @@ export default function Sidebar() {
             {
               url: "admissions",
               label: "Admissions",
-              icon: <HiMiniArrowLeftOnRectangle />,
-            },
-            {
-              url: "rentPayment",
-              label: "Rent Payment",
               icon: <HiMiniArrowLeftOnRectangle />,
             },
           ]}
