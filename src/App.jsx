@@ -18,6 +18,7 @@ import PropertyDetailsPG from "./Pages/PropertyDetailsPG";
 import LoginPG from "./ui/LoginPG";
 import SinglePropertyDetails from "./features/ShowPropertyDetails/showSinglePropertyDetails/SinglePropertyDetails";
 import PropertyEdit from "./features/ShowPropertyDetails/PropertyEdit";
+import RentPaymentPG from "./Pages/RentPaymentPG";
 
 // day commit , nothing special
 
@@ -44,6 +45,7 @@ const router = createBrowserRouter(
             path="property-details/:propertyType/editProperty"
             element={<PropertyEdit />}
           />
+          <Route path="rentPayment" element={<RentPaymentPG />} />
           <Route path="*" element={<PageNotFound />} />
         </Route>
       </Route>

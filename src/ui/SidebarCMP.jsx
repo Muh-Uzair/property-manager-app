@@ -33,6 +33,11 @@ export default function Sidebar() {
               label: "Admissions",
               icon: <HiMiniArrowLeftOnRectangle />,
             },
+            {
+              url: "rentPayment",
+              label: "Rent Payment",
+              icon: <HiMiniArrowLeftOnRectangle />,
+            },
           ]}
         />
       </nav>
