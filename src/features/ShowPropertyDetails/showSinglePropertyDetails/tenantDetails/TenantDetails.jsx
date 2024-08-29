@@ -45,7 +45,7 @@ export default function TenantDetails() {
           </div>
 
           {/* renter image div */}
-          <div className="h-[100%] rounded-[8px] bg-gray-200"></div>
+          <div className="h-[100%] rounded-[8px] bg-gray-200">img</div>
         </div>
       </div>
     );
