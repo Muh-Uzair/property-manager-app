@@ -20,7 +20,7 @@ import SinglePropertyDetails from "./features/ShowPropertyDetails/showSingleProp
 import PropertyEdit from "./features/ShowPropertyDetails/PropertyEdit";
 import RentPaymentPG from "./Pages/RentPaymentPG";
 
-// day commit , nothing special
+// before applying responsive design
 
 const router = createBrowserRouter(
   createRoutesFromElements(
