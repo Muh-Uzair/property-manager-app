@@ -22,7 +22,7 @@ import PropertyEdit from "./features/ShowPropertyDetails/PropertyEdit";
 import DummyPG1 from "./Pages/DummyPG1";
 import DummyPG2 from "./Pages/DummyPG2";
 
-// before applying responsive design
+// nav links in header and side bar
 
 const router = createBrowserRouter(
   createRoutesFromElements(
