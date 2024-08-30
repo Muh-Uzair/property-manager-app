@@ -18,7 +18,9 @@ import PropertyDetailsPG from "./Pages/PropertyDetailsPG";
 import LoginPG from "./ui/LoginPG";
 import SinglePropertyDetails from "./features/ShowPropertyDetails/showSinglePropertyDetails/SinglePropertyDetails";
 import PropertyEdit from "./features/ShowPropertyDetails/PropertyEdit";
-import RentPaymentPG from "./Pages/RentPaymentPG";
+// import RentPaymentPG from "./Pages/RentPaymentPG";
+import DummyPG1 from "./Pages/DummyPG1";
+import DummyPG2 from "./Pages/DummyPG2";
 
 // before applying responsive design
 
@@ -32,7 +34,8 @@ const router = createBrowserRouter(
           <Route path="home" element={<HomePG />} />
           <Route path="expenses" element={<ExpensesPG />} />
           <Route path="admissions" element={<AdmissionsPG />} />
-          <Route path="property-details" element={<PropertyDetailsPG />} />
+          {/* <Route path="property-details" element={<PropertyDetailsPG />} /> */}
+          <Route path="property-details" element={<DummyPG1 />} />
           <Route
             path="property-details/:propertyType"
             element={<PropertyDetailsPG />}
@@ -45,7 +48,8 @@ const router = createBrowserRouter(
             path="property-details/:propertyType/editProperty"
             element={<PropertyEdit />}
           />
-          <Route path="rentPayment" element={<RentPaymentPG />} />
+          {/* <Route path="rentPayment" element={<RentPaymentPG />} /> */}
+          <Route path="rentPayment" element={<DummyPG2 />} />
           <Route path="*" element={<PageNotFound />} />
         </Route>
       </Route>
