@@ -18,6 +18,11 @@ export default {
         "brand-color-900": "#0c4a6e",
       },
     },
+    screens: {
+      smallTab: "640px",
+      largeTab: "768px",
+      largeScreen: "1400px",
+    },
   },
   plugins: [],
 };

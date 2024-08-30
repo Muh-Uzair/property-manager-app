@@ -23,7 +23,7 @@ const NamePropleLogo = () => {
   const navigate = useNavigate();
   return (
     <span
-      className={`cursor-pointer pl-[5px] text-[20px] font-bold`}
+      className={`hidden cursor-pointer pl-[5px] text-[20px] font-bold smallTab:block`}
       style={{ color: brandColor500 }}
       onClick={() => navigate("/home")}
     >

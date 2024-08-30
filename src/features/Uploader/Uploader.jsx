@@ -25,7 +25,8 @@ const Uploader = () => {
     useUploadAllRentings();
 
   // FUNCTIONS
-  const uploadButtonClicked = () => {
+  const uploadButtonClicked = (test) => {
+    if (test === true) return;
     mutateUploadAllRooms(roomsDataArr);
     mutateUploadAllShops(shopsDataArr);
     mutateUploadAllFlats(flatsDataArr);
@@ -42,13 +43,13 @@ const Uploader = () => {
         statusRentersUpload === "pending" ||
         statusAllRentingsUpload === "pending"
       }
-      onClick={() => uploadButtonClicked()}
-      className="flex items-center gap-[5px] rounded-[5px] border-[1px] border-sky-500 px-[5px] text-sky-500 transition-all duration-150 hover:bg-sky-100 active:bg-sky-200/70"
+      onClick={() => uploadButtonClicked(true)}
+      className="flex items-center gap-[5px] rounded-[5px] px-[5px] py-[5px] text-sky-500 transition-all duration-150 hover:bg-sky-100 smallTab:border-[1px] smallTab:border-sky-500 smallTab:py-0"
     >
       <span>
         <BsDatabaseUp />
       </span>
-      <span className="font-semibold">UPLOAD DATA</span>
+      <span className="hidden font-semibold smallTab:block">UPLOAD DATA</span>
     </button>
   );
 };

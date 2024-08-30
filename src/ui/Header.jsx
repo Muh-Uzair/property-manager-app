@@ -10,10 +10,12 @@ export function Header() {
   // FUNCTIONS
   // JSX//////////////////////////////////////////
   return (
-    <header className="flex justify-between bg-gray-100">
+    <header className="grid grid-cols-[auto_1fr_auto] items-center gap-[10px] bg-gray-100">
       <NameLogo />
 
-      <div className="flex items-center gap-[18px] pr-[20px]">
+      <div className="bg-green-300">nav links</div>
+
+      <div className="flex items-center gap-[5px] pr-[10px] smallTab:gap-[18px] smallTab:pr-[20px]">
         <Uploader />
         <UserDetails />
       </div>

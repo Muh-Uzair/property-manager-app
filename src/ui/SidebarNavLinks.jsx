@@ -16,11 +16,13 @@ export const SidebarNavLinks = ({ NavLinksArr }) => {
           <NavLink
             to={`${val.url}`}
             className={({ isActive }) =>
-              `duration-180 grid w-[100%] grid-cols-[25px_1fr] items-center pl-[12px] font-[500] text-white transition-all ease-in-out ${isActive ? "bg-sky-600" : "hover:bg-sky-700"}`
+              `duration-180 w-[100%] font-[500] text-white transition-all ease-in-out smallTab:flex smallTab:items-center smallTab:justify-center largeTab:grid largeTab:grid-cols-[25px_1fr] largeTab:items-center largeTab:pl-[12px] ${isActive ? "bg-sky-600" : "hover:bg-sky-700"}`
             }
           >
-            <span className="">{val.icon} </span>
-            <span>{val.label}</span>
+            <span className="smallTab:text-[20px] largeTab:text-base">
+              {val.icon}{" "}
+            </span>
+            <span className="hidden largeTab:block">{val.label}</span>
           </NavLink>
         </li>
       ))}
