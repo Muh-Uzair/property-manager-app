@@ -21,7 +21,7 @@ export default {
     screens: {
       smallTab: "640px",
       largeTab: "768px",
-      largeScreen: "1400px",
+      largeScreen: "1200px",
     },
   },
   plugins: [],
