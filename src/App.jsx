@@ -35,17 +35,17 @@ const router = createBrowserRouter(
           <Route path="expenses" element={<ExpensesPG />} />
           <Route path="admissions" element={<AdmissionsPG />} />
           {/* <Route path="property-details" element={<PropertyDetailsPG />} /> */}
-          <Route path="property-details" element={<DummyPG1 />} />
+          <Route path="propertyDetails" element={<DummyPG1 />} />
           <Route
-            path="property-details/:propertyType"
+            path="propertyDetails/:propertyType"
             element={<PropertyDetailsPG />}
           />
           <Route
-            path="property-details/:propertyType/:propertyId"
+            path="propertyDetails/:propertyType/:propertyId"
             element={<SinglePropertyDetails />}
           />
           <Route
-            path="property-details/:propertyType/editProperty"
+            path="propertyDetails/:propertyType/editProperty"
             element={<PropertyEdit />}
           />
           {/* <Route path="rentPayment" element={<RentPaymentPG />} /> */}

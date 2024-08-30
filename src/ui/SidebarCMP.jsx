@@ -1,5 +1,5 @@
 import { HiOutlineHome } from "react-icons/hi";
-import { SidebarNavLinks } from "./SidebarNavLinks";
+import { NavLinks } from "./SidebarNavLinks";
 import { HiOutlineBanknotes } from "react-icons/hi2";
 import { TbClipboardText } from "react-icons/tb";
 import { HiMiniArrowLeftOnRectangle } from "react-icons/hi2";
@@ -15,11 +15,11 @@ export default function Sidebar() {
   return (
     <>
       <nav className="mt-[50px] w-[100%]">
-        <SidebarNavLinks
+        <NavLinks
           NavLinksArr={[
             { url: "home", label: "Home", icon: <HiOutlineHome /> },
             {
-              url: "property-details",
+              url: "propertyDetails",
               label: "Property Details",
               icon: <TbClipboardText />,
             },

@@ -44,9 +44,9 @@ const Uploader = () => {
         statusAllRentingsUpload === "pending"
       }
       onClick={() => uploadButtonClicked(true)}
-      className="flex items-center gap-[5px] rounded-[5px] px-[5px] py-[5px] text-sky-500 transition-all duration-150 hover:bg-sky-100 smallTab:border-[1px] smallTab:border-sky-500 smallTab:py-0"
+      className="flex items-center gap-[5px] rounded-[5px] border-sky-500 px-[5px] py-[5px] text-sky-500 transition-all duration-150 active:bg-brand-color-300/40 smallTab:border-[1px] smallTab:py-0 smallTab:hover:bg-sky-100 smallTab:active:bg-brand-color-300/40"
     >
-      <span>
+      <span className="text-[24px] smallTab:text-base">
         <BsDatabaseUp />
       </span>
       <span className="hidden font-semibold smallTab:block">UPLOAD DATA</span>
