@@ -8,7 +8,7 @@ export default function RentPayment() {
 
   // JSX
   return (
-    <div className="grid grid-rows-[60px_1fr]">
+    <div className="grid grid-rows-[70px_1fr]">
       <RentPaymentHeader />
       <main>rent payment body</main>
     </div>
