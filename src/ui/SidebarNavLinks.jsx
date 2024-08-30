@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 
 // COMPONENT START///////////////////////////////////////////////
-export const SidebarNavLinks = ({ NavLinksArr }) => {
+export const NavLinks = ({ NavLinksArr }) => {
   // STATE & VARIABLES
   // FUNCTIONS
   // JSX//////////////////////////////////////////
@@ -32,12 +32,12 @@ export const SidebarNavLinks = ({ NavLinksArr }) => {
 };
 
 // Prop validation
-SidebarNavLinks.propTypes = {
+NavLinks.propTypes = {
   NavLinksArr: PropTypes.arrayOf(
     PropTypes.shape({
       url: PropTypes.string.isRequired,
-      label: PropTypes.string.isRequired,
-      icon: PropTypes.node.isRequired,
+      label: PropTypes.string,
+      icon: PropTypes.node,
     }),
   ).isRequired,
 };

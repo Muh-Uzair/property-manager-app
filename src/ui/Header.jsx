@@ -1,8 +1,15 @@
 import { NameLogo } from "./NameLogo";
-import { TbUser } from "react-icons/tb";
+import { TbClipboardText, TbUser } from "react-icons/tb";
 
 import Uploader from "../features/Uploader/Uploader";
 import { brandColor500 } from "../styles/globalStyles";
+import { HiOutlineHome } from "react-icons/hi";
+import NavigationLinks from "./NavigationLinks";
+import { MdAttachMoney } from "react-icons/md";
+import {
+  HiMiniArrowLeftOnRectangle,
+  HiOutlineBanknotes,
+} from "react-icons/hi2";
 
 // COMPONENT START///////////////////////////////////////////////
 export function Header() {
@@ -10,12 +17,40 @@ export function Header() {
   // FUNCTIONS
   // JSX//////////////////////////////////////////
   return (
-    <header className="grid grid-cols-[auto_1fr_auto] items-center gap-[10px] bg-gray-100">
+    <header className="grid grid-cols-[auto_1fr_auto] gap-[10px] bg-gray-100">
       <NameLogo />
 
-      <div className="bg-green-300">nav links</div>
+      <div className="flex items-center justify-center smallTab:hidden">
+        <nav>
+          <NavigationLinks
+            navigationLinksArr={[
+              { url: "home", label: "Home", icon: <HiOutlineHome /> },
+              {
+                url: "propertyDetails",
+                label: "Property Details",
+                icon: <TbClipboardText />,
+              },
+              {
+                url: "rentPayment",
+                label: "Rent Payment",
+                icon: <MdAttachMoney />,
+              },
+              {
+                url: "expenses",
+                label: "Expenses",
+                icon: <HiOutlineBanknotes />,
+              },
+              {
+                url: "admissions",
+                label: "Admissions",
+                icon: <HiMiniArrowLeftOnRectangle />,
+              },
+            ]}
+          />
+        </nav>
+      </div>
 
-      <div className="flex items-center gap-[5px] pr-[10px] smallTab:gap-[18px] smallTab:pr-[20px]">
+      <div className="smallTab: col-start-3 flex items-center gap-[5px] pr-[10px] smallTab:gap-[18px] smallTab:pr-[20px]">
         <Uploader />
         <UserDetails />
       </div>
@@ -24,6 +59,7 @@ export function Header() {
   // JSX//////////////////////////////////////////
 }
 
+// COMPONENT START
 const UserDetails = () => {
   return (
     <div
@@ -34,3 +70,4 @@ const UserDetails = () => {
     </div>
   );
 };
+// COMPONENT END
