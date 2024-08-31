@@ -1,15 +1,13 @@
 import { NameLogo } from "./NameLogo";
 import { TbClipboardText, TbUser } from "react-icons/tb";
+import { GiPayMoney } from "react-icons/gi";
 
 import Uploader from "../features/Uploader/Uploader";
 import { brandColor500 } from "../styles/globalStyles";
 import { HiOutlineHome } from "react-icons/hi";
 import NavigationLinks from "./NavigationLinks";
-import { MdAttachMoney } from "react-icons/md";
-import {
-  HiMiniArrowLeftOnRectangle,
-  HiOutlineBanknotes,
-} from "react-icons/hi2";
+import { HiMiniArrowLeftOnRectangle } from "react-icons/hi2";
+import { GiReceiveMoney } from "react-icons/gi";
 
 // COMPONENT START///////////////////////////////////////////////
 export function Header() {
@@ -33,12 +31,12 @@ export function Header() {
               {
                 url: "rentPayment",
                 label: "Rent Payment",
-                icon: <MdAttachMoney />,
+                icon: <GiReceiveMoney />,
               },
               {
                 url: "expenses",
                 label: "Expenses",
-                icon: <HiOutlineBanknotes />,
+                icon: <GiPayMoney />,
               },
               {
                 url: "admissions",

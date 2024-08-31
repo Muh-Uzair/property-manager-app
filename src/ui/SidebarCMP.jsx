@@ -1,10 +1,9 @@
 import { HiOutlineHome } from "react-icons/hi";
-// import { NavLinks } from "./SidebarNavLinks";
-import { HiOutlineBanknotes } from "react-icons/hi2";
 import { TbClipboardText } from "react-icons/tb";
 import { HiMiniArrowLeftOnRectangle } from "react-icons/hi2";
-import { MdAttachMoney } from "react-icons/md";
 import NavigationLinks from "./NavigationLinks";
+import { GiReceiveMoney } from "react-icons/gi";
+import { GiPayMoney } from "react-icons/gi";
 
 // COMPONENT START///////////////////////////////////////////////
 export default function Sidebar() {
@@ -27,12 +26,12 @@ export default function Sidebar() {
             {
               url: "rentPayment",
               label: "Rent Payment",
-              icon: <MdAttachMoney />,
+              icon: <GiReceiveMoney />,
             },
             {
               url: "expenses",
               label: "Expenses",
-              icon: <HiOutlineBanknotes />,
+              icon: <GiPayMoney />,
             },
             {
               url: "admissions",

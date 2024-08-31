@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const primary = "text-[30px] font-bold";
+const primary = "text-[20px] font-bold smallTab:text-[30px]";
 const medium_large = "text-[18px]";
 const medium = "text-[15px] font-semibold";
 // COMPONENT START
