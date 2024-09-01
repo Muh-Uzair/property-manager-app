@@ -9,8 +9,9 @@ export default function RentPayment() {
 
   // JSX
   return (
-    <div className="grid-[auto_1fr] grid gap-[20px]">
+    <div className="grid h-[100%] grid-rows-[auto_1fr] gap-[10px]">
       <RentPaymentHeader />
+
       <RentPaymentBody />
     </div>
   );
