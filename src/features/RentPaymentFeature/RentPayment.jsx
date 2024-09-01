@@ -1,3 +1,4 @@
+import RentPaymentBody from "./RentPaymentBody/RentPaymentBody";
 import RentPaymentHeader from "./RentPaymentHeader/RentPaymentHeader";
 
 // COMPONENT START
@@ -8,9 +9,9 @@ export default function RentPayment() {
 
   // JSX
   return (
-    <div className="">
+    <div className="grid-[auto_1fr] grid gap-[20px]">
       <RentPaymentHeader />
-      <main>rent payment body</main>
+      <RentPaymentBody />
     </div>
   );
   // JSX

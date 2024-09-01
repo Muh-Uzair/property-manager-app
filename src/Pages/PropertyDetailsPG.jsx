@@ -1,5 +1,5 @@
 import PropertyDetailsTable from "../features/ShowPropertyDetails/PropertyDetailsTable";
-import PropertyChangeButtons from "../features/ShowPropertyDetails/PropertyChangeButtons";
+import PropertyChangeButtons from "../ui/PropertyChangeButtons";
 import { useParams } from "react-router-dom";
 import Heading from "../ui/Heading";
 

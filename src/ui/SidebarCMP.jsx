@@ -2,8 +2,8 @@ import { HiOutlineHome } from "react-icons/hi";
 import { TbClipboardText } from "react-icons/tb";
 import { HiMiniArrowLeftOnRectangle } from "react-icons/hi2";
 import NavigationLinks from "./NavigationLinks";
-import { GiReceiveMoney } from "react-icons/gi";
-import { GiPayMoney } from "react-icons/gi";
+import { AiOutlineDollarCircle } from "react-icons/ai";
+import { BiLineChartDown } from "react-icons/bi";
 
 // COMPONENT START///////////////////////////////////////////////
 export default function Sidebar() {
@@ -26,12 +26,12 @@ export default function Sidebar() {
             {
               url: "rentPayment",
               label: "Rent Payment",
-              icon: <GiReceiveMoney />,
+              icon: <AiOutlineDollarCircle />,
             },
             {
               url: "expenses",
               label: "Expenses",
-              icon: <GiPayMoney />,
+              icon: <BiLineChartDown />,
             },
             {
               url: "admissions",

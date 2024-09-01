@@ -47,7 +47,10 @@ const router = createBrowserRouter(
             path="propertyDetails/:propertyType/editProperty"
             element={<PropertyEdit />}
           />
-          <Route path="rentPayment" element={<RentPaymentPG />} />
+          <Route path="rentPayment" element={<RentPaymentPG />}>
+            {" "}
+            <Route path=":propertyType" element={<RentPaymentPG />} />
+          </Route>
 
           <Route path="*" element={<PageNotFound />} />
         </Route>
