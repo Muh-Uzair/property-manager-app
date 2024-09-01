@@ -67,3 +67,15 @@ export const getFlatNameOnId = async (flatId) => {
 
   return data;
 };
+
+// FUNCTION
+export const getAllOccupiedFlats = async () => {
+  let { data, error } = await supabase
+    .from("flats")
+    .select("*")
+    .eq("status", "occupied");
+
+  if (error) throw new Error("Unable to get all occupied flats");
+
+  return data;
+};
