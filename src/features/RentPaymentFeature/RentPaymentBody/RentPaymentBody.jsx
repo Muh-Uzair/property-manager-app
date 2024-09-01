@@ -1,10 +1,9 @@
 import Accordion from "@mui/material/Accordion";
-import AccordionActions from "@mui/material/AccordionActions";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
-import Button from "@mui/material/Button";
 import { useGetAllOccupiedProperty } from "./useGetAllOccupiedProperty";
 import LoadingSpinner from "../../../ui/LoadingSpinner";
+import { useState } from "react";
 
 // COMPONENT START
 export default function RentPaymentBody() {
@@ -12,8 +11,11 @@ export default function RentPaymentBody() {
   const { dataOccupiedProperty = {}, statusOccupiedProperty } =
     useGetAllOccupiedProperty();
 
-  console.log(statusOccupiedProperty);
-  console.log(dataOccupiedProperty);
+  const [expanded, setExpanded] = useState(false);
+
+  const handleChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+  };
 
   // FUNCTIONS
 
@@ -25,54 +27,38 @@ export default function RentPaymentBody() {
       </div>
     );
   }
-  if (statusOccupiedProperty === "success") {
+  if (
+    statusOccupiedProperty === "success" &&
+    Object.entries(dataOccupiedProperty).length > 0
+  ) {
     return (
-      <main>
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<span>v</span>}
-            aria-controls="panel1-content"
-            id="panel1-header"
-          >
-            Accordion 1
-          </AccordionSummary>
-          <AccordionDetails>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
-          </AccordionDetails>
-        </Accordion>
-
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<span>v</span>}
-            aria-controls="panel2-content"
-            id="panel2-header"
-          >
-            Accordion 2
-          </AccordionSummary>
-          <AccordionDetails>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
-          </AccordionDetails>
-        </Accordion>
-
-        <Accordion defaultExpanded>
-          <AccordionSummary
-            expandIcon={<span>v</span>}
-            aria-controls="panel3-content"
-            id="panel3-header"
-          >
-            Accordion Actions
-          </AccordionSummary>
-          <AccordionDetails>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
-          </AccordionDetails>
-          <AccordionActions>
-            <Button>Cancel</Button>
-            <Button>Agree</Button>
-          </AccordionActions>
-        </Accordion>
+      <main className="bg-green-400">
+        <ul className="">
+          {dataOccupiedProperty.map((val, i) => (
+            <li key={i} className="mb-[3px] border border-brand-color-500">
+              <Accordion
+                expanded={expanded === val.id}
+                onChange={handleChange(val.id)}
+              >
+                <AccordionSummary
+                  expandIcon={<span>v</span>}
+                  aria-controls="panel1bh-content"
+                  id={val.id}
+                >
+                  <span>{val.id} |</span>
+                  <span>
+                    {val.flat_number ?? val.room_number ?? val.shop_number}
+                  </span>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <span>
+                    {val.flat_number ?? val.room_number ?? val.shop_number}
+                  </span>
+                </AccordionDetails>
+              </Accordion>
+            </li>
+          ))}
+        </ul>
       </main>
     );
   }

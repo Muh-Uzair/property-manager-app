@@ -5,7 +5,8 @@ import { getAllOccupiedRooms } from "../../../Services/apiRooms";
 import { getAllOccupiedShops } from "../../../Services/apiShops";
 
 export function useGetAllOccupiedProperty() {
-  const { propertyType } = useParams();
+  let { propertyType } = useParams();
+  if (!propertyType) propertyType = "flats";
 
   const { data: dataOccupiedProperty, status: statusOccupiedProperty } =
     useQuery({
