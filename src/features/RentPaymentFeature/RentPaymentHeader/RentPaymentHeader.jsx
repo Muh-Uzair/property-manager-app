@@ -19,7 +19,10 @@ export default function RentPaymentHeader() {
     <header>
       {/* heading for phone smallTab largeTab */}
       <div className="mb-[10px] flex items-center justify-between largeScreen:hidden">
-        <Heading type="primary">Rent Payment : {propertyType}</Heading>
+        <Heading type="primary">
+          Rent Payment :{" "}
+          {`${propertyType?.at(0).toUpperCase()}${propertyType?.slice(1)}`}
+        </Heading>
         <PropertyChangeBtns
           btnsUrlArr={[
             { label: "flats", url: "rentPayment/flats" },
