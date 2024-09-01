@@ -21,7 +21,7 @@ export default function RentPaymentHeader() {
       <div className="mb-[10px] flex items-center justify-between largeScreen:hidden">
         <Heading type="primary">
           Rent Payment :{" "}
-          {`${propertyType?.at(0).toUpperCase()}${propertyType?.slice(1)}`}
+          {`${propertyType?.at(0).toUpperCase()}${propertyType?.slice(-3)}`}
         </Heading>
         <PropertyChangeBtns
           btnsUrlArr={[
