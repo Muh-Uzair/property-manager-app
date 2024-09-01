@@ -32,8 +32,8 @@ export default function RentPaymentBody() {
     Object.entries(dataOccupiedProperty).length > 0
   ) {
     return (
-      <main className="bg-green-400">
-        <ul className="">
+      <main className="max-h-[500px] min-h-[300px] overflow-y-scroll bg-green-400 pb-[10px] pr-[10px] pt-[10px]">
+        <ul>
           {dataOccupiedProperty.map((val, i) => (
             <li key={i} className="mb-[3px] border border-brand-color-500">
               <Accordion
@@ -45,15 +45,44 @@ export default function RentPaymentBody() {
                   aria-controls="panel1bh-content"
                   id={val.id}
                 >
-                  <span>{val.id} |</span>
-                  <span>
-                    {val.flat_number ?? val.room_number ?? val.shop_number}
-                  </span>
+                  <div className="flex flex-col">
+                    <span>a</span>
+                    <span>a</span>
+                    <span>a</span>
+                    <span>
+                      {val.flat_number ?? val.room_number ?? val.shop_number}
+                    </span>
+                  </div>
                 </AccordionSummary>
                 <AccordionDetails>
                   <span>
                     {val.flat_number ?? val.room_number ?? val.shop_number}
                   </span>
+                  <br></br>
+                  <span>
+                    {val.flat_number ?? val.room_number ?? val.shop_number}
+                  </span>
+                  <br></br>
+                  <span>
+                    {val.flat_number ?? val.room_number ?? val.shop_number}
+                  </span>
+                  <br></br>
+                  <span>
+                    {val.flat_number ?? val.room_number ?? val.shop_number}
+                  </span>
+                  <br></br>
+                  <span>
+                    {val.flat_number ?? val.room_number ?? val.shop_number}
+                  </span>
+                  <br></br>
+                  <span>
+                    {val.flat_number ?? val.room_number ?? val.shop_number}
+                  </span>
+                  <br></br>
+                  <span>
+                    {val.flat_number ?? val.room_number ?? val.shop_number}
+                  </span>
+                  <br></br>
                 </AccordionDetails>
               </Accordion>
             </li>
@@ -66,3 +95,40 @@ export default function RentPaymentBody() {
   // JSX
 }
 // COMPONENT END
+
+// // COMPONENT START
+// export default function RentPaymentBody() {
+//   // VARIABLES
+//   const { dataOccupiedProperty = {}, statusOccupiedProperty } =
+//     useGetAllOccupiedProperty();
+
+//   // FUNCTIONS
+
+//   // JSX
+//   if (statusOccupiedProperty === "pending") {
+//     return (
+//       <div className="flex h-full w-[100%] items-center justify-center">
+//         <LoadingSpinner />
+//       </div>
+//     );
+//   }
+//   if (
+//     statusOccupiedProperty === "success" &&
+//     Object.entries(dataOccupiedProperty).length > 0
+//   ) {
+//     return (
+//       <main className="h-[100%] overflow-y-auto bg-green-400 pb-[10px] pr-[10px] pt-[10px]">
+//         <ul>
+//           {dataOccupiedProperty.map((val, i) => (
+//             <li key={i}>
+//               {val.flat_number ?? val.room_number ?? val.shop_number}
+//             </li>
+//           ))}
+//         </ul>
+//       </main>
+//     );
+//   }
+
+//   // JSX
+// }
+// // COMPONENT END
