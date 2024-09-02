@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { getAllOccupiedFlats } from "../../../Services/apiFlats";
 import { getAllOccupiedRooms } from "../../../Services/apiRooms";
 import { getAllOccupiedShops } from "../../../Services/apiShops";
+import { getRenterOnID } from "../../../Services/apiRenters";
 
 export function useGetAllOccupiedProperty() {
   let { propertyType } = useParams();
@@ -27,5 +28,30 @@ export function useGetAllOccupiedProperty() {
       queryKey: ["occupiedProperty", `${propertyType}`],
     });
 
-  return { dataOccupiedProperty, statusOccupiedProperty };
+  // if dataOccupiedProperty has arrived than get the tenant name
+
+  const { data: dataTenantNamesArr, status: statusTenantNamesArr } = useQuery({
+    queryFn: async () => {
+      if (dataOccupiedProperty.length > 0) {
+        let tenantNamesArr = [];
+        for (let i = 0; i < dataOccupiedProperty.length; i++) {
+          let tenantName = "";
+          tenantName = await getRenterOnID(dataOccupiedProperty[i].renter_id);
+          if (tenantName) {
+            tenantNamesArr.push(tenantName);
+          }
+        }
+
+        return tenantNamesArr;
+      }
+    },
+    queryKey: [propertyType, "tenantNames"],
+  });
+
+  return {
+    dataOccupiedProperty,
+    statusOccupiedProperty,
+    dataTenantNamesArr,
+    statusTenantNamesArr,
+  };
 }

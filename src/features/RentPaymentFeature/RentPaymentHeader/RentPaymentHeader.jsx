@@ -10,7 +10,8 @@ const stylesSearchFilter =
 // COMPONENT START
 export default function RentPaymentHeader() {
   // VARIABLES
-  const { propertyType } = useParams();
+  let { propertyType } = useParams();
+  if (!propertyType) propertyType = "flats";
 
   // FUNCTIONS
 
@@ -21,7 +22,9 @@ export default function RentPaymentHeader() {
       <div className="mb-[10px] flex items-center justify-between largeScreen:hidden">
         <Heading type="primary">
           Rent Payment :{" "}
-          {`${propertyType?.at(0).toUpperCase()}${propertyType?.slice(-3)}`}
+          {propertyType
+            ? `${propertyType?.at(0).toUpperCase()}${propertyType?.slice(1)}`
+            : "Flats"}
         </Heading>
         <PropertyChangeBtns
           btnsUrlArr={[
