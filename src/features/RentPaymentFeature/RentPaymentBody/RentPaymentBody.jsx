@@ -11,6 +11,8 @@ export default function RentPaymentBody() {
   const { dataOccupiedProperty = {}, statusOccupiedProperty } =
     useGetAllOccupiedProperty();
 
+  console.log(window);
+
   const [expanded, setExpanded] = useState(false);
 
   const handleChange = (panel) => (event, isExpanded) => {
@@ -32,7 +34,7 @@ export default function RentPaymentBody() {
     Object.entries(dataOccupiedProperty).length > 0
   ) {
     return (
-      <main className="max-h-[500px] min-h-[300px] overflow-y-scroll bg-green-400 pb-[10px] pr-[10px] pt-[10px]">
+      <main className="overflow-y-scroll bg-green-400 pb-[10px] pr-[10px] pt-[10px] smallTab:h-[760px] largeTab:h-[1000px] largeScreen:h-[750px]">
         <ul>
           {dataOccupiedProperty.map((val, i) => (
             <li key={i} className="mb-[3px] border border-brand-color-500">
