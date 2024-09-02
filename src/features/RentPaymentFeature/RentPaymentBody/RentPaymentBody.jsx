@@ -3,7 +3,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import { useGetAllOccupiedProperty } from "./useGetAllOccupiedProperty";
 import LoadingSpinner from "../../../ui/LoadingSpinner";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // COMPONENT START
 export default function RentPaymentBody() {
@@ -11,20 +11,44 @@ export default function RentPaymentBody() {
   const { dataOccupiedProperty = {}, statusOccupiedProperty } =
     useGetAllOccupiedProperty();
 
-  console.log(window);
-
-  const [expanded, setExpanded] = useState(false);
-
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
 
-  // FUNCTIONS
+  const [expanded, setExpanded] = useState(false);
+
+  const [screenHeight, setScreenHeight] = useState(window.innerHeight); // Now screenHeight is a number
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+  // FUNCTION // to set the screen width every time the the screen width changes
+  useEffect(() => {
+    // actual function that updates the screen width
+    function updateScreenWidth() {
+      const newScreenWidth = window.innerWidth;
+      setScreenWidth(newScreenWidth);
+      setScreenHeight(window.innerHeight);
+    }
+
+    // event listening for the screen width
+    window.addEventListener("resize", updateScreenWidth);
+  }, [screenWidth]);
+
+  // FUNCTION // screen width updates , update the screen height as well ;
+  useEffect(() => {
+    function updateScreenHeight() {
+      setScreenHeight(window.innerHeight);
+    }
+    if (screenHeight !== window.innerHeight) {
+      updateScreenHeight();
+    } else {
+      return;
+    }
+  }, [screenWidth, screenHeight]);
 
   // JSX
   if (statusOccupiedProperty === "pending") {
     return (
-      <div className="flex h-full w-[100%] items-center justify-center">
+      <div className="flex h-full w-full items-center justify-center">
         <LoadingSpinner />
       </div>
     );
@@ -34,10 +58,15 @@ export default function RentPaymentBody() {
     Object.entries(dataOccupiedProperty).length > 0
   ) {
     return (
-      <main className="overflow-y-scroll bg-green-400 pb-[10px] pr-[10px] pt-[10px] smallTab:h-[760px] largeTab:h-[1000px] largeScreen:h-[750px]">
+      <main
+        style={{
+          height: `calc(${screenHeight}px - 200px)`, // Inline style with dynamic calculation
+        }}
+        className="overflow-y-scroll bg-green-400 pb-2.5 pr-2.5 pt-2.5"
+      >
         <ul>
           {dataOccupiedProperty.map((val, i) => (
-            <li key={i} className="mb-[3px] border border-brand-color-500">
+            <li key={i} className="mb-0.75 border border-brand-color-500">
               <Accordion
                 expanded={expanded === val.id}
                 onChange={handleChange(val.id)}
@@ -60,31 +89,7 @@ export default function RentPaymentBody() {
                   <span>
                     {val.flat_number ?? val.room_number ?? val.shop_number}
                   </span>
-                  <br></br>
-                  <span>
-                    {val.flat_number ?? val.room_number ?? val.shop_number}
-                  </span>
-                  <br></br>
-                  <span>
-                    {val.flat_number ?? val.room_number ?? val.shop_number}
-                  </span>
-                  <br></br>
-                  <span>
-                    {val.flat_number ?? val.room_number ?? val.shop_number}
-                  </span>
-                  <br></br>
-                  <span>
-                    {val.flat_number ?? val.room_number ?? val.shop_number}
-                  </span>
-                  <br></br>
-                  <span>
-                    {val.flat_number ?? val.room_number ?? val.shop_number}
-                  </span>
-                  <br></br>
-                  <span>
-                    {val.flat_number ?? val.room_number ?? val.shop_number}
-                  </span>
-                  <br></br>
+                  {/* Other elements */}
                 </AccordionDetails>
               </Accordion>
             </li>
@@ -96,41 +101,3 @@ export default function RentPaymentBody() {
 
   // JSX
 }
-// COMPONENT END
-
-// // COMPONENT START
-// export default function RentPaymentBody() {
-//   // VARIABLES
-//   const { dataOccupiedProperty = {}, statusOccupiedProperty } =
-//     useGetAllOccupiedProperty();
-
-//   // FUNCTIONS
-
-//   // JSX
-//   if (statusOccupiedProperty === "pending") {
-//     return (
-//       <div className="flex h-full w-[100%] items-center justify-center">
-//         <LoadingSpinner />
-//       </div>
-//     );
-//   }
-//   if (
-//     statusOccupiedProperty === "success" &&
-//     Object.entries(dataOccupiedProperty).length > 0
-//   ) {
-//     return (
-//       <main className="h-[100%] overflow-y-auto bg-green-400 pb-[10px] pr-[10px] pt-[10px]">
-//         <ul>
-//           {dataOccupiedProperty.map((val, i) => (
-//             <li key={i}>
-//               {val.flat_number ?? val.room_number ?? val.shop_number}
-//             </li>
-//           ))}
-//         </ul>
-//       </main>
-//     );
-//   }
-
-//   // JSX
-// }
-// // COMPONENT END
