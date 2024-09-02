@@ -1,15 +1,22 @@
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
-import { useGetAllOccupiedProperty } from "./useGetAllOccupiedProperty";
-import LoadingSpinner from "../../../ui/LoadingSpinner";
 import { useEffect, useState } from "react";
+import { MdArrowDropDown } from "react-icons/md";
 
+import LoadingSpinner from "../../../ui/LoadingSpinner";
+import { useGetAllOccupiedProperty } from "./useGetAllOccupiedProperty";
+import { brandColor500 } from "../../../styles/globalStyles";
+import TableListRow from "./TableListRow";
 // COMPONENT START
 export default function RentPaymentBody() {
   // VARIABLES
-  const { dataOccupiedProperty = {}, statusOccupiedProperty } =
-    useGetAllOccupiedProperty();
+  const {
+    dataOccupiedProperty = [],
+    statusOccupiedProperty,
+    dataTenantNamesArr = [],
+    statusTenantNamesArr,
+  } = useGetAllOccupiedProperty();
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
@@ -19,6 +26,8 @@ export default function RentPaymentBody() {
 
   const [screenHeight, setScreenHeight] = useState(window.innerHeight); // Now screenHeight is a number
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+  // FUNCTIONS
 
   // FUNCTION // to set the screen width every time the the screen width changes
   useEffect(() => {
@@ -46,7 +55,10 @@ export default function RentPaymentBody() {
   }, [screenWidth, screenHeight]);
 
   // JSX
-  if (statusOccupiedProperty === "pending") {
+  if (
+    statusOccupiedProperty === "pending" ||
+    statusTenantNamesArr === "pending"
+  ) {
     return (
       <div className="flex h-full w-full items-center justify-center">
         <LoadingSpinner />
@@ -55,35 +67,35 @@ export default function RentPaymentBody() {
   }
   if (
     statusOccupiedProperty === "success" &&
-    Object.entries(dataOccupiedProperty).length > 0
+    dataOccupiedProperty.length > 0 &&
+    statusTenantNamesArr === "success" &&
+    dataTenantNamesArr.length > 0
   ) {
     return (
       <main
         style={{
           height: `calc(${screenHeight}px - 200px)`, // Inline style with dynamic calculation
         }}
-        className="overflow-y-scroll bg-green-400 pb-2.5 pr-2.5 pt-2.5"
+        className="overflow-y-scroll pb-2.5 pr-2.5 pt-2.5"
       >
-        <ul>
+        <ul className="flex flex-col gap-[8px]">
           {dataOccupiedProperty.map((val, i) => (
-            <li key={i} className="mb-0.75 border border-brand-color-500">
+            <li key={i} className="rounded-[5px]">
               <Accordion
                 expanded={expanded === val.id}
                 onChange={handleChange(val.id)}
               >
                 <AccordionSummary
-                  expandIcon={<span>v</span>}
+                  expandIcon={
+                    <MdArrowDropDown size={"25px"} color={brandColor500} />
+                  }
                   aria-controls="panel1bh-content"
                   id={val.id}
                 >
-                  <div className="flex flex-col">
-                    <span>a</span>
-                    <span>a</span>
-                    <span>a</span>
-                    <span>
-                      {val.flat_number ?? val.room_number ?? val.shop_number}
-                    </span>
-                  </div>
+                  <TableListRow
+                    propertyDetails={val ?? {}}
+                    tenantName={dataTenantNamesArr[i]}
+                  />
                 </AccordionSummary>
                 <AccordionDetails>
                   <span>
