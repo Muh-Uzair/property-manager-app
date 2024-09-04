@@ -21,7 +21,7 @@ import PropertyEdit from "./features/ShowPropertyDetails/PropertyEdit";
 import RentPaymentPG from "./Pages/RentPaymentPG";
 import DummyPG1 from "./Pages/DummyPG1";
 
-// nav links in header and side bar
+// rent payment accordion header refactored
 
 const router = createBrowserRouter(
   createRoutesFromElements(
