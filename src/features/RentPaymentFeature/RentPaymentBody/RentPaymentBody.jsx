@@ -6,31 +6,13 @@ import { MdArrowDropDown } from "react-icons/md";
 import { useParams } from "react-router-dom";
 
 import LoadingSpinner from "../../../ui/LoadingSpinner";
-import TableListRow from "./TableListRow";
+// import TableListRow from "./TableListRow";
 
 import { useGetAllOccupiedProperty } from "./useGetAllOccupiedProperty";
 import { brandColor500 } from "../../../styles/globalStyles";
-
-function prepareArray(dataOccupiedProperty, statusTenantNamesArr) {
-  let newArr = [];
-
-  for (let i = 0; i < dataOccupiedProperty.length; i++) {
-    let newInnerArr = [];
-
-    newInnerArr.push(
-      dataOccupiedProperty[i].flat_number ??
-        dataOccupiedProperty[i].shop_number ??
-        dataOccupiedProperty[i].room_number,
-    );
-    newInnerArr.push(statusTenantNamesArr[i]);
-    newInnerArr.push(dataOccupiedProperty[i].rent);
-    newInnerArr.push(dataOccupiedProperty[i].floor);
-
-    newArr.push(newInnerArr);
-  }
-
-  return newArr;
-}
+import TableListRow from "./TableListRow";
+import TableRowItem from "../../../ui/TableRowItem";
+import Heading from "../../../ui/Heading";
 
 // COMPONENT START
 export default function RentPaymentBody() {
@@ -102,47 +84,47 @@ export default function RentPaymentBody() {
         style={{
           height: `calc(${screenHeight}px - 200px)`, // Inline style with dynamic calculation
         }}
-        className="overflow-y-scroll pb-2.5 pr-2.5 pt-2.5"
+        className="overflow-y-auto pb-2.5 pr-2.5 pt-2.5"
       >
         <ul className="flex flex-col gap-[8px]">
           {dataOccupiedProperty.map((val, i) => (
-            <li key={i} className="rounded-[5px]">
+            <li key={i} className="rounded-[5px] text-[11px] uppercase">
               <Accordion
                 expanded={expanded === val.id}
                 onChange={handleChange(val.id)}
               >
+                {/* Accordion Header */}
                 <AccordionSummary
                   expandIcon={
                     <MdArrowDropDown size={"25px"} color={brandColor500} />
                   }
-                  aria-controls="panel1bh-content"
+                  aria-controls={`${val.id} content`}
                   id={val.id}
                 >
-                  <TableListRow
-                    totalColsArr={"1fr_1fr_1fr_1fr"}
-                    itemLabelArr={[
-                      `${propertyType.slice(0, -1) ?? "flat"}`,
-                      "tenant",
-                      "rent",
-                      "floor",
-                    ]}
-                    itemTypeArr={[
-                      "labelValuePair",
-                      "labelValuePair",
-                      "labelValuePair",
-                      "labelValuePair",
-                    ]}
-                    dataArr={prepareArray(
-                      dataOccupiedProperty,
-                      dataTenantNamesArr,
-                    )}
-                  />
+                  <TableListRow colSizes={"60px 70px 90px 1fr"}>
+                    <TableRowItem>
+                      <Heading type="medium">{`${propertyType.slice(0, -1)}`}</Heading>
+                      <span>
+                        {val.flat_number ?? val.shop_number ?? val.room_number}
+                      </span>
+                    </TableRowItem>
+                    <TableRowItem>
+                      <Heading type="medium">{`rent `}</Heading>
+                      <span>{val.rent}</span>
+                    </TableRowItem>
+                    <TableRowItem>
+                      <Heading type="medium">{`floor `}</Heading>
+                      <span>{val.floor}</span>
+                    </TableRowItem>
+                    <TableRowItem>
+                      <Heading type="medium">{`tenant `}</Heading>
+                      <span>{dataTenantNamesArr[i]}</span>
+                    </TableRowItem>
+                  </TableListRow>
                 </AccordionSummary>
+                {/* Accordion Body */}
                 <AccordionDetails>
-                  <span>
-                    {val.flat_number ?? val.room_number ?? val.shop_number}
-                  </span>
-                  {/* Other elements */}
+                  <span>Accordion Body</span>
                 </AccordionDetails>
               </Accordion>
             </li>
