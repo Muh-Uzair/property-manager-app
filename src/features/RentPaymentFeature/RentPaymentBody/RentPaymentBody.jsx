@@ -1,38 +1,25 @@
 import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import { useEffect, useState } from "react";
-import { MdArrowDropDown } from "react-icons/md";
-import { useParams } from "react-router-dom";
-
 import LoadingSpinner from "../../../ui/LoadingSpinner";
-// import TableListRow from "./TableListRow";
+import RentPayAccordionHeader from "./RentPayAccordionHeader";
 
 import { useGetAllOccupiedProperty } from "./useGetAllOccupiedProperty";
-import { brandColor500 } from "../../../styles/globalStyles";
-import TableListRow from "./TableListRow";
-import TableRowItem from "../../../ui/TableRowItem";
-// import Heading from "../../../ui/Heading";
 
 // COMPONENT START
 export default function RentPaymentBody() {
   // VARIABLES
   const {
     dataOccupiedProperty = [],
-    statusOccupiedProperty,
     dataTenantNamesArr = [],
     statusTenantNamesArr,
   } = useGetAllOccupiedProperty();
-
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
 
-  const { propertyType = "flats" } = useParams();
-
   const [expanded, setExpanded] = useState(false);
-
-  const [screenHeight, setScreenHeight] = useState(window.innerHeight); // Now screenHeight is a number
+  const [screenHeight, setScreenHeight] = useState(window.innerHeight);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   // FUNCTIONS
@@ -63,22 +50,16 @@ export default function RentPaymentBody() {
   }, [screenWidth, screenHeight]);
 
   // JSX
-  if (
-    statusOccupiedProperty === "pending" ||
-    statusTenantNamesArr === "pending"
-  ) {
+
+  if (statusTenantNamesArr === "pending") {
     return (
       <div className="flex h-full w-full items-center justify-center">
         <LoadingSpinner />
       </div>
     );
   }
-  if (
-    statusOccupiedProperty === "success" &&
-    dataOccupiedProperty.length > 0 &&
-    statusTenantNamesArr === "success" &&
-    dataTenantNamesArr.length > 0
-  ) {
+
+  if (dataTenantNamesArr.length > 0) {
     return (
       <main
         style={{
@@ -87,45 +68,18 @@ export default function RentPaymentBody() {
         className="overflow-y-auto pb-2.5 pr-2.5 pt-2.5"
       >
         <ul className="flex flex-col gap-[10px]">
-          {dataOccupiedProperty.map((val, i) => (
+          {dataOccupiedProperty.map((occupiedProperty, i) => (
             <li key={i} className="rounded-[5px] text-[11px] uppercase">
               <Accordion
-                expanded={expanded === val.id}
-                onChange={handleChange(val.id)}
+                expanded={expanded === occupiedProperty.id}
+                onChange={handleChange(occupiedProperty.id)}
               >
                 {/* Accordion Header */}
-                <AccordionSummary
-                  expandIcon={
-                    <MdArrowDropDown size={"25px"} color={brandColor500} />
-                  }
-                  aria-controls={`${val.id} content`}
-                  id={val.id}
-                >
-                  <TableListRow colSizes={"1fr 1fr 1fr 1fr"}>
-                    <TableRowItem
-                      type="labelValuePair"
-                      itemLabel={propertyType.slice(0, -1)}
-                      itemValue={
-                        val.flat_number ?? val.shop_number ?? val.room_number
-                      }
-                    />
-                    <TableRowItem
-                      type="labelValuePair"
-                      itemLabel={`rent `}
-                      itemValue={val.rent}
-                    />
-                    <TableRowItem
-                      type="labelValuePair"
-                      itemLabel={`floor `}
-                      itemValue={val.floor}
-                    />
-                    <TableRowItem
-                      type="labelValuePair"
-                      itemLabel={`tenant `}
-                      itemValue={dataTenantNamesArr[i]}
-                    />
-                  </TableListRow>
-                </AccordionSummary>
+                <RentPayAccordionHeader
+                  dataTenantNamesArr={dataTenantNamesArr}
+                  occupiedProperty={occupiedProperty}
+                  index={i}
+                />
                 {/* Accordion Body */}
                 <AccordionDetails>
                   <span>Accordion Body</span>
