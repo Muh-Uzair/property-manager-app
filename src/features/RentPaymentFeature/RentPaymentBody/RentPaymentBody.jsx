@@ -3,11 +3,35 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import { useEffect, useState } from "react";
 import { MdArrowDropDown } from "react-icons/md";
+import { useParams } from "react-router-dom";
 
 import LoadingSpinner from "../../../ui/LoadingSpinner";
+import TableListRow from "./TableListRow";
+
 import { useGetAllOccupiedProperty } from "./useGetAllOccupiedProperty";
 import { brandColor500 } from "../../../styles/globalStyles";
-import TableListRow from "./TableListRow";
+
+function prepareArray(dataOccupiedProperty, statusTenantNamesArr) {
+  let newArr = [];
+
+  for (let i = 0; i < dataOccupiedProperty.length; i++) {
+    let newInnerArr = [];
+
+    newInnerArr.push(
+      dataOccupiedProperty[i].flat_number ??
+        dataOccupiedProperty[i].shop_number ??
+        dataOccupiedProperty[i].room_number,
+    );
+    newInnerArr.push(statusTenantNamesArr[i]);
+    newInnerArr.push(dataOccupiedProperty[i].rent);
+    newInnerArr.push(dataOccupiedProperty[i].floor);
+
+    newArr.push(newInnerArr);
+  }
+
+  return newArr;
+}
+
 // COMPONENT START
 export default function RentPaymentBody() {
   // VARIABLES
@@ -21,6 +45,8 @@ export default function RentPaymentBody() {
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
+
+  const { propertyType = "flats" } = useParams();
 
   const [expanded, setExpanded] = useState(false);
 
@@ -93,8 +119,23 @@ export default function RentPaymentBody() {
                   id={val.id}
                 >
                   <TableListRow
-                    propertyDetails={val ?? {}}
-                    tenantName={dataTenantNamesArr[i]}
+                    totalColsArr={"1fr_1fr_1fr_1fr"}
+                    itemLabelArr={[
+                      `${propertyType.slice(0, -1) ?? "flat"}`,
+                      "tenant",
+                      "rent",
+                      "floor",
+                    ]}
+                    itemTypeArr={[
+                      "labelValuePair",
+                      "labelValuePair",
+                      "labelValuePair",
+                      "labelValuePair",
+                    ]}
+                    dataArr={prepareArray(
+                      dataOccupiedProperty,
+                      dataTenantNamesArr,
+                    )}
                   />
                 </AccordionSummary>
                 <AccordionDetails>
