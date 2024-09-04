@@ -12,7 +12,7 @@ import { useGetAllOccupiedProperty } from "./useGetAllOccupiedProperty";
 import { brandColor500 } from "../../../styles/globalStyles";
 import TableListRow from "./TableListRow";
 import TableRowItem from "../../../ui/TableRowItem";
-import Heading from "../../../ui/Heading";
+// import Heading from "../../../ui/Heading";
 
 // COMPONENT START
 export default function RentPaymentBody() {
@@ -86,7 +86,7 @@ export default function RentPaymentBody() {
         }}
         className="overflow-y-auto pb-2.5 pr-2.5 pt-2.5"
       >
-        <ul className="flex flex-col gap-[8px]">
+        <ul className="flex flex-col gap-[10px]">
           {dataOccupiedProperty.map((val, i) => (
             <li key={i} className="rounded-[5px] text-[11px] uppercase">
               <Accordion
@@ -101,25 +101,29 @@ export default function RentPaymentBody() {
                   aria-controls={`${val.id} content`}
                   id={val.id}
                 >
-                  <TableListRow colSizes={"60px 70px 90px 1fr"}>
-                    <TableRowItem>
-                      <Heading type="medium">{`${propertyType.slice(0, -1)}`}</Heading>
-                      <span>
-                        {val.flat_number ?? val.shop_number ?? val.room_number}
-                      </span>
-                    </TableRowItem>
-                    <TableRowItem>
-                      <Heading type="medium">{`rent `}</Heading>
-                      <span>{val.rent}</span>
-                    </TableRowItem>
-                    <TableRowItem>
-                      <Heading type="medium">{`floor `}</Heading>
-                      <span>{val.floor}</span>
-                    </TableRowItem>
-                    <TableRowItem>
-                      <Heading type="medium">{`tenant `}</Heading>
-                      <span>{dataTenantNamesArr[i]}</span>
-                    </TableRowItem>
+                  <TableListRow colSizes={"1fr 1fr 1fr 1fr"}>
+                    <TableRowItem
+                      type="labelValuePair"
+                      itemLabel={propertyType.slice(0, -1)}
+                      itemValue={
+                        val.flat_number ?? val.shop_number ?? val.room_number
+                      }
+                    />
+                    <TableRowItem
+                      type="labelValuePair"
+                      itemLabel={`rent `}
+                      itemValue={val.rent}
+                    />
+                    <TableRowItem
+                      type="labelValuePair"
+                      itemLabel={`floor `}
+                      itemValue={val.floor}
+                    />
+                    <TableRowItem
+                      type="labelValuePair"
+                      itemLabel={`tenant `}
+                      itemValue={dataTenantNamesArr[i]}
+                    />
                   </TableListRow>
                 </AccordionSummary>
                 {/* Accordion Body */}
@@ -133,6 +137,4 @@ export default function RentPaymentBody() {
       </main>
     );
   }
-
-  // JSX
 }
