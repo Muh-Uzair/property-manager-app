@@ -50,7 +50,7 @@ export default function TableRowItem({
 TableRowItem.propTypes = {
   type: PropTypes.string,
   itemLabel: PropTypes.string,
-  itemValue: PropTypes.string,
+  itemValue: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   labelColor: PropTypes.string,
   labelFontWeight: PropTypes.string,
   valueColor: PropTypes.string,

@@ -59,7 +59,7 @@ export default function RentPayAccordionHeader({
 RentPayAccordionHeader.propTypes = {
   dataTenantNamesArr: PropTypes.array,
   occupiedProperty: PropTypes.object,
-  index: PropTypes.oneOfType([PropTypes.index, PropTypes.index]),
+  index: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 // COMPONENT END

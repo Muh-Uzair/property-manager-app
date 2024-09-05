@@ -1,10 +1,11 @@
 import Accordion from "@mui/material/Accordion";
-import AccordionDetails from "@mui/material/AccordionDetails";
 import { useEffect, useState } from "react";
+
 import LoadingSpinner from "../../../ui/LoadingSpinner";
 import RentPayAccordionHeader from "./RentPayAccordionHeader";
 
 import { useGetAllOccupiedProperty } from "./useGetAllOccupiedProperty";
+import RentPayAccordionBody from "./RentPayAccordionBody";
 
 // COMPONENT START
 export default function RentPaymentBody() {
@@ -51,7 +52,7 @@ export default function RentPaymentBody() {
 
   // JSX
 
-  if (statusTenantNamesArr === "pending") {
+  if (statusTenantNamesArr === "pending" || dataTenantNamesArr.length === 0) {
     return (
       <div className="flex h-full w-full items-center justify-center">
         <LoadingSpinner />
@@ -59,7 +60,7 @@ export default function RentPaymentBody() {
     );
   }
 
-  if (dataTenantNamesArr.length > 0) {
+  if (dataTenantNamesArr.length > 0 && statusTenantNamesArr === "success") {
     return (
       <main
         style={{
@@ -69,7 +70,10 @@ export default function RentPaymentBody() {
       >
         <ul className="flex flex-col gap-[10px]">
           {dataOccupiedProperty.map((occupiedProperty, i) => (
-            <li key={i} className="rounded-[5px] text-[11px] uppercase">
+            <li
+              key={i}
+              className="rounded-[5px] border border-brand-color-100/20 text-[11px] uppercase"
+            >
               <Accordion
                 expanded={expanded === occupiedProperty.id}
                 onChange={handleChange(occupiedProperty.id)}
@@ -81,9 +85,7 @@ export default function RentPaymentBody() {
                   index={i}
                 />
                 {/* Accordion Body */}
-                <AccordionDetails>
-                  <span>Accordion Body</span>
-                </AccordionDetails>
+                <RentPayAccordionBody />
               </Accordion>
             </li>
           ))}

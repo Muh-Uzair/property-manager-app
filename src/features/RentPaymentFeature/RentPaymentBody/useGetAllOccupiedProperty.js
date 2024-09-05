@@ -9,18 +9,16 @@ export function useGetAllOccupiedProperty() {
   let { propertyType } = useParams();
   if (!propertyType) propertyType = "flats";
 
-  const { data: dataOccupiedProperty, status: statusOccupiedProperty } =
+  const { data: dataOccupiedProperty = [], status: statusOccupiedProperty } =
     useQuery({
       queryFn: async () => {
         if (propertyType === "flats") {
           const data = await getAllOccupiedFlats();
           return data;
-        }
-        if (propertyType === "rooms") {
+        } else if (propertyType === "rooms") {
           const data = await getAllOccupiedRooms();
           return data;
-        }
-        if (propertyType === "shops") {
+        } else if (propertyType === "shops") {
           const data = await getAllOccupiedShops();
           return data;
         }
@@ -30,23 +28,24 @@ export function useGetAllOccupiedProperty() {
 
   // if dataOccupiedProperty has arrived than get the tenant name
 
-  const { data: dataTenantNamesArr, status: statusTenantNamesArr } = useQuery({
-    queryFn: async () => {
-      if (dataOccupiedProperty.length > 0) {
-        let tenantNamesArr = [];
-        for (let i = 0; i < dataOccupiedProperty.length; i++) {
-          let tenantName = "";
-          tenantName = await getRenterOnID(dataOccupiedProperty[i].renter_id);
-          if (tenantName) {
-            tenantNamesArr.push(tenantName);
+  const { data: dataTenantNamesArr = [], status: statusTenantNamesArr } =
+    useQuery({
+      queryFn: async () => {
+        if (dataOccupiedProperty?.length > 0) {
+          let tenantNamesArr = [];
+          for (let i = 0; i < dataOccupiedProperty?.length; i++) {
+            let tenantName = "";
+            tenantName = await getRenterOnID(dataOccupiedProperty[i].renter_id);
+            if (tenantName) {
+              tenantNamesArr.push(tenantName);
+            }
           }
-        }
 
-        return tenantNamesArr;
-      }
-    },
-    queryKey: [propertyType, "tenantNames"],
-  });
+          return tenantNamesArr;
+        } else return [];
+      },
+      queryKey: [propertyType, "tenantNames", statusOccupiedProperty],
+    });
 
   return {
     dataOccupiedProperty,

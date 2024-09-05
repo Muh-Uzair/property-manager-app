@@ -73,7 +73,7 @@ export const getShopNameOnId = async (shopId) => {
 export const getAllOccupiedShops = async () => {
   let { data, error } = await supabase
     .from("shops")
-    .select("*")
+    .select("shop_number , floor , size , rent , renter_id")
     .eq("status", "occupied");
 
   if (error) throw new Error("Unable to get all occupied shops");
