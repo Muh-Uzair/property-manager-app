@@ -3,9 +3,10 @@ import { useEffect, useState } from "react";
 
 import LoadingSpinner from "../../../ui/LoadingSpinner";
 import RentPayAccordionHeader from "./RentPayAccordionHeader";
+import RentPayAccordionBody from "./RentPayAccordionBody";
 
 import { useGetAllOccupiedProperty } from "./useGetAllOccupiedProperty";
-import RentPayAccordionBody from "./RentPayAccordionBody";
+import { AccordionDetails } from "@mui/material";
 
 // COMPONENT START
 export default function RentPaymentBody() {
@@ -79,13 +80,16 @@ export default function RentPaymentBody() {
                 onChange={handleChange(occupiedProperty.id)}
               >
                 {/* Accordion Header */}
+
                 <RentPayAccordionHeader
                   dataTenantNamesArr={dataTenantNamesArr}
                   occupiedProperty={occupiedProperty}
                   index={i}
                 />
                 {/* Accordion Body */}
-                <RentPayAccordionBody />
+                <AccordionDetails>
+                  <RentPayAccordionBody occupiedProperty={occupiedProperty} />
+                </AccordionDetails>
               </Accordion>
             </li>
           ))}
