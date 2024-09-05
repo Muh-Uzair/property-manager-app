@@ -6,7 +6,6 @@ import FormPortion from "../../../ui/FormPortion";
 // COMPONENT START
 export default function RentPayAccordionBody({ occupiedProperty }) {
   // VARIABLES
-  console.log(occupiedProperty);
 
   // FUNCTIONS
 
@@ -19,13 +18,21 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
           itemLabel={"Property"}
           itemType={{
             type: "labelInputText",
-            // value: `Flat ${occupiedProperty.flat_number ?? occupiedProperty.shop_number ?? occupiedProperty.room_number}`,
-            value: `Flat 3}`,
+            value: `Flat ${occupiedProperty.flat_number ?? occupiedProperty.shop_number ?? occupiedProperty.room_number}`,
+
             disabled: true,
           }}
         />
         <FormItem
           itemLabel={"Floor"}
+          itemType={{
+            type: "labelInputText",
+            value: "Floor 3",
+            disabled: true,
+          }}
+        />
+        <FormItem
+          itemLabel={"Size"}
           itemType={{
             type: "labelInputText",
             value: "Floor 3",

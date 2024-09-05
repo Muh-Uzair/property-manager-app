@@ -1,12 +1,13 @@
-import Accordion from "@mui/material/Accordion";
 import { useEffect, useState } from "react";
+import { MdArrowDropDown } from "react-icons/md";
 
 import LoadingSpinner from "../../../ui/LoadingSpinner";
 import RentPayAccordionHeader from "./RentPayAccordionHeader";
-import RentPayAccordionBody from "./RentPayAccordionBody";
 
 import { useGetAllOccupiedProperty } from "./useGetAllOccupiedProperty";
-import { AccordionDetails } from "@mui/material";
+import { brandColor500 } from "../../../styles/globalStyles";
+import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
+import RentPayAccordionBody from "./RentPayAccordionBody";
 
 // COMPONENT START
 export default function RentPaymentBody() {
@@ -16,15 +17,16 @@ export default function RentPaymentBody() {
     dataTenantNamesArr = [],
     statusTenantNamesArr,
   } = useGetAllOccupiedProperty();
+  const [screenHeight, setScreenHeight] = useState(window.innerHeight);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [expanded, setExpanded] = useState(false);
+
+  // FUNCTIONS
+
+  // FUNCTION // function that controls the accordions
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
-
-  const [expanded, setExpanded] = useState(false);
-  const [screenHeight, setScreenHeight] = useState(window.innerHeight);
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-
-  // FUNCTIONS
 
   // FUNCTION // to set the screen width every time the the screen width changes
   useEffect(() => {
@@ -53,7 +55,11 @@ export default function RentPaymentBody() {
 
   // JSX
 
-  if (statusTenantNamesArr === "pending" || dataTenantNamesArr.length === 0) {
+  if (
+    statusTenantNamesArr === "pending" ||
+    dataTenantNamesArr.length === 0 ||
+    dataOccupiedProperty.length === 0
+  ) {
     return (
       <div className="flex h-full w-full items-center justify-center">
         <LoadingSpinner />
@@ -71,22 +77,24 @@ export default function RentPaymentBody() {
       >
         <ul className="flex flex-col gap-[10px]">
           {dataOccupiedProperty.map((occupiedProperty, i) => (
-            <li
-              key={i}
-              className="rounded-[5px] border border-brand-color-100/20 text-[11px] uppercase"
-            >
+            <li className="uppercase" key={i}>
               <Accordion
-                expanded={expanded === occupiedProperty.id}
-                onChange={handleChange(occupiedProperty.id)}
+                expanded={expanded === `panel${i}`}
+                onChange={handleChange(`panel${i}`)}
               >
-                {/* Accordion Header */}
-
-                <RentPayAccordionHeader
-                  dataTenantNamesArr={dataTenantNamesArr}
-                  occupiedProperty={occupiedProperty}
-                  index={i}
-                />
-                {/* Accordion Body */}
+                <AccordionSummary
+                  expandIcon={
+                    <MdArrowDropDown size={"25px"} color={brandColor500} />
+                  }
+                  aria-controls={`panel${i}bh-content`}
+                  id={`panel${i}bh-header`}
+                >
+                  <RentPayAccordionHeader
+                    dataTenantNamesArr={dataTenantNamesArr}
+                    occupiedProperty={occupiedProperty}
+                    index={i}
+                  />
+                </AccordionSummary>
                 <AccordionDetails>
                   <RentPayAccordionBody occupiedProperty={occupiedProperty} />
                 </AccordionDetails>
@@ -98,3 +106,34 @@ export default function RentPaymentBody() {
     );
   }
 }
+
+// <Accordion
+// expanded={expanded === dataOccupiedProperty[0].id}
+// onChange={handleChange(dataOccupiedProperty[0].id)}
+// >
+// <ul className="flex flex-col gap-[10px]">
+//   {dataOccupiedProperty.map((occupiedProperty, i) => (
+//     <li
+//       key={i}
+//       className="rounded-[5px] border border-brand-color-100/20 text-[11px] uppercase"
+//     >
+//       <AccordionSummary
+//         expandIcon={
+//           <MdArrowDropDown size={"25px"} color={brandColor500} />
+//         }
+//         aria-controls={`${occupiedProperty.id} content`}
+//         id={occupiedProperty.id}
+//       >
+//         <RentPayAccordionHeader
+//           dataTenantNamesArr={dataTenantNamesArr}
+//           occupiedProperty={occupiedProperty}
+//           index={i}
+//         />
+//       </AccordionSummary>
+//       <AccordionDetails>
+//         <RentPayAccordionBody occupiedProperty={occupiedProperty} />
+//       </AccordionDetails>
+//     </li>
+//   ))}
+// </ul>
+// </Accordion>
