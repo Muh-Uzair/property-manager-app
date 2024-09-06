@@ -2,23 +2,25 @@ import PropTypes from "prop-types";
 
 import FormItem from "../../../ui/FormItem";
 import FormPortion from "../../../ui/FormPortion";
+import { useGetPropertyType } from "../../../hooks/useGetPropertyType";
 
 // COMPONENT START
 export default function RentPayAccordionBody({ occupiedProperty }) {
   // VARIABLES
+  const propertyType = useGetPropertyType();
 
   // FUNCTIONS
 
   // JSX
   return (
-    <form className="h-[300px] w-[100%] rounded-[5px] border border-gray-200/50 bg-gray-50/50 px-[5px] py-[10px]">
+    <form className="w-[100%] rounded-[5px] border border-gray-200/50 bg-gray-50/50 px-[5px] py-[10px]">
       {/* Property Details */}
       <FormPortion formPortionHeading={"Property Details"}>
         <FormItem
           itemLabel={"Property"}
           itemType={{
             type: "labelInputText",
-            value: `Flat ${occupiedProperty.flat_number ?? occupiedProperty.shop_number ?? occupiedProperty.room_number}`,
+            value: `${propertyType.at(0).toUpperCase()}${propertyType.slice(1, -1)}  ${occupiedProperty.flat_number ?? occupiedProperty.shop_number ?? occupiedProperty.room_number}`,
 
             disabled: true,
           }}
@@ -27,7 +29,7 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
           itemLabel={"Floor"}
           itemType={{
             type: "labelInputText",
-            value: "Floor 3",
+            value: `Floor ${occupiedProperty.floor}`,
             disabled: true,
           }}
         />
@@ -35,20 +37,61 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
           itemLabel={"Size"}
           itemType={{
             type: "labelInputText",
-            value: "Floor 3",
+            value: `${occupiedProperty.size} m`,
             disabled: true,
           }}
         />
       </FormPortion>
 
       {/* Tenant details */}
-      <FormPortion formPortionHeading={"Tenant Details"}></FormPortion>
+      <FormPortion formPortionHeading={"Tenant Details"}>
+        <FormItem
+          itemLabel={"Name"}
+          itemType={{
+            type: "labelInputText",
+            value: `Kim`,
+            disabled: true,
+          }}
+        />
+        <FormItem
+          itemLabel={"Nationality"}
+          itemType={{
+            type: "labelInputText",
+            value: `USA`,
+            disabled: true,
+          }}
+        />
+        <FormItem
+          itemLabel={"Contact"}
+          itemType={{
+            type: "labelInputText",
+            value: `9734934938`,
+            disabled: true,
+          }}
+        />
+        <FormItem
+          itemLabel={"ID"}
+          itemType={{
+            type: "labelInputText",
+            value: `9734934938`,
+            disabled: true,
+          }}
+        />
+        <FormItem
+          itemLabel={"Occupation"}
+          itemType={{
+            type: "labelInputText",
+            value: `SWE`,
+            disabled: true,
+          }}
+        />
+      </FormPortion>
 
       {/* Rent details */}
       <FormPortion formPortionHeading={"Rent Details"}></FormPortion>
 
       {/* others */}
-      <FormPortion formPortionHeading={"Others"}>
+      <FormPortion formPortionHeading={"Others"} last={true}>
         <FormItem
           itemType={{ type: "labelCheckBox" }}
           itemLabel={"received payment"}

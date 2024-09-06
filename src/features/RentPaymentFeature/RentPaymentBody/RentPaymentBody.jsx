@@ -12,11 +12,8 @@ import RentPayAccordionBody from "./RentPayAccordionBody";
 // COMPONENT START
 export default function RentPaymentBody() {
   // VARIABLES
-  const {
-    dataOccupiedProperty = [],
-    dataTenantNamesArr = [],
-    statusTenantNamesArr,
-  } = useGetAllOccupiedProperty();
+  const { dataOccupiedProperty = [], statusOccupiedProperty } =
+    useGetAllOccupiedProperty();
   const [screenHeight, setScreenHeight] = useState(window.innerHeight);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [expanded, setExpanded] = useState(false);
@@ -55,11 +52,7 @@ export default function RentPaymentBody() {
 
   // JSX
 
-  if (
-    statusTenantNamesArr === "pending" ||
-    dataTenantNamesArr.length === 0 ||
-    dataOccupiedProperty.length === 0
-  ) {
+  if (statusOccupiedProperty === "pending") {
     return (
       <div className="flex h-full w-full items-center justify-center">
         <LoadingSpinner />
@@ -67,7 +60,7 @@ export default function RentPaymentBody() {
     );
   }
 
-  if (dataTenantNamesArr.length > 0 && statusTenantNamesArr === "success") {
+  if (dataOccupiedProperty.length > 0 && statusOccupiedProperty === "success") {
     return (
       <main
         style={{
@@ -89,11 +82,7 @@ export default function RentPaymentBody() {
                   aria-controls={`panel${i}bh-content`}
                   id={`panel${i}bh-header`}
                 >
-                  <RentPayAccordionHeader
-                    dataTenantNamesArr={dataTenantNamesArr}
-                    occupiedProperty={occupiedProperty}
-                    index={i}
-                  />
+                  <RentPayAccordionHeader occupiedProperty={occupiedProperty} />
                 </AccordionSummary>
                 <AccordionDetails>
                   <RentPayAccordionBody occupiedProperty={occupiedProperty} />
