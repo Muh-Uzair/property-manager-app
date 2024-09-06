@@ -5,11 +5,7 @@ import TableListRow from "./TableListRow";
 import TableRowItem from "../../../ui/TableRowItem";
 
 // COMPONENT START
-export default function RentPayAccordionHeader({
-  dataTenantNamesArr,
-  occupiedProperty,
-  index,
-}) {
+export default function RentPayAccordionHeader({ occupiedProperty }) {
   // VARIABLES
   const { propertyType = "flats" } = useParams();
 
@@ -17,7 +13,7 @@ export default function RentPayAccordionHeader({
 
   // JSX
   return (
-    <TableListRow colSizes={"1fr 1fr 1fr 1fr"}>
+    <TableListRow colSizes={"1fr 1fr 1fr "}>
       <TableRowItem
         type="labelValuePair"
         itemLabel={propertyType.slice(0, -1)}
@@ -36,11 +32,6 @@ export default function RentPayAccordionHeader({
         type="labelValuePair"
         itemLabel={`floor `}
         itemValue={occupiedProperty.floor}
-      />
-      <TableRowItem
-        type="labelValuePair"
-        itemLabel={`tenant `}
-        itemValue={dataTenantNamesArr[index]}
       />
     </TableListRow>
   );
