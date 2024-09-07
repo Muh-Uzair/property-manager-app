@@ -51,3 +51,18 @@ export const getRenterDetailsOnId = async (renterId) => {
 
   return { data };
 };
+
+// FUNCTION
+export const getTenantDetailRentForm = async (renterId) => {
+  if (!renterId) return {};
+
+  const { data, error } = await supabase
+    .from("renters")
+    .select("name, contact_info , nationality , id_card_number , occupation ")
+    .eq("id", renterId);
+
+  if (error)
+    throw new Error(`Unable to fetch renter details: ${error?.message}`);
+
+  return { data };
+};

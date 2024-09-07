@@ -6,7 +6,7 @@ export default function FormItem({ itemType, itemLabel, labelColor = "gray" }) {
 
   // JSX
   return (
-    <div className="mt-[5px] grid grid-cols-[80px_150px] items-center gap-[5px] text-[11px]">
+    <div className="mt-[7px] grid grid-cols-[100px_150px] items-center gap-[5px] text-[11px]">
       {itemType.type === "labelCheckBox" && (
         <>
           <label
