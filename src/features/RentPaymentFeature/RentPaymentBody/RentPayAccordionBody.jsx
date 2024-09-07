@@ -18,6 +18,8 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
     useGetTenantDetailRentForm(occupiedProperty.renter_id);
   dataTenantDetailRentForm = dataTenantDetailRentForm?.data?.[0] ?? {};
 
+  console.log(occupiedProperty);
+
   // FUNCTIONS
 
   // JSX
