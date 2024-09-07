@@ -1,15 +1,18 @@
 // FUNCTION
 function getValueFormat(inputText = "") {
-  if (typeof Number(inputText) === "number") {
-    return inputText;
-  }
   const firstLetter = inputText[0]?.toUpperCase();
   const restWords = inputText?.slice(1);
   return firstLetter + restWords;
 }
 
 // COMPONENT START
-export default function FormItem({ itemType, itemLabel, labelColor = "gray" }) {
+export default function FormItem({
+  itemType,
+  itemLabel,
+  labelColor = "gray",
+  itemValueColor = "",
+  income = false,
+}) {
   // VARIABLES
 
   // FUNCTIONS
@@ -38,9 +41,12 @@ export default function FormItem({ itemType, itemLabel, labelColor = "gray" }) {
           </label>
           <input
             type="texts"
-            className="rounded-[3px] border border-brand-color-200 bg-brand-color-200/50 pl-[10px] font-semibold text-brand-color-500"
+            className={`i rounded-[3px] border border-brand-color-200 pl-[10px] font-semibold ${income ? "bg-green-200" : "bg-brand-color-200/50"}`}
             value={`${typeof itemType?.value === "number" ? itemType?.value : getValueFormat(itemType?.value)}`}
             disabled={itemType?.disabled}
+            style={{
+              color: `${itemValueColor ? `${itemValueColor}` : "#0ea5e9"}`,
+            }}
           />
         </>
       )}
@@ -55,6 +61,8 @@ FormItem.propTypes = {
   itemType: PropTypes.object,
   itemLabel: PropTypes.string,
   labelColor: PropTypes.string,
+  itemValueColor: PropTypes.string,
+  income: PropTypes.boolean,
 };
 //size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 // COMPONENT END

@@ -7,7 +7,11 @@ import LoadingSpinner from "../../../ui/LoadingSpinner";
 import { useGetPropertyType } from "../../../hooks/useGetPropertyType";
 import { useGetTenantDetailRentForm } from "./useGetTenantDetailRentForm";
 import { monthsArr } from "../../../utils/constants";
-import { calculateDues, getDueMonths } from "../../../utils/helpers";
+import {
+  calculateDues,
+  getDueMonths,
+  getLastPaidMonth,
+} from "../../../utils/helpers";
 import Button from "../../../ui/Button";
 
 // COMPONENT START
@@ -17,8 +21,6 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
   let { dataTenantDetailRentForm, statusTenantDetailRentForm } =
     useGetTenantDetailRentForm(occupiedProperty.renter_id);
   dataTenantDetailRentForm = dataTenantDetailRentForm?.data?.[0] ?? {};
-
-  console.log(occupiedProperty);
 
   // FUNCTIONS
 
@@ -123,7 +125,7 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
             itemLabel={"Last Rent Paid"}
             itemType={{
               type: "labelInputText",
-              value: `April`,
+              value: `${monthsArr[getLastPaidMonth(occupiedProperty.rent_details)]}`,
               disabled: true,
             }}
           />
@@ -136,36 +138,42 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
             }}
           />
           <FormItem
-            itemLabel={"Dues"}
+            itemLabel={"Due Amount"}
             itemType={{
               type: "labelInputText",
               value: calculateDues(
-                monthsArr.indexOf("april"),
+                getLastPaidMonth(occupiedProperty.rent_details),
                 occupiedProperty.rent,
               ),
               disabled: true,
             }}
+            itemValueColor="500"
           />
           <FormItem
             itemLabel={"Months Due"}
             itemType={{
               type: "labelInputText",
-              value: new Date().getMonth() - monthsArr.indexOf("april"),
+              value:
+                new Date().getMonth() -
+                getLastPaidMonth(occupiedProperty.rent_details),
               disabled: true,
             }}
+            itemValueColor="red"
           />
         </FormPortion>
 
         <FormPortion formPortionHeading={"Payment received of "}>
           <ul>
-            {getDueMonths("april").map((month, i) => (
-              <li key={i}>
-                <FormItem
-                  itemType={{ type: "labelCheckBox" }}
-                  itemLabel={month}
-                />
-              </li>
-            ))}
+            {getDueMonths(getLastPaidMonth(occupiedProperty.rent_details)).map(
+              (month, i) => (
+                <li key={i}>
+                  <FormItem
+                    itemType={{ type: "labelCheckBox" }}
+                    itemLabel={month}
+                  />
+                </li>
+              ),
+            )}
           </ul>
 
           <FormItem
@@ -175,6 +183,8 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
               value: 15000,
               disabled: true,
             }}
+            itemValueColor="green"
+            income={true}
           />
         </FormPortion>
 
