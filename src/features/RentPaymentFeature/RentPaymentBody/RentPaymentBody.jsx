@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { MdArrowDropDown } from "react-icons/md";
 
 import LoadingSpinner from "../../../ui/LoadingSpinner";
@@ -8,15 +8,16 @@ import { useGetAllOccupiedProperty } from "./useGetAllOccupiedProperty";
 import { brandColor500 } from "../../../styles/globalStyles";
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import RentPayAccordionBody from "./RentPayAccordionBody";
+import { useGetScreenHeight } from "./useGetScreenHeight";
 
 // COMPONENT START
 export default function RentPaymentBody() {
   // VARIABLES
+  const [expanded, setExpanded] = useState(false);
+
+  const screenHeight = useGetScreenHeight();
   const { dataOccupiedProperty = [], statusOccupiedProperty } =
     useGetAllOccupiedProperty();
-  const [screenHeight, setScreenHeight] = useState(window.innerHeight);
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-  const [expanded, setExpanded] = useState(false);
 
   // FUNCTIONS
 
@@ -24,31 +25,6 @@ export default function RentPaymentBody() {
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
-
-  // FUNCTION // to set the screen width every time the the screen width changes
-  useEffect(() => {
-    // actual function that updates the screen width
-    function updateScreenWidth() {
-      const newScreenWidth = window.innerWidth;
-      setScreenWidth(newScreenWidth);
-      setScreenHeight(window.innerHeight);
-    }
-
-    // event listening for the screen width
-    window.addEventListener("resize", updateScreenWidth);
-  }, [screenWidth]);
-
-  // FUNCTION // screen width updates , update the screen height as well ;
-  useEffect(() => {
-    function updateScreenHeight() {
-      setScreenHeight(window.innerHeight);
-    }
-    if (screenHeight !== window.innerHeight) {
-      updateScreenHeight();
-    } else {
-      return;
-    }
-  }, [screenWidth, screenHeight]);
 
   // JSX
 
@@ -95,34 +71,3 @@ export default function RentPaymentBody() {
     );
   }
 }
-
-// <Accordion
-// expanded={expanded === dataOccupiedProperty[0].id}
-// onChange={handleChange(dataOccupiedProperty[0].id)}
-// >
-// <ul className="flex flex-col gap-[10px]">
-//   {dataOccupiedProperty.map((occupiedProperty, i) => (
-//     <li
-//       key={i}
-//       className="rounded-[5px] border border-brand-color-100/20 text-[11px] uppercase"
-//     >
-//       <AccordionSummary
-//         expandIcon={
-//           <MdArrowDropDown size={"25px"} color={brandColor500} />
-//         }
-//         aria-controls={`${occupiedProperty.id} content`}
-//         id={occupiedProperty.id}
-//       >
-//         <RentPayAccordionHeader
-//           dataTenantNamesArr={dataTenantNamesArr}
-//           occupiedProperty={occupiedProperty}
-//           index={i}
-//         />
-//       </AccordionSummary>
-//       <AccordionDetails>
-//         <RentPayAccordionBody occupiedProperty={occupiedProperty} />
-//       </AccordionDetails>
-//     </li>
-//   ))}
-// </ul>
-// </Accordion>
