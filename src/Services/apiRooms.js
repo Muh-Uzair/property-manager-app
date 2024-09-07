@@ -73,7 +73,7 @@ export const getRoomNameOnId = async (roomId) => {
 export const getAllOccupiedRooms = async () => {
   let { data, error } = await supabase
     .from("rooms")
-    .select("room_number , floor , size , rent, renter_id ")
+    .select("room_number , floor , size , rent, renter_id , rent_details")
     .eq("status", "occupied");
 
   if (error) throw new Error("Unable to get all occupied rooms");
