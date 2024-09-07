@@ -13,7 +13,9 @@ export default function FormPortion({
 
   // JSX
   return (
-    <div className={last ? "" : "border-b-[1px] border-gray-200 pb-[10px]"}>
+    <div
+      className={`${last ? "" : "border-b-[1px] border-gray-200"} relative flex flex-col gap-[7px] py-[10px]`}
+    >
       {formPortionHeading.length > 0 && (
         <Heading type="medium">{formPortionHeading}</Heading>
       )}
