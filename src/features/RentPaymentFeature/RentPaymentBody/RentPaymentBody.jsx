@@ -9,6 +9,7 @@ import { brandColor500 } from "../../../styles/globalStyles";
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import RentPayAccordionBody from "./RentPayAccordionBody";
 import { useGetScreenHeight } from "./useGetScreenHeight";
+import LoadingWrapperCenter from "../../../ui/LoadingWrapperCenter";
 
 // COMPONENT START
 export default function RentPaymentBody() {
@@ -27,12 +28,11 @@ export default function RentPaymentBody() {
   };
 
   // JSX
-
   if (statusOccupiedProperty === "pending") {
     return (
-      <div className="flex h-full w-full items-center justify-center">
+      <LoadingWrapperCenter>
         <LoadingSpinner />
-      </div>
+      </LoadingWrapperCenter>
     );
   }
 
