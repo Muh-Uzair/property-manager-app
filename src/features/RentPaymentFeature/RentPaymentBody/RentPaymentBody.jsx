@@ -48,6 +48,7 @@ export default function RentPaymentBody() {
           {dataOccupiedProperty.map((occupiedProperty, i) => (
             <li className="uppercase" key={i}>
               <Accordion
+                sx={{ border: "1px solid lightgray", borderRadius: "10px" }}
                 expanded={expanded === `panel${i}`}
                 onChange={handleChange(`panel${i}`)}
               >

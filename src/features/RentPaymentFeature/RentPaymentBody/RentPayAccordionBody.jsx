@@ -8,6 +8,7 @@ import { useGetPropertyType } from "../../../hooks/useGetPropertyType";
 import { useGetTenantDetailRentForm } from "./useGetTenantDetailRentForm";
 import { monthsArr } from "../../../utils/constants";
 import { calculateDues, getDueMonths } from "../../../utils/helpers";
+import Button from "../../../ui/Button";
 
 // COMPONENT START
 export default function RentPayAccordionBody({ occupiedProperty }) {
@@ -29,7 +30,10 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
   }
   if (Object.entries(dataTenantDetailRentForm).length > 0) {
     return (
-      <form className="w-[100%] rounded-[5px] border border-gray-200/50 bg-gray-50/50 px-[5px] py-[10px]">
+      <form
+        className="w-[100%] rounded-[5px] border border-gray-300 bg-gray-50/50 px-[7px] py-[10px]"
+        onSubmit={(e) => e.preventDefault()}
+      >
         {/* Property Details */}
         <FormPortion formPortionHeading={"Property Details"}>
           <FormItem
@@ -163,7 +167,7 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
           </ul>
 
           <FormItem
-            itemLabel={"Total Payment"}
+            itemLabel={"Amount Received"}
             itemType={{
               type: "labelInputText",
               value: 15000,
@@ -173,13 +177,19 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
         </FormPortion>
 
         {/* others */}
-        <FormPortion last={true}>
+        <FormPortion>
           <FormItem
             itemType={{ type: "labelCheckBox" }}
             itemLabel={"received payment"}
           />
         </FormPortion>
-        <button className="border border-gray-500">Pay Rent</button>
+        <FormPortion last={true}>
+          <div className="flex justify-end">
+            <Button type="primary" uppercase={true}>
+              Pay Rent
+            </Button>
+          </div>
+        </FormPortion>
       </form>
     );
   }
