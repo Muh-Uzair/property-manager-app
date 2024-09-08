@@ -1,66 +1,42 @@
-import Accordion from "@mui/material/Accordion";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { MdArrowDropDown } from "react-icons/md";
 
 import LoadingSpinner from "../../../ui/LoadingSpinner";
 import RentPayAccordionHeader from "./RentPayAccordionHeader";
 
 import { useGetAllOccupiedProperty } from "./useGetAllOccupiedProperty";
+import { brandColor500 } from "../../../styles/globalStyles";
+import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import RentPayAccordionBody from "./RentPayAccordionBody";
+import { useGetScreenHeight } from "./useGetScreenHeight";
+import LoadingWrapperCenter from "../../../ui/LoadingWrapperCenter";
 
 // COMPONENT START
 export default function RentPaymentBody() {
   // VARIABLES
-  const {
-    dataOccupiedProperty = [],
-    dataTenantNamesArr = [],
-    statusTenantNamesArr,
-  } = useGetAllOccupiedProperty();
+  const [expanded, setExpanded] = useState(false);
+
+  const screenHeight = useGetScreenHeight();
+  const { dataOccupiedProperty = [], statusOccupiedProperty } =
+    useGetAllOccupiedProperty();
+
+  // FUNCTIONS
+
+  // FUNCTION // function that controls the accordions
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
 
-  const [expanded, setExpanded] = useState(false);
-  const [screenHeight, setScreenHeight] = useState(window.innerHeight);
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-
-  // FUNCTIONS
-
-  // FUNCTION // to set the screen width every time the the screen width changes
-  useEffect(() => {
-    // actual function that updates the screen width
-    function updateScreenWidth() {
-      const newScreenWidth = window.innerWidth;
-      setScreenWidth(newScreenWidth);
-      setScreenHeight(window.innerHeight);
-    }
-
-    // event listening for the screen width
-    window.addEventListener("resize", updateScreenWidth);
-  }, [screenWidth]);
-
-  // FUNCTION // screen width updates , update the screen height as well ;
-  useEffect(() => {
-    function updateScreenHeight() {
-      setScreenHeight(window.innerHeight);
-    }
-    if (screenHeight !== window.innerHeight) {
-      updateScreenHeight();
-    } else {
-      return;
-    }
-  }, [screenWidth, screenHeight]);
-
   // JSX
-
-  if (statusTenantNamesArr === "pending" || dataTenantNamesArr.length === 0) {
+  if (statusOccupiedProperty === "pending") {
     return (
-      <div className="flex h-full w-full items-center justify-center">
+      <LoadingWrapperCenter>
         <LoadingSpinner />
-      </div>
+      </LoadingWrapperCenter>
     );
   }
 
-  if (dataTenantNamesArr.length > 0 && statusTenantNamesArr === "success") {
+  if (dataOccupiedProperty.length > 0 && statusOccupiedProperty === "success") {
     return (
       <main
         style={{
@@ -70,22 +46,24 @@ export default function RentPaymentBody() {
       >
         <ul className="flex flex-col gap-[10px]">
           {dataOccupiedProperty.map((occupiedProperty, i) => (
-            <li
-              key={i}
-              className="rounded-[5px] border border-brand-color-100/20 text-[11px] uppercase"
-            >
+            <li className="uppercase" key={i}>
               <Accordion
-                expanded={expanded === occupiedProperty.id}
-                onChange={handleChange(occupiedProperty.id)}
+                sx={{ border: "1px solid lightgray", borderRadius: "10px" }}
+                expanded={expanded === `panel${i}`}
+                onChange={handleChange(`panel${i}`)}
               >
-                {/* Accordion Header */}
-                <RentPayAccordionHeader
-                  dataTenantNamesArr={dataTenantNamesArr}
-                  occupiedProperty={occupiedProperty}
-                  index={i}
-                />
-                {/* Accordion Body */}
-                <RentPayAccordionBody />
+                <AccordionSummary
+                  expandIcon={
+                    <MdArrowDropDown size={"25px"} color={brandColor500} />
+                  }
+                  aria-controls={`panel${i}bh-content`}
+                  id={`panel${i}bh-header`}
+                >
+                  <RentPayAccordionHeader occupiedProperty={occupiedProperty} />
+                </AccordionSummary>
+                <AccordionDetails>
+                  <RentPayAccordionBody occupiedProperty={occupiedProperty} />
+                </AccordionDetails>
               </Accordion>
             </li>
           ))}
