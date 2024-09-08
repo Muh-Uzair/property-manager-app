@@ -11,7 +11,9 @@ export default function FormItem({
   itemLabel,
   labelColor = "gray",
   itemValueColor = "",
-  income = false,
+  incomeInput = false,
+  htmlFor,
+  id,
 }) {
   // VARIABLES
 
@@ -36,17 +38,19 @@ export default function FormItem({
           <label
             className="text-nowrap font-semibold"
             style={{ color: labelColor }}
+            htmlFor={htmlFor}
           >
             {itemLabel}
           </label>
           <input
             type="texts"
-            className={`i rounded-[3px] border border-brand-color-200 pl-[10px] font-semibold ${income ? "bg-green-200" : "bg-brand-color-200/50"}`}
+            className={`i rounded-[3px] border border-brand-color-200 pl-[10px] font-semibold ${incomeInput ? "bg-green-200" : "bg-brand-color-200/50"}`}
             value={`${typeof itemType?.value === "number" ? itemType?.value : getValueFormat(itemType?.value)}`}
             disabled={itemType?.disabled}
             style={{
               color: `${itemValueColor ? `${itemValueColor}` : "#0ea5e9"}`,
             }}
+            id={id}
           />
         </>
       )}
@@ -62,7 +66,9 @@ FormItem.propTypes = {
   itemLabel: PropTypes.string,
   labelColor: PropTypes.string,
   itemValueColor: PropTypes.string,
-  income: PropTypes.boolean,
+  incomeInput: PropTypes.bool,
+  htmlFor: PropTypes.string,
+  id: PropTypes.string,
 };
 //size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 // COMPONENT END

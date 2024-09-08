@@ -1,23 +1,19 @@
 import PropTypes from "prop-types";
 
-import FormItem from "../../../ui/FormItem";
 import FormPortion from "../../../ui/FormPortion";
 import LoadingWrapperCenter from "../../../ui/LoadingWrapperCenter";
 import LoadingSpinner from "../../../ui/LoadingSpinner";
-import { useGetPropertyType } from "../../../hooks/useGetPropertyType";
-import { useGetTenantDetailRentForm } from "./useGetTenantDetailRentForm";
-import { monthsArr } from "../../../utils/constants";
-import {
-  calculateDues,
-  getDueMonths,
-  getLastPaidMonth,
-} from "../../../utils/helpers";
 import Button from "../../../ui/Button";
+import RentFormPropertyDetails from "./RentFormPropertyDetails";
+import RentFormRentDetails from "./RentFormRentDetails";
+import RentFormTenantDetails from "./RentFormTenantDetails";
+import { useGetTenantDetailRentForm } from "./useGetTenantDetailRentForm";
+import RentFormPaymentReceivedOf from "./RentFormPaymentReceivedOf";
+import RentFormReceivedPayment from "./RentFormReceivedPayment";
 
 // COMPONENT START
 export default function RentPayAccordionBody({ occupiedProperty }) {
   // VARIABLES
-  const propertyType = useGetPropertyType();
   let { dataTenantDetailRentForm, statusTenantDetailRentForm } =
     useGetTenantDetailRentForm(occupiedProperty.renter_id);
   dataTenantDetailRentForm = dataTenantDetailRentForm?.data?.[0] ?? {};
@@ -39,162 +35,23 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
         onSubmit={(e) => e.preventDefault()}
       >
         {/* Property Details */}
-        <FormPortion formPortionHeading={"Property Details"}>
-          <FormItem
-            itemLabel={"Property"}
-            itemType={{
-              type: "labelInputText",
-              value: `${propertyType.at(0).toUpperCase()}${propertyType.slice(1, -1)}  ${occupiedProperty.flat_number ?? occupiedProperty.shop_number ?? occupiedProperty.room_number}`,
-
-              disabled: true,
-            }}
-          />
-          <FormItem
-            itemLabel={"Floor"}
-            itemType={{
-              type: "labelInputText",
-              value: `Floor ${occupiedProperty.floor}`,
-              disabled: true,
-            }}
-          />
-          <FormItem
-            itemLabel={"Size"}
-            itemType={{
-              type: "labelInputText",
-              value: `${occupiedProperty.size} m`,
-              disabled: true,
-            }}
-          />
-        </FormPortion>
+        <RentFormPropertyDetails occupiedProperty={occupiedProperty} />
 
         {/* Tenant details */}
-        <FormPortion formPortionHeading={"Tenant Details"}>
-          <FormItem
-            itemLabel={"Name"}
-            itemType={{
-              type: "labelInputText",
-              value: `${dataTenantDetailRentForm.name}`,
-              disabled: true,
-            }}
-          />
-          <FormItem
-            itemLabel={"Nationality"}
-            itemType={{
-              type: "labelInputText",
-              value: `${dataTenantDetailRentForm.nationality}`,
-              disabled: true,
-            }}
-          />
-          <FormItem
-            itemLabel={"Contact"}
-            itemType={{
-              type: "labelInputText",
-              value: `${dataTenantDetailRentForm.contact_info}`,
-              disabled: true,
-            }}
-          />
-          <FormItem
-            itemLabel={"ID CARD"}
-            itemType={{
-              type: "labelInputText",
-              value: `${dataTenantDetailRentForm.id_card_number}`,
-              disabled: true,
-            }}
-          />
-          <FormItem
-            itemLabel={"Occupation"}
-            itemType={{
-              type: "labelInputText",
-              value: `${dataTenantDetailRentForm.occupation}`,
-              disabled: true,
-            }}
-          />
-        </FormPortion>
+        <RentFormTenantDetails
+          dataTenantDetailRentForm={dataTenantDetailRentForm}
+        />
 
         {/* Rent details */}
-        <FormPortion formPortionHeading={"Rent Details"}>
-          <FormItem
-            itemLabel={"Property Rent"}
-            itemType={{
-              type: "labelInputText",
-              value: `${occupiedProperty.rent}`,
-              disabled: true,
-            }}
-          />
-          <FormItem
-            itemLabel={"Last Rent Paid"}
-            itemType={{
-              type: "labelInputText",
-              value: `${monthsArr[getLastPaidMonth(occupiedProperty.rent_details)]}`,
-              disabled: true,
-            }}
-          />
-          <FormItem
-            itemLabel={"Current Month"}
-            itemType={{
-              type: "labelInputText",
-              value: `${monthsArr[new Date().getMonth()]}`,
-              disabled: true,
-            }}
-          />
-          <FormItem
-            itemLabel={"Due Amount"}
-            itemType={{
-              type: "labelInputText",
-              value: calculateDues(
-                getLastPaidMonth(occupiedProperty.rent_details),
-                occupiedProperty.rent,
-              ),
-              disabled: true,
-            }}
-            itemValueColor="500"
-          />
-          <FormItem
-            itemLabel={"Months Due"}
-            itemType={{
-              type: "labelInputText",
-              value:
-                new Date().getMonth() -
-                getLastPaidMonth(occupiedProperty.rent_details),
-              disabled: true,
-            }}
-            itemValueColor="red"
-          />
-        </FormPortion>
+        <RentFormRentDetails occupiedProperty={occupiedProperty} />
 
-        <FormPortion formPortionHeading={"Payment received of "}>
-          <ul>
-            {getDueMonths(getLastPaidMonth(occupiedProperty.rent_details)).map(
-              (month, i) => (
-                <li key={i}>
-                  <FormItem
-                    itemType={{ type: "labelCheckBox" }}
-                    itemLabel={month}
-                  />
-                </li>
-              ),
-            )}
-          </ul>
+        {/* payment received of months */}
+        <RentFormPaymentReceivedOf occupiedProperty={occupiedProperty} />
 
-          <FormItem
-            itemLabel={"Amount Received"}
-            itemType={{
-              type: "labelInputText",
-              value: 15000,
-              disabled: true,
-            }}
-            itemValueColor="green"
-            income={true}
-          />
-        </FormPortion>
+        {/* received payment check */}
+        <RentFormReceivedPayment />
 
-        {/* others */}
-        <FormPortion>
-          <FormItem
-            itemType={{ type: "labelCheckBox" }}
-            itemLabel={"received payment"}
-          />
-        </FormPortion>
+        {/* submit button */}
         <FormPortion last={true}>
           <div className="flex justify-end">
             <Button type="primary" uppercase={true}>
