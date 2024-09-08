@@ -21,7 +21,7 @@ export function getDueMonths(lastRentMonth) {
   let dueMonths = [];
 
   monthsArr.forEach((month, i) => {
-    if (i > lastRentIndex && i <= currentMonthIndex + 1) {
+    if (i > lastRentIndex && i <= currentMonthIndex) {
       dueMonths.push(month);
     }
   });
