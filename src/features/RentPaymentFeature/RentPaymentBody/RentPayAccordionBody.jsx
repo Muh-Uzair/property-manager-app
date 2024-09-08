@@ -48,6 +48,8 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
 
               disabled: true,
             }}
+            htmlFor={"propertyNumber"}
+            id={"propertyNumber"}
           />
           <FormItem
             itemLabel={"Floor"}
@@ -56,6 +58,8 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
               value: `Floor ${occupiedProperty.floor}`,
               disabled: true,
             }}
+            htmlFor={"propertyFloor"}
+            id={"propertyFloor"}
           />
           <FormItem
             itemLabel={"Size"}
@@ -64,6 +68,8 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
               value: `${occupiedProperty.size} m`,
               disabled: true,
             }}
+            htmlFor={"propertySize"}
+            id={"propertySize"}
           />
         </FormPortion>
 
@@ -76,6 +82,8 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
               value: `${dataTenantDetailRentForm.name}`,
               disabled: true,
             }}
+            htmlFor={"tenantName"}
+            id={"tenantName"}
           />
           <FormItem
             itemLabel={"Nationality"}
@@ -84,6 +92,8 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
               value: `${dataTenantDetailRentForm.nationality}`,
               disabled: true,
             }}
+            htmlFor={"tenantNationality"}
+            id={"tenantNationality"}
           />
           <FormItem
             itemLabel={"Contact"}
@@ -92,6 +102,8 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
               value: `${dataTenantDetailRentForm.contact_info}`,
               disabled: true,
             }}
+            htmlFor={"tenantContact"}
+            id={"tenantContact"}
           />
           <FormItem
             itemLabel={"ID CARD"}
@@ -100,6 +112,8 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
               value: `${dataTenantDetailRentForm.id_card_number}`,
               disabled: true,
             }}
+            htmlFor={"tenantId"}
+            id={"tenantId"}
           />
           <FormItem
             itemLabel={"Occupation"}
@@ -108,6 +122,8 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
               value: `${dataTenantDetailRentForm.occupation}`,
               disabled: true,
             }}
+            htmlFor={"tenantOccupation"}
+            id={"tenantOccupation"}
           />
         </FormPortion>
 
@@ -120,6 +136,8 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
               value: `${occupiedProperty.rent}`,
               disabled: true,
             }}
+            htmlFor={"rentProperty"}
+            id={"rentProperty"}
           />
           <FormItem
             itemLabel={"Last Rent Paid"}
@@ -128,6 +146,8 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
               value: `${monthsArr[getLastPaidMonth(occupiedProperty.rent_details)]}`,
               disabled: true,
             }}
+            htmlFor={"rentLastMonthPaid"}
+            id={"rentLastMonthPaid"}
           />
           <FormItem
             itemLabel={"Current Month"}
@@ -136,6 +156,8 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
               value: `${monthsArr[new Date().getMonth()]}`,
               disabled: true,
             }}
+            htmlFor={"rentCurrentMonth"}
+            id={"rentCurrentMonth"}
           />
           <FormItem
             itemLabel={"Due Amount"}
@@ -147,7 +169,9 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
               ),
               disabled: true,
             }}
-            itemValueColor="500"
+            itemValueColor="red"
+            htmlFor={"rentDueAmount"}
+            id={"rentDueAmount"}
           />
           <FormItem
             itemLabel={"Months Due"}
@@ -159,9 +183,12 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
               disabled: true,
             }}
             itemValueColor="red"
+            htmlFor={"rentDueMonths"}
+            id={"rentDueMonths"}
           />
         </FormPortion>
 
+        {/* payment received of months */}
         <FormPortion formPortionHeading={"Payment received of "}>
           <ul>
             {getDueMonths(getLastPaidMonth(occupiedProperty.rent_details)).map(
@@ -170,6 +197,8 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
                   <FormItem
                     itemType={{ type: "labelCheckBox" }}
                     itemLabel={month}
+                    htmlFor={`paymentReceived${month}`}
+                    id={`paymentReceived${month}`}
                   />
                 </li>
               ),
@@ -185,16 +214,22 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
             }}
             itemValueColor="green"
             income={true}
+            htmlFor={"amountReceived"}
+            id={"amountReceived"}
           />
         </FormPortion>
 
-        {/* others */}
+        {/* received payment check */}
         <FormPortion>
           <FormItem
             itemType={{ type: "labelCheckBox" }}
             itemLabel={"received payment"}
+            htmlFor={"receivedPaymentCheck"}
+            id={"receivedPaymentCheck"}
           />
         </FormPortion>
+
+        {/* submit button */}
         <FormPortion last={true}>
           <div className="flex justify-end">
             <Button type="primary" uppercase={true}>
