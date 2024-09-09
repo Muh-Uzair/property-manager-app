@@ -1,9 +1,9 @@
 // FUNCTION
-function getValueFormat(inputText = "") {
-  const firstLetter = inputText[0]?.toUpperCase();
-  const restWords = inputText?.slice(1);
-  return firstLetter + restWords;
-}
+// function getValueFormat(inputText = "") {
+//   const firstLetter = inputText[0]?.toUpperCase();
+//   const restWords = inputText?.slice(1);
+//   return firstLetter + restWords;
+// }
 
 // COMPONENT START
 export default function FormItem({
@@ -14,10 +14,20 @@ export default function FormItem({
   incomeInput = false,
   htmlFor,
   id,
+  register,
+  name,
 }) {
   // VARIABLES
 
-  // FUNCTIONS
+  // FUNCTION
+
+  function addValueAtt() {
+    if (itemType?.value !== undefined && itemType?.value !== null) {
+      return { value: "hello" };
+    } else {
+      return {};
+    }
+  }
 
   // JSX
   return (
@@ -27,10 +37,11 @@ export default function FormItem({
           <label
             className="text-nowrap font-semibold"
             style={{ color: labelColor }}
+            htmlFor={htmlFor}
           >
             {itemLabel}
           </label>
-          <input type="checkbox" />
+          <input type="checkbox" id={id} name={name} {...register(id)} />
         </>
       )}
       {itemType.type === "labelInputText" && (
@@ -45,12 +56,16 @@ export default function FormItem({
           <input
             type="texts"
             className={`i rounded-[3px] border border-brand-color-200 pl-[10px] font-semibold ${incomeInput ? "bg-green-200" : "bg-brand-color-200/50"}`}
-            value={`${typeof itemType?.value === "number" ? itemType?.value : getValueFormat(itemType?.value)}`}
+            // value={`${typeof itemType?.value === "number" ? itemType?.value : getValueFormat(itemType?.value)}`}
+
             disabled={itemType?.disabled}
             style={{
               color: `${itemValueColor ? `${itemValueColor}` : "#0ea5e9"}`,
             }}
             id={id}
+            name={name}
+            {...register(id)}
+            {...addValueAtt()}
           />
         </>
       )}
@@ -69,6 +84,9 @@ FormItem.propTypes = {
   incomeInput: PropTypes.bool,
   htmlFor: PropTypes.string,
   id: PropTypes.string,
+  register: PropTypes.func,
+  name: PropTypes.string,
 };
+
 //size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 // COMPONENT END

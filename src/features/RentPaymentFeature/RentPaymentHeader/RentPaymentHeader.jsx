@@ -47,6 +47,7 @@ export default function RentPaymentHeader() {
           <input
             className={`${stylesSearchFilter} placeholder:text-brand-color-500/50 smallTab:w-[220px]`}
             placeholder="Search Property"
+            name={"propertySearchInput"}
           />
           <span className="absolute right-[8px] text-brand-color-700 active:text-brand-color-400">
             <IoSearch />
@@ -55,10 +56,13 @@ export default function RentPaymentHeader() {
 
         {/* filter functionality */}
         <div className="col-start-3 largeScreen:col-start-4">
-          <select className={`${stylesSearchFilter} smallTab:w-[100px]`}>
-            <option>option1</option>
-            <option>option1</option>
-            <option>option1</option>
+          <select
+            name={"propertyFilterOptions"}
+            className={`${stylesSearchFilter} smallTab:w-[100px]`}
+          >
+            <option name={"propertyFilterOp1"}>option1</option>
+            <option name={"propertyFilterOp2"}>option1</option>
+            <option name={"propertyFilterOp3"}>option1</option>
           </select>
         </div>
       </div>

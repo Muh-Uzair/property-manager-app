@@ -4,7 +4,10 @@ import FormPortion from "../../../ui/FormPortion";
 import FormItem from "../../../ui/FormItem";
 
 // COMPONENT START
-export default function RentFormTenantDetails({ dataTenantDetailRentForm }) {
+export default function RentFormTenantDetails({
+  dataTenantDetailRentForm,
+  register,
+}) {
   // VARIABLES
 
   // FUNCTIONS
@@ -20,8 +23,10 @@ export default function RentFormTenantDetails({ dataTenantDetailRentForm }) {
             value: `${dataTenantDetailRentForm.name}`,
             disabled: true,
           }}
-          htmlFor={"tenantName"}
-          id={"tenantName"}
+          htmlFor={"rfTenantName"}
+          id={"rfTenantName"}
+          name={"rfTenantName"}
+          register={register}
         />
         <FormItem
           itemLabel={"Nationality"}
@@ -30,8 +35,10 @@ export default function RentFormTenantDetails({ dataTenantDetailRentForm }) {
             value: `${dataTenantDetailRentForm.nationality}`,
             disabled: true,
           }}
-          htmlFor={"tenantNationality"}
-          id={"tenantNationality"}
+          htmlFor={"rfTenantNationality"}
+          id={"rfTenantNationality"}
+          name={"rfTenantNationality"}
+          register={register}
         />
         <FormItem
           itemLabel={"Contact"}
@@ -40,8 +47,10 @@ export default function RentFormTenantDetails({ dataTenantDetailRentForm }) {
             value: `${dataTenantDetailRentForm.contact_info}`,
             disabled: true,
           }}
-          htmlFor={"tenantContact"}
-          id={"tenantContact"}
+          htmlFor={"rfTenantContact"}
+          id={"rfTenantContact"}
+          name={"rfTenantContact"}
+          register={register}
         />
         <FormItem
           itemLabel={"ID CARD"}
@@ -50,8 +59,10 @@ export default function RentFormTenantDetails({ dataTenantDetailRentForm }) {
             value: `${dataTenantDetailRentForm.id_card_number}`,
             disabled: true,
           }}
-          htmlFor={"tenantId"}
-          id={"tenantId"}
+          htmlFor={"rfTenantId"}
+          id={"rfTenantId"}
+          name={"rfTenantId"}
+          register={register}
         />
         <FormItem
           itemLabel={"Occupation"}
@@ -60,8 +71,10 @@ export default function RentFormTenantDetails({ dataTenantDetailRentForm }) {
             value: `${dataTenantDetailRentForm.occupation}`,
             disabled: true,
           }}
-          htmlFor={"tenantOccupation"}
-          id={"tenantOccupation"}
+          htmlFor={"rfTenantOccupation"}
+          id={"rfTenantOccupation"}
+          name={"rfTenantOccupation"}
+          register={register}
         />
       </FormPortion>
     </>
@@ -71,6 +84,6 @@ export default function RentFormTenantDetails({ dataTenantDetailRentForm }) {
 
 RentFormTenantDetails.propTypes = {
   dataTenantDetailRentForm: PropTypes.object,
+  register: PropTypes.func,
 };
-//size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 // COMPONENT END

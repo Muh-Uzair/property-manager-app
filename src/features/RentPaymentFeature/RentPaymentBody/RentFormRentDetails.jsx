@@ -6,7 +6,7 @@ import { monthsArr } from "../../../utils/constants";
 import { calculateDues, getLastPaidMonth } from "../../../utils/helpers";
 
 // COMPONENT START
-export default function RentFormRentDetails({ occupiedProperty }) {
+export default function RentFormRentDetails({ occupiedProperty, register }) {
   // VARIABLES
 
   // FUNCTIONS
@@ -22,8 +22,10 @@ export default function RentFormRentDetails({ occupiedProperty }) {
             value: `${occupiedProperty.rent}`,
             disabled: true,
           }}
-          htmlFor={"rentProperty"}
-          id={"rentProperty"}
+          htmlFor={"rfRentProperty"}
+          id={"rfRentProperty"}
+          name={"rfRentProperty"}
+          register={register}
         />
         <FormItem
           itemLabel={"Last Rent Paid"}
@@ -32,8 +34,10 @@ export default function RentFormRentDetails({ occupiedProperty }) {
             value: `${monthsArr[getLastPaidMonth(occupiedProperty.rent_details)]}`,
             disabled: true,
           }}
-          htmlFor={"rentLastMonthPaid"}
-          id={"rentLastMonthPaid"}
+          htmlFor={"rfRentLastMonthPaid"}
+          id={"rfRentLastMonthPaid"}
+          name={"rfRentLastMonthPaid"}
+          register={register}
         />
         <FormItem
           itemLabel={"Current Month"}
@@ -42,8 +46,10 @@ export default function RentFormRentDetails({ occupiedProperty }) {
             value: `${monthsArr[new Date().getMonth()]}`,
             disabled: true,
           }}
-          htmlFor={"rentCurrentMonth"}
-          id={"rentCurrentMonth"}
+          htmlFor={"rfRentCurrentMonth"}
+          id={"rfRentCurrentMonth"}
+          name={"rfRentCurrentMonth"}
+          register={register}
         />
         <FormItem
           itemLabel={"Due Amount"}
@@ -56,8 +62,10 @@ export default function RentFormRentDetails({ occupiedProperty }) {
             disabled: true,
           }}
           itemValueColor="red"
-          htmlFor={"rentDueAmount"}
-          id={"rentDueAmount"}
+          htmlFor={"rfRentDueAmount"}
+          id={"rfRentDueAmount"}
+          name={"rfRentDueAmount"}
+          register={register}
         />
         <FormItem
           itemLabel={"Months Due"}
@@ -69,8 +77,10 @@ export default function RentFormRentDetails({ occupiedProperty }) {
             disabled: true,
           }}
           itemValueColor="red"
-          htmlFor={"rentDueMonths"}
-          id={"rentDueMonths"}
+          htmlFor={"rfRentDueMonths"}
+          id={"rfRentDueMonths"}
+          name={"rfRentDueMonths"}
+          register={register}
         />
       </FormPortion>
     </>
@@ -80,5 +90,6 @@ export default function RentFormRentDetails({ occupiedProperty }) {
 
 RentFormRentDetails.propTypes = {
   occupiedProperty: PropTypes.object,
+  register: PropTypes.func,
 };
 // COMPONENT END
