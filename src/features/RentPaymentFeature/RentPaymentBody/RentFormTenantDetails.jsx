@@ -21,7 +21,7 @@ export default function RentFormTenantDetails({
           itemType={{
             type: "labelInputText",
             value: `${dataTenantDetailRentForm.name}`,
-            disabled: true,
+            readOnly: true,
           }}
           htmlFor={"rfTenantName"}
           id={"rfTenantName"}
@@ -33,7 +33,7 @@ export default function RentFormTenantDetails({
           itemType={{
             type: "labelInputText",
             value: `${dataTenantDetailRentForm.nationality}`,
-            disabled: true,
+            readOnly: true,
           }}
           htmlFor={"rfTenantNationality"}
           id={"rfTenantNationality"}
@@ -45,7 +45,7 @@ export default function RentFormTenantDetails({
           itemType={{
             type: "labelInputText",
             value: `${dataTenantDetailRentForm.contact_info}`,
-            disabled: true,
+            readOnly: true,
           }}
           htmlFor={"rfTenantContact"}
           id={"rfTenantContact"}
@@ -57,7 +57,7 @@ export default function RentFormTenantDetails({
           itemType={{
             type: "labelInputText",
             value: `${dataTenantDetailRentForm.id_card_number}`,
-            disabled: true,
+            readOnly: true,
           }}
           htmlFor={"rfTenantId"}
           id={"rfTenantId"}
@@ -69,7 +69,7 @@ export default function RentFormTenantDetails({
           itemType={{
             type: "labelInputText",
             value: `${dataTenantDetailRentForm.occupation}`,
-            disabled: true,
+            readOnly: true,
           }}
           htmlFor={"rfTenantOccupation"}
           id={"rfTenantOccupation"}
