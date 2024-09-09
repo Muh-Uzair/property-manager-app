@@ -11,7 +11,7 @@ import { useGetTenantDetailRentForm } from "./useGetTenantDetailRentForm";
 import RentFormPaymentReceivedOf from "./RentFormPaymentReceivedOf";
 import RentFormReceivedPayment from "./RentFormReceivedPayment";
 import { useForm } from "react-hook-form";
-import { createContext, useState } from "react";
+import { createContext } from "react";
 
 export const RentPayFormContext = createContext();
 
@@ -22,7 +22,6 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
     useGetTenantDetailRentForm(occupiedProperty.renter_id);
   dataTenantDetailRentForm = dataTenantDetailRentForm?.data?.[0] ?? {};
   const { register, handleSubmit } = useForm();
-  const [receivedPayment, setReceivedPayment] = useState(false);
 
   // FUNCTION
 
@@ -33,9 +32,7 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
   // JSX
   if (Object.entries(dataTenantDetailRentForm).length > 0) {
     return (
-      <RentPayFormContext.Provider
-        value={{ receivedPayment, setReceivedPayment }}
-      >
+      <RentPayFormContext.Provider value={{}}>
         <form
           className="w-[100%] rounded-[5px] border border-gray-300 bg-gray-50/50 px-[7px] py-[10px]"
           onSubmit={handleSubmit(rentPayFormSubmit)}
@@ -72,11 +69,7 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
           {/* submit button */}
           <FormPortion last={true}>
             <div id={"rfSubmitButton"} className="flex justify-end">
-              <Button
-                type="primary"
-                uppercase={true}
-                disabled={!receivedPayment}
-              >
+              <Button type="primary" uppercase={true}>
                 Pay Rent
               </Button>
             </div>

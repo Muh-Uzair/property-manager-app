@@ -18,7 +18,6 @@ export default function FormItem({
   name,
   controlled = false,
   controllerStVar,
-  onChangeFunc,
   required,
   defaultValue,
 }) {
@@ -47,14 +46,6 @@ export default function FormItem({
   }
 
   // FUNCTION
-  // adding onChange only is it is arrived , or it will be undefined
-  function addOnChange() {
-    if (typeof onChangeFunc === "function")
-      return { onChange: () => onChangeFunc() };
-    return {};
-  }
-
-  // FUNCTION
   // adding defaultValue att only if it is arrived as a prop
   function addDefaultValue() {
     if (defaultValue !== null || defaultValue !== null) return { defaultValue };
@@ -79,8 +70,6 @@ export default function FormItem({
             id={id}
             name={name}
             {...register(id, { required })}
-            {...makeInputControlled()}
-            {...addOnChange()}
           />
         </>
       )}
