@@ -27,6 +27,7 @@ export default function RentFormReceivedPayment({ register }) {
           register={register}
           controllerStVar={receivedPayment}
           onChangeFunc={toggleReceivedPaymentCheck}
+          required={true}
         />
       </FormPortion>
     </>

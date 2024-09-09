@@ -10,6 +10,7 @@ export default function Button({
   type = "primary",
   wide = false,
   uppercase = false,
+  disabled = false,
 }) {
   // VARIABLES
 
@@ -20,7 +21,8 @@ export default function Button({
   if (type === "primary") {
     return (
       <button
-        className={`largeScreen:hover:bg-brand-color-400 largeScreen:active:bg-brand-color-600 ${uppercase ? "uppercase" : ""} ${primary} ${wide ? "w-full" : ""} ${size === "medium" ? "text-12px" : size === "large" ? "text-15px" : ""}`}
+        disabled={disabled}
+        className={`disabled:cursor-not-allowed disabled:opacity-35 largeScreen:hover:bg-brand-color-400 largeScreen:active:bg-brand-color-600 ${uppercase ? "uppercase" : ""} ${primary} ${wide ? "w-full" : ""} ${size === "medium" ? "text-12px" : size === "large" ? "text-15px" : ""}`}
       >
         {children}
       </button>
@@ -35,6 +37,7 @@ Button.propTypes = {
   type: PropTypes.string.isRequired,
   wide: PropTypes.bool,
   uppercase: PropTypes.bool,
+  disabled: PropTypes.bool,
 };
 //size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 // COMPONENT END

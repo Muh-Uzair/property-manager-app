@@ -19,6 +19,8 @@ export default function FormItem({
   controlled = false,
   controllerStVar,
   onChangeFunc,
+  required,
+  defaultValue,
 }) {
   // VARIABLES
 
@@ -44,6 +46,21 @@ export default function FormItem({
     else return {};
   }
 
+  // FUNCTION
+  // adding onChange only is it is arrived , or it will be undefined
+  function addOnChange() {
+    if (typeof onChangeFunc === "function")
+      return { onChange: () => onChangeFunc() };
+    return {};
+  }
+
+  // FUNCTION
+  // adding defaultValue att only if it is arrived as a prop
+  function addDefaultValue() {
+    if (defaultValue !== null || defaultValue !== null) return { defaultValue };
+    return {};
+  }
+
   // JSX
   return (
     <div className="grid w-full grid-cols-[100px_150px] items-center gap-[10px] text-[11px]">
@@ -61,9 +78,9 @@ export default function FormItem({
             type="checkbox"
             id={id}
             name={name}
-            {...register(id)}
+            {...register(id, { required })}
             {...makeInputControlled()}
-            onChange={() => onChangeFunc()}
+            {...addOnChange()}
           />
         </>
       )}
@@ -89,8 +106,10 @@ export default function FormItem({
             }}
             id={id}
             name={name}
-            {...register(id)}
+            {...register(id, { required })}
             {...addValueAtt()}
+            {...addDefaultValue()}
+            {...makeInputControlled()}
           />
         </>
       )}
@@ -118,6 +137,12 @@ FormItem.propTypes = {
     PropTypes.bool,
   ]),
   onChangeFunc: PropTypes.func,
+  required: PropTypes.bool,
+  defaultValue: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+    PropTypes.bool,
+  ]),
 };
 
 //size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
