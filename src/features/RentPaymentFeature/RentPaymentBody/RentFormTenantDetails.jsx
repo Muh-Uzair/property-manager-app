@@ -23,8 +23,9 @@ export default function RentFormTenantDetails({
             value: `${dataTenantDetailRentForm.name}`,
             disabled: true,
           }}
-          htmlFor={"tenantName"}
-          id={"tenantName"}
+          htmlFor={"rfTenantName"}
+          id={"rfTenantName"}
+          name={"rfTenantName"}
           register={register}
         />
         <FormItem
@@ -34,8 +35,9 @@ export default function RentFormTenantDetails({
             value: `${dataTenantDetailRentForm.nationality}`,
             disabled: true,
           }}
-          htmlFor={"tenantNationality"}
-          id={"tenantNationality"}
+          htmlFor={"rfTenantNationality"}
+          id={"rfTenantNationality"}
+          name={"rfTenantNationality"}
           register={register}
         />
         <FormItem
@@ -45,8 +47,9 @@ export default function RentFormTenantDetails({
             value: `${dataTenantDetailRentForm.contact_info}`,
             disabled: true,
           }}
-          htmlFor={"tenantContact"}
-          id={"tenantContact"}
+          htmlFor={"rfTenantContact"}
+          id={"rfTenantContact"}
+          name={"rfTenantContact"}
           register={register}
         />
         <FormItem
@@ -56,8 +59,9 @@ export default function RentFormTenantDetails({
             value: `${dataTenantDetailRentForm.id_card_number}`,
             disabled: true,
           }}
-          htmlFor={"tenantId"}
-          id={"tenantId"}
+          htmlFor={"rfTenantId"}
+          id={"rfTenantId"}
+          name={"rfTenantId"}
           register={register}
         />
         <FormItem
@@ -67,8 +71,9 @@ export default function RentFormTenantDetails({
             value: `${dataTenantDetailRentForm.occupation}`,
             disabled: true,
           }}
-          htmlFor={"tenantOccupation"}
-          id={"tenantOccupation"}
+          htmlFor={"rfTenantOccupation"}
+          id={"rfTenantOccupation"}
+          name={"rfTenantOccupation"}
           register={register}
         />
       </FormPortion>

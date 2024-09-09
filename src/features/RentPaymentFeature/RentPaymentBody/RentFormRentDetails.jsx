@@ -22,8 +22,9 @@ export default function RentFormRentDetails({ occupiedProperty, register }) {
             value: `${occupiedProperty.rent}`,
             disabled: true,
           }}
-          htmlFor={"rentProperty"}
-          id={"rentProperty"}
+          htmlFor={"rfRentProperty"}
+          id={"rfRentProperty"}
+          name={"rfRentProperty"}
           register={register}
         />
         <FormItem
@@ -33,8 +34,9 @@ export default function RentFormRentDetails({ occupiedProperty, register }) {
             value: `${monthsArr[getLastPaidMonth(occupiedProperty.rent_details)]}`,
             disabled: true,
           }}
-          htmlFor={"rentLastMonthPaid"}
-          id={"rentLastMonthPaid"}
+          htmlFor={"rfRentLastMonthPaid"}
+          id={"rfRentLastMonthPaid"}
+          name={"rfRentLastMonthPaid"}
           register={register}
         />
         <FormItem
@@ -44,8 +46,9 @@ export default function RentFormRentDetails({ occupiedProperty, register }) {
             value: `${monthsArr[new Date().getMonth()]}`,
             disabled: true,
           }}
-          htmlFor={"rentCurrentMonth"}
-          id={"rentCurrentMonth"}
+          htmlFor={"rfRentCurrentMonth"}
+          id={"rfRentCurrentMonth"}
+          name={"rfRentCurrentMonth"}
           register={register}
         />
         <FormItem
@@ -59,8 +62,9 @@ export default function RentFormRentDetails({ occupiedProperty, register }) {
             disabled: true,
           }}
           itemValueColor="red"
-          htmlFor={"rentDueAmount"}
-          id={"rentDueAmount"}
+          htmlFor={"rfRentDueAmount"}
+          id={"rfRentDueAmount"}
+          name={"rfRentDueAmount"}
           register={register}
         />
         <FormItem
@@ -73,8 +77,9 @@ export default function RentFormRentDetails({ occupiedProperty, register }) {
             disabled: true,
           }}
           itemValueColor="red"
-          htmlFor={"rentDueMonths"}
-          id={"rentDueMonths"}
+          htmlFor={"rfRentDueMonths"}
+          id={"rfRentDueMonths"}
+          name={"rfRentDueMonths"}
           register={register}
         />
       </FormPortion>

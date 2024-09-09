@@ -15,6 +15,7 @@ export default function FormItem({
   htmlFor,
   id,
   register,
+  name,
 }) {
   // VARIABLES
 
@@ -36,10 +37,11 @@ export default function FormItem({
           <label
             className="text-nowrap font-semibold"
             style={{ color: labelColor }}
+            htmlFor={htmlFor}
           >
             {itemLabel}
           </label>
-          <input type="checkbox" />
+          <input type="checkbox" id={id} name={name} {...register(id)} />
         </>
       )}
       {itemType.type === "labelInputText" && (
@@ -61,6 +63,7 @@ export default function FormItem({
               color: `${itemValueColor ? `${itemValueColor}` : "#0ea5e9"}`,
             }}
             id={id}
+            name={name}
             {...register(id)}
             {...addValueAtt()}
           />
@@ -82,6 +85,7 @@ FormItem.propTypes = {
   htmlFor: PropTypes.string,
   id: PropTypes.string,
   register: PropTypes.func,
+  name: PropTypes.string,
 };
 
 //size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),

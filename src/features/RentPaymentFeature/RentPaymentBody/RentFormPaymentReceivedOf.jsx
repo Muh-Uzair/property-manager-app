@@ -25,8 +25,9 @@ export default function RentFormPaymentReceivedOf({
                 <FormItem
                   itemType={{ type: "labelCheckBox" }}
                   itemLabel={month}
-                  htmlFor={`paymentReceived${month}`}
-                  id={`paymentReceived${month}`}
+                  htmlFor={`rfPaymentReceived${month}`}
+                  id={`rfPaymentReceived${month}`}
+                  name={`rfPaymentReceived${month}`}
                   register={register}
                 />
               </li>
@@ -41,8 +42,9 @@ export default function RentFormPaymentReceivedOf({
           }}
           itemValueColor="green"
           income={true}
-          htmlFor={"amountReceived"}
-          id={"amountReceived"}
+          htmlFor={"rfAmountReceived"}
+          id={"rfAmountReceived"}
+          name={"rfAmountReceived"}
           register={register}
         />
       </FormPortion>

@@ -27,8 +27,9 @@ export default function RentFormPropertyDetails({
 
             disabled: true,
           }}
-          htmlFor={"propertyNumber"}
-          id={"propertyNumber"}
+          htmlFor={"rfPropertyNumber"}
+          id={"rfPropertyNumber"}
+          name={"rfPropertyNumber"}
           register={register}
         />
         <FormItem
@@ -38,8 +39,9 @@ export default function RentFormPropertyDetails({
             value: `Floor ${occupiedProperty.floor}`,
             disabled: true,
           }}
-          htmlFor={"propertyFloor"}
-          id={"propertyFloor"}
+          htmlFor={"rfPropertyFloor"}
+          id={"rfPropertyFloor"}
+          name={"rfPropertyFloor"}
           register={register}
         />
         <FormItem
@@ -49,8 +51,9 @@ export default function RentFormPropertyDetails({
             value: `${occupiedProperty.size} m`,
             disabled: true,
           }}
-          htmlFor={"propertySize"}
-          id={"propertySize"}
+          htmlFor={"rfPropertySize"}
+          id={"rfPropertySize"}
+          name={"rfPropertySize"}
           register={register}
         />
       </FormPortion>

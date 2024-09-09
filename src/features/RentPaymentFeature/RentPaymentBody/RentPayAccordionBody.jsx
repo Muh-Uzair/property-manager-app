@@ -39,7 +39,8 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
       <form
         className="w-[100%] rounded-[5px] border border-gray-300 bg-gray-50/50 px-[7px] py-[10px]"
         onSubmit={handleSubmit(rentPayFormSubmit)}
-        id={"rentPaymentForm"}
+        id="rentPaymentForm"
+        name="rentPaymentForm"
       >
         {/* Property Details */}
         <RentFormPropertyDetails
@@ -70,7 +71,7 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
 
         {/* submit button */}
         <FormPortion last={true}>
-          <div className="flex justify-end">
+          <div id={"rfSubmitButton"} className="flex justify-end">
             <Button type="primary" uppercase={true}>
               Pay Rent
             </Button>

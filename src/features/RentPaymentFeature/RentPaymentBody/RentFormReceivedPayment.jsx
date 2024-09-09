@@ -16,8 +16,9 @@ export default function RentFormReceivedPayment({ register }) {
         <FormItem
           itemType={{ type: "labelCheckBox" }}
           itemLabel={"received payment"}
-          htmlFor={"receivedPaymentCheck"}
-          id={"receivedPaymentCheck"}
+          htmlFor={"rfReceivedPaymentCheck"}
+          id={"rfReceivedPaymentCheck"}
+          name={"rfReceivedPaymentCheck"}
           register={register}
         />
       </FormPortion>
