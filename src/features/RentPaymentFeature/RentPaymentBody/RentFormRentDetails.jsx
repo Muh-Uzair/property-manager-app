@@ -20,7 +20,7 @@ export default function RentFormRentDetails({ occupiedProperty, register }) {
           itemType={{
             type: "labelInputText",
             value: `${occupiedProperty.rent}`,
-            disabled: true,
+            readOnly: true,
           }}
           htmlFor={"rfRentProperty"}
           id={"rfRentProperty"}
@@ -32,7 +32,7 @@ export default function RentFormRentDetails({ occupiedProperty, register }) {
           itemType={{
             type: "labelInputText",
             value: `${monthsArr[getLastPaidMonth(occupiedProperty.rent_details)]}`,
-            disabled: true,
+            readOnly: true,
           }}
           htmlFor={"rfRentLastMonthPaid"}
           id={"rfRentLastMonthPaid"}
@@ -44,7 +44,7 @@ export default function RentFormRentDetails({ occupiedProperty, register }) {
           itemType={{
             type: "labelInputText",
             value: `${monthsArr[new Date().getMonth()]}`,
-            disabled: true,
+            readOnly: true,
           }}
           htmlFor={"rfRentCurrentMonth"}
           id={"rfRentCurrentMonth"}
@@ -59,7 +59,7 @@ export default function RentFormRentDetails({ occupiedProperty, register }) {
               getLastPaidMonth(occupiedProperty.rent_details),
               occupiedProperty.rent,
             ),
-            disabled: true,
+            readOnly: true,
           }}
           itemValueColor="red"
           htmlFor={"rfRentDueAmount"}
@@ -74,7 +74,7 @@ export default function RentFormRentDetails({ occupiedProperty, register }) {
             value:
               new Date().getMonth() -
               getLastPaidMonth(occupiedProperty.rent_details),
-            disabled: true,
+            readOnly: true,
           }}
           itemValueColor="red"
           htmlFor={"rfRentDueMonths"}

@@ -19,7 +19,7 @@ export default function PropertyChangeBtns({ btnsUrlArr }) {
 
   // JSX
   return (
-    <ul className="flex gap-[5px] rounded-[3px] border bg-brand-color-200/70 px-[5px] py-[3px] text-[12px] uppercase">
+    <ul className="flex gap-[5px] rounded-[3px] border bg-brand-color-200/70 px-[5px] py-[3px] text-[10px] uppercase largeTab:text-[12px]">
       {btnsUrlArr.map((val, i) => (
         <li key={i}>
           <NavLink

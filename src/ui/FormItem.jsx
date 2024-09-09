@@ -1,9 +1,9 @@
 // FUNCTION
-// function getValueFormat(inputText = "") {
-//   const firstLetter = inputText[0]?.toUpperCase();
-//   const restWords = inputText?.slice(1);
-//   return firstLetter + restWords;
-// }
+function getValueFormat(inputText = "") {
+  const firstLetter = inputText[0]?.toUpperCase();
+  const restWords = inputText?.slice(1);
+  return firstLetter + restWords;
+}
 
 // COMPONENT START
 export default function FormItem({
@@ -23,7 +23,12 @@ export default function FormItem({
 
   function addValueAtt() {
     if (itemType?.value !== undefined && itemType?.value !== null) {
-      return { value: "hello" };
+      return {
+        value:
+          typeof itemType?.value === "number"
+            ? itemType?.value
+            : getValueFormat(itemType?.value),
+      };
     } else {
       return {};
     }
@@ -58,7 +63,7 @@ export default function FormItem({
             className={`i rounded-[3px] border border-brand-color-200 pl-[10px] font-semibold ${incomeInput ? "bg-green-200" : "bg-brand-color-200/50"}`}
             // value={`${typeof itemType?.value === "number" ? itemType?.value : getValueFormat(itemType?.value)}`}
 
-            disabled={itemType?.disabled}
+            readOnly={itemType?.readOnly}
             style={{
               color: `${itemValueColor ? `${itemValueColor}` : "#0ea5e9"}`,
             }}

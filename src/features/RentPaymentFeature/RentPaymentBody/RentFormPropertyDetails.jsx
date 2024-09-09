@@ -25,7 +25,7 @@ export default function RentFormPropertyDetails({
             type: "labelInputText",
             value: `${propertyType.at(0).toUpperCase()}${propertyType.slice(1, -1)}  ${occupiedProperty.flat_number ?? occupiedProperty.shop_number ?? occupiedProperty.room_number}`,
 
-            disabled: true,
+            readOnly: true,
           }}
           htmlFor={"rfPropertyNumber"}
           id={"rfPropertyNumber"}
@@ -37,7 +37,7 @@ export default function RentFormPropertyDetails({
           itemType={{
             type: "labelInputText",
             value: `Floor ${occupiedProperty.floor}`,
-            disabled: true,
+            readOnly: true,
           }}
           htmlFor={"rfPropertyFloor"}
           id={"rfPropertyFloor"}
@@ -49,7 +49,7 @@ export default function RentFormPropertyDetails({
           itemType={{
             type: "labelInputText",
             value: `${occupiedProperty.size} m`,
-            disabled: true,
+            readOnly: true,
           }}
           htmlFor={"rfPropertySize"}
           id={"rfPropertySize"}
