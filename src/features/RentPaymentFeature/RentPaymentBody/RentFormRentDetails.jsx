@@ -6,7 +6,7 @@ import { monthsArr } from "../../../utils/constants";
 import { calculateDues, getLastPaidMonth } from "../../../utils/helpers";
 
 // COMPONENT START
-export default function RentFormRentDetails({ occupiedProperty }) {
+export default function RentFormRentDetails({ occupiedProperty, register }) {
   // VARIABLES
 
   // FUNCTIONS
@@ -24,6 +24,7 @@ export default function RentFormRentDetails({ occupiedProperty }) {
           }}
           htmlFor={"rentProperty"}
           id={"rentProperty"}
+          register={register}
         />
         <FormItem
           itemLabel={"Last Rent Paid"}
@@ -34,6 +35,7 @@ export default function RentFormRentDetails({ occupiedProperty }) {
           }}
           htmlFor={"rentLastMonthPaid"}
           id={"rentLastMonthPaid"}
+          register={register}
         />
         <FormItem
           itemLabel={"Current Month"}
@@ -44,6 +46,7 @@ export default function RentFormRentDetails({ occupiedProperty }) {
           }}
           htmlFor={"rentCurrentMonth"}
           id={"rentCurrentMonth"}
+          register={register}
         />
         <FormItem
           itemLabel={"Due Amount"}
@@ -58,6 +61,7 @@ export default function RentFormRentDetails({ occupiedProperty }) {
           itemValueColor="red"
           htmlFor={"rentDueAmount"}
           id={"rentDueAmount"}
+          register={register}
         />
         <FormItem
           itemLabel={"Months Due"}
@@ -71,6 +75,7 @@ export default function RentFormRentDetails({ occupiedProperty }) {
           itemValueColor="red"
           htmlFor={"rentDueMonths"}
           id={"rentDueMonths"}
+          register={register}
         />
       </FormPortion>
     </>
@@ -80,5 +85,6 @@ export default function RentFormRentDetails({ occupiedProperty }) {
 
 RentFormRentDetails.propTypes = {
   occupiedProperty: PropTypes.object,
+  register: PropTypes.func,
 };
 // COMPONENT END

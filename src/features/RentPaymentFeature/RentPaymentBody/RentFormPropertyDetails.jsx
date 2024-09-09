@@ -5,7 +5,10 @@ import FormItem from "../../../ui/FormItem";
 import { useGetPropertyType } from "../../../hooks/useGetPropertyType";
 
 // COMPONENT START
-export default function RentFormPropertyDetails({ occupiedProperty }) {
+export default function RentFormPropertyDetails({
+  occupiedProperty,
+  register,
+}) {
   // VARIABLES
 
   const propertyType = useGetPropertyType();
@@ -26,6 +29,7 @@ export default function RentFormPropertyDetails({ occupiedProperty }) {
           }}
           htmlFor={"propertyNumber"}
           id={"propertyNumber"}
+          register={register}
         />
         <FormItem
           itemLabel={"Floor"}
@@ -36,6 +40,7 @@ export default function RentFormPropertyDetails({ occupiedProperty }) {
           }}
           htmlFor={"propertyFloor"}
           id={"propertyFloor"}
+          register={register}
         />
         <FormItem
           itemLabel={"Size"}
@@ -46,6 +51,7 @@ export default function RentFormPropertyDetails({ occupiedProperty }) {
           }}
           htmlFor={"propertySize"}
           id={"propertySize"}
+          register={register}
         />
       </FormPortion>
     </>
@@ -55,6 +61,7 @@ export default function RentFormPropertyDetails({ occupiedProperty }) {
 
 RentFormPropertyDetails.propTypes = {
   occupiedProperty: PropTypes.object,
+  register: PropTypes.func,
 };
 //size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 // COMPONENT END

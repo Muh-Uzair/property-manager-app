@@ -1,8 +1,10 @@
+import PropTypes from "prop-types";
+
 import FormItem from "../../../ui/FormItem";
 import FormPortion from "../../../ui/FormPortion";
 
 // COMPONENT START
-export default function RentFormReceivedPayment() {
+export default function RentFormReceivedPayment({ register }) {
   // VARIABLES
 
   // FUNCTIONS
@@ -16,10 +18,16 @@ export default function RentFormReceivedPayment() {
           itemLabel={"received payment"}
           htmlFor={"receivedPaymentCheck"}
           id={"receivedPaymentCheck"}
+          register={register}
         />
       </FormPortion>
     </>
   );
   // JSX
 }
+
+RentFormReceivedPayment.propTypes = {
+  register: PropTypes.func,
+};
+//size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 // COMPONENT END

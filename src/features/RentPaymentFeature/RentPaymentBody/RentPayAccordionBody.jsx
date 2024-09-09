@@ -10,6 +10,7 @@ import RentFormTenantDetails from "./RentFormTenantDetails";
 import { useGetTenantDetailRentForm } from "./useGetTenantDetailRentForm";
 import RentFormPaymentReceivedOf from "./RentFormPaymentReceivedOf";
 import RentFormReceivedPayment from "./RentFormReceivedPayment";
+import { useForm } from "react-hook-form";
 
 // COMPONENT START
 export default function RentPayAccordionBody({ occupiedProperty }) {
@@ -17,8 +18,13 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
   let { dataTenantDetailRentForm, statusTenantDetailRentForm } =
     useGetTenantDetailRentForm(occupiedProperty.renter_id);
   dataTenantDetailRentForm = dataTenantDetailRentForm?.data?.[0] ?? {};
+  const { register, handleSubmit } = useForm();
 
-  // FUNCTIONS
+  // FUNCTION
+
+  function rentPayFormSubmit(data) {
+    console.log(data);
+  }
 
   // JSX
   if (statusTenantDetailRentForm === "pending") {
@@ -32,24 +38,35 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
     return (
       <form
         className="w-[100%] rounded-[5px] border border-gray-300 bg-gray-50/50 px-[7px] py-[10px]"
-        onSubmit={(e) => e.preventDefault()}
+        onSubmit={handleSubmit(rentPayFormSubmit)}
+        id={"rentPaymentForm"}
       >
         {/* Property Details */}
-        <RentFormPropertyDetails occupiedProperty={occupiedProperty} />
+        <RentFormPropertyDetails
+          occupiedProperty={occupiedProperty}
+          register={register}
+        />
 
         {/* Tenant details */}
         <RentFormTenantDetails
           dataTenantDetailRentForm={dataTenantDetailRentForm}
+          register={register}
         />
 
         {/* Rent details */}
-        <RentFormRentDetails occupiedProperty={occupiedProperty} />
+        <RentFormRentDetails
+          occupiedProperty={occupiedProperty}
+          register={register}
+        />
 
         {/* payment received of months */}
-        <RentFormPaymentReceivedOf occupiedProperty={occupiedProperty} />
+        <RentFormPaymentReceivedOf
+          occupiedProperty={occupiedProperty}
+          register={register}
+        />
 
         {/* received payment check */}
-        <RentFormReceivedPayment />
+        <RentFormReceivedPayment register={register} />
 
         {/* submit button */}
         <FormPortion last={true}>

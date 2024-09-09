@@ -5,7 +5,10 @@ import FormItem from "../../../ui/FormItem";
 import { getDueMonths, getLastPaidMonth } from "../../../utils/helpers";
 
 // COMPONENT START
-export default function RentFormPaymentReceivedOf({ occupiedProperty }) {
+export default function RentFormPaymentReceivedOf({
+  occupiedProperty,
+  register,
+}) {
   // VARIABLES
 
   // FUNCTIONS
@@ -24,6 +27,7 @@ export default function RentFormPaymentReceivedOf({ occupiedProperty }) {
                   itemLabel={month}
                   htmlFor={`paymentReceived${month}`}
                   id={`paymentReceived${month}`}
+                  register={register}
                 />
               </li>
             ),
@@ -34,13 +38,12 @@ export default function RentFormPaymentReceivedOf({ occupiedProperty }) {
           itemLabel={"Amount Received"}
           itemType={{
             type: "labelInputText",
-            value: 15000,
-            disabled: true,
           }}
           itemValueColor="green"
           income={true}
           htmlFor={"amountReceived"}
           id={"amountReceived"}
+          register={register}
         />
       </FormPortion>
     </>
@@ -50,5 +53,6 @@ export default function RentFormPaymentReceivedOf({ occupiedProperty }) {
 
 RentFormPaymentReceivedOf.propTypes = {
   occupiedProperty: PropTypes.object,
+  register: PropTypes.func,
 };
 // COMPONENT END

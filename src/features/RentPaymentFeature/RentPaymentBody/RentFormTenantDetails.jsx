@@ -4,7 +4,10 @@ import FormPortion from "../../../ui/FormPortion";
 import FormItem from "../../../ui/FormItem";
 
 // COMPONENT START
-export default function RentFormTenantDetails({ dataTenantDetailRentForm }) {
+export default function RentFormTenantDetails({
+  dataTenantDetailRentForm,
+  register,
+}) {
   // VARIABLES
 
   // FUNCTIONS
@@ -22,6 +25,7 @@ export default function RentFormTenantDetails({ dataTenantDetailRentForm }) {
           }}
           htmlFor={"tenantName"}
           id={"tenantName"}
+          register={register}
         />
         <FormItem
           itemLabel={"Nationality"}
@@ -32,6 +36,7 @@ export default function RentFormTenantDetails({ dataTenantDetailRentForm }) {
           }}
           htmlFor={"tenantNationality"}
           id={"tenantNationality"}
+          register={register}
         />
         <FormItem
           itemLabel={"Contact"}
@@ -42,6 +47,7 @@ export default function RentFormTenantDetails({ dataTenantDetailRentForm }) {
           }}
           htmlFor={"tenantContact"}
           id={"tenantContact"}
+          register={register}
         />
         <FormItem
           itemLabel={"ID CARD"}
@@ -52,6 +58,7 @@ export default function RentFormTenantDetails({ dataTenantDetailRentForm }) {
           }}
           htmlFor={"tenantId"}
           id={"tenantId"}
+          register={register}
         />
         <FormItem
           itemLabel={"Occupation"}
@@ -62,6 +69,7 @@ export default function RentFormTenantDetails({ dataTenantDetailRentForm }) {
           }}
           htmlFor={"tenantOccupation"}
           id={"tenantOccupation"}
+          register={register}
         />
       </FormPortion>
     </>
@@ -71,6 +79,6 @@ export default function RentFormTenantDetails({ dataTenantDetailRentForm }) {
 
 RentFormTenantDetails.propTypes = {
   dataTenantDetailRentForm: PropTypes.object,
+  register: PropTypes.func,
 };
-//size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 // COMPONENT END
