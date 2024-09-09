@@ -49,6 +49,7 @@ export default function RentFormPaymentReceivedOf({
           register={register}
           controlled={true}
           controllerStVar={amountReceived}
+          required={true}
         />
       </FormPortion>
     </>
