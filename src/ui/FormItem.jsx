@@ -16,11 +16,14 @@ export default function FormItem({
   id,
   register,
   name,
+  controlled = false,
+  controllerStVar,
+  onChangeFunc,
 }) {
   // VARIABLES
 
   // FUNCTION
-
+  // adding the value attribute conditionally
   function addValueAtt() {
     if (itemType?.value !== undefined && itemType?.value !== null) {
       return {
@@ -34,9 +37,17 @@ export default function FormItem({
     }
   }
 
+  // FUNCTION
+  // this function will make the input controlled by providing the value att conditionally
+  function makeInputControlled() {
+    if (controlled) return { value: controllerStVar };
+    else return {};
+  }
+
   // JSX
   return (
     <div className="grid w-full grid-cols-[100px_150px] items-center gap-[10px] text-[11px]">
+      {/* label & checkbox*/}
       {itemType.type === "labelCheckBox" && (
         <>
           <label
@@ -46,9 +57,18 @@ export default function FormItem({
           >
             {itemLabel}
           </label>
-          <input type="checkbox" id={id} name={name} {...register(id)} />
+          <input
+            type="checkbox"
+            id={id}
+            name={name}
+            {...register(id)}
+            {...makeInputControlled()}
+            onChange={() => onChangeFunc()}
+          />
         </>
       )}
+
+      {/* label & inputText*/}
       {itemType.type === "labelInputText" && (
         <>
           <label
@@ -91,6 +111,13 @@ FormItem.propTypes = {
   id: PropTypes.string,
   register: PropTypes.func,
   name: PropTypes.string,
+  controlled: PropTypes.bool,
+  controllerStVar: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+    PropTypes.bool,
+  ]),
+  onChangeFunc: PropTypes.func,
 };
 
 //size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),

@@ -11,6 +11,9 @@ import { useGetTenantDetailRentForm } from "./useGetTenantDetailRentForm";
 import RentFormPaymentReceivedOf from "./RentFormPaymentReceivedOf";
 import RentFormReceivedPayment from "./RentFormReceivedPayment";
 import { useForm } from "react-hook-form";
+import { createContext, useState } from "react";
+
+export const RentPayFormContext = createContext();
 
 // COMPONENT START
 export default function RentPayAccordionBody({ occupiedProperty }) {
@@ -19,6 +22,7 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
     useGetTenantDetailRentForm(occupiedProperty.renter_id);
   dataTenantDetailRentForm = dataTenantDetailRentForm?.data?.[0] ?? {};
   const { register, handleSubmit } = useForm();
+  const [receivedPayment, setReceivedPayment] = useState(false);
 
   // FUNCTION
 
@@ -27,57 +31,61 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
   }
 
   // JSX
+  if (Object.entries(dataTenantDetailRentForm).length > 0) {
+    return (
+      <RentPayFormContext.Provider
+        value={{ receivedPayment, setReceivedPayment }}
+      >
+        <form
+          className="w-[100%] rounded-[5px] border border-gray-300 bg-gray-50/50 px-[7px] py-[10px]"
+          onSubmit={handleSubmit(rentPayFormSubmit)}
+          id="rentPaymentForm"
+          name="rentPaymentForm"
+        >
+          {/* Property Details */}
+          <RentFormPropertyDetails
+            occupiedProperty={occupiedProperty}
+            register={register}
+          />
+
+          {/* Tenant details */}
+          <RentFormTenantDetails
+            dataTenantDetailRentForm={dataTenantDetailRentForm}
+            register={register}
+          />
+
+          {/* Rent details */}
+          <RentFormRentDetails
+            occupiedProperty={occupiedProperty}
+            register={register}
+          />
+
+          {/* payment received of months */}
+          <RentFormPaymentReceivedOf
+            occupiedProperty={occupiedProperty}
+            register={register}
+          />
+
+          {/* received payment check */}
+          <RentFormReceivedPayment register={register} />
+
+          {/* submit button */}
+          <FormPortion last={true}>
+            <div id={"rfSubmitButton"} className="flex justify-end">
+              <Button type="primary" uppercase={true}>
+                Pay Rent
+              </Button>
+            </div>
+          </FormPortion>
+        </form>
+      </RentPayFormContext.Provider>
+    );
+  }
   if (statusTenantDetailRentForm === "pending") {
     return (
       <LoadingWrapperCenter>
         <LoadingSpinner size={25} />
       </LoadingWrapperCenter>
-    );
-  }
-  if (Object.entries(dataTenantDetailRentForm).length > 0) {
-    return (
-      <form
-        className="w-[100%] rounded-[5px] border border-gray-300 bg-gray-50/50 px-[7px] py-[10px]"
-        onSubmit={handleSubmit(rentPayFormSubmit)}
-        id="rentPaymentForm"
-        name="rentPaymentForm"
-      >
-        {/* Property Details */}
-        <RentFormPropertyDetails
-          occupiedProperty={occupiedProperty}
-          register={register}
-        />
-
-        {/* Tenant details */}
-        <RentFormTenantDetails
-          dataTenantDetailRentForm={dataTenantDetailRentForm}
-          register={register}
-        />
-
-        {/* Rent details */}
-        <RentFormRentDetails
-          occupiedProperty={occupiedProperty}
-          register={register}
-        />
-
-        {/* payment received of months */}
-        <RentFormPaymentReceivedOf
-          occupiedProperty={occupiedProperty}
-          register={register}
-        />
-
-        {/* received payment check */}
-        <RentFormReceivedPayment register={register} />
-
-        {/* submit button */}
-        <FormPortion last={true}>
-          <div id={"rfSubmitButton"} className="flex justify-end">
-            <Button type="primary" uppercase={true}>
-              Pay Rent
-            </Button>
-          </div>
-        </FormPortion>
-      </form>
     );
   }
   // JSX
