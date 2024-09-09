@@ -11,8 +11,6 @@ export default function RentFormPaymentReceivedOf({
 }) {
   // VARIABLES
 
-  // FUNCTIONS
-
   // JSX
   return (
     <>
@@ -39,9 +37,10 @@ export default function RentFormPaymentReceivedOf({
           itemLabel={"Amount Received"}
           itemType={{
             type: "labelInputText",
+            readOnly: true,
           }}
           itemValueColor="green"
-          income={true}
+          incomeInput={true}
           htmlFor={"rfAmountReceived"}
           id={"rfAmountReceived"}
           name={"rfAmountReceived"}

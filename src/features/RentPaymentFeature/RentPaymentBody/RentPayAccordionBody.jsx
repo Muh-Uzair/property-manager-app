@@ -72,7 +72,11 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
           {/* submit button */}
           <FormPortion last={true}>
             <div id={"rfSubmitButton"} className="flex justify-end">
-              <Button type="primary" uppercase={true}>
+              <Button
+                type="primary"
+                uppercase={true}
+                disabled={!receivedPayment}
+              >
                 Pay Rent
               </Button>
             </div>
