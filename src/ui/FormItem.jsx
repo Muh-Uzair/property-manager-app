@@ -18,7 +18,6 @@ export default function FormItem({
   name,
   controlled = false,
   controllerStVar,
-  onChangeFunc,
   required,
   defaultValue,
 }) {
@@ -47,14 +46,6 @@ export default function FormItem({
   }
 
   // FUNCTION
-  // adding onChange only is it is arrived , or it will be undefined
-  function addOnChange() {
-    if (typeof onChangeFunc === "function")
-      return { onChange: () => onChangeFunc() };
-    return {};
-  }
-
-  // FUNCTION
   // adding defaultValue att only if it is arrived as a prop
   function addDefaultValue() {
     if (defaultValue !== null || defaultValue !== null) return { defaultValue };
@@ -63,7 +54,7 @@ export default function FormItem({
 
   // JSX
   return (
-    <div className="grid w-full grid-cols-[100px_150px] items-center gap-[10px] text-[11px]">
+    <div className="grid w-full grid-cols-[100px_150px] items-center gap-[5px] text-[10px]">
       {/* label & checkbox*/}
       {itemType.type === "labelCheckBox" && (
         <>
@@ -73,14 +64,15 @@ export default function FormItem({
             htmlFor={htmlFor}
           >
             {itemLabel}
+            {required && (
+              <span className="text-[15px] text-red-700">{` *`}</span>
+            )}
           </label>
           <input
             type="checkbox"
             id={id}
             name={name}
             {...register(id, { required })}
-            {...makeInputControlled()}
-            {...addOnChange()}
           />
         </>
       )}
@@ -94,10 +86,13 @@ export default function FormItem({
             htmlFor={htmlFor}
           >
             {itemLabel}
+            {required && (
+              <span className="text-[15px] text-red-700">{` *`}</span>
+            )}
           </label>
           <input
             type="texts"
-            className={`i rounded-[3px] border border-brand-color-200 pl-[10px] font-semibold ${incomeInput ? "bg-green-200" : "bg-brand-color-200/50"}`}
+            className={`rounded-[3px] border border-brand-color-200 pl-[10px] font-semibold ${incomeInput ? "bg-green-200" : "bg-brand-color-200/50"}`}
             // value={`${typeof itemType?.value === "number" ? itemType?.value : getValueFormat(itemType?.value)}`}
 
             readOnly={itemType?.readOnly}
