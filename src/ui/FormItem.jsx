@@ -19,7 +19,6 @@ export default function FormItem({
   controlled = false,
   controllerStVar,
   required,
-  defaultValue,
 }) {
   // VARIABLES
 
@@ -43,13 +42,6 @@ export default function FormItem({
   function makeInputControlled() {
     if (controlled) return { value: controllerStVar };
     else return {};
-  }
-
-  // FUNCTION
-  // adding defaultValue att only if it is arrived as a prop
-  function addDefaultValue() {
-    if (defaultValue !== null || defaultValue !== null) return { defaultValue };
-    return {};
   }
 
   // JSX
@@ -103,7 +95,6 @@ export default function FormItem({
             name={name}
             {...register(id, { required })}
             {...addValueAtt()}
-            {...addDefaultValue()}
             {...makeInputControlled()}
           />
         </>
@@ -133,11 +124,6 @@ FormItem.propTypes = {
   ]),
   onChangeFunc: PropTypes.func,
   required: PropTypes.bool,
-  defaultValue: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string,
-    PropTypes.bool,
-  ]),
 };
 
 //size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
