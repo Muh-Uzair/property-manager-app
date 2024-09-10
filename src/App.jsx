@@ -20,6 +20,7 @@ import SinglePropertyDetails from "./features/ShowPropertyDetails/showSingleProp
 import PropertyEdit from "./features/ShowPropertyDetails/PropertyEdit";
 import RentPaymentPG from "./Pages/RentPaymentPG";
 import DummyPG1 from "./Pages/DummyPG1";
+import { Toaster } from "react-hot-toast";
 
 // amount received functionality almost done
 
@@ -79,6 +80,7 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
       <RouterProvider router={router} />
+      <Toaster position="top-center" />
     </QueryClientProvider>
   );
   // JSX//////////////////////////////////////////
