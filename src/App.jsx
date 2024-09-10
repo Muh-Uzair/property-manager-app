@@ -21,7 +21,7 @@ import PropertyEdit from "./features/ShowPropertyDetails/PropertyEdit";
 import RentPaymentPG from "./Pages/RentPaymentPG";
 import DummyPG1 from "./Pages/DummyPG1";
 
-// rentPaymentForm refactored
+// amount received functionality almost done
 
 const router = createBrowserRouter(
   createRoutesFromElements(
