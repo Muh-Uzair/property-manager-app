@@ -19,12 +19,38 @@ export default function FormItem({
   controlled = false,
   controllerStVar,
   required,
-  defaultValue,
+  onChangeFunc,
 }) {
   // VARIABLES
+  const [checkControllerSt, setCheckControllerSt] = useState(false);
 
-  // FUNCTION
-  // adding the value attribute conditionally
+  // FUNCTION function to toggle checkbox st
+  function checkBoxToggle(e) {
+    onChangeFunc(e);
+    setCheckControllerSt((checkControllerSt) => !checkControllerSt);
+  }
+
+  // FUNCTION this function will make the input controlled by providing the value att conditionally
+  function makeInputControlled() {
+    if (
+      // this will be case if the user provide a controller st from outside
+      controlled &&
+      controllerStVar !== null &&
+      controllerStVar !== undefined
+    ) {
+      if (controlled) return { value: controllerStVar };
+    }
+    if (
+      // this will be case if the use want the the checkbox to be controlled by does not provide a st var
+      controlled &&
+      (controllerStVar === null || controllerStVar === undefined)
+    ) {
+      if (controlled)
+        return { value: checkControllerSt, onChange: (e) => checkBoxToggle(e) };
+    }
+  }
+
+  // FUNCTION adding the value attribute conditionally
   function addValueAtt() {
     if (itemType?.value !== undefined && itemType?.value !== null) {
       return {
@@ -36,20 +62,6 @@ export default function FormItem({
     } else {
       return {};
     }
-  }
-
-  // FUNCTION
-  // this function will make the input controlled by providing the value att conditionally
-  function makeInputControlled() {
-    if (controlled) return { value: controllerStVar };
-    else return {};
-  }
-
-  // FUNCTION
-  // adding defaultValue att only if it is arrived as a prop
-  function addDefaultValue() {
-    if (defaultValue !== null || defaultValue !== null) return { defaultValue };
-    return {};
   }
 
   // JSX
@@ -73,6 +85,7 @@ export default function FormItem({
             id={id}
             name={name}
             {...register(id, { required })}
+            {...makeInputControlled()}
           />
         </>
       )}
@@ -103,7 +116,6 @@ export default function FormItem({
             name={name}
             {...register(id, { required })}
             {...addValueAtt()}
-            {...addDefaultValue()}
             {...makeInputControlled()}
           />
         </>
@@ -114,6 +126,7 @@ export default function FormItem({
 }
 
 import PropTypes from "prop-types";
+import { useState } from "react";
 
 FormItem.propTypes = {
   itemType: PropTypes.object,
@@ -133,11 +146,6 @@ FormItem.propTypes = {
   ]),
   onChangeFunc: PropTypes.func,
   required: PropTypes.bool,
-  defaultValue: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string,
-    PropTypes.bool,
-  ]),
 };
 
 //size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),

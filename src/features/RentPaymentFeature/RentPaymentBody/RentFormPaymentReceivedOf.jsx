@@ -11,7 +11,15 @@ export default function RentFormPaymentReceivedOf({
   register,
 }) {
   // VARIABLES
-  const [amountReceived] = useState(10);
+  const [amountReceived, setAmountReceived] = useState(10);
+
+  // FUNCTION to update the amount received
+  function updateAmountReceived(e) {
+    let paid = e.target.value === "true" ? false : true;
+    console.log(paid);
+    if (paid) setAmountReceived((amountReceived) => (amountReceived += 1000));
+    if (!paid) setAmountReceived((amountReceived) => (amountReceived -= 1000));
+  }
 
   // JSX
   return (
@@ -29,6 +37,8 @@ export default function RentFormPaymentReceivedOf({
                   id={`rfPaymentReceived${month}`}
                   name={`rfPaymentReceived${month}`}
                   register={register}
+                  controlled={true}
+                  onChangeFunc={updateAmountReceived}
                 />
               </li>
             ),
