@@ -54,7 +54,7 @@ export default function FormItem({
 
   // JSX
   return (
-    <div className="grid w-full grid-cols-[110px_140px] items-center gap-[10px] text-[11px]">
+    <div className="grid w-full grid-cols-[100px_150px] items-center gap-[5px] text-[10px]">
       {/* label & checkbox*/}
       {itemType.type === "labelCheckBox" && (
         <>

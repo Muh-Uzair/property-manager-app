@@ -11,7 +11,7 @@ import { useGetTenantDetailRentForm } from "./useGetTenantDetailRentForm";
 import RentFormPaymentReceivedOf from "./RentFormPaymentReceivedOf";
 import RentFormReceivedPayment from "./RentFormReceivedPayment";
 import { useForm } from "react-hook-form";
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 export const RentPayFormContext = createContext();
 
@@ -22,6 +22,7 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
     useGetTenantDetailRentForm(occupiedProperty.renter_id);
   dataTenantDetailRentForm = dataTenantDetailRentForm?.data?.[0] ?? {};
   const { register, handleSubmit } = useForm();
+  const [receivedPayment, setReceivedPayment] = useState(false);
 
   // FUNCTION
 
@@ -32,7 +33,9 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
   // JSX
   if (Object.entries(dataTenantDetailRentForm).length > 0) {
     return (
-      <RentPayFormContext.Provider value={{}}>
+      <RentPayFormContext.Provider
+        value={{ receivedPayment, setReceivedPayment }}
+      >
         <form
           className="w-[100%] rounded-[5px] border border-gray-300 bg-gray-50/50 px-[7px] py-[10px]"
           onSubmit={handleSubmit(rentPayFormSubmit)}
