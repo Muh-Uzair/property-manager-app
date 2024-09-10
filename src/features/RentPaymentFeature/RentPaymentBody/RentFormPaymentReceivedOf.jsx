@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import FormPortion from "../../../ui/FormPortion";
 import FormItem from "../../../ui/FormItem";
 import { getDueMonths, getLastPaidMonth } from "../../../utils/helpers";
-import { useState } from "react";
+import { useRentPayFormContext } from "./useRentPayFormContext";
 
 // COMPONENT START
 export default function RentFormPaymentReceivedOf({
@@ -11,14 +11,19 @@ export default function RentFormPaymentReceivedOf({
   register,
 }) {
   // VARIABLES
-  const [amountReceived, setAmountReceived] = useState(10);
+  const { amountReceived, setAmountReceived } = useRentPayFormContext();
 
   // FUNCTION to update the amount received
   function updateAmountReceived(e) {
     let paid = e.target.value === "true" ? false : true;
-    console.log(paid);
-    if (paid) setAmountReceived((amountReceived) => (amountReceived += 1000));
-    if (!paid) setAmountReceived((amountReceived) => (amountReceived -= 1000));
+    if (paid)
+      setAmountReceived(
+        (amountReceived) => (amountReceived += occupiedProperty?.rent),
+      );
+    if (!paid)
+      setAmountReceived(
+        (amountReceived) => (amountReceived -= occupiedProperty?.rent),
+      );
   }
 
   // JSX
@@ -59,7 +64,7 @@ export default function RentFormPaymentReceivedOf({
           register={register}
           controlled={true}
           controllerStVar={amountReceived}
-          required={true}
+          validationObj={{ required: true }}
         />
       </FormPortion>
     </>

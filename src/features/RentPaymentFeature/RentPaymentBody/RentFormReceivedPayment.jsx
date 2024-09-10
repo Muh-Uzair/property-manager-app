@@ -2,10 +2,12 @@ import PropTypes from "prop-types";
 
 import FormItem from "../../../ui/FormItem";
 import FormPortion from "../../../ui/FormPortion";
+import { useRentPayFormContext } from "./useRentPayFormContext";
 
 // COMPONENT START
 export default function RentFormReceivedPayment({ register }) {
   // VARIABLES
+  const { getValues, amountReceived } = useRentPayFormContext();
 
   // FUNCTION
 
@@ -20,7 +22,13 @@ export default function RentFormReceivedPayment({ register }) {
           id={"rfReceivedPaymentCheck"}
           name={"rfReceivedPaymentCheck"}
           register={register}
-          required={true}
+          validationObj={{
+            required: "Please receive the amount",
+            validate: () =>
+              Number(getValues("rfAmountReceived")) === 0 ||
+              "Amount received must be greater than 0",
+          }}
+          disabled={Number(amountReceived) === 0}
         />
       </FormPortion>
     </>

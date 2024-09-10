@@ -12,6 +12,7 @@ import RentFormPaymentReceivedOf from "./RentFormPaymentReceivedOf";
 import RentFormReceivedPayment from "./RentFormReceivedPayment";
 import { useForm } from "react-hook-form";
 import { createContext, useState } from "react";
+import toast from "react-hot-toast";
 
 export const RentPayFormContext = createContext();
 
@@ -21,24 +22,39 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
   let { dataTenantDetailRentForm, statusTenantDetailRentForm } =
     useGetTenantDetailRentForm(occupiedProperty.renter_id);
   dataTenantDetailRentForm = dataTenantDetailRentForm?.data?.[0] ?? {};
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, getValues } = useForm();
   const [receivedPayment, setReceivedPayment] = useState(false);
+  const [amountReceived, setAmountReceived] = useState(0);
 
-  // FUNCTION
-
+  // FUNCTION executed when form is submitted
   function rentPayFormSubmit(data) {
     console.log(data);
+  }
+
+  // FUNCTION executed when validation at any field fails
+  function rentPayFormSubmitError(errors) {
+    console.log(errors);
+    toast("failed", {
+      duration: 3000,
+      icon: <span>X</span>,
+    });
   }
 
   // JSX
   if (Object.entries(dataTenantDetailRentForm).length > 0) {
     return (
       <RentPayFormContext.Provider
-        value={{ receivedPayment, setReceivedPayment }}
+        value={{
+          receivedPayment,
+          setReceivedPayment,
+          getValues,
+          amountReceived,
+          setAmountReceived,
+        }}
       >
         <form
           className="w-[100%] rounded-[5px] border border-gray-300 bg-gray-50/50 px-[7px] py-[10px]"
-          onSubmit={handleSubmit(rentPayFormSubmit)}
+          onSubmit={handleSubmit(rentPayFormSubmit, rentPayFormSubmitError)}
           id="rentPaymentForm"
           name="rentPaymentForm"
         >

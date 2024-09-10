@@ -18,8 +18,9 @@ export default function FormItem({
   name,
   controlled = false,
   controllerStVar,
-  required,
   onChangeFunc,
+  validationObj,
+  disabled,
 }) {
   // VARIABLES
   const [checkControllerSt, setCheckControllerSt] = useState(false);
@@ -64,6 +65,12 @@ export default function FormItem({
     }
   }
 
+  // FUNCTION this function will add disabled att only if it is received
+  function addDisabled() {
+    if (disabled !== null && disabled !== undefined) return { disabled };
+    else return {};
+  }
+
   // JSX
   return (
     <div className="grid w-full grid-cols-[100px_150px] items-center gap-[5px] text-[10px]">
@@ -76,7 +83,7 @@ export default function FormItem({
             htmlFor={htmlFor}
           >
             {itemLabel}
-            {required && (
+            {validationObj?.required && (
               <span className="text-[15px] text-red-700">{` *`}</span>
             )}
           </label>
@@ -84,8 +91,9 @@ export default function FormItem({
             type="checkbox"
             id={id}
             name={name}
-            {...register(id, { required })}
+            {...register(id, { ...validationObj })}
             {...makeInputControlled()}
+            {...addDisabled()}
           />
         </>
       )}
@@ -99,7 +107,7 @@ export default function FormItem({
             htmlFor={htmlFor}
           >
             {itemLabel}
-            {required && (
+            {validationObj?.required && (
               <span className="text-[15px] text-red-700">{` *`}</span>
             )}
           </label>
@@ -114,7 +122,7 @@ export default function FormItem({
             }}
             id={id}
             name={name}
-            {...register(id, { required })}
+            {...register(id, { ...validationObj })}
             {...addValueAtt()}
             {...makeInputControlled()}
           />
@@ -145,7 +153,8 @@ FormItem.propTypes = {
     PropTypes.bool,
   ]),
   onChangeFunc: PropTypes.func,
-  required: PropTypes.bool,
+  validationObj: PropTypes.object,
+  disabled: PropTypes.bool,
 };
 
 //size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
