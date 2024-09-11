@@ -19,6 +19,8 @@ export default function RentFormPaymentReceivedOf({
   function updateAmountReceived(e) {
     let paid = e.target.value === "true" ? false : true;
     if (paid) {
+      console.log("paid");
+      console.log(stOccupiedProperty);
       setAmountReceived(
         (amountReceived) => (amountReceived += occupiedProperty?.rent),
       );
@@ -28,22 +30,46 @@ export default function RentFormPaymentReceivedOf({
       for (let i = 0; i < stOccupiedProperty?.length; i++) {
         if (
           flag === true &&
-          (stOccupiedProperty[i].paid === false ||
-            stOccupiedProperty[i].paid === null)
+          (stOccupiedProperty[i].paid === null ||
+            stOccupiedProperty[i].paid === false)
         ) {
           newStOccupiedProperty.push({ ...stOccupiedProperty[i], paid: true });
           flag = false;
           continue;
-        } else newStOccupiedProperty.push({ ...stOccupiedProperty[i] });
+        } else {
+          newStOccupiedProperty.push({ ...stOccupiedProperty[i] });
+          continue;
+        }
       }
-      // console.log(newStOccupiedProperty);
-      setStOccupiedProperty(newStOccupiedProperty);
-    }
 
-    if (!paid)
+      console.log(newStOccupiedProperty);
+
+      setStOccupiedProperty(newStOccupiedProperty);
+    } else if (!paid) {
+      console.log("removed");
+      console.log(stOccupiedProperty);
       setAmountReceived(
         (amountReceived) => (amountReceived -= occupiedProperty?.rent),
       );
+
+      let newStOccupiedProperty = [];
+      let flag = true;
+      for (let i = stOccupiedProperty.length - 1; i >= 0; i--) {
+        if (flag === true && stOccupiedProperty[i].paid === true) {
+          newStOccupiedProperty.push({ ...stOccupiedProperty[i], paid: false });
+          flag = false;
+          continue;
+        } else {
+          newStOccupiedProperty.push({ ...stOccupiedProperty[i] });
+          continue;
+        }
+      }
+
+      newStOccupiedProperty = newStOccupiedProperty.reverse();
+      console.log(newStOccupiedProperty);
+
+      setStOccupiedProperty(newStOccupiedProperty);
+    }
   }
 
   // JSX
@@ -96,3 +122,20 @@ RentFormPaymentReceivedOf.propTypes = {
   register: PropTypes.func,
 };
 // COMPONENT END
+
+// // 2:
+// let newStOccupiedProperty = [];
+// let flag = true;
+// for (let i = 0; i < stOccupiedProperty?.length; i++) {
+//   if (
+//     flag === true &&
+//     (stOccupiedProperty[i].paid === false ||
+//       stOccupiedProperty[i].paid === null)
+//   ) {
+//     newStOccupiedProperty.push({ ...stOccupiedProperty[i], paid: true });
+//     flag = false;
+//     continue;
+//   } else newStOccupiedProperty.push({ ...stOccupiedProperty[i] });
+// }
+
+// setStOccupiedProperty(newStOccupiedProperty);
