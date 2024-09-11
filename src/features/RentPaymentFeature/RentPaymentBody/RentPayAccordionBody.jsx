@@ -33,10 +33,12 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
 
   // FUNCTION executed when validation at any field fails
   function rentPayFormSubmitError(errors) {
+    const { rfReceivedPaymentCheck: { message } = {} } = errors;
     console.log(errors);
-    toast("failed", {
-      duration: 3000,
-      icon: <span>X</span>,
+    toast(message, {
+      duration: 4000,
+      icon: <span>😢</span>,
+      className: "text-red-700 font-semibold",
     });
   }
 
