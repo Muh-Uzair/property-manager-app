@@ -4,6 +4,7 @@ import FormPortion from "../../../ui/FormPortion";
 import FormItem from "../../../ui/FormItem";
 import { getDueMonths, getLastPaidMonth } from "../../../utils/helpers";
 import { useRentPayFormContext } from "./useRentPayFormContext";
+import { useRef } from "react";
 
 // COMPONENT START
 export default function RentFormPaymentReceivedOf({
@@ -12,6 +13,9 @@ export default function RentFormPaymentReceivedOf({
 }) {
   // VARIABLES
   const { amountReceived, setAmountReceived } = useRentPayFormContext();
+  const indexLastPaidMonth = useRef(
+    getLastPaidMonth(occupiedProperty.rent_details),
+  );
 
   // FUNCTION to update the amount received
   function updateAmountReceived(e) {
@@ -32,22 +36,20 @@ export default function RentFormPaymentReceivedOf({
       {" "}
       <FormPortion formPortionHeading={"Payment received of "}>
         <ul>
-          {getDueMonths(getLastPaidMonth(occupiedProperty.rent_details)).map(
-            (month, i) => (
-              <li key={i}>
-                <FormItem
-                  itemType={{ type: "labelCheckBox" }}
-                  itemLabel={month}
-                  htmlFor={`rfPaymentReceived${month}`}
-                  id={`rfPaymentReceived${month}`}
-                  name={`rfPaymentReceived${month}`}
-                  register={register}
-                  controlled={true}
-                  onChangeFunc={updateAmountReceived}
-                />
-              </li>
-            ),
-          )}
+          {getDueMonths(indexLastPaidMonth.current).map((month, i) => (
+            <li key={i}>
+              <FormItem
+                itemType={{ type: "labelCheckBox" }}
+                itemLabel={month}
+                htmlFor={`rfPaymentReceived${month}`}
+                id={`rfPaymentReceived${month}`}
+                name={`rfPaymentReceived${month}`}
+                register={register}
+                controlled={true}
+                onChangeFunc={updateAmountReceived}
+              />
+            </li>
+          ))}
         </ul>
 
         <FormItem
