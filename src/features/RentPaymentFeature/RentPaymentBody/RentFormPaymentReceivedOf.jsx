@@ -12,7 +12,8 @@ export default function RentFormPaymentReceivedOf({
 }) {
   // VARIABLES
   const { amountReceived, setAmountReceived } = useRentPayFormContext();
-  const { dueMonths } = useGetDueMonths(occupiedProperty || {});
+  const { dueMonths, stOccupiedProperty, setStOccupiedProperty } =
+    useGetDueMonths(occupiedProperty || {});
 
   // FUNCTION to update the amount received
   function updateAmountReceived(e) {
@@ -21,6 +22,22 @@ export default function RentFormPaymentReceivedOf({
       setAmountReceived(
         (amountReceived) => (amountReceived += occupiedProperty?.rent),
       );
+
+      let newStOccupiedProperty = [];
+      let flag = true;
+      for (let i = 0; i < stOccupiedProperty?.length; i++) {
+        if (
+          flag === true &&
+          (stOccupiedProperty[i].paid === false ||
+            stOccupiedProperty[i].paid === null)
+        ) {
+          newStOccupiedProperty.push({ ...stOccupiedProperty[i], paid: true });
+          flag = false;
+          continue;
+        } else newStOccupiedProperty.push({ ...stOccupiedProperty[i] });
+      }
+      // console.log(newStOccupiedProperty);
+      setStOccupiedProperty(newStOccupiedProperty);
     }
 
     if (!paid)
@@ -28,8 +45,6 @@ export default function RentFormPaymentReceivedOf({
         (amountReceived) => (amountReceived -= occupiedProperty?.rent),
       );
   }
-
-  // FUNCTION make
 
   // JSX
   return (
