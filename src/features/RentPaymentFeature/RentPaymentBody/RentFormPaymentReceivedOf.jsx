@@ -2,9 +2,8 @@ import PropTypes from "prop-types";
 
 import FormPortion from "../../../ui/FormPortion";
 import FormItem from "../../../ui/FormItem";
-import { getDueMonths, getLastPaidMonth } from "../../../utils/helpers";
 import { useRentPayFormContext } from "./useRentPayFormContext";
-import { useRef } from "react";
+import { useGetDueMonths } from "./useGetDueMonths";
 
 // COMPONENT START
 export default function RentFormPaymentReceivedOf({
@@ -13,9 +12,7 @@ export default function RentFormPaymentReceivedOf({
 }) {
   // VARIABLES
   const { amountReceived, setAmountReceived } = useRentPayFormContext();
-  const indexLastPaidMonth = useRef(
-    getLastPaidMonth(occupiedProperty.rent_details),
-  );
+  const dueMonths = useGetDueMonths(occupiedProperty || {});
 
   // FUNCTION to update the amount received
   function updateAmountReceived(e) {
@@ -30,13 +27,15 @@ export default function RentFormPaymentReceivedOf({
       );
   }
 
+  // FUNCTION make
+
   // JSX
   return (
     <>
       {" "}
       <FormPortion formPortionHeading={"Payment received of "}>
         <ul>
-          {getDueMonths(indexLastPaidMonth.current).map((month, i) => (
+          {dueMonths.map((month, i) => (
             <li key={i}>
               <FormItem
                 itemType={{ type: "labelCheckBox" }}

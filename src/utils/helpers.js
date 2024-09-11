@@ -1,4 +1,4 @@
-import { monthsArr } from "./constants";
+// import { monthsArr } from "./constants";
 
 // FUNCTION
 export const calculateTotalPages = (totalProperty) => {
@@ -13,26 +13,26 @@ export function calculateDues(lastRentMonth, rent) {
   return dues;
 }
 
+// // FUNCTION
+// export function getDueMonths(lastRentMonth) {
+//   const lastRentIndex = lastRentMonth;
+//   const currentMonthIndex = new Date().getMonth();
+
+//   let dueMonths = [];
+
+//   monthsArr.forEach((month, i) => {
+//     if (i > lastRentIndex && i <= currentMonthIndex) {
+//       dueMonths.push(month);
+//     }
+//   });
+
+//   return dueMonths;
+// }
+
 // FUNCTION
-export function getDueMonths(lastRentMonth) {
-  const lastRentIndex = lastRentMonth;
-  const currentMonthIndex = new Date().getMonth();
-
-  let dueMonths = [];
-
-  monthsArr.forEach((month, i) => {
-    if (i > lastRentIndex && i <= currentMonthIndex) {
-      dueMonths.push(month);
-    }
-  });
-
-  return dueMonths;
-}
-
-// FUNCTION
-export function getLastPaidMonth(rentDetailsArr) {
+export function getLastPaidMonth(rentDetailsArr = []) {
   let lastMonthPaid = -1;
-  for (let i = 0; i < rentDetailsArr.length; i++) {
+  for (let i = 0; i < rentDetailsArr?.length; i++) {
     if (rentDetailsArr[i].paid === true) {
       lastMonthPaid += 1;
     }
