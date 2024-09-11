@@ -35,17 +35,18 @@ export default function RentFormPaymentReceivedOf({
       {" "}
       <FormPortion formPortionHeading={"Payment received of "}>
         <ul>
-          {dueMonths.map((month, i) => (
+          {dueMonths.map((val, i) => (
             <li key={i}>
               <FormItem
                 itemType={{ type: "labelCheckBox" }}
-                itemLabel={month}
-                htmlFor={`rfPaymentReceived${month}`}
-                id={`rfPaymentReceived${month}`}
-                name={`rfPaymentReceived${month}`}
+                itemLabel={val.month}
+                htmlFor={`rfPaymentReceived${val.month}`}
+                id={`rfPaymentReceived${val.month}`}
+                name={`rfPaymentReceived${val.month}`}
                 register={register}
                 controlled={true}
                 onChangeFunc={updateAmountReceived}
+                disabled={val.disabled}
               />
             </li>
           ))}

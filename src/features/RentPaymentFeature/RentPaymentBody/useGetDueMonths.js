@@ -10,8 +10,9 @@ export function useGetDueMonths(occupiedProperty) {
       return val;
     }
   });
-  dueMonths = dueMonths?.map((val) => {
-    return val.month;
+  dueMonths = dueMonths?.map((val, i) => {
+    if (i === 0) return { month: val.month, disabled: false };
+    else return { month: val.month, disabled: true };
   });
 
   return dueMonths;
