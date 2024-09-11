@@ -16,7 +16,7 @@ export function calculateDues(lastRentMonth, rent) {
 // FUNCTION
 export function getDueMonths(lastRentMonth) {
   const lastRentIndex = lastRentMonth;
-  const currentMonthIndex = new Date().getDate();
+  const currentMonthIndex = new Date().getMonth();
 
   let dueMonths = [];
 
