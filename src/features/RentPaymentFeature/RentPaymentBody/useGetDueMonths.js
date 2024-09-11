@@ -4,16 +4,28 @@ import { getLastPaidMonth } from "../../../utils/helpers";
 export function useGetDueMonths(occupiedProperty) {
   const indexLastPaidMonth = getLastPaidMonth(occupiedProperty?.rent_details);
   const indexCurrentMonth = new Date().getMonth();
-  const [stOccupiedProperty] = useState(occupiedProperty?.rent_details);
+  const [stOccupiedProperty, setStOccupiedProperty] = useState(
+    occupiedProperty?.rent_details,
+  );
   let dueMonths = stOccupiedProperty?.filter((val, i) => {
     if (i > indexLastPaidMonth && i <= indexCurrentMonth) {
       return val;
     }
   });
-  dueMonths = dueMonths?.map((val, i) => {
-    if (i === 0) return { month: val.month, disabled: false };
-    else return { month: val.month, disabled: true };
-  });
 
-  return dueMonths;
+  let flag = true; // represents the paid is false for first time
+  for (let i = 0; i < dueMonths?.length; i++) {
+    if (flag === true && dueMonths[i].paid === false) {
+      dueMonths[i] = { ...dueMonths[i], disabled: false };
+      flag = false;
+      continue;
+    }
+    if (
+      (flag === false && dueMonths[i].paid === false) ||
+      dueMonths[i].paid === null
+    ) {
+      dueMonths[i] = { ...dueMonths[i], disabled: true };
+    }
+  }
+  return { dueMonths, setStOccupiedProperty };
 }

@@ -12,15 +12,17 @@ export default function RentFormPaymentReceivedOf({
 }) {
   // VARIABLES
   const { amountReceived, setAmountReceived } = useRentPayFormContext();
-  const dueMonths = useGetDueMonths(occupiedProperty || {});
+  const { dueMonths } = useGetDueMonths(occupiedProperty || {});
 
   // FUNCTION to update the amount received
   function updateAmountReceived(e) {
     let paid = e.target.value === "true" ? false : true;
-    if (paid)
+    if (paid) {
       setAmountReceived(
         (amountReceived) => (amountReceived += occupiedProperty?.rent),
       );
+    }
+
     if (!paid)
       setAmountReceived(
         (amountReceived) => (amountReceived -= occupiedProperty?.rent),
