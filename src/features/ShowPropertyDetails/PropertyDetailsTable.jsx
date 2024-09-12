@@ -19,7 +19,7 @@ export default function PropertyDetailsTable() {
     data: { dataProperty = {}, totalProperty = null },
   } = useGetPropertyData();
 
-  console.log(dataProperty);
+  // console.log(dataProperty);
 
   // FUNCTIONS
 
@@ -40,7 +40,7 @@ export default function PropertyDetailsTable() {
   /*when data has arrived */
   if (dataProperty.length > 0 && statusProperty === "success") {
     return (
-      <Table role={"table"}>
+      <Table>
         {/* table header */}
         <TableHeader
           colLabels={[
@@ -53,15 +53,10 @@ export default function PropertyDetailsTable() {
           ]}
           colSize={colSize}
           backgroundColor={"#38bdf8"}
-          role={"table-header"}
         />
 
         {/* table body */}
-        <TableBody
-          dataProperty={dataProperty}
-          colSize={colSize}
-          role={"table-body"}
-        />
+        <TableBody tableData={dataProperty} colSize={colSize} />
 
         {/* table footer */}
         <TableFooter role={"table-footer"} totalProperty={totalProperty} />

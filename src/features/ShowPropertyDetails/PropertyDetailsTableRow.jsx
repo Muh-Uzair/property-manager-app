@@ -1,6 +1,6 @@
 import { HiEllipsisVertical } from "react-icons/hi2";
-import TableItemRenter from "../features/ShowPropertyDetails/TableItemRenter";
-// import TableRowItem from "./TableRowItem";
+import TableItemRenter from "./TableItemRenter";
+import TableRowItem from "../../ui/TableRowItem";
 import PropTypes from "prop-types";
 import { TbListDetails } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";
@@ -26,43 +26,45 @@ export default function TableRow({
       }}
     >
       {/* property image */}
-      <div>
+      <TableRowItem>
         {/* <img className="h-[40px] rounded-[3px]" src={`${val.image}`} /> */}
         img
-      </div>
+      </TableRowItem>
 
       {/* property number */}
-      <div>{val.flat_number || val.room_number || val.shop_number}</div>
+      <TableRowItem>
+        {val.flat_number || val.room_number || val.shop_number}
+      </TableRowItem>
 
       {/* property status */}
-      <div>
+      <TableRowItem>
         <span
           className={`flex items-center justify-center rounded-lg px-[7px] text-[10px] font-bold ${val.status !== "occupied" ? "bg-sky-100 text-sky-500" : "bg-blue-300 text-blue-700"}`}
         >
           {val.status.toUpperCase()}
         </span>
-      </div>
+      </TableRowItem>
 
       {/* property floor number */}
-      <div>
+      <TableRowItem>
         <div className="flex items-center justify-center">{val.floor}</div>
-      </div>
+      </TableRowItem>
 
       {/* property rent */}
-      <div>
+      <TableRowItem>
         <div className="flex items-center justify-center">{val.rent}</div>
-      </div>
+      </TableRowItem>
 
       {/* tenant name */}
-      <div>
+      <TableRowItem>
         {val?.renter_id ? (
           <TableItemRenter renter_id={val?.renter_id} />
         ) : (
           <span>{"-"}</span>
         )}
-      </div>
+      </TableRowItem>
 
-      <div>
+      <TableRowItem>
         <div className="relative">
           {val.status === "occupied" && (
             <HiEllipsisVertical
@@ -87,7 +89,7 @@ export default function TableRow({
               />
             )}
         </div>
-      </div>
+      </TableRowItem>
     </div>
   );
 }
