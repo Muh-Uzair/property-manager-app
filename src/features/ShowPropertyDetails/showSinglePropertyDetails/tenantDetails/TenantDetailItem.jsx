@@ -24,8 +24,10 @@ export default function TenantDetailItem({ icon, itemHeading, itemValue }) {
       </div>
       <div className="flex flex-col justify-center">
         {/* <span className={`text-[15px] font-semibold`}>{itemHeading}</span> */}
-        <span className="text-[11px] font-semibold">{itemHeading}</span>
-        <span className="text-wrap text-[10px] font-semibold text-gray-600">
+        <span className="text-[11px] font-semibold smallTab:text-[14px]">
+          {itemHeading}
+        </span>
+        <span className="text-wrap text-[10px] font-semibold text-gray-600 smallTab:text-[12px]">
           {itemValue}
         </span>
       </div>
