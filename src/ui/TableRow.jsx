@@ -1,6 +1,6 @@
 import { HiEllipsisVertical } from "react-icons/hi2";
 import TableItemRenter from "../features/ShowPropertyDetails/TableItemRenter";
-import TableRowItem from "./TableRowItem";
+// import TableRowItem from "./TableRowItem";
 import PropTypes from "prop-types";
 import { TbListDetails } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";
@@ -26,45 +26,43 @@ export default function TableRow({
       }}
     >
       {/* property image */}
-      <TableRowItem>
+      <div>
         {/* <img className="h-[40px] rounded-[3px]" src={`${val.image}`} /> */}
         img
-      </TableRowItem>
+      </div>
 
       {/* property number */}
-      <TableRowItem>
-        {val.flat_number || val.room_number || val.shop_number}
-      </TableRowItem>
+      <div>{val.flat_number || val.room_number || val.shop_number}</div>
 
       {/* property status */}
-      <TableRowItem>
+      <div>
         <span
           className={`flex items-center justify-center rounded-lg px-[7px] text-[10px] font-bold ${val.status !== "occupied" ? "bg-sky-100 text-sky-500" : "bg-blue-300 text-blue-700"}`}
         >
           {val.status.toUpperCase()}
         </span>
-      </TableRowItem>
+      </div>
 
       {/* property floor number */}
-      <TableRowItem>
+      <div>
         <div className="flex items-center justify-center">{val.floor}</div>
-      </TableRowItem>
+      </div>
 
       {/* property rent */}
-      <TableRowItem>
+      <div>
         <div className="flex items-center justify-center">{val.rent}</div>
-      </TableRowItem>
+      </div>
 
       {/* tenant name */}
-      <TableRowItem>
+      <div>
         {val?.renter_id ? (
           <TableItemRenter renter_id={val?.renter_id} />
         ) : (
           <span>{"-"}</span>
         )}
-      </TableRowItem>
+      </div>
 
-      <TableRowItem>
+      <div>
         <div className="relative">
           {val.status === "occupied" && (
             <HiEllipsisVertical
@@ -89,7 +87,7 @@ export default function TableRow({
               />
             )}
         </div>
-      </TableRowItem>
+      </div>
     </div>
   );
 }

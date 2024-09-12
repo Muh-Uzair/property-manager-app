@@ -11,7 +11,7 @@ export default function PropertyChangeButtons({ buttonLabelsArr }) {
 
   // FUNCTION
   useEffect(() => {
-    if (!propertyType) navigate("/property-details/flats");
+    if (!propertyType) navigate("/propertyDetails/flats");
   }, [navigate, propertyType]);
 
   return (

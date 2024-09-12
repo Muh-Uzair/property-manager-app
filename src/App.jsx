@@ -5,11 +5,7 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import {
-  QueryCache,
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import HomePG from "./Pages/HomePG";
@@ -23,7 +19,7 @@ import LoginPG from "./Pages/LoginPG";
 import SinglePropertyDetails from "./features/ShowPropertyDetails/showSinglePropertyDetails/SinglePropertyDetails";
 import PropertyEdit from "./features/ShowPropertyDetails/PropertyEdit";
 import RentPaymentPG from "./Pages/RentPaymentPG";
-import DummyPG1 from "./Pages/DummyPG1";
+// import DummyPG1 from "./Pages/DummyPG1";
 import { Toaster } from "react-hot-toast";
 
 // rentPayment responsiveness and functionality almost done
@@ -38,8 +34,8 @@ const router = createBrowserRouter(
           <Route path="home" element={<HomePG />} />
           <Route path="expenses" element={<ExpensesPG />} />
           <Route path="admissions" element={<AdmissionsPG />} />
-          {/* <Route path="property-details" element={<PropertyDetailsPG />} /> */}
-          <Route path="propertyDetails" element={<DummyPG1 />} />
+          <Route path="propertyDetails" element={<PropertyDetailsPG />} />
+          {/* <Route path="propertyDetails" element={<DummyPG1 />} /> */}
           <Route
             path="propertyDetails/:propertyType"
             element={<PropertyDetailsPG />}
@@ -65,10 +61,7 @@ const router = createBrowserRouter(
   ),
 );
 
-const queryCache = new QueryCache({});
-
 const queryClient = new QueryClient({
-  queryCache,
   defaultOptions: {
     queries: {
       staleTime: 0,

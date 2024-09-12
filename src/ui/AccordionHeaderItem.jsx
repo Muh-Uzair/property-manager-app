@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-export default function TableRowItem({
+export default function AccordionHeaderItem({
   type,
   itemLabel = "",
   labelColor = "gray",
@@ -47,7 +47,7 @@ export default function TableRowItem({
   );
 }
 
-TableRowItem.propTypes = {
+AccordionHeaderItem.propTypes = {
   type: PropTypes.string,
   itemLabel: PropTypes.string,
   itemValue: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),

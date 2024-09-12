@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
 
 import TableListRow from "./TableListRow";
-import TableRowItem from "../../../ui/TableRowItem";
+import AccordionHeaderItem from "../../../ui/AccordionHeaderItem";
 
 // COMPONENT START
 export default function RentPayAccordionHeader({ occupiedProperty }) {
@@ -14,7 +14,7 @@ export default function RentPayAccordionHeader({ occupiedProperty }) {
   // JSX
   return (
     <TableListRow colSizes={"1fr 1fr 1fr "}>
-      <TableRowItem
+      <AccordionHeaderItem
         type="labelValuePair"
         itemLabel={propertyType.slice(0, -1)}
         itemValue={
@@ -23,12 +23,12 @@ export default function RentPayAccordionHeader({ occupiedProperty }) {
           occupiedProperty.room_number
         }
       />
-      <TableRowItem
+      <AccordionHeaderItem
         type="labelValuePair"
         itemLabel={`rent `}
         itemValue={occupiedProperty.rent}
       />
-      <TableRowItem
+      <AccordionHeaderItem
         type="labelValuePair"
         itemLabel={`floor `}
         itemValue={occupiedProperty.floor}
