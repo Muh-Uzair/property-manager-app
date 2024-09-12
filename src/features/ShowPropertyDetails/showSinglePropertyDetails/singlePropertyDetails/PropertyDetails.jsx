@@ -29,7 +29,7 @@ export default function PropertyDetails() {
       </Heading>
       {/* Image + details */}
       <div
-        className={`grid grid-rows-[160px_auto] gap-[7px] rounded-[8px] bg-sky-200/80 p-[${itemGap}]`}
+        className={`grid grid-rows-[160px_auto] gap-[7px] rounded-[8px] bg-sky-200/80 smallTab:grid-rows-[250px_auto] p-[${itemGap}]`}
       >
         {/* Img div */}
         <div className="rounded-[8px] bg-gray-100">

@@ -38,7 +38,9 @@ export default function TenantDetails() {
           <RentDuration dataRenterDetails={dataRenterDetails} />
 
           {/* renter image div */}
-          <div className="h-[160px] rounded-[8px] bg-gray-200">img</div>
+          <div className="h-[160px] rounded-[8px] bg-gray-200 smallTab:h-[250px]">
+            img
+          </div>
         </div>
       </div>
     );
