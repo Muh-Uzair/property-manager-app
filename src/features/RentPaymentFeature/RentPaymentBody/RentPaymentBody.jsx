@@ -20,8 +20,6 @@ export default function RentPaymentBody() {
   const { dataOccupiedProperty = [], statusOccupiedProperty } =
     useGetAllOccupiedProperty();
 
-  // FUNCTIONS
-
   // FUNCTION // function that controls the accordions
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
