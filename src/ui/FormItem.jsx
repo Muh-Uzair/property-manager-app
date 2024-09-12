@@ -73,7 +73,7 @@ export default function FormItem({
 
   // JSX
   return (
-    <div className="grid w-full grid-cols-[100px_150px] items-center gap-[5px] text-[10px]">
+    <div className="grid w-full grid-cols-[100px_150px] items-center gap-[5px] text-[10px] smallTab:grid-cols-[150px_180px] smallTab:text-[14px] largeTab:grid-cols-[150px_200px] largeScreen:grid-cols-[150px_220px] largeScreen:text-[15px]">
       {/* label & checkbox*/}
       {itemType.type === "labelCheckBox" && (
         <>
@@ -113,7 +113,7 @@ export default function FormItem({
           </label>
           <input
             type="texts"
-            className={`rounded-[3px] border border-brand-color-200 pl-[10px] font-semibold ${incomeInput ? "bg-green-200" : "bg-brand-color-200/50"}`}
+            className={`text-wrap rounded-[3px] border border-brand-color-200 pl-[10px] font-semibold ${incomeInput ? "bg-green-200" : "bg-brand-color-200/50"}`}
             // value={`${typeof itemType?.value === "number" ? itemType?.value : getValueFormat(itemType?.value)}`}
 
             readOnly={itemType?.readOnly}
