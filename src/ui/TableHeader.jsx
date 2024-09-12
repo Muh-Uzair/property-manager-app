@@ -13,7 +13,7 @@ export default function TableHeader({
   // JSX
   return (
     <header
-      className={`grid h-[40px] w-[100%] items-center rounded-t-[8px] border-[1px] border-sky-500 text-[12px] font-semibold text-white`}
+      className={`grid h-[40px] w-[100%] items-center rounded-t-[8px] border-[1px] border-sky-500 text-[12px] font-semibold uppercase text-white`}
       style={{
         gridTemplateColumns: `${colSize.join(" ")}`,
         backgroundColor: `${bgColor}`,

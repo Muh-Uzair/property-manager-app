@@ -6,6 +6,8 @@ import SinglePropertyDetailsItem from "./SinglePropertyDetailsItem";
 import { useContext } from "react";
 import { ContextSingleProperty } from "../SinglePropertyDetails";
 
+const itemGap = "7px";
+
 // COMPONENT START
 
 export default function PropertyDetails() {
@@ -20,14 +22,14 @@ export default function PropertyDetails() {
   // JSX
 
   return (
-    <div className="grid grid-rows-[auto_1fr]">
+    <div className="flex flex-col">
       <Heading type="primary">
         {" "}
         {`${propertyType.charAt(0).toLocaleUpperCase()}${propertyType.slice(1, propertyType.length - 1)} Details`}
       </Heading>
       {/* Image + details */}
       <div
-        className={`grid grid-cols-[1fr_380px] gap-[16px] rounded-[8px] bg-sky-200/80 p-[16px]`}
+        className={`grid grid-rows-[160px_auto] gap-[7px] rounded-[8px] bg-sky-200/80 p-[${itemGap}]`}
       >
         {/* Img div */}
         <div className="rounded-[8px] bg-gray-100">
@@ -37,8 +39,9 @@ export default function PropertyDetails() {
               /> */}
           img
         </div>
+
         {/* details div*/}
-        <div className="grid grid-cols-2 gap-[16px]">
+        <div className={`grid grid-cols-2 gap-[${itemGap}]`}>
           <SinglePropertyDetailsItem
             itemHeading="Id No"
             itemValue={dataSingleProperty?.id}

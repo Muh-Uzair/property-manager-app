@@ -2,7 +2,8 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { getAllFlats, getTotalFlatsQuantity } from "../../Services/apiFlats";
 import { getAllShops, getTotalShopsQuantity } from "../../Services/apiShops";
 import { getAllRooms, getTotalRoomsQuantity } from "../../Services/apiRooms";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
+import { useGetPropertyType } from "../../hooks/useGetPropertyType";
 
 const getPropertyDataOnType = async (propertyType, currPage) => {
   if (propertyType === "flats") {
@@ -18,7 +19,7 @@ const getPropertyDataOnType = async (propertyType, currPage) => {
 
 export const useGetPropertyData = () => {
   // VARIABLES
-  const { propertyType = "flats" } = useParams();
+  const propertyType = useGetPropertyType();
   const [searchParams] = useSearchParams();
   const currPage = searchParams.get("page")
     ? Number(searchParams.get("page"))

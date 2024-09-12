@@ -21,7 +21,7 @@ export default function OtherRentedPropertiesBtns() {
   // FUNCTION
 
   return (
-    <main>
+    <main className="flex gap-[10px]">
       {dataOtherRentedPropertiesNames.map((val, i) => (
         <span key={i}>
           <button

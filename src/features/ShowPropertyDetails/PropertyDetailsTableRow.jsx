@@ -1,6 +1,6 @@
 import { HiEllipsisVertical } from "react-icons/hi2";
-import TableItemRenter from "../features/ShowPropertyDetails/TableItemRenter";
-import TableRowItem from "./TableRowItem";
+import TableItemRenter from "./TableItemRenter";
+import TableRowItem from "../../ui/TableRowItem";
 import PropTypes from "prop-types";
 import { TbListDetails } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";

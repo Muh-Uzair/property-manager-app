@@ -1,14 +1,15 @@
 import PropertyDetailsTable from "../features/ShowPropertyDetails/PropertyDetailsTable";
-import PropertyChangeButtons from "../ui/PropertyChangeButtons";
-import { useParams } from "react-router-dom";
+// import PropertyChangeButtons from "../ui/PropertyChangeButtons";
 import Heading from "../ui/Heading";
+import { useGetPropertyType } from "../hooks/useGetPropertyType";
+import PropertyChangeBtns from "../ui/PropertyChangeBtns";
 
 // COMPONENT START///////////////////////////////////////////////
 export default function PropertyDetailsPG() {
   // VARIABLES
-  const { propertyType } = useParams();
+  const propertyType = useGetPropertyType();
 
-  // FUNCTIONS
+  // FUNCTION
 
   // JSX//////////////////////////////////////////
   return (
@@ -19,7 +20,14 @@ export default function PropertyDetailsPG() {
           {propertyType &&
             `${propertyType?.charAt(0).toUpperCase()}${propertyType?.slice(1).toLowerCase()}`}
         </Heading>
-        <PropertyChangeButtons buttonLabelsArr={["FLATS", "ROOMS", "SHOPS"]} />
+        {/* <PropertyChangeButtons buttonLabelsArr={["FLATS", "ROOMS", "SHOPS"]} /> */}
+        <PropertyChangeBtns
+          btnsUrlArr={[
+            { label: "flats", url: "propertyDetails/flats" },
+            { label: "rooms", url: "propertyDetails/rooms" },
+            { label: "shops", url: "propertyDetails/shops" },
+          ]}
+        />
       </div>
 
       {/* property table */}
