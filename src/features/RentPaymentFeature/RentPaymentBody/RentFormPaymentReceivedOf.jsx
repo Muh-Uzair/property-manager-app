@@ -19,8 +19,8 @@ export default function RentFormPaymentReceivedOf({
   function updateAmountReceived(e) {
     let paid = e.target.value === "true" ? false : true;
     if (paid) {
-      console.log("paid");
-      console.log(stOccupiedProperty);
+      // console.log("paid");
+      // console.log(stOccupiedProperty);
       setAmountReceived(
         (amountReceived) => (amountReceived += occupiedProperty?.rent),
       );
@@ -42,12 +42,12 @@ export default function RentFormPaymentReceivedOf({
         }
       }
 
-      console.log(newStOccupiedProperty);
+      // console.log(newStOccupiedProperty);
 
       setStOccupiedProperty(newStOccupiedProperty);
     } else if (!paid) {
-      console.log("removed");
-      console.log(stOccupiedProperty);
+      // console.log("removed");
+      // console.log(stOccupiedProperty);
       setAmountReceived(
         (amountReceived) => (amountReceived -= occupiedProperty?.rent),
       );
@@ -66,7 +66,7 @@ export default function RentFormPaymentReceivedOf({
       }
 
       newStOccupiedProperty = newStOccupiedProperty.reverse();
-      console.log(newStOccupiedProperty);
+      // console.log(newStOccupiedProperty);
 
       setStOccupiedProperty(newStOccupiedProperty);
     }
