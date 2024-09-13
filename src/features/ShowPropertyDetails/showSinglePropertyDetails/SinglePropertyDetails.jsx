@@ -63,11 +63,15 @@ export default function SinglePropertyDetails() {
             <HiOutlineArrowLongLeft size={"25px"} />
           </button>
 
+          {/* property details & tenant details for LScreen */}
           <div className="hidden w-[80%] grid-cols-[80%_350px] gap-[16px] largeScreen:grid">
-            {/* property details & tenant details */}
             <div className="grid grid-rows-2">
-              <PropertyDetails />
-              <TenantDetails />
+              <div className="">
+                <PropertyDetails />
+              </div>
+              <div className="bg-green-500">
+                <TenantDetails />
+              </div>
             </div>
 
             {/* rent details */}

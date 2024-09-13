@@ -26,12 +26,9 @@ export default function TenantDetails() {
       <div className="flex flex-col">
         <Heading type="primary">Tenant Details</Heading>
 
-        {/* Tenant Details for Large screen */}
-        <div className="bg-yellow-500"></div>
-
-        {/* Tenant details for phone , STab , LTab */}
+        {/* Tenant details */}
         <div
-          className={`flex flex-col gap-[7px] rounded-[5px] bg-gray-100 p-[7px] largeScreen:hidden`}
+          className={`flex flex-col gap-[7px] rounded-[5px] bg-gray-100 p-[7px]`}
         >
           {/*detail items*/}
           <AllTenantDetailsItem dataRenterDetails={dataRenterDetails} />
