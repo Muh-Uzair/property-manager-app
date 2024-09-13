@@ -23,11 +23,28 @@ export default function TenantDetails() {
 
   if (dataRenterDetails) {
     return (
-      <div className="flex flex-col">
+      <div className="flex h-full grid-rows-[auto_1fr] flex-col largeScreen:grid">
         <Heading type="primary">Tenant Details</Heading>
 
         {/* Tenant Details for Large screen */}
-        <div className="bg-yellow-500"></div>
+        <div className="hidden grid-cols-[60%_1fr] gap-[16px] rounded-[8px] bg-gray-100 p-[16px] largeScreen:grid">
+          {/* details */}
+          <div className="grid h-full grid-rows-[1fr_40%] gap-[16px]">
+            {/* tenant details */}
+            <div>
+              <AllTenantDetailsItem dataRenterDetails={dataRenterDetails} />
+            </div>
+
+            {/* other rented properties and rent duration */}
+            <div className="grid grid-cols-2 gap-[16px]">
+              <OtherPropertiesRented dataRenterDetails={dataRenterDetails} />
+              <RentDuration dataRenterDetails={dataRenterDetails} />
+            </div>
+          </div>
+
+          {/* image */}
+          <div className="rounded-[8px] bg-gray-200">img</div>
+        </div>
 
         {/* Tenant details for phone , STab , LTab */}
         <div

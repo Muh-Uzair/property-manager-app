@@ -12,7 +12,7 @@ RentDuration.propTypes = {
 export default function RentDuration({ dataRenterDetails }) {
   // JSX
   return (
-    <div className="flex flex-col gap-[7px] rounded-[8px] bg-gray-200 p-[10px]">
+    <div className="flex flex-col gap-[7px] rounded-[8px] bg-gray-200 p-[10px] largeScreen:h-full">
       {/* icon and heading */}
       <header className="flex items-center gap-[10px] rounded-[5px] bg-sky-500 p-[8px] px-[10px] text-[18px] font-bold text-sky-200">
         {/* icon */}

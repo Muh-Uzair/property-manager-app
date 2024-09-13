@@ -10,7 +10,7 @@ SinglePropertyDetailsItem.propTypes = {
 export default function SinglePropertyDetailsItem({ itemHeading, itemValue }) {
   // JSX
   return (
-    <div className="flex items-center justify-center gap-[5px] rounded-[3px] bg-sky-300/60 py-[5px] text-[10px] largeScreen:rounded-[8px]">
+    <div className="flex items-center justify-center gap-[5px] rounded-[3px] bg-sky-300/60 py-[5px] text-[10px] largeScreen:flex-col largeScreen:rounded-[8px]">
       <Heading
         type="medium"
         headingColor={"text-brand-color-600"}

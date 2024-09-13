@@ -69,7 +69,7 @@ export default function SinglePropertyDetails() {
               <div className="">
                 <PropertyDetails />
               </div>
-              <div className="bg-green-500">
+              <div className="">
                 <TenantDetails />
               </div>
             </div>
