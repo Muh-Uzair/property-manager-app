@@ -21,7 +21,7 @@ export default function OtherPropertiesRented({ dataRenterDetails }) {
   // JSX
 
   return (
-    <div className="flex flex-col gap-[10px] rounded-[8px] bg-gray-200 p-[7px]">
+    <div className="flex flex-col gap-[10px] rounded-[8px] bg-gray-200 p-[10px] largeScreen:h-full">
       {/* header */}
       <header className="flex items-center gap-[10px]">
         <TenantDetailsIcon
