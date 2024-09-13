@@ -23,7 +23,7 @@ export default function TableBody({ tableData, colSize }) {
 
   // JSX
   return (
-    <div className="border-x-[1px] border-gray-200 text-[12px] font-semibold text-gray-400">
+    <div className="border-x-[1px] border-gray-200 text-[10px] font-semibold text-gray-400 largeScreen:text-[11px]">
       {tableData?.map((val) => (
         // Table Row
         <TableRow

@@ -33,7 +33,7 @@ export default function PaginationButton({
       onClick={
         type === "next" ? () => btnNextClicked() : () => btnPrevClicked()
       }
-      className="flex items-center justify-center text-[11px] font-semibold text-gray-400 hover:text-brand-color-600"
+      className="flex items-center justify-center text-[10px] font-semibold text-gray-400 active:text-brand-color-500 largeScreen:hover:text-brand-color-600 largeScreen:active:text-brand-color-500"
     >
       {type === "prev" && icon}
       {label}
