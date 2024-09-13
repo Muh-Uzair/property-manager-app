@@ -21,12 +21,12 @@ export default function OtherRentedPropertiesBtns() {
   // FUNCTION
 
   return (
-    <main>
+    <main className="flex gap-[10px]">
       {dataOtherRentedPropertiesNames.map((val, i) => (
         <span key={i}>
           <button
-            className="mb-[5px] flex items-center gap-[5px] rounded-[5px] border-[1px] border-sky-500 px-[5px] text-sky-500 transition-all duration-150 hover:bg-sky-100 active:bg-sky-200/70"
-            onClick={() => navigate(`/property-details/${val[0]}s/${val[1]}`)}
+            className="mb-[5px] flex items-center gap-[5px] rounded-[5px] border-[1px] border-sky-500 px-[5px] text-sky-500 transition-all duration-150 active:bg-sky-200/70 largeScreen:hover:bg-sky-100 largeScreen:active:bg-sky-200/70"
+            onClick={() => navigate(`/propertyDetails/${val[0]}s/${val[1]}`)}
           >
             <>
               {val[0] === "flat" ? (

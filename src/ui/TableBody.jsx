@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
-import TableRow from "./TableRow";
+import TableRow from "../features/ShowPropertyDetails/PropertyDetailsTableRow";
 
 // COMPONENT START
-export default function TableBody({ dataProperty, colSize }) {
+export default function TableBody({ tableData, colSize }) {
   // VARIABLES
   const [optionsMenuOpen, setOptionsMenuOpen] = useState({
     menuOpenStatus: false,
@@ -23,8 +23,8 @@ export default function TableBody({ dataProperty, colSize }) {
 
   // JSX
   return (
-    <div className="border-x-[1px] border-gray-200 text-[12px] font-semibold text-gray-400">
-      {dataProperty?.map((val) => (
+    <div className="border-x-[1px] border-gray-200 text-[10px] font-semibold text-gray-400 largeScreen:text-[11px]">
+      {tableData?.map((val) => (
         // Table Row
         <TableRow
           colSize={colSize}
@@ -38,9 +38,8 @@ export default function TableBody({ dataProperty, colSize }) {
   );
   // JSX
 }
-// COMPONENT END
-
 TableBody.propTypes = {
-  dataProperty: PropTypes.array.isRequired,
-  colSize: PropTypes.array.isRequired,
+  tableData: PropTypes.array,
+  colSize: PropTypes.array,
 };
+// COMPONENT END

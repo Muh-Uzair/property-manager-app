@@ -1,6 +1,6 @@
 import { HiEllipsisVertical } from "react-icons/hi2";
-import TableItemRenter from "../features/ShowPropertyDetails/TableItemRenter";
-import TableRowItem from "./TableRowItem";
+import TableItemRenter from "./TableItemRenter";
+import TableRowItem from "../../ui/TableRowItem";
 import PropTypes from "prop-types";
 import { TbListDetails } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";
@@ -20,7 +20,7 @@ export default function TableRow({
   // JSX
   return (
     <div
-      className="grid h-[50px] border-b-[1px] border-gray-100"
+      className="grid h-[40px] border-b-[1px] border-gray-100"
       style={{
         gridTemplateColumns: `${colSize.join(" ")}`,
       }}
@@ -39,7 +39,7 @@ export default function TableRow({
       {/* property status */}
       <TableRowItem>
         <span
-          className={`flex items-center justify-center rounded-lg px-[7px] text-[10px] font-bold ${val.status !== "occupied" ? "bg-sky-100 text-sky-500" : "bg-blue-300 text-blue-700"}`}
+          className={`flex items-center justify-center rounded-lg px-[7px] text-[7px] font-bold ${val.status !== "occupied" ? "bg-sky-100 text-sky-500" : "bg-blue-300 text-blue-700"}`}
         >
           {val.status.toUpperCase()}
         </span>

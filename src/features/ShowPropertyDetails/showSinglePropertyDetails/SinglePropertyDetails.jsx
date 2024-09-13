@@ -8,18 +8,14 @@ import TenantDetails from "./tenantDetails/TenantDetails";
 import LoadingSpinner from "../../../ui/LoadingSpinner";
 
 import { useGetSinglePropertyDetails } from "./useGetSinglePropertyDetails";
+import { useGetScreenHeight } from "../../RentPaymentFeature/RentPaymentBody/useGetScreenHeight";
 
 export const ContextSingleProperty = createContext();
 
 // COMPONENT START
 export default function SinglePropertyDetails() {
   // VARIABLES
-
   const navigate = useNavigate();
-
-  // let { dataSingleProperty = {} } = useGetSinglePropertyDetails();
-  // dataSingleProperty = dataSingleProperty?.data?.[0];
-
   const {
     dataSingleProperty,
     statusSingleProperty,
@@ -28,6 +24,7 @@ export default function SinglePropertyDetails() {
     dataOtherRentedPropertiesNames,
     statusOtherRentedPropertiesNames,
   } = useGetSinglePropertyDetails();
+  const screenHeight = useGetScreenHeight();
 
   // FUNCTIONS
 
@@ -57,30 +54,47 @@ export default function SinglePropertyDetails() {
           dataOtherRentedPropertiesNames,
         }}
       >
-        <div className="grid h-[100%] grid-rows-[auto_1fr]">
+        <div className="grid gap-[8px] largeTab:grid-rows-[auto_1fr]">
           {/* back button */}
           <button
-            className="flex h-[22px] w-[40px] items-center justify-center rounded-[3px] bg-sky-400 text-white hover:bg-sky-400/80"
+            className="hidden h-[22px] w-[40px] items-center justify-center rounded-[3px] bg-sky-400 text-white hover:bg-sky-400/80 largeTab:flex"
             onClick={() => navigate(-1)}
           >
             <HiOutlineArrowLongLeft size={"25px"} />
           </button>
 
-          <div className="grid h-[100%] grid-cols-[1fr_300px] gap-[16px]">
-            {/* Property & renter details */}
-            <div className="grid grid-rows-[1fr_1fr] gap-[10px]">
-              {/* portion :  property details */}
-              <PropertyDetails />
-
-              {/*Renter details portion*/}
-              <TenantDetails />
+          {/* property details & tenant details for LScreen */}
+          <div className="hidden w-[80%] grid-cols-[80%_350px] gap-[16px] largeScreen:grid">
+            <div className="grid grid-rows-2">
+              <div className="">
+                <PropertyDetails />
+              </div>
+              <div className="">
+                <TenantDetails />
+              </div>
             </div>
 
-            {/*property rent details*/}
-            <div className="rentDetails">
-              {/* Rent details portion */}
+            {/* rent details */}
+            <div>
               <RentDetails />
             </div>
+          </div>
+
+          {/* all details for phone smallTab largeTab */}
+          <div
+            style={{
+              height: `calc(${screenHeight}px - 80px)`, // Inline style with dynamic calculation
+            }}
+            className="flex flex-col gap-[10px] overflow-y-scroll px-[5px] largeScreen:hidden"
+          >
+            {/* portion :  property details */}
+            <PropertyDetails />
+
+            {/*Renter details portion*/}
+            <TenantDetails />
+
+            {/* Rent details portion */}
+            <RentDetails />
           </div>
         </div>
       </ContextSingleProperty.Provider>

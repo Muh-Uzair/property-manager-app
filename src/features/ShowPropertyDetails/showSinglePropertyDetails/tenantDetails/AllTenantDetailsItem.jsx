@@ -9,14 +9,14 @@ import TenantDetailItem from "./TenantDetailItem";
 
 import { HiMiniIdentification } from "react-icons/hi2";
 
-const tenantDetailIconSize = "22px";
+const tenantDetailIconSize = "15px";
 
 // COMPONENT START
 export default function AllTenantDetailsItem({ dataRenterDetails }) {
   // console.log(dataRenterDetails);
   if (dataRenterDetails.nationality) {
     return (
-      <div className="grid h-[100%] grid-cols-3 grid-rows-2 gap-[16px]">
+      <div className="grid grid-cols-2 gap-[7px] largeScreen:h-full largeScreen:gap-[16px]">
         {/* id car no */}
         <TenantDetailItem
           icon={
@@ -58,11 +58,11 @@ export default function AllTenantDetailsItem({ dataRenterDetails }) {
           itemHeading={"NATIONALITY"}
           // itemValue={`${getCode(`${dataRenterDetails?.nationality}`)} ${dataRenterDetails?.nationality}`}
           itemValue={
-            <div className="grid grid-cols-[28px_1fr] items-center">
+            <div className="grid grid-cols-[20px_1fr] items-center">
               {" "}
               <CountryFlag
                 code={getCode(dataRenterDetails?.nationality || "UK")}
-                size={18}
+                size={15}
               />{" "}
               {dataRenterDetails?.nationality || ""}
             </div>

@@ -21,11 +21,11 @@ export default function OtherPropertiesRented({ dataRenterDetails }) {
   // JSX
 
   return (
-    <div className="flex flex-col gap-[20px] rounded-[8px] bg-gray-200 p-[10px]">
+    <div className="flex flex-col gap-[10px] rounded-[8px] bg-gray-200 p-[10px] largeScreen:h-full">
       {/* header */}
       <header className="flex items-center gap-[10px]">
         <TenantDetailsIcon
-          icon={<MdHomeWork size={`28px`} color={brandColor500} />}
+          icon={<MdHomeWork size={`20px`} color={brandColor500} />}
         />
         <Heading
           type="medium_large"
@@ -38,17 +38,11 @@ export default function OtherPropertiesRented({ dataRenterDetails }) {
       </header>
 
       {/* No other rented properties */}
-      {/* {otherRentedProperties?.length && otherRentedProperties?.length === 1 && (
-        <NoOtherRentedProperties dataRenterDetails={dataRenterDetails} />
-      )} */}
       {dataOtherRentedPropertiesNames.length === 0 && (
         <NoOtherRentedProperties dataRenterDetails={dataRenterDetails} />
       )}
 
       {/* Have other rented properties */}
-      {/* {otherRentedProperties?.length && otherRentedProperties?.length > 1 && (
-        <OtherRentedPropertiesBtns />
-      )} */}
       {dataOtherRentedPropertiesNames.length >= 1 && (
         <OtherRentedPropertiesBtns />
       )}

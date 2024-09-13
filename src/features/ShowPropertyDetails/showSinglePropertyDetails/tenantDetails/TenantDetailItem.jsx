@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 // import TenantItemHeading from "./TenantItemHeading";
-import Heading from "../../../../ui/Heading";
+// import Heading from "../../../../ui/Heading";
 
 // COMPONENT START
 TenantDetailItem.propTypes = {
@@ -18,16 +18,16 @@ TenantDetailItem.propTypes = {
 export default function TenantDetailItem({ icon, itemHeading, itemValue }) {
   // JSX
   return (
-    <div className="grid grid-cols-[70px_1fr] rounded-[5px] bg-gray-200">
+    <div className="grid grid-cols-[40px_1fr] gap-[3px] rounded-[5px] bg-gray-200 p-[3px]">
       <div className="flex items-center justify-center">
-        <span className="rounded-full bg-sky-200 p-[10px]"> {icon} </span>
+        <span className="rounded-full bg-sky-200 p-[7px]"> {icon} </span>
       </div>
       <div className="flex flex-col justify-center">
         {/* <span className={`text-[15px] font-semibold`}>{itemHeading}</span> */}
-        <Heading type={"medium"} uppercase={true}>
+        <span className="text-[11px] font-semibold smallTab:text-[14px]">
           {itemHeading}
-        </Heading>
-        <span className="text-[13px] font-semibold text-gray-600">
+        </span>
+        <span className="text-wrap text-[10px] font-semibold text-gray-600 smallTab:text-[12px]">
           {itemValue}
         </span>
       </div>

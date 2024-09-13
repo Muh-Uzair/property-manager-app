@@ -4,6 +4,7 @@ const primary = "text-[18px] font-bold smallTab:text-[30px]";
 const medium_large = "text-[18px]";
 const medium =
   "text-[12px] font-semibold smallTab:text-[16px] largeScreen:text-[18px]";
+
 // COMPONENT START
 export default function Heading({
   type,
