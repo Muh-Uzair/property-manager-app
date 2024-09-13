@@ -22,7 +22,7 @@ import RentPaymentPG from "./Pages/RentPaymentPG";
 // import DummyPG1 from "./Pages/DummyPG1";
 import { Toaster } from "react-hot-toast";
 
-// rentPayment responsiveness and functionality almost done
+// property details PG all responsive
 
 const router = createBrowserRouter(
   createRoutesFromElements(
