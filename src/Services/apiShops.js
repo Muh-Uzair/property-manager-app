@@ -80,3 +80,16 @@ export const getAllOccupiedShops = async () => {
 
   return data;
 };
+
+// FUNCTION
+export const payRentShops = async (rentFormData) => {
+  console.log("hello");
+  console.log(rentFormData);
+  const { error } = await supabase
+    .from("shops")
+    .update({ rent_details: "otherValue" })
+    .eq("id", 1)
+    .select();
+
+  if (error) throw new Error("Unable to pay rent for shop");
+};

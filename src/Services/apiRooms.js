@@ -80,3 +80,14 @@ export const getAllOccupiedRooms = async () => {
 
   return data;
 };
+
+// FUNCTION
+export const payRentRooms = async (rentFormData) => {
+  console.log(rentFormData);
+  const { error } = await supabase
+    .from("rooms")
+    .update({ rent_details: "Australia" })
+    .eq("id", 1);
+
+  if (error) throw new Error("Unable to pay rent for room");
+};

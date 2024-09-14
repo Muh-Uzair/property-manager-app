@@ -122,20 +122,3 @@ RentFormPaymentReceivedOf.propTypes = {
   register: PropTypes.func,
 };
 // COMPONENT END
-
-// // 2:
-// let newStOccupiedProperty = [];
-// let flag = true;
-// for (let i = 0; i < stOccupiedProperty?.length; i++) {
-//   if (
-//     flag === true &&
-//     (stOccupiedProperty[i].paid === false ||
-//       stOccupiedProperty[i].paid === null)
-//   ) {
-//     newStOccupiedProperty.push({ ...stOccupiedProperty[i], paid: true });
-//     flag = false;
-//     continue;
-//   } else newStOccupiedProperty.push({ ...stOccupiedProperty[i] });
-// }
-
-// setStOccupiedProperty(newStOccupiedProperty);

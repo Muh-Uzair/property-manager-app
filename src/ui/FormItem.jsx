@@ -112,7 +112,7 @@ export default function FormItem({
             )}
           </label>
           <input
-            type="texts"
+            type="text"
             className={`text-wrap rounded-[3px] border border-brand-color-200 pl-[10px] font-semibold ${incomeInput ? "bg-green-200" : "bg-brand-color-200/50"}`}
             // value={`${typeof itemType?.value === "number" ? itemType?.value : getValueFormat(itemType?.value)}`}
 
