@@ -13,6 +13,7 @@ import RentFormReceivedPayment from "./RentFormReceivedPayment";
 import { useForm } from "react-hook-form";
 import { createContext, useState } from "react";
 import toast from "react-hot-toast";
+import { usePayRent } from "./usePayRent";
 
 export const RentPayFormContext = createContext();
 
@@ -25,10 +26,12 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
   const { register, handleSubmit, getValues } = useForm();
   const [receivedPayment, setReceivedPayment] = useState(false);
   const [amountReceived, setAmountReceived] = useState(0);
+  const { mutatePayRent } = usePayRent();
 
   // FUNCTION executed when form is submitted
   function rentPayFormSubmit(data) {
-    console.log(data);
+    data.rfAmountReceived = amountReceived;
+    mutatePayRent(data);
   }
 
   // FUNCTION executed when validation at any field fails

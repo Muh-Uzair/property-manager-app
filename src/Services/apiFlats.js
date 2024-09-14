@@ -1,4 +1,5 @@
 import supabase from "../../supabase";
+import { monthsArr } from "../utils/constants";
 
 // FUNCTION
 export const uploadAllFlats = async (flatsDataArr) => {
@@ -78,4 +79,41 @@ export const getAllOccupiedFlats = async () => {
   if (error) throw new Error("Unable to get all occupied flats");
 
   return data;
+};
+
+// FUNCTION
+export const payRentFlats = async (rentFormData = {}) => {
+  const flatNumber = rentFormData?.rfPropertyNumber?.slice(5);
+  const lastRentPaid = monthsArr.indexOf(
+    `${rentFormData?.rfRentLastMonthPaid}`.toLowerCase(),
+  );
+  const currentMonth = monthsArr.indexOf(
+    `${rentFormData?.rfRentCurrentMonth}`.toLocaleLowerCase(),
+  );
+
+  const newRentDetails = [];
+  for (let i = 0; i < monthsArr?.length; i++) {
+    if (i > lastRentPaid && i <= currentMonth) {
+      if (rentFormData?.[`rfPaymentReceived${monthsArr[i]}`] === "true") {
+        newRentDetails.push({ month: monthsArr[i], paid: true });
+      } else {
+        newRentDetails.push({ month: monthsArr[i], paid: false });
+      }
+      continue;
+    } else if (i <= lastRentPaid) {
+      newRentDetails.push({ month: monthsArr[i], paid: true });
+      continue;
+    } else {
+      newRentDetails.push({ month: monthsArr[i], paid: false });
+    }
+  }
+  console.log(newRentDetails);
+
+  const { error } = await supabase
+    .from("flats")
+    .update({ rent_details: newRentDetails })
+    .eq("flat_number", flatNumber)
+    .select();
+
+  if (error) throw new Error("Unable to pay rent for flat");
 };
