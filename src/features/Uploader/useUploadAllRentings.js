@@ -11,9 +11,7 @@ export const useUploadAllRentings = () => {
       onError: (error) => {
         console.log(error);
       },
-      onSuccess: () => {
-        console.log("All rentings successfully uploaded");
-      },
+      onSuccess: () => {},
       onMutate: async () => {
         await deleteAllRentings();
       },

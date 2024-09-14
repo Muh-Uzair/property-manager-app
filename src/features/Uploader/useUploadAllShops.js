@@ -8,9 +8,7 @@ export const useUploadAllShops = () => {
       onError: (error) => {
         console.log(error);
       },
-      onSuccess: () => {
-        console.log("All shops successfully uploaded");
-      },
+      onSuccess: () => {},
       onMutate: async () => {
         await deleteAllShops();
       },

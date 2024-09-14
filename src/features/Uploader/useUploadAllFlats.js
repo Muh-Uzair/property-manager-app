@@ -8,9 +8,7 @@ export const useUploadAllFlats = () => {
       onError: (error) => {
         console.log(error);
       },
-      onSuccess: () => {
-        console.log("All flats successfully uploaded");
-      },
+      onSuccess: () => {},
       onMutate: async () => {
         await deleteAllFlats();
       },
