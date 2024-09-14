@@ -8,9 +8,7 @@ export const useUploadAllRooms = () => {
       onError: (error) => {
         console.log(error);
       },
-      onSuccess: () => {
-        console.log("All rooms successfully uploaded");
-      },
+      onSuccess: () => {},
       onMutate: async () => {
         await deleteAllRooms();
       },

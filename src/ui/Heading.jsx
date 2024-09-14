@@ -2,7 +2,9 @@ import PropTypes from "prop-types";
 
 const primary = "text-[18px] font-bold smallTab:text-[30px]";
 const medium_large = "text-[15px]";
-const medium = "text-[12px] font-semibold smallTab:text-[15px]";
+const medium =
+  "text-[11px] font-semibold smallTab:text-[16px] largeScreen:text-[18px]";
+
 // COMPONENT START
 export default function Heading({
   type,

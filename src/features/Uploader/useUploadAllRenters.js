@@ -8,9 +8,7 @@ export const useUploadAllRenters = () => {
       onError: (error) => {
         console.log(error);
       },
-      onSuccess: () => {
-        console.log("All renters successfully uploaded");
-      },
+      onSuccess: () => {},
       onMutate: async () => {
         await deleteAllRenters();
       },

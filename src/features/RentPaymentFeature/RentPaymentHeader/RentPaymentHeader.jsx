@@ -36,7 +36,7 @@ export default function RentPaymentHeader() {
       </div>
 
       {/* input and filter */}
-      <div className="grid h-[45px] grid-cols-[auto_1fr_auto] items-center border-y-[2px] border-brand-color-400 bg-brand-color-200/30 px-[8px] largeScreen:grid-cols-[auto_1fr_auto_auto] largeScreen:gap-[20px]">
+      <div className="grid h-[45px] grid-cols-[auto_1fr_auto] items-center border-y-[2px] border-brand-color-400 bg-brand-color-200/30 px-[8px] largeScreen:h-[60px] largeScreen:grid-cols-[auto_1fr_auto_auto] largeScreen:gap-[20px]">
         {/* heading for large screens */}
         <div className="hidden largeScreen:block">
           <Heading type="primary">Rent Payment : Flat</Heading>

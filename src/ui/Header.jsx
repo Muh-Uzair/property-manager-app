@@ -12,7 +12,9 @@ import { BiLineChartDown } from "react-icons/bi";
 // COMPONENT START///////////////////////////////////////////////
 export function Header() {
   // STATE & VARIABLES
+
   // FUNCTIONS
+
   // JSX//////////////////////////////////////////
   return (
     <header className="grid grid-cols-[auto_1fr_auto] gap-[10px] bg-gray-100">
