@@ -107,8 +107,6 @@ export const payRentFlats = async (rentFormData = {}) => {
       newRentDetails.push({ month: monthsArr[i], paid: false });
     }
   }
-  console.log(flatNumber);
-  console.log(newRentDetails);
 
   const { error } = await supabase
     .from("flats")

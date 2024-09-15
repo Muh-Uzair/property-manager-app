@@ -22,14 +22,13 @@ export function usePayRent() {
             : null,
     onError: () => {
       toast.error("Error paying rent");
+      queryClient.clear();
+      navigate("/home");
     },
     onSuccess: () => {
       toast.success("Rent paid");
-      if (propertyType === "flats") {
-        // queryClient.invalidateQueries(["occupiedProperty", "flats"]);
-        queryClient.clear();
-        navigate("/home");
-      }
+      queryClient.clear();
+      navigate("/home");
     },
   });
 

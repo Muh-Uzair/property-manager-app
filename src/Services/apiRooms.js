@@ -1,4 +1,5 @@
 import supabase from "../../supabase";
+import { monthsArr } from "../utils/constants";
 
 // FUNCTION
 export const uploadAllRooms = async (roomsDataArr) => {
@@ -83,11 +84,36 @@ export const getAllOccupiedRooms = async () => {
 
 // FUNCTION
 export const payRentRooms = async (rentFormData) => {
-  console.log(rentFormData);
+  const roomNumber = rentFormData?.rfPropertyNumber?.slice(5).trim();
+  const lastRentPaid = monthsArr.indexOf(
+    `${rentFormData?.rfRentLastMonthPaid}`.toLowerCase(),
+  );
+  const currentMonth = monthsArr.indexOf(
+    `${rentFormData?.rfRentCurrentMonth}`.toLocaleLowerCase(),
+  );
+
+  const newRentDetails = [];
+  for (let i = 0; i < monthsArr?.length; i++) {
+    if (i > lastRentPaid && i <= currentMonth) {
+      if (rentFormData?.[`rfPaymentReceived${monthsArr[i]}`] === "true") {
+        newRentDetails.push({ month: monthsArr[i], paid: true });
+      } else {
+        newRentDetails.push({ month: monthsArr[i], paid: false });
+      }
+      continue;
+    } else if (i <= lastRentPaid) {
+      newRentDetails.push({ month: monthsArr[i], paid: true });
+      continue;
+    } else {
+      newRentDetails.push({ month: monthsArr[i], paid: false });
+    }
+  }
+
   const { error } = await supabase
     .from("rooms")
-    .update({ rent_details: "Australia" })
-    .eq("id", 1);
+    .update({ rent_details: newRentDetails })
+    .eq("room_number", roomNumber)
+    .select();
 
   if (error) throw new Error("Unable to pay rent for room");
 };
