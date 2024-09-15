@@ -1,15 +1,9 @@
-import { useEffect } from "react";
-import { useGetPropertyType } from "../../hooks/useGetPropertyType";
 import RentPaymentBody from "./RentPaymentBody/RentPaymentBody";
 import RentPaymentHeader from "./RentPaymentHeader/RentPaymentHeader";
 
 // COMPONENT START
 export default function RentPayment() {
   // VARIABLES
-  const propertyType = useGetPropertyType();
-
-  // FUNCTIONS
-  useEffect(() => {}, [propertyType]);
 
   // JSX
   return (

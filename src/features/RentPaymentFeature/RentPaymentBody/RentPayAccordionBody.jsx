@@ -26,7 +26,7 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
   const { register, handleSubmit, getValues } = useForm();
   const [receivedPayment, setReceivedPayment] = useState(false);
   const [amountReceived, setAmountReceived] = useState(0);
-  const { mutatePayRent } = usePayRent();
+  const { mutatePayRent, statusPayRent } = usePayRent(setReceivedPayment);
 
   // FUNCTION executed when form is submitted
   function rentPayFormSubmit(data) {
@@ -95,7 +95,11 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
               id={"rfSubmitButton"}
               className="flex justify-end largeScreen:justify-start"
             >
-              <Button type="primary" uppercase={true}>
+              <Button
+                disabled={statusPayRent === "pending"}
+                type="primary"
+                uppercase={true}
+              >
                 Pay Rent
               </Button>
             </div>

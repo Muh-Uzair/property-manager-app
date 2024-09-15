@@ -41,7 +41,7 @@ export default function TableRow({
         <span
           className={`flex items-center justify-center rounded-lg px-[7px] text-[7px] font-bold ${val.status !== "occupied" ? "bg-sky-100 text-sky-500" : "bg-blue-300 text-blue-700"}`}
         >
-          {val.status.toUpperCase()}
+          {val.status?.toUpperCase()}
         </span>
       </TableRowItem>
 
@@ -95,18 +95,18 @@ export default function TableRow({
 }
 
 TableRow.propTypes = {
-  colSize: PropTypes.arrayOf(PropTypes.string).isRequired,
+  colSize: PropTypes.arrayOf(PropTypes.string),
   val: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    image: PropTypes.string.isRequired,
+    id: PropTypes.number,
+    image: PropTypes.string,
     flat_number: PropTypes.string,
     room_number: PropTypes.string,
     shop_number: PropTypes.string,
-    status: PropTypes.string.isRequired,
-    floor: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-    rent: PropTypes.number.isRequired,
+    status: PropTypes.string,
+    floor: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    rent: PropTypes.number,
     renter_id: PropTypes.number,
-  }).isRequired,
+  }),
   toggleOptionMenu: PropTypes.func,
   optionsMenuOpen: PropTypes.object,
 };
