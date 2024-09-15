@@ -83,7 +83,7 @@ export const getAllOccupiedFlats = async () => {
 
 // FUNCTION
 export const payRentFlats = async (rentFormData = {}) => {
-  const flatNumber = rentFormData?.rfPropertyNumber?.slice(5);
+  const flatNumber = rentFormData?.rfPropertyNumber?.slice(5).trim();
   const lastRentPaid = monthsArr.indexOf(
     `${rentFormData?.rfRentLastMonthPaid}`.toLowerCase(),
   );
@@ -107,6 +107,7 @@ export const payRentFlats = async (rentFormData = {}) => {
       newRentDetails.push({ month: monthsArr[i], paid: false });
     }
   }
+  console.log(flatNumber);
   console.log(newRentDetails);
 
   const { error } = await supabase
