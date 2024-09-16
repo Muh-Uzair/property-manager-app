@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import toast from "react-hot-toast";
 
 import FormPortion from "../../../ui/FormPortion";
 import LoadingWrapperCenter from "../../../ui/LoadingWrapperCenter";
@@ -7,12 +8,11 @@ import Button from "../../../ui/Button";
 import RentFormPropertyDetails from "./RentFormPropertyDetails";
 import RentFormRentDetails from "./RentFormRentDetails";
 import RentFormTenantDetails from "./RentFormTenantDetails";
-import { useGetTenantDetailRentForm } from "./useGetTenantDetailRentForm";
 import RentFormPaymentReceivedOf from "./RentFormPaymentReceivedOf";
 import RentFormReceivedPayment from "./RentFormReceivedPayment";
+import { useGetTenantDetailRentForm } from "./useGetTenantDetailRentForm";
 import { useForm } from "react-hook-form";
 import { createContext, useState } from "react";
-import toast from "react-hot-toast";
 import { usePayRent } from "./usePayRent";
 
 export const RentPayFormContext = createContext();
@@ -51,9 +51,9 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
         value={{
           receivedPayment,
           setReceivedPayment,
-          getValues,
           amountReceived,
           setAmountReceived,
+          getValues,
         }}
       >
         <form
