@@ -2,8 +2,9 @@ import PropTypes from "prop-types";
 
 import FormPortion from "../../../ui/FormPortion";
 import FormItem from "../../../ui/FormItem";
-import { useRentPayFormContext } from "./useRentPayFormContext";
 import { useGetDueMonths } from "./useGetDueMonths";
+import { useContext } from "react";
+import { RentPayFormContext } from "./RentPayAccordionBody";
 
 // COMPONENT START
 export default function RentFormPaymentReceivedOf({
@@ -11,7 +12,7 @@ export default function RentFormPaymentReceivedOf({
   register,
 }) {
   // VARIABLES
-  const { amountReceived, setAmountReceived } = useRentPayFormContext();
+  const { amountReceived, setAmountReceived } = useContext(RentPayFormContext);
   const { dueMonths, stOccupiedProperty, setStOccupiedProperty } =
     useGetDueMonths(occupiedProperty || {});
 

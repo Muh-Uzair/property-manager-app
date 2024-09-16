@@ -2,12 +2,13 @@ import PropTypes from "prop-types";
 
 import FormItem from "../../../ui/FormItem";
 import FormPortion from "../../../ui/FormPortion";
-import { useRentPayFormContext } from "./useRentPayFormContext";
+import { useContext } from "react";
+import { RentPayFormContext } from "./RentPayAccordionBody";
 
 // COMPONENT START
 export default function RentFormReceivedPayment({ register }) {
   // VARIABLES
-  const { getValues, amountReceived } = useRentPayFormContext();
+  const { getValues, amountReceived } = useContext(RentPayFormContext);
 
   // FUNCTION
 
