@@ -4,6 +4,7 @@ import Heading from "../../../ui/Heading";
 import PropertyChangeBtns from "../../../ui/PropertyChangeBtns";
 import { useGetPropertyType } from "../../../hooks/useGetPropertyType";
 import { useEffect, useState } from "react";
+import { useQueryClient } from "@tanstack/react-query";
 
 const stylesSearchFilter =
   "bg-brand-color-300/40 border border-brand-color-400 rounded-full pl-[10px] uppercase h-[25px] text-[13px] font-semibold text-brand-color-700 focus:outline-none focus:ring-[1px] focus:border-none focus:ring-brand-color-700";
@@ -15,6 +16,7 @@ export default function RentPaymentHeader() {
   const [searchPropertyValue, setSearchPropertyValue] = useState(
     `${propertyType.slice(0, -1)} `,
   );
+  const queryClient = useQueryClient();
 
   // FUNCTION updates value on every page update
   useEffect(() => {
@@ -24,6 +26,22 @@ export default function RentPaymentHeader() {
   // FUNCTION
   function handlePropertySearch(e) {
     e.preventDefault();
+    const occupiedProperty = queryClient.getQueryData([
+      "occupiedProperty",
+      `${propertyType}`,
+    ]);
+
+    const searchedOccupiedProperty =
+      occupiedProperty.find((val) => {
+        if (propertyType === "flats")
+          return val.flat_number === searchPropertyValue.slice(5);
+        if (propertyType === "rooms")
+          return val.room_number === searchPropertyValue.slice(5);
+        if (propertyType === "shops")
+          return val.shop_number === searchPropertyValue.slice(5).toUpperCase();
+      }) || null;
+
+    console.log(searchedOccupiedProperty);
   }
 
   // JSX
