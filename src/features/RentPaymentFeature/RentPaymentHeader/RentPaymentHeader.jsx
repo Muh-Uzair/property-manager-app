@@ -3,9 +3,7 @@ import { IoSearch } from "react-icons/io5";
 import Heading from "../../../ui/Heading";
 import PropertyChangeBtns from "../../../ui/PropertyChangeBtns";
 import { useGetPropertyType } from "../../../hooks/useGetPropertyType";
-import { useForm } from "react-hook-form";
-import { useRentPaymentContext } from "../useRentPaymentContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const stylesSearchFilter =
   "bg-brand-color-300/40 border border-brand-color-400 rounded-full pl-[10px] uppercase h-[25px] text-[13px] font-semibold text-brand-color-700 focus:outline-none focus:ring-[1px] focus:border-none focus:ring-brand-color-700";
@@ -14,25 +12,18 @@ const stylesSearchFilter =
 export default function RentPaymentHeader() {
   // VARIABLES
   const propertyType = useGetPropertyType();
-  const [valueSearchProperty, setValueSearchProperty] = useState(
+  const [searchPropertyValue, setSearchPropertyValue] = useState(
     `${propertyType.slice(0, -1)} `,
   );
-  const { register, handleSubmit } = useForm();
-  const { setIsSearchingProperty } = useRentPaymentContext();
 
-  // FUNCTION updates the valueSearchProperty as user types in it
-  function updateValueSearchProperty(e) {
-    setValueSearchProperty(e.target.value);
-  }
+  // FUNCTION updates value on every page update
+  useEffect(() => {
+    setSearchPropertyValue(`${propertyType.slice(0, -1)} `);
+  }, [propertyType]);
 
   // FUNCTION
-  function handleSubmitProperty(data) {
-    console.log(data);
-    setIsSearchingProperty(true);
-  }
-  // FUNCTION
-  function handleSubmitPropertyError(errors) {
-    console.log(errors);
+  function handlePropertySearch(e) {
+    e.preventDefault();
   }
 
   // JSX
@@ -65,20 +56,16 @@ export default function RentPaymentHeader() {
         {/* search functionality */}
         <form
           className="relative flex items-center largeScreen:col-start-3"
-          onSubmit={handleSubmit(
-            handleSubmitProperty,
-            handleSubmitPropertyError,
-          )}
+          onSubmit={(e) => handlePropertySearch(e)}
         >
           <input
             type="text"
             className={`${stylesSearchFilter} placeholder:text-brand-color-500/50 smallTab:w-[220px]`}
             placeholder="Search Property"
             name={"propertySearchInput"}
+            value={searchPropertyValue}
+            onChange={(e) => setSearchPropertyValue(e.target.value)}
             maxLength={8}
-            value={valueSearchProperty}
-            {...register("propertySearchInput", { required: true })}
-            onChange={(e) => updateValueSearchProperty(e)}
           />
           <button
             type="submit"
