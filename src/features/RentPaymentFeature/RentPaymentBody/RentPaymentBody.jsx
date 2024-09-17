@@ -38,7 +38,7 @@ export default function RentPaymentBody() {
     return (
       <main
         style={{
-          height: `calc(${screenHeight}px - 200px)`, // Inline style with dynamic calculation
+          height: `calc(${screenHeight}px - 140px)`, // Inline style with dynamic calculation
         }}
         className="overflow-y-auto pb-2.5 pr-2.5 pt-2.5"
       >
