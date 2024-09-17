@@ -10,15 +10,16 @@ import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import RentPayAccordionBody from "./RentPayAccordionBody";
 import { useGetScreenHeight } from "./useGetScreenHeight";
 import LoadingWrapperCenter from "../../../ui/LoadingWrapperCenter";
+import { useRentPaymentContext } from "../useRentPaymentContext";
 
 // COMPONENT START
 export default function RentPaymentBody() {
   // VARIABLES
   const [expanded, setExpanded] = useState(false);
-
   const screenHeight = useGetScreenHeight();
   const { dataOccupiedProperty = [], statusOccupiedProperty } =
     useGetAllOccupiedProperty();
+  const { isSearchingProperty } = useRentPaymentContext();
 
   // FUNCTION // function that controls the accordions
   const handleChange = (panel) => (event, isExpanded) => {
@@ -26,7 +27,7 @@ export default function RentPaymentBody() {
   };
 
   // JSX
-  if (statusOccupiedProperty === "pending") {
+  if (statusOccupiedProperty === "pending" || isSearchingProperty) {
     return (
       <LoadingWrapperCenter>
         <LoadingSpinner />
