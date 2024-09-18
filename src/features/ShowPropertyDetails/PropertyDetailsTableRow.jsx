@@ -3,11 +3,11 @@ import TableItemRenter from "./TableItemRenter";
 import TableRowItem from "../../ui/TableRowItem";
 import PropTypes from "prop-types";
 import { TbListDetails } from "react-icons/tb";
-import { useNavigate } from "react-router-dom";
 import { GoPencil } from "react-icons/go";
+import TableOptionsMenu from "../../ui/TableOptionsMenu";
 
 // COMPONENT START
-export default function TableRow({
+export default function PropertyDetailsTableRow({
   colSize,
   val,
   toggleOptionMenu,
@@ -33,26 +33,26 @@ export default function TableRow({
 
       {/* property number */}
       <TableRowItem>
-        {val.flat_number || val.room_number || val.shop_number}
+        {val?.flat_number || val?.room_number || val?.shop_number}
       </TableRowItem>
 
       {/* property status */}
       <TableRowItem>
         <span
-          className={`flex items-center justify-center rounded-lg px-[7px] text-[7px] font-bold ${val.status !== "occupied" ? "bg-sky-100 text-sky-500" : "bg-blue-300 text-blue-700"}`}
+          className={`flex items-center justify-center rounded-lg px-[7px] text-[7px] font-bold ${val?.status !== "occupied" ? "bg-sky-100 text-sky-500" : "bg-blue-300 text-blue-700"}`}
         >
-          {val.status?.toUpperCase()}
+          {val?.status?.toUpperCase()}
         </span>
       </TableRowItem>
 
       {/* property floor number */}
       <TableRowItem>
-        <div className="flex items-center justify-center">{val.floor}</div>
+        <div className="flex items-center justify-center">{val?.floor}</div>
       </TableRowItem>
 
       {/* property rent */}
       <TableRowItem>
-        <div className="flex items-center justify-center">{val.rent}</div>
+        <div className="flex items-center justify-center">{val?.rent}</div>
       </TableRowItem>
 
       {/* tenant name */}
@@ -64,6 +64,7 @@ export default function TableRow({
         )}
       </TableRowItem>
 
+      {/* options menu */}
       <TableRowItem>
         <div className="relative">
           {val.status === "occupied" && (
@@ -94,7 +95,7 @@ export default function TableRow({
   );
 }
 
-TableRow.propTypes = {
+PropertyDetailsTableRow.propTypes = {
   colSize: PropTypes.arrayOf(PropTypes.string),
   val: PropTypes.shape({
     id: PropTypes.number,
@@ -109,36 +110,4 @@ TableRow.propTypes = {
   }),
   toggleOptionMenu: PropTypes.func,
   optionsMenuOpen: PropTypes.object,
-};
-
-// COMPONENT START
-function TableOptionsMenu({ menuOptionsBtns }) {
-  // VARIABLES
-  const navigate = useNavigate();
-
-  // FUNCTIONS
-
-  // FUNCTION
-  const changeUrl = (url) => {
-    navigate(url);
-  };
-
-  // JSX
-  return (
-    <div className="absolute bottom-[-60px] right-[20px] z-[100] flex flex-col rounded-[5px] border-[1px] bg-white">
-      {menuOptionsBtns.map((val, i) => (
-        <button
-          className="flex h-[30px] min-w-[100px] items-center justify-start gap-[10px] px-[10px] hover:bg-sky-100 hover:text-brand-color-500 active:bg-sky-200"
-          key={i}
-          onClick={() => changeUrl(val.url)}
-        >
-          <span>{val.icon}</span> <span>{val.label}</span>
-        </button>
-      ))}
-    </div>
-  );
-}
-
-TableOptionsMenu.propTypes = {
-  menuOptionsBtns: PropTypes.array,
 };

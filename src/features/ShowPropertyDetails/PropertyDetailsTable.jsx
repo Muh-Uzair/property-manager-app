@@ -13,15 +13,10 @@ const colSize = ["1fr", "1fr", "1fr", "1fr", "1fr", "1fr", "1fr"];
 export default function PropertyDetailsTable() {
   // VARIABLES
   const propertyType = useGetPropertyType();
-
   const {
     statusProperty,
     data: { dataProperty = {}, totalProperty = null },
   } = useGetPropertyData();
-
-  // console.log(dataProperty);
-
-  // FUNCTIONS
 
   // JSX
 
@@ -59,7 +54,7 @@ export default function PropertyDetailsTable() {
         <TableBody tableData={dataProperty} colSize={colSize} />
 
         {/* table footer */}
-        <TableFooter role={"table-footer"} totalProperty={totalProperty} />
+        <TableFooter totalProperty={totalProperty} />
       </Table>
     );
   }

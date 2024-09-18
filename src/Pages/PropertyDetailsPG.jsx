@@ -1,8 +1,7 @@
 import PropertyDetailsTable from "../features/ShowPropertyDetails/PropertyDetailsTable";
-// import PropertyChangeButtons from "../ui/PropertyChangeButtons";
 import Heading from "../ui/Heading";
-import { useGetPropertyType } from "../hooks/useGetPropertyType";
 import PropertyChangeBtns from "../ui/PropertyChangeBtns";
+import { useGetPropertyType } from "../hooks/useGetPropertyType";
 
 // COMPONENT START///////////////////////////////////////////////
 export default function PropertyDetailsPG() {
@@ -37,15 +36,3 @@ export default function PropertyDetailsPG() {
   // JSX//////////////////////////////////////////
 }
 // COMPONENT END/////////////////////////////////////////////////
-
-// function PropertyTypeHeading() {
-//   const { propertyType } = useParams();
-
-//   return (
-//     <span className="text-[30px] font-bold">
-//       {!propertyType && "Flats"}
-//       {propertyType &&
-//         `${propertyType?.charAt(0).toUpperCase()}${propertyType?.slice(1).toLowerCase()}`}
-//     </span>
-//   );
-// }

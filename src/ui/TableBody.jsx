@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
-import TableRow from "../features/ShowPropertyDetails/PropertyDetailsTableRow";
+import PropertyDetailsTableRow from "../features/ShowPropertyDetails/PropertyDetailsTableRow";
 
 // COMPONENT START
 export default function TableBody({ tableData, colSize }) {
@@ -26,7 +26,7 @@ export default function TableBody({ tableData, colSize }) {
     <div className="border-x-[1px] border-gray-200 text-[10px] font-semibold text-gray-400 largeScreen:text-[11px]">
       {tableData?.map((val) => (
         // Table Row
-        <TableRow
+        <PropertyDetailsTableRow
           colSize={colSize}
           val={val}
           key={val.id}
