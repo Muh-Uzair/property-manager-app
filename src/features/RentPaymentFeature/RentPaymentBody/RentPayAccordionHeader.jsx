@@ -1,13 +1,13 @@
 import PropTypes from "prop-types";
-import { useParams } from "react-router-dom";
 
 import TableListRow from "./TableListRow";
 import AccordionHeaderItem from "../../../ui/AccordionHeaderItem";
+import { useGetPropertyType } from "../../../hooks/useGetPropertyType";
 
 // COMPONENT START
 export default function RentPayAccordionHeader({ occupiedProperty }) {
   // VARIABLES
-  const { propertyType = "flats" } = useParams();
+  const propertyType = useGetPropertyType();
 
   // FUNCTIONS
 
