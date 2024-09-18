@@ -67,10 +67,10 @@ export default function SinglePropertyDetails() {
             className={`hidden h-[80%] w-[80%] grid-cols-[80%_350px] gap-[16px] largeScreen:grid`}
           >
             <div className="grid grid-rows-2">
-              <div className="h-[full] bg-yellow-400">
+              <div className="h-[full]">
                 <PropertyDetails />
               </div>
-              <div className="h-full bg-purple-400">
+              <div className="h-full">
                 <TenantDetails />
               </div>
             </div>

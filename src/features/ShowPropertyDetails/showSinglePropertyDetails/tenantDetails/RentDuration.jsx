@@ -26,11 +26,11 @@ export default function RentDuration({ dataRenterDetails }) {
           bold={true}
           headingColor="text-sky-200"
         >
-          Property Rental Duration
+          Rental Duration
         </Heading>
       </header>
       {dataRenterDetails.renter_from && (
-        <span className="text-[15px] font-bold text-gray-600">{`${dataRenterDetails.name} rented this property almost ${formatDistanceStrict(new Date(dataRenterDetails.renter_from), new Date())} ago`}</span>
+        <span className="text-[12px] font-bold text-gray-600">{`${dataRenterDetails.name} rented almost ${formatDistanceStrict(new Date(dataRenterDetails.renter_from), new Date())} ago`}</span>
       )}
     </div>
   );

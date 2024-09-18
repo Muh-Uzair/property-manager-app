@@ -29,14 +29,14 @@ export default function TenantDetails() {
         {/* Tenant Details for Large screen */}
         <div className="hidden grid-cols-[60%_1fr] gap-[16px] rounded-[8px] bg-gray-100 p-[16px] largeScreen:grid">
           {/* details */}
-          <div className="grid h-full grid-rows-[1fr_40%] gap-[16px]">
+          <div className="grid h-full grid-rows-[1fr_40%] gap-[10px]">
             {/* tenant details */}
             <div>
               <AllTenantDetailsItem dataRenterDetails={dataRenterDetails} />
             </div>
 
             {/* other rented properties and rent duration */}
-            <div className="grid grid-cols-2 gap-[16px]">
+            <div className="grid grid-cols-2 gap-[10px]">
               <OtherPropertiesRented dataRenterDetails={dataRenterDetails} />
               <RentDuration dataRenterDetails={dataRenterDetails} />
             </div>

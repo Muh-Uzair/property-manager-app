@@ -16,7 +16,7 @@ export default function AllTenantDetailsItem({ dataRenterDetails }) {
   // console.log(dataRenterDetails);
   if (dataRenterDetails.nationality) {
     return (
-      <div className="grid grid-cols-2 gap-[7px] largeScreen:h-full largeScreen:gap-[16px]">
+      <div className="grid grid-cols-2 gap-[7px] largeScreen:h-full largeScreen:gap-[10px]">
         {/* id car no */}
         <TenantDetailItem
           icon={

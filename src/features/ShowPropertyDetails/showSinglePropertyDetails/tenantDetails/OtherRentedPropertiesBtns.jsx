@@ -39,7 +39,7 @@ export default function OtherRentedPropertiesBtns() {
                 <></>
               )}
             </>
-            <span className="text-[15px] font-semibold uppercase text-sky-500">{`${val[0]} ${val[2]}`}</span>
+            <span className="text-[12px] font-semibold uppercase text-sky-500">{`${val[0]} ${val[2]}`}</span>
           </button>
         </span>
       ))}
