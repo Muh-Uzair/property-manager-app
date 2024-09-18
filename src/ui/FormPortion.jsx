@@ -17,7 +17,9 @@ export default function FormPortion({
       className={`${last ? "" : "border-b-[1px] border-gray-200"} relative flex flex-col gap-[7px] py-[10px]`}
     >
       {formPortionHeading.length > 0 && (
-        <Heading type="medium">{formPortionHeading}</Heading>
+        <Heading uppercase={true} type="medium">
+          {formPortionHeading}
+        </Heading>
       )}
 
       {children}
