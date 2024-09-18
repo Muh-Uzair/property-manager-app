@@ -21,6 +21,7 @@ export default {
     screens: {
       smallTab: "640px",
       largeTab: "768px",
+      largeTabHorizontal: "1250px",
       largeScreen: "1200px",
     },
   },

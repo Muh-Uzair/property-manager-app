@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { ContextSingleProperty } from "../SinglePropertyDetails";
+import { useGetScreenHeight } from "../../../RentPaymentFeature/RentPaymentBody/useGetScreenHeight";
 
 const innerElementStyles =
   "align-center flex justify-center text-nowrap rounded-[3px] bg-sky-500 p-[2px]";
@@ -8,15 +9,19 @@ export default function DisplayRentDetails() {
   let { dataSingleProperty = {} } = useContext(ContextSingleProperty);
   dataSingleProperty = dataSingleProperty?.data?.[0];
   const { rent_details } = dataSingleProperty || {};
+  const screenHeight = useGetScreenHeight();
 
   return (
-    <div className="h-[100%] w-[100%] rounded-[8px] bg-gray-100 p-[10px] text-white">
-      <ul className="flex flex-col gap-[5px] text-[11px] font-semibold uppercase">
+    <div className="rounded-[8px] bg-gray-100 p-[10px] text-white">
+      <ul
+        className="flex flex-col gap-[5px] text-[10px] font-semibold uppercase largeScreen:overflow-y-auto"
+        style={{ height: `${screenHeight - 200}px` }}
+      >
         {rent_details &&
           rent_details.map((val, i) => (
             <li
               key={i}
-              className="grid grid-cols-2 grid-rows-2 gap-1 rounded-[3px] bg-sky-200/80 p-[5px]"
+              className="rounded-[3px]0 grid grid-cols-2 grid-rows-2 gap-[3px] bg-sky-200/80 p-[5px]"
             >
               <span className={innerElementStyles}>
                 <span>month : {`${val.month}`} </span>

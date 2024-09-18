@@ -29,7 +29,6 @@ export default function SinglePropertyDetails() {
   // FUNCTIONS
 
   // JSX
-
   if (
     statusSingleProperty === "pending" ||
     statusTenantDetails === "pending" ||
@@ -64,18 +63,20 @@ export default function SinglePropertyDetails() {
           </button>
 
           {/* property details & tenant details for LScreen */}
-          <div className="hidden w-[80%] grid-cols-[80%_350px] gap-[16px] largeScreen:grid">
+          <div
+            className={`hidden h-[80%] w-[80%] grid-cols-[80%_350px] gap-[16px] largeScreen:grid`}
+          >
             <div className="grid grid-rows-2">
-              <div className="">
+              <div className="h-[full] bg-yellow-400">
                 <PropertyDetails />
               </div>
-              <div className="">
+              <div className="h-full bg-purple-400">
                 <TenantDetails />
               </div>
             </div>
 
             {/* rent details */}
-            <div>
+            <div className="">
               <RentDetails />
             </div>
           </div>
@@ -83,18 +84,24 @@ export default function SinglePropertyDetails() {
           {/* all details for phone smallTab largeTab */}
           <div
             style={{
-              height: `calc(${screenHeight}px - 80px)`, // Inline style with dynamic calculation
+              height: `calc(${screenHeight}px - 90px)`, // Inline style with dynamic calculation
             }}
             className="flex flex-col gap-[10px] overflow-y-scroll px-[5px] largeScreen:hidden"
           >
             {/* portion :  property details */}
-            <PropertyDetails />
+            <div>
+              <PropertyDetails />
+            </div>
 
             {/*Renter details portion*/}
-            <TenantDetails />
+            <div>
+              <TenantDetails />
+            </div>
 
             {/* Rent details portion */}
-            <RentDetails />
+            <div>
+              <RentDetails />
+            </div>
           </div>
         </div>
       </ContextSingleProperty.Provider>
