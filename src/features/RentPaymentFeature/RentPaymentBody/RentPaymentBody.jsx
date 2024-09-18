@@ -3,14 +3,13 @@ import { MdArrowDropDown } from "react-icons/md";
 
 import LoadingSpinner from "../../../ui/LoadingSpinner";
 import RentPayAccordionHeader from "./RentPayAccordionHeader";
+import RentPayAccordionBody from "./RentPayAccordionBody";
+import LoadingWrapperCenter from "../../../ui/LoadingWrapperCenter";
 
 import { useGetAllOccupiedProperty } from "./useGetAllOccupiedProperty";
 import { brandColor500 } from "../../../styles/globalStyles";
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
-import RentPayAccordionBody from "./RentPayAccordionBody";
 import { useGetScreenHeight } from "./useGetScreenHeight";
-import LoadingWrapperCenter from "../../../ui/LoadingWrapperCenter";
-import { useRentPaymentContext } from "../useRentPaymentContext";
 
 // COMPONENT START
 export default function RentPaymentBody() {
@@ -19,7 +18,6 @@ export default function RentPaymentBody() {
   const screenHeight = useGetScreenHeight();
   const { dataOccupiedProperty = [], statusOccupiedProperty } =
     useGetAllOccupiedProperty();
-  const { isSearchingProperty } = useRentPaymentContext();
 
   // FUNCTION // function that controls the accordions
   const handleChange = (panel) => (event, isExpanded) => {
@@ -27,7 +25,7 @@ export default function RentPaymentBody() {
   };
 
   // JSX
-  if (statusOccupiedProperty === "pending" || isSearchingProperty) {
+  if (statusOccupiedProperty === "pending") {
     return (
       <LoadingWrapperCenter>
         <LoadingSpinner />
