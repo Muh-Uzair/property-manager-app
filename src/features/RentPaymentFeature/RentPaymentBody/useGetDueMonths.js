@@ -25,7 +25,7 @@ export function useGetDueMonths(occupiedProperty) {
       continue;
     }
     if (
-      // the rest false or null value make ir disabled
+      // the rest false or null value make it disabled
       flag === false &&
       (dueMonths[i].paid === false || dueMonths[i].paid === null)
     ) {

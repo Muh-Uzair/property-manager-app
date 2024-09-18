@@ -23,7 +23,7 @@ export default function RentFormPropertyDetails({
           itemLabel={"Property"}
           itemType={{
             type: "labelInputText",
-            value: `${propertyType.at(0).toUpperCase()}${propertyType.slice(1, -1)}  ${occupiedProperty.flat_number ?? occupiedProperty.shop_number ?? occupiedProperty.room_number}`,
+            value: `${propertyType.at(0).toUpperCase()}${propertyType.slice(1, -1)}  ${occupiedProperty?.flat_number ?? occupiedProperty?.shop_number ?? occupiedProperty?.room_number}`,
 
             readOnly: true,
           }}
@@ -32,11 +32,12 @@ export default function RentFormPropertyDetails({
           name={"rfPropertyNumber"}
           register={register}
         />
+
         <FormItem
           itemLabel={"Floor"}
           itemType={{
             type: "labelInputText",
-            value: `Floor ${occupiedProperty.floor}`,
+            value: `Floor ${occupiedProperty?.floor}`,
             readOnly: true,
           }}
           htmlFor={"rfPropertyFloor"}
@@ -44,11 +45,12 @@ export default function RentFormPropertyDetails({
           name={"rfPropertyFloor"}
           register={register}
         />
+
         <FormItem
           itemLabel={"Size"}
           itemType={{
             type: "labelInputText",
-            value: `${occupiedProperty.size} m`,
+            value: `${occupiedProperty?.size} m`,
             readOnly: true,
           }}
           htmlFor={"rfPropertySize"}

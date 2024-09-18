@@ -20,7 +20,7 @@ export default function RentFormTenantDetails({
           itemLabel={"Name"}
           itemType={{
             type: "labelInputText",
-            value: `${dataTenantDetailRentForm.name}`,
+            value: `${dataTenantDetailRentForm?.name}`,
             readOnly: true,
           }}
           htmlFor={"rfTenantName"}
@@ -28,11 +28,12 @@ export default function RentFormTenantDetails({
           name={"rfTenantName"}
           register={register}
         />
+
         <FormItem
           itemLabel={"Nationality"}
           itemType={{
             type: "labelInputText",
-            value: `${dataTenantDetailRentForm.nationality}`,
+            value: `${dataTenantDetailRentForm?.nationality}`,
             readOnly: true,
           }}
           htmlFor={"rfTenantNationality"}
@@ -40,11 +41,12 @@ export default function RentFormTenantDetails({
           name={"rfTenantNationality"}
           register={register}
         />
+
         <FormItem
           itemLabel={"Contact"}
           itemType={{
             type: "labelInputText",
-            value: `${dataTenantDetailRentForm.contact_info}`,
+            value: `${dataTenantDetailRentForm?.contact_info}`,
             readOnly: true,
           }}
           htmlFor={"rfTenantContact"}
@@ -52,11 +54,12 @@ export default function RentFormTenantDetails({
           name={"rfTenantContact"}
           register={register}
         />
+
         <FormItem
           itemLabel={"ID CARD"}
           itemType={{
             type: "labelInputText",
-            value: `${dataTenantDetailRentForm.id_card_number}`,
+            value: `${dataTenantDetailRentForm?.id_card_number}`,
             readOnly: true,
           }}
           htmlFor={"rfTenantId"}
@@ -64,11 +67,12 @@ export default function RentFormTenantDetails({
           name={"rfTenantId"}
           register={register}
         />
+
         <FormItem
           itemLabel={"Occupation"}
           itemType={{
             type: "labelInputText",
-            value: `${dataTenantDetailRentForm.occupation}`,
+            value: `${dataTenantDetailRentForm?.occupation}`,
             readOnly: true,
           }}
           htmlFor={"rfTenantOccupation"}

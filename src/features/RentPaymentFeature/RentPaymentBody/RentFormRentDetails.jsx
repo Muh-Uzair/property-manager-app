@@ -19,7 +19,7 @@ export default function RentFormRentDetails({ occupiedProperty, register }) {
           itemLabel={"Property Rent"}
           itemType={{
             type: "labelInputText",
-            value: `${occupiedProperty.rent}`,
+            value: `${occupiedProperty?.rent}`,
             readOnly: true,
           }}
           htmlFor={"rfRentProperty"}
@@ -27,11 +27,12 @@ export default function RentFormRentDetails({ occupiedProperty, register }) {
           name={"rfRentProperty"}
           register={register}
         />
+
         <FormItem
           itemLabel={"Last Rent Paid"}
           itemType={{
             type: "labelInputText",
-            value: `${monthsArr[getLastPaidMonth(occupiedProperty.rent_details)]}`,
+            value: `${monthsArr[getLastPaidMonth(occupiedProperty?.rent_details)]}`,
             readOnly: true,
           }}
           htmlFor={"rfRentLastMonthPaid"}
@@ -39,6 +40,7 @@ export default function RentFormRentDetails({ occupiedProperty, register }) {
           name={"rfRentLastMonthPaid"}
           register={register}
         />
+
         <FormItem
           itemLabel={"Current Month"}
           itemType={{
@@ -51,12 +53,13 @@ export default function RentFormRentDetails({ occupiedProperty, register }) {
           name={"rfRentCurrentMonth"}
           register={register}
         />
+
         <FormItem
           itemLabel={"Due Amount"}
           itemType={{
             type: "labelInputText",
             value: calculateDues(
-              getLastPaidMonth(occupiedProperty.rent_details),
+              getLastPaidMonth(occupiedProperty?.rent_details),
               occupiedProperty.rent,
             ),
             readOnly: true,
@@ -67,13 +70,14 @@ export default function RentFormRentDetails({ occupiedProperty, register }) {
           name={"rfRentDueAmount"}
           register={register}
         />
+
         <FormItem
           itemLabel={"Months Due"}
           itemType={{
             type: "labelInputText",
             value:
               new Date().getMonth() -
-              getLastPaidMonth(occupiedProperty.rent_details),
+              getLastPaidMonth(occupiedProperty?.rent_details),
             readOnly: true,
           }}
           itemValueColor="red"

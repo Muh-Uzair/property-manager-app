@@ -5,6 +5,7 @@ import FormItem from "../../../ui/FormItem";
 import { useGetDueMonths } from "./useGetDueMonths";
 import { useContext } from "react";
 import { RentPayFormContext } from "./RentPayAccordionBody";
+import { helperUpdateAmountReceived } from "../../../utils/helpers";
 
 // COMPONENT START
 export default function RentFormPaymentReceivedOf({
@@ -18,59 +19,13 @@ export default function RentFormPaymentReceivedOf({
 
   // FUNCTION to update the amount received
   function updateAmountReceived(e) {
-    let paid = e.target.value === "true" ? false : true;
-    if (paid) {
-      // console.log("paid");
-      // console.log(stOccupiedProperty);
-      setAmountReceived(
-        (amountReceived) => (amountReceived += occupiedProperty?.rent),
-      );
-
-      let newStOccupiedProperty = [];
-      let flag = true;
-      for (let i = 0; i < stOccupiedProperty?.length; i++) {
-        if (
-          flag === true &&
-          (stOccupiedProperty[i].paid === null ||
-            stOccupiedProperty[i].paid === false)
-        ) {
-          newStOccupiedProperty.push({ ...stOccupiedProperty[i], paid: true });
-          flag = false;
-          continue;
-        } else {
-          newStOccupiedProperty.push({ ...stOccupiedProperty[i] });
-          continue;
-        }
-      }
-
-      // console.log(newStOccupiedProperty);
-
-      setStOccupiedProperty(newStOccupiedProperty);
-    } else if (!paid) {
-      // console.log("removed");
-      // console.log(stOccupiedProperty);
-      setAmountReceived(
-        (amountReceived) => (amountReceived -= occupiedProperty?.rent),
-      );
-
-      let newStOccupiedProperty = [];
-      let flag = true;
-      for (let i = stOccupiedProperty.length - 1; i >= 0; i--) {
-        if (flag === true && stOccupiedProperty[i].paid === true) {
-          newStOccupiedProperty.push({ ...stOccupiedProperty[i], paid: false });
-          flag = false;
-          continue;
-        } else {
-          newStOccupiedProperty.push({ ...stOccupiedProperty[i] });
-          continue;
-        }
-      }
-
-      newStOccupiedProperty = newStOccupiedProperty.reverse();
-      // console.log(newStOccupiedProperty);
-
-      setStOccupiedProperty(newStOccupiedProperty);
-    }
+    helperUpdateAmountReceived(
+      e,
+      setAmountReceived,
+      occupiedProperty,
+      stOccupiedProperty,
+      setStOccupiedProperty,
+    );
   }
 
   // JSX

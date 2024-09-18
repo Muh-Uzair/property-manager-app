@@ -1,5 +1,7 @@
 import PropTypes from "prop-types";
 import toast from "react-hot-toast";
+import { useForm } from "react-hook-form";
+import { createContext, useState } from "react";
 
 import FormPortion from "../../../ui/FormPortion";
 import LoadingWrapperCenter from "../../../ui/LoadingWrapperCenter";
@@ -11,8 +13,6 @@ import RentFormTenantDetails from "./RentFormTenantDetails";
 import RentFormPaymentReceivedOf from "./RentFormPaymentReceivedOf";
 import RentFormReceivedPayment from "./RentFormReceivedPayment";
 import { useGetTenantDetailRentForm } from "./useGetTenantDetailRentForm";
-import { useForm } from "react-hook-form";
-import { createContext, useState } from "react";
 import { usePayRent } from "./usePayRent";
 
 export const RentPayFormContext = createContext();
@@ -37,11 +37,7 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
   // FUNCTION executed when validation at any field fails
   function rentPayFormSubmitError(errors) {
     const { rfReceivedPaymentCheck: { message } = {} } = errors;
-    toast(message, {
-      duration: 4000,
-      icon: <span>😢</span>,
-      className: "text-red-700 font-semibold",
-    });
+    toast.error(message);
   }
 
   // JSX
