@@ -22,7 +22,7 @@ import RentPaymentPG from "./Pages/RentPaymentPG";
 // import DummyPG1 from "./Pages/DummyPG1";
 import { Toaster } from "react-hot-toast";
 
-// rent payment page complete
+// propertyEdit branch created
 
 const router = createBrowserRouter(
   createRoutesFromElements(
