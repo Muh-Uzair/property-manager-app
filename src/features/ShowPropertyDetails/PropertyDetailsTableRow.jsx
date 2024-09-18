@@ -85,7 +85,7 @@ export default function PropertyDetailsTableRow({
                     label: "Details",
                     url: `${val.id}`,
                   },
-                  { icon: <GoPencil />, label: "Edit", url: "editProperty" },
+                  { icon: <GoPencil />, label: "Edit", url: `edit/${val.id}` },
                 ]}
               />
             )}

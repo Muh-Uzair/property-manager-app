@@ -45,7 +45,7 @@ const router = createBrowserRouter(
             element={<SinglePropertyDetails />}
           />
           <Route
-            path="propertyDetails/:propertyType/editProperty"
+            path="propertyDetails/:propertyType/edit/:propertyId"
             element={<PropertyEdit />}
           />
           <Route path="rentPayment" element={<RentPaymentPG />}>
