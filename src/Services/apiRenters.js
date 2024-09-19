@@ -69,18 +69,15 @@ export const getTenantDetailRentForm = async (renterId) => {
 
 // FUNCTION
 export const getTenantDataPropertyEdit = async (renterID) => {
-  console.log(renterID);
   const { data, error } = await supabase
     .from("renters")
-    .select("name, contact_info , nationality , id_card_number , occupation ")
+    .select(
+      "name, contact_info , nationality , id_card_number , occupation, marital_status , image ",
+    )
     .eq("id", renterID);
 
   if (error)
     throw new Error(`Unable to fetch renter details: ${error?.message}`);
-
-  if (data) {
-    console.log(data);
-  }
 
   return data;
 };

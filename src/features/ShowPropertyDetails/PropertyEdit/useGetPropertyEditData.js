@@ -31,12 +31,19 @@ export function useGetPropertyEditData() {
   const { data: dataTenantPropertyEdit, status: statusTenantPropertyEdit } =
     useQuery({
       queryFn: async () => {
-        if (dataPropertyEdit[0]?.renter_id) {
-          console.log(dataPropertyEdit[0]?.renter_id);
-          getTenantDataPropertyEdit(dataPropertyEdit[0]?.renter_id);
-        } else return [];
+        if (dataPropertyEdit?.[0]?.renter_id) {
+          return await getTenantDataPropertyEdit(
+            dataPropertyEdit[0]?.renter_id,
+          );
+        }
       },
-      queryKey: ["dataTenantPropertyEdit", propertyType, propertyId],
+      queryKey: [
+        "dataTenantPropertyEdit",
+        propertyType,
+        propertyId,
+        dataPropertyEdit?.[0]?.renter_id,
+      ],
+      enabled: !!dataPropertyEdit?.[0]?.renter_id,
     });
 
   return {
