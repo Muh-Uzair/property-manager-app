@@ -154,10 +154,11 @@ export default function FormItem({
               <span className="text-[15px] text-red-700">{` *`}</span>
             )}
           </label>
-          <div className="h-[70px] w-[100px]">
+          <div className="h-[70px] w-[100px] rounded-[5px] border">
             <img
               className="h-full w-full rounded-[5px] object-cover"
               src={itemType?.src}
+              alt="img"
             />
           </div>
         </>

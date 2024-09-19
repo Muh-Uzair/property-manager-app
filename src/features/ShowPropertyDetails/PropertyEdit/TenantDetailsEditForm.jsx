@@ -5,7 +5,7 @@ import { usePropertyEditContext } from "./usePropertyEditContext";
 // COMPONENT START
 export default function TenantDetailsEditForm() {
   // VARIABLES
-  const { register } = usePropertyEditContext();
+  const { register, dataTenantPropertyEdit } = usePropertyEditContext();
 
   // FUNCTIONS
 
@@ -16,7 +16,7 @@ export default function TenantDetailsEditForm() {
         itemLabel={"Name"}
         itemType={{
           type: "labelInputText",
-          value: `value`,
+          value: `${dataTenantPropertyEdit?.name}`,
 
           readOnly: true,
         }}
@@ -30,7 +30,7 @@ export default function TenantDetailsEditForm() {
         itemLabel={"Contact"}
         itemType={{
           type: "labelInputText",
-          value: `value`,
+          value: `${dataTenantPropertyEdit?.contact_info}`,
 
           readOnly: true,
         }}
@@ -44,7 +44,7 @@ export default function TenantDetailsEditForm() {
         itemLabel={"Nationality"}
         itemType={{
           type: "labelInputText",
-          value: `value`,
+          value: `${dataTenantPropertyEdit?.nationality}`,
 
           readOnly: true,
         }}
@@ -58,7 +58,7 @@ export default function TenantDetailsEditForm() {
         itemLabel={"Id Number"}
         itemType={{
           type: "labelInputText",
-          value: `value`,
+          value: `${dataTenantPropertyEdit?.id_card_number}`,
 
           readOnly: true,
         }}
@@ -72,7 +72,7 @@ export default function TenantDetailsEditForm() {
         itemLabel={"Occupation"}
         itemType={{
           type: "labelInputText",
-          value: `value`,
+          value: `${dataTenantPropertyEdit?.occupation}`,
 
           readOnly: true,
         }}
@@ -86,7 +86,7 @@ export default function TenantDetailsEditForm() {
         itemLabel={"Marital Status"}
         itemType={{
           type: "labelInputText",
-          value: `value`,
+          value: `${dataTenantPropertyEdit?.marital_status}`,
 
           readOnly: true,
         }}
@@ -97,11 +97,18 @@ export default function TenantDetailsEditForm() {
       />
 
       <FormItem
-        itemLabel={"Image"}
+        itemLabel={"Current Image"}
         itemType={{
-          type: "labelInputText",
-          value: `value`,
+          type: "labelImage",
+          src: `${dataTenantPropertyEdit?.image}`,
 
+          readOnly: true,
+        }}
+      />
+      <FormItem
+        itemLabel={"Upload Image"}
+        itemType={{
+          type: "labelUpload",
           readOnly: true,
         }}
         htmlFor={"pefTenantImage"}

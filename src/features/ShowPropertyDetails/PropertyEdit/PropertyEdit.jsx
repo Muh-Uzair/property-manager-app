@@ -48,7 +48,7 @@ export default function PropertyEdit() {
     <PropertyEditContext.Provider
       value={{ dataPropertyEdit, dataTenantPropertyEdit, register }}
     >
-      <div className="flex h-[100%] flex-col gap-[10px] overflow-y-scroll p-[5px]">
+      <div className="flex h-[100%] flex-col gap-[3px] overflow-y-scroll p-[5px]">
         <Heading type="primary">
           Edit Property :{" "}
           {`${propertyType.at(0).toUpperCase()}${propertyType.slice(1)}`}
