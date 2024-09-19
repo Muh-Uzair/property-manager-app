@@ -116,3 +116,15 @@ export const payRentFlats = async (rentFormData = {}) => {
 
   if (error) throw new Error("Unable to pay rent for flat");
 };
+
+// FUNCTION
+export const getFlatEditData = async (flatId) => {
+  let { data, error } = await supabase
+    .from("flats")
+    .select("floor , size , status , rent , image , renter_id")
+    .eq("id", flatId);
+
+  if (error) throw new Error("Error fetching flat data for edit form");
+
+  return data;
+};

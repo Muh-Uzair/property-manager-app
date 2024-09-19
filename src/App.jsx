@@ -17,7 +17,7 @@ import PageNotFound from "./Pages/PageNotFound";
 import PropertyDetailsPG from "./Pages/PropertyDetailsPG";
 import LoginPG from "./Pages/LoginPG";
 import SinglePropertyDetails from "./features/ShowPropertyDetails/showSinglePropertyDetails/SinglePropertyDetails";
-import PropertyEdit from "./features/ShowPropertyDetails/PropertyEdit";
+import PropertyEdit from "./features/ShowPropertyDetails/PropertyEdit/PropertyEdit";
 import RentPaymentPG from "./Pages/RentPaymentPG";
 // import DummyPG1 from "./Pages/DummyPG1";
 import { Toaster } from "react-hot-toast";
