@@ -117,3 +117,15 @@ export const payRentShops = async (rentFormData) => {
 
   if (error) throw new Error("Unable to pay rent for room");
 };
+
+// FUNCTION
+export const getShopEditData = async (shopId) => {
+  let { data, error } = await supabase
+    .from("shops")
+    .select("floor , size , status , rent , image , renter_id")
+    .eq("id", shopId);
+
+  if (error) throw new Error("Error fetching shop data for edit form");
+
+  return data;
+};
