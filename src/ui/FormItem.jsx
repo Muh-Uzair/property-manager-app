@@ -126,6 +126,43 @@ export default function FormItem({
           />
         </>
       )}
+      {/* labelUpload */}
+      {itemType.type === "labelUpload" && (
+        <>
+          <label
+            className="text-nowrap font-semibold"
+            style={{ color: labelColor }}
+            htmlFor={htmlFor}
+          >
+            {itemLabel}
+            {validationObj?.required && (
+              <span className="text-[15px] text-red-700">{` *`}</span>
+            )}
+          </label>
+          <input className="font-semibold" type="file" id={id} name={name} />
+        </>
+      )}
+      {/* labelImage */}
+      {itemType.type === "labelImage" && (
+        <>
+          <label
+            className="text-nowrap font-semibold"
+            style={{ color: labelColor }}
+          >
+            {itemLabel}
+            {validationObj?.required && (
+              <span className="text-[15px] text-red-700">{` *`}</span>
+            )}
+          </label>
+          <div className="h-[70px] w-[100px] rounded-[5px] border">
+            <img
+              className="h-full w-full rounded-[5px] object-cover"
+              src={itemType?.src}
+              alt="img"
+            />
+          </div>
+        </>
+      )}
     </div>
   );
   // JSX
