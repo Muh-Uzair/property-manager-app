@@ -17,8 +17,6 @@ export default function TenantDetailsEditForm() {
         itemType={{
           type: "labelInputText",
           value: `${dataTenantPropertyEdit?.name}`,
-
-          readOnly: true,
         }}
         htmlFor={"pefTenantName"}
         id={"pefTenantName"}
@@ -31,8 +29,6 @@ export default function TenantDetailsEditForm() {
         itemType={{
           type: "labelInputText",
           value: `${dataTenantPropertyEdit?.contact_info}`,
-
-          readOnly: true,
         }}
         htmlFor={"pefTenantContact"}
         id={"pefTenantContact"}
@@ -45,8 +41,6 @@ export default function TenantDetailsEditForm() {
         itemType={{
           type: "labelInputText",
           value: `${dataTenantPropertyEdit?.nationality}`,
-
-          readOnly: true,
         }}
         htmlFor={"pefTenantNationality"}
         id={"pefTenantNationality"}
@@ -59,8 +53,6 @@ export default function TenantDetailsEditForm() {
         itemType={{
           type: "labelInputText",
           value: `${dataTenantPropertyEdit?.id_card_number}`,
-
-          readOnly: true,
         }}
         htmlFor={"pefTenantId"}
         id={"pefTenantId"}
@@ -73,8 +65,6 @@ export default function TenantDetailsEditForm() {
         itemType={{
           type: "labelInputText",
           value: `${dataTenantPropertyEdit?.occupation}`,
-
-          readOnly: true,
         }}
         htmlFor={"pefTenantOccupation"}
         id={"pefTenantOccupation"}
@@ -87,8 +77,6 @@ export default function TenantDetailsEditForm() {
         itemType={{
           type: "labelInputText",
           value: `${dataTenantPropertyEdit?.marital_status}`,
-
-          readOnly: true,
         }}
         htmlFor={"pefMaritalStatus"}
         id={"pefMaritalStatus"}
@@ -109,7 +97,6 @@ export default function TenantDetailsEditForm() {
         itemLabel={"Upload Image"}
         itemType={{
           type: "labelUpload",
-          readOnly: true,
         }}
         htmlFor={"pefTenantImage"}
         id={"pefTenantImage"}

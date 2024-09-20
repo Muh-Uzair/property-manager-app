@@ -150,9 +150,6 @@ export default function FormItem({
             style={{ color: labelColor }}
           >
             {itemLabel}
-            {validationObj?.required && (
-              <span className="text-[15px] text-red-700">{` *`}</span>
-            )}
           </label>
           <div className="h-[70px] w-[100px] rounded-[5px] border">
             <img
