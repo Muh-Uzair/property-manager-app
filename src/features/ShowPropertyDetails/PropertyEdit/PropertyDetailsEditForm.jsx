@@ -5,7 +5,7 @@ import { usePropertyEditContext } from "./usePropertyEditContext";
 // COMPONENT START
 export default function PropertyDetailsEditForm() {
   // VARIABLES
-  const { register, dataPropertyEdit } = usePropertyEditContext();
+  const { register, dataPropertyEditForm } = usePropertyEditContext();
 
   // FUNCTIONS
 
@@ -16,7 +16,6 @@ export default function PropertyDetailsEditForm() {
         itemLabel={"Floor"}
         itemType={{
           type: "labelInputText",
-          value: `${dataPropertyEdit?.floor}`,
         }}
         htmlFor={"pefFloor"}
         id={"pefFloor"}
@@ -28,7 +27,6 @@ export default function PropertyDetailsEditForm() {
         itemLabel={"Size"}
         itemType={{
           type: "labelInputText",
-          value: `${dataPropertyEdit?.size} m`,
         }}
         htmlFor={"pefSize"}
         id={"pefSize"}
@@ -40,7 +38,6 @@ export default function PropertyDetailsEditForm() {
         itemLabel={"Status"}
         itemType={{
           type: "labelInputText",
-          value: `${dataPropertyEdit?.status}`,
         }}
         htmlFor={"pefStatus"}
         id={"pefStatus"}
@@ -52,7 +49,6 @@ export default function PropertyDetailsEditForm() {
         itemLabel={"Rent"}
         itemType={{
           type: "labelInputText",
-          value: `${dataPropertyEdit?.rent}`,
         }}
         htmlFor={"pefRent"}
         id={"pefRent"}
@@ -64,7 +60,7 @@ export default function PropertyDetailsEditForm() {
         itemLabel={"Current Image"}
         itemType={{
           type: "labelImage",
-          src: `${dataPropertyEdit?.image}`,
+          src: `${dataPropertyEditForm?.propertyImage}`,
 
           readOnly: true,
         }}

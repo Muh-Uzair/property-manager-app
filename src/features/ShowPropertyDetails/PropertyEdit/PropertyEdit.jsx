@@ -23,8 +23,15 @@ export default function PropertyEdit() {
     dataTenantPropertyEdit = [],
     statusTenantPropertyEdit,
   } = useGetPropertyEditData();
-  dataPropertyEdit = dataPropertyEdit[0] ?? [];
-  dataTenantPropertyEdit = dataTenantPropertyEdit[0] ?? [];
+  dataPropertyEdit = dataPropertyEdit[0] ?? {};
+  dataTenantPropertyEdit = dataTenantPropertyEdit[0] ?? {};
+
+  const dataPropertyEditForm = {
+    propertyImage: dataPropertyEdit.image,
+    ...dataPropertyEdit,
+    tenantImage: dataTenantPropertyEdit.image,
+    ...dataTenantPropertyEdit,
+  };
 
   // FUNCTION
   function properEditFormSubmit(data) {
@@ -45,9 +52,7 @@ export default function PropertyEdit() {
     );
   }
   return (
-    <PropertyEditContext.Provider
-      value={{ dataPropertyEdit, dataTenantPropertyEdit, register }}
-    >
+    <PropertyEditContext.Provider value={{ dataPropertyEditForm, register }}>
       <div className="flex h-[100%] flex-col gap-[3px] overflow-y-scroll p-[5px]">
         <Heading type="primary">
           Edit Property :{" "}
