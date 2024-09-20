@@ -1,8 +1,8 @@
 import Heading from "../../../ui/Heading";
-import { useGetPropertyType } from "../../../hooks/useGetPropertyType";
-import { useGetPropertyEditData } from "./useGetPropertyEditData";
 import LoadingSpinner from "../../../ui/LoadingSpinner";
 import PropertyEditForm from "./PropertyEditForm";
+import { useGetPropertyType } from "../../../hooks/useGetPropertyType";
+import { useGetPropertyEditData } from "./useGetPropertyEditData";
 
 // COMPONENT START
 export default function PropertyEdit() {

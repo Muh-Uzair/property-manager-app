@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 
-import { useNavigate } from "react-router-dom";
 import FormButton from "../../../ui/FormButton";
 import PropertyDetailsEditForm from "./PropertyDetailsEditForm";
 import TenantDetailsEditForm from "./TenantDetailsEditForm";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { createContext } from "react";
 
