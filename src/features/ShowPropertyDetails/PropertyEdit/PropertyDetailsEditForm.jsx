@@ -17,9 +17,9 @@ export default function PropertyDetailsEditForm() {
         itemType={{
           type: "labelInputText",
         }}
-        htmlFor={"pefFloor"}
-        id={"pefFloor"}
-        name={"pefFloor"}
+        htmlFor={"floor"}
+        id={"floor"}
+        name={"floor"}
         register={register}
       />
 
@@ -28,9 +28,9 @@ export default function PropertyDetailsEditForm() {
         itemType={{
           type: "labelInputText",
         }}
-        htmlFor={"pefSize"}
-        id={"pefSize"}
-        name={"pefSize"}
+        htmlFor={"size"}
+        id={"size"}
+        name={"size"}
         register={register}
       />
 
@@ -39,9 +39,9 @@ export default function PropertyDetailsEditForm() {
         itemType={{
           type: "labelInputText",
         }}
-        htmlFor={"pefStatus"}
-        id={"pefStatus"}
-        name={"pefStatus"}
+        htmlFor={"status"}
+        id={"status"}
+        name={"status"}
         register={register}
       />
 
@@ -50,9 +50,9 @@ export default function PropertyDetailsEditForm() {
         itemType={{
           type: "labelInputText",
         }}
-        htmlFor={"pefRent"}
-        id={"pefRent"}
-        name={"pefRent"}
+        htmlFor={"rent"}
+        id={"rent"}
+        name={"rent"}
         register={register}
       />
 
@@ -64,7 +64,6 @@ export default function PropertyDetailsEditForm() {
 
           readOnly: true,
         }}
-        register={register}
       />
 
       <FormItem
@@ -72,10 +71,6 @@ export default function PropertyDetailsEditForm() {
         itemType={{
           type: "labelUpload",
         }}
-        htmlFor={"pefPropertyImage"}
-        id={"pefPropertyImage"}
-        name={"pefPropertyImage"}
-        register={register}
       />
     </FormPortion>
   );
