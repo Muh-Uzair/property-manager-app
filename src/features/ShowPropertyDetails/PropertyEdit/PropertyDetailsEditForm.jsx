@@ -21,6 +21,15 @@ export default function PropertyDetailsEditForm() {
         id={"floor"}
         name={"floor"}
         register={register}
+        validationObj={{
+          required: "Floor is required",
+          min: { value: 1, message: "Floor greater than 0" },
+          max: {
+            value: 5,
+            message: "Floor less than 6",
+          },
+        }}
+        placeholder={" 1 =< Floor >= 5  "}
       />
 
       <FormItem
@@ -32,6 +41,18 @@ export default function PropertyDetailsEditForm() {
         id={"size"}
         name={"size"}
         register={register}
+        validationObj={{
+          required: "Size is required",
+          pattern: {
+            value: /^\d+\*\d+$/,
+            message: "Invalid size format. Expected format: 10*31",
+          },
+          validate: (value) => {
+            const [first, second] = value.split("*").map(Number); // Split and convert to numbers
+            return (first > 0 && second > 0) || "Size should not have 0"; // Ensure both are greater than 0
+          },
+        }}
+        placeholder={"Format : 10*31"}
       />
 
       <FormItem
@@ -43,6 +64,17 @@ export default function PropertyDetailsEditForm() {
         id={"status"}
         name={"status"}
         register={register}
+        validationObj={{
+          required: "Status must be occupied or unoccupied",
+          validate: (value) => {
+            return (
+              value.toLowerCase() === "occupied" ||
+              value.toLowerCase() === "unoccupied" ||
+              "Status must occupied or unoccupied"
+            );
+          },
+        }}
+        placeholder={"occupied | unoccupied"}
       />
 
       <FormItem
@@ -54,6 +86,12 @@ export default function PropertyDetailsEditForm() {
         id={"rent"}
         name={"rent"}
         register={register}
+        validationObj={{
+          required: "Rent is required",
+          min: { value: 1000, message: "Rent should be grater than 1000" },
+          max: { value: 50000, message: "Rent should be less than 50000" },
+        }}
+        placeholder={"1000-50000"}
       />
 
       <FormItem

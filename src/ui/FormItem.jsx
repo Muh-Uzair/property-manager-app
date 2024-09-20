@@ -21,6 +21,7 @@ export default function FormItem({
   onChangeFunc,
   validationObj,
   disabled,
+  placeholder,
 }) {
   // VARIABLES
   const [checkControllerSt, setCheckControllerSt] = useState(false);
@@ -74,7 +75,7 @@ export default function FormItem({
   // JSX
   return (
     <div className="grid w-full grid-cols-[100px_150px] items-center gap-[5px] text-[10px] smallTab:grid-cols-[150px_180px] smallTab:text-[14px] largeTab:grid-cols-[150px_200px] largeScreen:grid-cols-[150px_220px] largeScreen:text-[15px]">
-      {/* label & checkbox*/}
+      {/* DIVIDER label & checkbox*/}
       {itemType.type === "labelCheckBox" && (
         <>
           <label
@@ -98,7 +99,7 @@ export default function FormItem({
         </>
       )}
 
-      {/* label & inputText*/}
+      {/* DIVIDER label & inputText*/}
       {itemType.type === "labelInputText" && (
         <>
           <label
@@ -113,7 +114,7 @@ export default function FormItem({
           </label>
           <input
             type="text"
-            className={`text-wrap rounded-[3px] border border-brand-color-200 pl-[10px] font-semibold ${incomeInput ? "bg-green-200" : "bg-brand-color-200/50"}`}
+            className={`text-wrap rounded-[3px] border border-brand-color-200 pl-[10px] font-semibold focus:outline-none focus:ring-[1px] focus:ring-brand-color-700 ${incomeInput ? "bg-green-200" : "bg-brand-color-200/50"}`}
             readOnly={itemType?.readOnly}
             style={{
               color: `${itemValueColor ? `${itemValueColor}` : "#0ea5e9"}`,
@@ -123,10 +124,12 @@ export default function FormItem({
             {...register(id, { ...validationObj })}
             {...addValueAtt()}
             {...makeInputControlled()}
+            placeholder={placeholder}
           />
         </>
       )}
-      {/* labelUpload */}
+
+      {/* DIVIDER labelUpload */}
       {itemType.type === "labelUpload" && (
         <>
           <label
@@ -142,7 +145,8 @@ export default function FormItem({
           <input className="font-semibold" type="file" id={id} name={name} />
         </>
       )}
-      {/* labelImage */}
+
+      {/* DIVIDER labelImage */}
       {itemType.type === "labelImage" && (
         <>
           <label
@@ -187,6 +191,11 @@ FormItem.propTypes = {
   onChangeFunc: PropTypes.func,
   validationObj: PropTypes.object,
   disabled: PropTypes.bool,
+  placeholder: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+    PropTypes.bool,
+  ]),
 };
 
 //size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
