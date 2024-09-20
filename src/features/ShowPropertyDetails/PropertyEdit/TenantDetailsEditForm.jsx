@@ -5,7 +5,7 @@ import { usePropertyEditContext } from "./usePropertyEditContext";
 // COMPONENT START
 export default function TenantDetailsEditForm() {
   // VARIABLES
-  const { register, dataTenantPropertyEdit } = usePropertyEditContext();
+  const { register, dataPropertyEditForm } = usePropertyEditContext();
 
   // FUNCTIONS
 
@@ -16,9 +16,7 @@ export default function TenantDetailsEditForm() {
         itemLabel={"Name"}
         itemType={{
           type: "labelInputText",
-          value: `${dataTenantPropertyEdit?.name}`,
-
-          readOnly: true,
+          value: `${dataPropertyEditForm?.name}`,
         }}
         htmlFor={"pefTenantName"}
         id={"pefTenantName"}
@@ -30,9 +28,7 @@ export default function TenantDetailsEditForm() {
         itemLabel={"Contact"}
         itemType={{
           type: "labelInputText",
-          value: `${dataTenantPropertyEdit?.contact_info}`,
-
-          readOnly: true,
+          value: `${dataPropertyEditForm?.contact_info}`,
         }}
         htmlFor={"pefTenantContact"}
         id={"pefTenantContact"}
@@ -44,9 +40,7 @@ export default function TenantDetailsEditForm() {
         itemLabel={"Nationality"}
         itemType={{
           type: "labelInputText",
-          value: `${dataTenantPropertyEdit?.nationality}`,
-
-          readOnly: true,
+          value: `${dataPropertyEditForm?.nationality}`,
         }}
         htmlFor={"pefTenantNationality"}
         id={"pefTenantNationality"}
@@ -58,9 +52,7 @@ export default function TenantDetailsEditForm() {
         itemLabel={"Id Number"}
         itemType={{
           type: "labelInputText",
-          value: `${dataTenantPropertyEdit?.id_card_number}`,
-
-          readOnly: true,
+          value: `${dataPropertyEditForm?.id_card_number}`,
         }}
         htmlFor={"pefTenantId"}
         id={"pefTenantId"}
@@ -72,9 +64,7 @@ export default function TenantDetailsEditForm() {
         itemLabel={"Occupation"}
         itemType={{
           type: "labelInputText",
-          value: `${dataTenantPropertyEdit?.occupation}`,
-
-          readOnly: true,
+          value: `${dataPropertyEditForm?.occupation}`,
         }}
         htmlFor={"pefTenantOccupation"}
         id={"pefTenantOccupation"}
@@ -86,9 +76,7 @@ export default function TenantDetailsEditForm() {
         itemLabel={"Marital Status"}
         itemType={{
           type: "labelInputText",
-          value: `${dataTenantPropertyEdit?.marital_status}`,
-
-          readOnly: true,
+          value: `${dataPropertyEditForm?.marital_status}`,
         }}
         htmlFor={"pefMaritalStatus"}
         id={"pefMaritalStatus"}
@@ -100,7 +88,7 @@ export default function TenantDetailsEditForm() {
         itemLabel={"Current Image"}
         itemType={{
           type: "labelImage",
-          src: `${dataTenantPropertyEdit?.image}`,
+          src: `${dataPropertyEditForm?.tenantImage}`,
 
           readOnly: true,
         }}
@@ -109,7 +97,6 @@ export default function TenantDetailsEditForm() {
         itemLabel={"Upload Image"}
         itemType={{
           type: "labelUpload",
-          readOnly: true,
         }}
         htmlFor={"pefTenantImage"}
         id={"pefTenantImage"}

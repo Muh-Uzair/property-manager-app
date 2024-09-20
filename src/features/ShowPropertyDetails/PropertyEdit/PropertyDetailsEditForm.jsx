@@ -5,7 +5,7 @@ import { usePropertyEditContext } from "./usePropertyEditContext";
 // COMPONENT START
 export default function PropertyDetailsEditForm() {
   // VARIABLES
-  const { register, dataPropertyEdit } = usePropertyEditContext();
+  const { register, dataPropertyEditForm } = usePropertyEditContext();
 
   // FUNCTIONS
 
@@ -16,9 +16,6 @@ export default function PropertyDetailsEditForm() {
         itemLabel={"Floor"}
         itemType={{
           type: "labelInputText",
-          value: `${dataPropertyEdit?.floor}`,
-
-          readOnly: true,
         }}
         htmlFor={"pefFloor"}
         id={"pefFloor"}
@@ -30,9 +27,6 @@ export default function PropertyDetailsEditForm() {
         itemLabel={"Size"}
         itemType={{
           type: "labelInputText",
-          value: `${dataPropertyEdit?.size} m`,
-
-          readOnly: true,
         }}
         htmlFor={"pefSize"}
         id={"pefSize"}
@@ -44,9 +38,6 @@ export default function PropertyDetailsEditForm() {
         itemLabel={"Status"}
         itemType={{
           type: "labelInputText",
-          value: `${dataPropertyEdit?.status}`,
-
-          readOnly: true,
         }}
         htmlFor={"pefStatus"}
         id={"pefStatus"}
@@ -58,9 +49,6 @@ export default function PropertyDetailsEditForm() {
         itemLabel={"Rent"}
         itemType={{
           type: "labelInputText",
-          value: `${dataPropertyEdit?.rent}`,
-
-          readOnly: true,
         }}
         htmlFor={"pefRent"}
         id={"pefRent"}
@@ -72,17 +60,17 @@ export default function PropertyDetailsEditForm() {
         itemLabel={"Current Image"}
         itemType={{
           type: "labelImage",
-          src: `${dataPropertyEdit?.image}`,
+          src: `${dataPropertyEditForm?.propertyImage}`,
 
           readOnly: true,
         }}
+        register={register}
       />
 
       <FormItem
         itemLabel={"Upload Image"}
         itemType={{
           type: "labelUpload",
-          readOnly: true,
         }}
         htmlFor={"pefPropertyImage"}
         id={"pefPropertyImage"}
