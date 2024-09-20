@@ -16,11 +16,10 @@ export default function TenantDetailsEditForm() {
         itemLabel={"Name"}
         itemType={{
           type: "labelInputText",
-          value: `${dataPropertyEditForm?.name}`,
         }}
-        htmlFor={"pefTenantName"}
-        id={"pefTenantName"}
-        name={"pefTenantName"}
+        htmlFor={"name"}
+        id={"name"}
+        name={"name"}
         register={register}
       />
 
@@ -28,11 +27,10 @@ export default function TenantDetailsEditForm() {
         itemLabel={"Contact"}
         itemType={{
           type: "labelInputText",
-          value: `${dataPropertyEditForm?.contact_info}`,
         }}
-        htmlFor={"pefTenantContact"}
-        id={"pefTenantContact"}
-        name={"pefTenantContact"}
+        htmlFor={"contact_info"}
+        id={"contact_info"}
+        name={"contact_info"}
         register={register}
       />
 
@@ -40,11 +38,10 @@ export default function TenantDetailsEditForm() {
         itemLabel={"Nationality"}
         itemType={{
           type: "labelInputText",
-          value: `${dataPropertyEditForm?.nationality}`,
         }}
-        htmlFor={"pefTenantNationality"}
-        id={"pefTenantNationality"}
-        name={"pefTenantNationality"}
+        htmlFor={"nationality"}
+        id={"nationality"}
+        name={"nationality"}
         register={register}
       />
 
@@ -52,11 +49,10 @@ export default function TenantDetailsEditForm() {
         itemLabel={"Id Number"}
         itemType={{
           type: "labelInputText",
-          value: `${dataPropertyEditForm?.id_card_number}`,
         }}
-        htmlFor={"pefTenantId"}
-        id={"pefTenantId"}
-        name={"pefTenantId"}
+        htmlFor={"id_card_number"}
+        id={"id_card_number"}
+        name={"id_card_number"}
         register={register}
       />
 
@@ -64,11 +60,10 @@ export default function TenantDetailsEditForm() {
         itemLabel={"Occupation"}
         itemType={{
           type: "labelInputText",
-          value: `${dataPropertyEditForm?.occupation}`,
         }}
-        htmlFor={"pefTenantOccupation"}
-        id={"pefTenantOccupation"}
-        name={"pefTenantOccupation"}
+        htmlFor={"occupation"}
+        id={"occupation"}
+        name={"occupation"}
         register={register}
       />
 
@@ -76,11 +71,10 @@ export default function TenantDetailsEditForm() {
         itemLabel={"Marital Status"}
         itemType={{
           type: "labelInputText",
-          value: `${dataPropertyEditForm?.marital_status}`,
         }}
-        htmlFor={"pefMaritalStatus"}
-        id={"pefMaritalStatus"}
-        name={"pefMaritalStatus"}
+        htmlFor={"marital_status"}
+        id={"marital_status"}
+        name={"marital_status"}
         register={register}
       />
 
@@ -98,10 +92,6 @@ export default function TenantDetailsEditForm() {
         itemType={{
           type: "labelUpload",
         }}
-        htmlFor={"pefTenantImage"}
-        id={"pefTenantImage"}
-        name={"pefTenantImage"}
-        register={register}
       />
     </FormPortion>
   );
