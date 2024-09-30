@@ -6,6 +6,7 @@ export default function FormButton({
   children,
   styleType = "primary",
   onClick,
+  disabled = false,
 }) {
   // VARIABLES
 
@@ -15,8 +16,9 @@ export default function FormButton({
   if (styleType === "primary") {
     return (
       <button
-        className="rounded-[3px] bg-brand-color-500 px-[8px] py-[2px] font-semibold text-white active:bg-brand-color-600 largeScreen:hover:bg-brand-color-400 largeScreen:active:to-brand-color-600"
+        className={`rounded-[3px] bg-brand-color-500 px-[8px] py-[2px] font-semibold text-white active:bg-brand-color-600 largeScreen:hover:bg-brand-color-400 largeScreen:active:to-brand-color-600 ${disabled ? "cursor-not-allowed bg-brand-color-500/30 active:bg-brand-color-500/30" : ""}`}
         type={type}
+        disabled={disabled}
       >
         {children}
       </button>
@@ -43,6 +45,7 @@ FormButton.propTypes = {
   children: PropTypes.node,
   styleType: PropTypes.string,
   onClick: PropTypes.func,
+  disabled: PropTypes.bool,
 };
 //size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 // COMPONENT END

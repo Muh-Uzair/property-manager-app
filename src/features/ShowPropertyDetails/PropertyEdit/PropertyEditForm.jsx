@@ -6,6 +6,7 @@ import TenantDetailsEditForm from "./TenantDetailsEditForm";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { createContext } from "react";
+import toast from "react-hot-toast";
 
 export const PropertyEditContext = createContext();
 
@@ -21,12 +22,22 @@ export default function PropertyEditForm({ dataPropertyEditForm }) {
 
   // FUNCTION
   function properEditFormSubmit(data) {
+    // 1 : remove the notifications that are on the screen
+    toast.dismiss();
+
     console.log(data);
   }
 
   // FUNCTION
   function propertyEditFormError(errors) {
-    console.log(errors);
+    // 1 : will remove the existing toast
+    toast.dismiss();
+
+    // 2 : gets the 1st error message out of the errors object
+    let firstErrorMessage = Object.values(errors)[0].message;
+
+    // 3 : only the 1st error message id displayed
+    toast.error(firstErrorMessage, { duration: 10000 });
   }
 
   // JSX
@@ -57,7 +68,7 @@ export default function PropertyEditForm({ dataPropertyEditForm }) {
           >
             Back
           </FormButton>
-          <FormButton type={"submit"} styleType={"primary"}>
+          <FormButton type={"submit"} styleType={"primary"} disabled={false}>
             Edit
           </FormButton>
         </div>

@@ -5,8 +5,6 @@ import enLocale from "i18n-iso-countries/langs/en.json";
 countries.registerLocale(enLocale);
 import { usePropertyEditContext } from "./usePropertyEditContext";
 
-console.log(countries.getNames("en", { select: "official" }));
-
 // FUNCTION
 function checkValidCountry(countryName) {
   const countryNames = Object.values(
