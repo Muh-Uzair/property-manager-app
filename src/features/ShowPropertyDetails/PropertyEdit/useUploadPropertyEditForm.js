@@ -1,25 +1,33 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { uploadTenantEditDetails } from "../../../Services/apiRenters";
 import { uploadFlatEditDetails } from "../../../Services/apiFlats";
+import { uploadRoomEditDetails } from "../../../Services/apiRooms";
+import { uploadShopEditDetails } from "../../../Services/apiShops";
 
 // FUNCTION calls the actual upload function
-async function uploadEditDetails(data) {
-  // 1 : upload tenant details according to the received id
-  await uploadTenantEditDetails(data?.editFormData, data?.renter_id);
+function uploadEditDetails(data) {
+  // 1 : destructure the necessary vars out of data
+  const { formData, renter_id, propertyType, propertyId } = data;
 
-  // 2 : upload property details according to the property type
-  if (data?.propertyType === "flats") {
-    await uploadFlatEditDetails(data?.editFormData, data?.propertyType);
-  } else if (data?.propertyType === "rooms") {
-    console.log("uploading property edit form data rooms");
+  // 2 : upload tenant details according to the received id
+  uploadTenantEditDetails(formData, renter_id);
+
+  // 3 : upload property details according to the property type
+  if (propertyType === "flats") {
+    uploadFlatEditDetails(formData, propertyId);
+  } else if (propertyType === "rooms") {
+    uploadRoomEditDetails(formData, propertyId);
   } else {
-    console.log("uploading property edit form data shops");
+    uploadShopEditDetails(formData, propertyId);
   }
 }
 
 // FUNCTION
 export function useUploadPropertyEditForm() {
+  // VARIABLES
+  const queryClient = useQueryClient();
+
   // 1 : perform the mutation
   const { mutate: mutateUploadEditDetails, status: statusUploadEditDetails } =
     useMutation({
@@ -28,6 +36,7 @@ export function useUploadPropertyEditForm() {
         toast.error("Error editing property");
       },
       onSuccess: () => {
+        queryClient.invalidateQueries();
         toast.success("Successfully edited property details");
       },
     });
