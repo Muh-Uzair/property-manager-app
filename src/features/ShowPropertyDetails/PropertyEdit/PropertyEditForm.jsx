@@ -1,6 +1,6 @@
 import toast from "react-hot-toast";
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { createContext } from "react";
 
@@ -23,6 +23,7 @@ export default function PropertyEditForm({ dataPropertyEditForm }) {
     useUploadPropertyEditForm();
   const propertyType = useGetPropertyType();
   const { renter_id } = dataPropertyEditForm;
+  const { propertyId } = useParams();
 
   // FUNCTIONS
 
@@ -32,7 +33,7 @@ export default function PropertyEditForm({ dataPropertyEditForm }) {
     toast.dismiss();
 
     // 2 : calling the upload function
-    const data = { formData, propertyType, renter_id };
+    const data = { formData, propertyType, renter_id, propertyId };
     mutateUploadEditDetails(data);
   }
 

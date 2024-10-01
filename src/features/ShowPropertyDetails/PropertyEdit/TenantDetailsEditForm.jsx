@@ -11,7 +11,9 @@ function checkValidCountry(countryName) {
     countries.getNames("en", { select: "official" }),
   );
 
-  return countryNames.includes(countryName);
+  return countryNames.includes(
+    `${countryName.at(0).toUpperCase()}${countryName.slice(1)}`,
+  );
 }
 
 // COMPONENT START
@@ -79,7 +81,7 @@ export default function TenantDetailsEditForm() {
             return checkValidCountry(value) || "Invalid country";
           },
         }}
-        placeholder={"Italy | germany etc"}
+        placeholder={"Italy | Germany etc"}
       />
 
       <FormItem
