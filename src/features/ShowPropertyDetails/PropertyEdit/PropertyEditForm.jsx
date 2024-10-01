@@ -31,10 +31,9 @@ export default function PropertyEditForm({ dataPropertyEditForm }) {
     // 1 : remove the notifications that are on the screen
     toast.dismiss();
 
-    console.log(propertyType, renter_id);
-
     // 2 : calling the upload function
-    mutateUploadEditDetails(formData, propertyType, renter_id);
+    const data = { formData, propertyType, renter_id };
+    mutateUploadEditDetails(data);
   }
 
   // FUNCTION

@@ -4,15 +4,14 @@ import { uploadTenantEditDetails } from "../../../Services/apiRenters";
 import { uploadFlatEditDetails } from "../../../Services/apiFlats";
 
 // FUNCTION calls the actual upload function
-async function uploadEditDetails(editFormData, propertyType, renter_id) {
-  console.log(propertyType, renter_id);
+async function uploadEditDetails(data) {
   // 1 : upload tenant details according to the received id
-  await uploadTenantEditDetails(editFormData, renter_id);
+  await uploadTenantEditDetails(data?.editFormData, data?.renter_id);
 
   // 2 : upload property details according to the property type
-  if (propertyType === "flats") {
-    await uploadFlatEditDetails(editFormData, propertyType);
-  } else if (propertyType === "rooms") {
+  if (data?.propertyType === "flats") {
+    await uploadFlatEditDetails(data?.editFormData, data?.propertyType);
+  } else if (data?.propertyType === "rooms") {
     console.log("uploading property edit form data rooms");
   } else {
     console.log("uploading property edit form data shops");
