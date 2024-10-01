@@ -29,7 +29,7 @@ export default function PropertyDetailsEditForm() {
             message: "Floor less than 6",
           },
         }}
-        placeholder={" 1 =< Floor >= 5  "}
+        placeholder={"1 =< Floor >= 5 | ground | basement"}
       />
 
       <FormItem

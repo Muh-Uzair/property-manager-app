@@ -1,6 +1,6 @@
 import { useGetRenterOnID } from "./useGetRenterOnID";
 import PropTypes from "prop-types";
-import LoadingSpinner from "../../ui/LoadingSpinner";
+import { Skeleton } from "@mui/material";
 
 // COMPONENT START
 export default function TableItemRenter({ renter_id }) {
@@ -9,7 +9,16 @@ export default function TableItemRenter({ renter_id }) {
   return (
     <span className="font-bold text-gray-500">
       {statusRenter === "pending" ? (
-        <LoadingSpinner size={15} />
+        <Skeleton
+          variant="rectangular"
+          width={50}
+          height={16}
+          animation="wave"
+          sx={{
+            borderRadius: "3px",
+            bgcolor: "grey.100",
+          }}
+        />
       ) : dataRenter ? (
         dataRenter
       ) : (
