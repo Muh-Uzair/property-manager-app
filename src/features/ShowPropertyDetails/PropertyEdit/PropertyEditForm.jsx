@@ -1,12 +1,14 @@
+import toast from "react-hot-toast";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { createContext } from "react";
 
 import FormButton from "../../../ui/FormButton";
 import PropertyDetailsEditForm from "./PropertyDetailsEditForm";
 import TenantDetailsEditForm from "./TenantDetailsEditForm";
-import { useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import { createContext } from "react";
-import toast from "react-hot-toast";
+import { useUploadPropertyEditForm } from "./useUploadPropertyEditForm";
+import { useGetPropertyType } from "../../../hooks/useGetPropertyType";
 
 export const PropertyEditContext = createContext();
 
@@ -17,15 +19,21 @@ export default function PropertyEditForm({ dataPropertyEditForm }) {
   const { handleSubmit, register } = useForm({
     defaultValues: dataPropertyEditForm,
   });
+  const { mutateUploadEditDetails, statusUploadEditDetails } =
+    useUploadPropertyEditForm();
+  const propertyType = useGetPropertyType();
+  const { renter_id } = dataPropertyEditForm;
 
   // FUNCTIONS
 
   // FUNCTION
-  function properEditFormSubmit(data) {
+  function properEditFormSubmit(formData) {
     // 1 : remove the notifications that are on the screen
     toast.dismiss();
 
-    console.log(data);
+    // 2 : calling the upload function
+    const data = { formData, propertyType, renter_id };
+    mutateUploadEditDetails(data);
   }
 
   // FUNCTION
@@ -68,7 +76,11 @@ export default function PropertyEditForm({ dataPropertyEditForm }) {
           >
             Back
           </FormButton>
-          <FormButton type={"submit"} styleType={"primary"} disabled={false}>
+          <FormButton
+            type={"submit"}
+            styleType={"primary"}
+            disabled={statusUploadEditDetails === "pending"}
+          >
             Edit
           </FormButton>
         </div>
