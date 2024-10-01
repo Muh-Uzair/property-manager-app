@@ -128,3 +128,29 @@ export const getFlatEditData = async (flatId) => {
 
   return data;
 };
+
+// FUNCTION
+export const uploadFlatEditDetails = async (editFormData, flatId) => {
+  console.log(editFormData);
+  // 1 :  destructure the necessary things out
+  const { floor, size, status, rent } = editFormData;
+
+  // 2 : upload it supabase
+  const { data, error } = await supabase
+    .from("renters")
+    .update({
+      floor,
+      size,
+      status,
+      rent,
+    })
+    .eq("id", flatId)
+    .select();
+
+  if (error)
+    throw new Error(
+      `Unable to upload property edit form tenant details ${error?.message}`,
+    );
+
+  return data;
+};
