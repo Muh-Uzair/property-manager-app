@@ -1,11 +1,24 @@
+import { useGetPropertyType } from "../../../hooks/useGetPropertyType";
 import FormItem from "../../../ui/FormItem";
 import FormPortion from "../../../ui/FormPortion";
 import { usePropertyEditContext } from "./usePropertyEditContext";
+
+const shopsValidationObj = {
+  required: "Floor is required",
+  validate: (value) => {
+    return (
+      value === "ground" ||
+      value === "basement" ||
+      "Floor either ground or basement "
+    );
+  },
+};
 
 // COMPONENT START
 export default function PropertyDetailsEditForm() {
   // VARIABLES
   const { register, dataPropertyEditForm } = usePropertyEditContext();
+  const propertyType = useGetPropertyType();
 
   // FUNCTIONS
 
@@ -21,15 +34,24 @@ export default function PropertyDetailsEditForm() {
         id={"floor"}
         name={"floor"}
         register={register}
-        validationObj={{
-          required: "Floor is required",
-          min: { value: 1, message: "Floor greater than 0" },
-          max: {
-            value: 5,
-            message: "Floor less than 6",
-          },
-        }}
-        placeholder={"1 =< Floor >= 5 | ground | basement"}
+        validationObj={
+          propertyType === "shops"
+            ? shopsValidationObj
+            : {
+                required: "Floor is required",
+                min: { value: 1, message: "Floor greater than 0" },
+                max: {
+                  value: 5,
+                  message: "Floor less than 6",
+                },
+                validate: (value) => {
+                  return !isNaN(value) || "Floor must be a valid number";
+                },
+              }
+        }
+        placeholder={
+          propertyType === "shops" ? `ground | basement` : `1 =< Floor >= 5`
+        }
       />
 
       <FormItem
