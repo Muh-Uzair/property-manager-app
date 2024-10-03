@@ -1,3 +1,5 @@
+import Admissions from "../features/Admissions/Admissions";
+
 // COMPONENT START///////////////////////////////////////////////
 export default function AdmissionsPG() {
   // STATE & VARIABLES
@@ -5,7 +7,7 @@ export default function AdmissionsPG() {
   // FUNCTIONS
 
   // JSX//////////////////////////////////////////
-  return <div>Admissions</div>;
+  return <Admissions />;
   // JSX//////////////////////////////////////////
 }
 // COMPONENT END/////////////////////////////////////////////////
