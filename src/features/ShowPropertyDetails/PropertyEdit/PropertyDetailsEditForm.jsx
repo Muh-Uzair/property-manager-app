@@ -78,28 +78,6 @@ export default function PropertyDetailsEditForm() {
       />
 
       <FormItem
-        itemLabel={"Status"}
-        itemType={{
-          type: "labelInputText",
-        }}
-        htmlFor={"status"}
-        id={"status"}
-        name={"status"}
-        register={register}
-        validationObj={{
-          required: "Status must be occupied or unoccupied",
-          validate: (value) => {
-            return (
-              value.toLowerCase() === "occupied" ||
-              value.toLowerCase() === "unoccupied" ||
-              "Status must occupied or unoccupied"
-            );
-          },
-        }}
-        placeholder={"occupied | unoccupied"}
-      />
-
-      <FormItem
         itemLabel={"Rent"}
         itemType={{
           type: "labelInputText",
