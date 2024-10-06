@@ -27,8 +27,6 @@ export const useGetPropertyData = () => {
 
   let totalPropertyQuantity = null;
 
-  // FUNCTIONS
-
   // FUNCTION
 
   ////////////////////

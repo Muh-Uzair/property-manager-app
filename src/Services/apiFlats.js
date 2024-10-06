@@ -29,7 +29,10 @@ export const getAllFlats = async (currPage) => {
   } = await supabase
     .from("flats")
     .select("*", { count: "exact" })
-    .range(from, to);
+    .gte("id", 3001) // Filter IDs greater than or equal to 3001
+    .lte("id", 3016) // Filter IDs less than or equal to 3015
+    .order("id", { ascending: true }) // Sort by id in ascending order
+    .range(from, to); // Apply pagination
 
   if (error) throw new Error(`Error in fetching all flats : ${error?.message}`);
 

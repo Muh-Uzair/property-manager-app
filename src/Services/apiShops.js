@@ -27,6 +27,9 @@ export const getAllShops = async (currPage) => {
   } = await supabase
     .from("shops")
     .select("*", { count: "exact" })
+    .gte("id", 2001)
+    .lte("id", 2020)
+    .order("id", { ascending: true })
     .range(from, to);
 
   if (error) throw new Error(`Error in fetching all shops : ${error?.message}`);
