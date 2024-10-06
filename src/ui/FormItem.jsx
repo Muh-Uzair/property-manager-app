@@ -1,3 +1,6 @@
+import PropTypes from "prop-types";
+import { useState } from "react";
+
 // FUNCTION
 function getValueFormat(inputText = "") {
   const firstLetter = inputText[0]?.toUpperCase();
@@ -129,24 +132,7 @@ export default function FormItem({
         </>
       )}
 
-      {/* DIVIDER labelUpload */}
-      {itemType.type === "labelUpload" && (
-        <>
-          <label
-            className="text-nowrap font-semibold"
-            style={{ color: labelColor }}
-            htmlFor={htmlFor}
-          >
-            {itemLabel}
-            {validationObj?.required && (
-              <span className="text-[15px] text-red-700">{` *`}</span>
-            )}
-          </label>
-          <input className="font-semibold" type="file" id={id} name={name} />
-        </>
-      )}
-
-      {/* DIVIDER labelImage */}
+      {/* DIVIDER labelImage | just shows label and image */}
       {itemType.type === "labelImage" && (
         <>
           <label
@@ -168,9 +154,6 @@ export default function FormItem({
   );
   // JSX
 }
-
-import PropTypes from "prop-types";
-import { useState } from "react";
 
 FormItem.propTypes = {
   itemType: PropTypes.object,

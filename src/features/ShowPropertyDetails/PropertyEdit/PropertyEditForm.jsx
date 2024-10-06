@@ -25,10 +25,42 @@ export default function PropertyEditForm({ dataPropertyEditForm }) {
   const { renter_id } = dataPropertyEditForm;
   const { propertyId } = useParams();
 
-  // FUNCTIONS
-
   // FUNCTION
   function properEditFormSubmit(formData) {
+    // DIVIDER
+    const { floor, size, rent, propertyImage, selectedPropertyImage } =
+      formData;
+    const propertyDetails = {
+      floor,
+      size,
+      rent,
+      propertyImage,
+      selectedPropertyImage,
+    };
+    console.log(propertyDetails);
+
+    // DIVIDER
+    const {
+      name,
+      contact_info,
+      nationality,
+      id_card_number,
+      occupation,
+      marital_status,
+      selectedTenantImage,
+    } = formData;
+    const tenantDetails = {
+      name,
+      contact_info,
+      nationality,
+      id_card_number,
+      occupation,
+      marital_status,
+      selectedTenantImage,
+    };
+    console.log(tenantDetails);
+
+    // DIVIDER
     // 1 : remove the notifications that are on the screen
     toast.dismiss();
 

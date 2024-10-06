@@ -1,4 +1,4 @@
-import { HiEllipsisVertical } from "react-icons/hi2";
+import { HiArrowRightOnRectangle, HiEllipsisVertical } from "react-icons/hi2";
 import TableItemRenter from "./TableItemRenter";
 import TableRowItem from "../../ui/TableRowItem";
 import PropTypes from "prop-types";
@@ -86,6 +86,10 @@ export default function PropertyDetailsTableRow({
                     url: `${val.id}`,
                   },
                   { icon: <GoPencil />, label: "Edit", url: `edit/${val.id}` },
+                  {
+                    icon: <HiArrowRightOnRectangle />,
+                    label: "Un-occupy",
+                  },
                 ]}
               />
             )}

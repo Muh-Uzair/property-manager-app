@@ -43,7 +43,9 @@ export default function TenantDetails() {
           </div>
 
           {/* image */}
-          <div className="rounded-[8px] bg-gray-200">img</div>
+          <div className="flex justify-center rounded-[8px] bg-gray-200">
+            <img className="object-cover" src={dataRenterDetails.image} />
+          </div>
         </div>
 
         {/* Tenant details for phone , STab , LTab */}
@@ -58,8 +60,8 @@ export default function TenantDetails() {
           <RentDuration dataRenterDetails={dataRenterDetails} />
 
           {/* renter image div */}
-          <div className="h-[160px] rounded-[8px] bg-gray-200 smallTab:h-[250px]">
-            img
+          <div className="flex h-[160px] justify-center rounded-[8px] bg-gray-200 smallTab:h-[250px]">
+            <img className="rounded-[3px]" src={dataRenterDetails.image} />
           </div>
         </div>
       </div>
