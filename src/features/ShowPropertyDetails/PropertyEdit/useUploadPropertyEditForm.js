@@ -4,6 +4,8 @@ import { uploadTenantEditDetails } from "../../../Services/apiRenters";
 import { uploadFlatEditDetails } from "../../../Services/apiFlats";
 import { uploadRoomEditDetails } from "../../../Services/apiRooms";
 import { uploadShopEditDetails } from "../../../Services/apiShops";
+import { useGetPropertyType } from "../../../hooks/useGetPropertyType";
+import { useNavigate, useParams } from "react-router-dom";
 
 // FUNCTION calls the actual upload function
 function uploadEditDetails(data) {
@@ -24,9 +26,14 @@ function uploadEditDetails(data) {
 }
 
 // FUNCTION
-export function useUploadPropertyEditForm() {
+export function useUploadPropertyEditForm(dataPropertyEditForm) {
+  console.log(dataPropertyEditForm);
   // VARIABLES
   const queryClient = useQueryClient();
+  const propertyType = useGetPropertyType();
+  const { propertyId } = useParams();
+  const { renter_id } = dataPropertyEditForm;
+  const navigate = useNavigate();
 
   // 1 : perform the mutation
   const { mutate: mutateUploadEditDetails, status: statusUploadEditDetails } =
@@ -36,8 +43,20 @@ export function useUploadPropertyEditForm() {
         toast.error("Error editing property");
       },
       onSuccess: () => {
-        queryClient.invalidateQueries();
+        queryClient.invalidateQueries([
+          "dataPropertyEdit",
+          propertyType,
+          propertyId,
+        ]);
+        queryClient.invalidateQueries([
+          "dataPropertyEdit",
+          propertyType,
+          propertyId,
+          renter_id,
+        ]);
+        queryClient.clear();
         toast.success("Successfully edited property details");
+        navigate(`/propertyDetails/${propertyType}/${propertyId}`);
       },
     });
 

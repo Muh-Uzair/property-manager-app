@@ -101,21 +101,13 @@ export const uploadTenantEditDetails = async (editFormData, tenantId) => {
     // 1 : prepare name of the image
     const imageName = `${selectedTenantImage[0].name}`;
 
-    // 2 : upload it to supabase storage bucket
-    const { error } = await supabase.storage
-      .from("tenantImages")
-      .upload(imageName, selectedTenantImage[0]);
-
-    // 3 : if there was an error uploading image throw it
-    if (error) {
-      throw new Error(`Unable to upload tenant image ${error?.message}`);
-    }
-
-    // 4 : after the image is uploaded we will upload the rest of the data
+    // 2 : prepare image path
     const imagePath = `${supabaseUrl}/storage/v1/object/public/tenantImages/${imageName}`;
 
-    // 2 : upload destructured properties to supabase
-    const { error2 } = await supabase
+    console.log(imagePath);
+
+    // 3 : upload destructured properties to supabase
+    const { data2, error2 } = await supabase
       .from("renters")
       .update({
         name,
@@ -129,11 +121,25 @@ export const uploadTenantEditDetails = async (editFormData, tenantId) => {
       .eq("id", tenantId)
       .select();
 
-    // 2 : if error in uploading throw it
+    // 4 : if error in uploading throw it
     if (error2)
       throw new Error(
         `Unable to upload property edit form tenant details ${error?.message}`,
       );
+
+    console.log(data2);
+
+    // 3 : upload image to supabase
+    const { data, error } = await supabase.storage
+      .from("tenantImages")
+      .upload(imageName, selectedTenantImage[0], { upsert: true });
+
+    // 3 : if there was an error uploading image throw it
+    if (error) {
+      throw new Error(`Unable to upload tenant image ${error?.message}`);
+    }
+
+    console.log(data);
   }
 
   // if the user does not provide a new image
