@@ -3,11 +3,13 @@ import LoadingSpinner from "../../../ui/LoadingSpinner";
 import PropertyEditForm from "./PropertyEditForm";
 import { useGetPropertyType } from "../../../hooks/useGetPropertyType";
 import { useGetPropertyEditData } from "./useGetPropertyEditData";
+import { useGetScreenHeight } from "../../RentPaymentFeature/RentPaymentBody/useGetScreenHeight";
 
 // COMPONENT START
 export default function PropertyEdit() {
   // VARIABLES
   const propertyType = useGetPropertyType();
+  const screenHeight = useGetScreenHeight();
 
   let {
     dataPropertyEdit = [],
@@ -32,7 +34,12 @@ export default function PropertyEdit() {
     Object.entries(dataPropertyEditForm).length > 0
   ) {
     return (
-      <div className="flex h-[100%] flex-col gap-[3px] overflow-y-scroll p-[5px]">
+      <div
+        style={{
+          height: `calc(${screenHeight}px - 80px)`, // Inline style with dynamic calculation
+        }}
+        className="flex h-[100%] flex-col gap-[3px] overflow-y-auto p-[5px]"
+      >
         <Heading type="primary">
           Edit Property :{" "}
           {`${propertyType.at(0).toUpperCase()}${propertyType.slice(1)}`}

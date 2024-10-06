@@ -154,12 +154,21 @@ export default function TenantDetailsEditForm() {
           readOnly: true,
         }}
       />
-      <FormItem
-        itemLabel={"Upload Image"}
-        itemType={{
-          type: "labelUpload",
-        }}
-      />
+      <div className="grid w-full grid-cols-[100px_150px] items-center gap-[5px] text-[10px] smallTab:grid-cols-[150px_180px] smallTab:text-[14px] largeTab:grid-cols-[150px_200px] largeScreen:grid-cols-[150px_220px] largeScreen:text-[15px]">
+        <label
+          className="text-nowrap font-semibold"
+          htmlFor="selectedTenantImage"
+          style={{ color: "gray" }}
+        >
+          Upload Image
+        </label>
+        <input
+          id="selectedTenantImage"
+          name="selectedTenantImage"
+          type="file"
+          {...register("selectedTenantImage")}
+        />
+      </div>
     </FormPortion>
   );
   // JSX

@@ -1,4 +1,5 @@
 import supabase from "../../supabase";
+import { supabaseUrl } from "../../supabase";
 
 // FUNCTION
 export const uploadAllRenters = async (rentersDataArr) => {
@@ -92,24 +93,72 @@ export const uploadTenantEditDetails = async (editFormData, tenantId) => {
     id_card_number,
     occupation,
     marital_status,
+    selectedTenantImage,
   } = editFormData;
 
-  // 2 : upload it supabase
-  const { error } = await supabase
-    .from("renters")
-    .update({
-      name,
-      contact_info,
-      nationality,
-      id_card_number,
-      occupation,
-      marital_status,
-    })
-    .eq("id", tenantId)
-    .select();
+  // if user provides a new image
+  if (selectedTenantImage[0]) {
+    // 1 : prepare name of the image
+    const imageName = `${selectedTenantImage[0].name}`;
 
-  if (error)
-    throw new Error(
-      `Unable to upload property edit form tenant details ${error?.message}`,
-    );
+    // 2 : upload it to supabase storage bucket
+    const { error } = await supabase.storage
+      .from("tenantImages")
+      .upload(imageName, selectedTenantImage[0]);
+
+    // 3 : if there was an error uploading image throw it
+    if (error) {
+      throw new Error(`Unable to upload tenant image ${error?.message}`);
+    }
+
+    // 4 : after the image is uploaded we will upload the rest of the data
+    const imagePath = `${supabaseUrl}/storage/v1/object/public/tenantImages/${imageName}`;
+
+    // 2 : upload destructured properties to supabase
+    const { error2 } = await supabase
+      .from("renters")
+      .update({
+        name,
+        contact_info,
+        nationality,
+        id_card_number,
+        occupation,
+        marital_status,
+        image: imagePath,
+      })
+      .eq("id", tenantId)
+      .select();
+
+    // 2 : if error in uploading throw it
+    if (error2)
+      throw new Error(
+        `Unable to upload property edit form tenant details ${error?.message}`,
+      );
+  }
+
+  // if the user does not provide a new image
+  if (!selectedTenantImage[0]) {
+    // 1 : upload destructured properties to supabase
+    const { error } = await supabase
+      .from("renters")
+      .update({
+        name,
+        contact_info,
+        nationality,
+        id_card_number,
+        occupation,
+        marital_status,
+      })
+      .eq("id", tenantId)
+      .select();
+
+    // 2 : if error in uploading throw it
+    if (error)
+      throw new Error(
+        `Unable to upload property edit form tenant details ${error?.message}`,
+      );
+  }
 };
+
+//https://ibtqqypbjddszazggxmp.supabase.co/storage/v1/object/public/tenantImages/tenantImage1.jfif
+//https://ibtqqypbjddszazggxmp.supabase.co/storage/v1/object/public/tenantImages/tenantImage3.jfif
