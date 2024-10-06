@@ -27,7 +27,6 @@ function uploadEditDetails(data) {
 
 // FUNCTION
 export function useUploadPropertyEditForm(dataPropertyEditForm) {
-  console.log(dataPropertyEditForm);
   // VARIABLES
   const queryClient = useQueryClient();
   const propertyType = useGetPropertyType();

@@ -27,6 +27,9 @@ export const getAllRooms = async (currPage) => {
   } = await supabase
     .from("rooms")
     .select("*", { count: "exact" })
+    .gte("id", 1001)
+    .lte("id", 1010)
+    .order("id", { ascending: true })
     .range(from, to);
 
   if (error) throw new Error(`Error in fetching all rooms : ${error?.message}`);
