@@ -31,7 +31,12 @@ export default function PropertyDetails() {
       {/* Image + detail for LScreen */}
       <div className="hidden gap-[16px] largeScreen:grid largeScreen:h-full largeScreen:grid-cols-[60%_1fr] largeScreen:rounded-[8px] largeScreen:bg-sky-200/80 largeScreen:p-[16px]">
         {/* image div */}
-        <div className="rounded-[8px] bg-gray-100">img</div>
+        <div className="rounded-[8px] bg-gray-100">
+          <img
+            className="h-full w-full rounded-[8px] object-none"
+            src={dataSingleProperty?.image}
+          />
+        </div>
         {/* property details div */}
         <div className="largeScreen:grid largeScreen:grid-cols-2 largeScreen:gap-[16px]">
           <SinglePropertyDetailsItem
@@ -76,11 +81,10 @@ export default function PropertyDetails() {
       >
         {/* Img div */}
         <div className="rounded-[8px] bg-gray-100">
-          {/* <img
-                className="h-full max-h-[330px] w-full rounded-[8px] object-cover"
-                src={dataSingleProperty?.image}
-              /> */}
-          img
+          <img
+            className="h-full max-h-[330px] w-full rounded-[8px] object-cover"
+            src={dataSingleProperty?.image}
+          />
         </div>
 
         {/* details div*/}
