@@ -44,6 +44,7 @@ export default function TenantDetailsEditForm() {
           },
         }}
         placeholder={"Maria | john etc"}
+        autoComplete={true}
       />
 
       <FormItem

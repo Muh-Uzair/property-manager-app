@@ -28,12 +28,12 @@ export default function PropertyDetails() {
         {`${propertyType.charAt(0).toLocaleUpperCase()}${propertyType.slice(1, propertyType.length - 1)} Details`}
       </Heading>
 
-      {/* Image + detail for LScreen */}
+      {/* DIVIDER Image + detail for LScreen */}
       <div className="hidden gap-[16px] largeScreen:grid largeScreen:h-full largeScreen:grid-cols-[60%_1fr] largeScreen:rounded-[8px] largeScreen:bg-sky-200/80 largeScreen:p-[16px]">
         {/* image div */}
         <div className="rounded-[8px] bg-gray-100">
           <img
-            className="h-full w-full rounded-[8px] object-none"
+            className="h-full w-full rounded-[8px] object-cover"
             src={dataSingleProperty?.image}
           />
         </div>
@@ -75,7 +75,7 @@ export default function PropertyDetails() {
         </div>
       </div>
 
-      {/* Image + details for phone STab , LTab */}
+      {/* DIVIDER Image + details for phone STab , LTab */}
       <div
         className={`grid grid-rows-[160px_auto] gap-[7px] rounded-[8px] bg-sky-200/80 smallTab:grid-rows-[250px_auto] largeScreen:hidden p-[${itemGap}]`}
       >

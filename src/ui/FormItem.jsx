@@ -25,6 +25,7 @@ export default function FormItem({
   validationObj,
   disabled,
   placeholder,
+  autoComplete,
 }) {
   // VARIABLES
   const [checkControllerSt, setCheckControllerSt] = useState(false);
@@ -128,6 +129,7 @@ export default function FormItem({
             {...addValueAtt()}
             {...makeInputControlled()}
             placeholder={placeholder}
+            autoComplete={autoComplete ? id : null}
           />
         </>
       )}
@@ -135,13 +137,13 @@ export default function FormItem({
       {/* DIVIDER labelImage | just shows label and image */}
       {itemType.type === "labelImage" && (
         <>
-          <label
+          <span
             className="text-nowrap font-semibold"
             style={{ color: labelColor }}
             htmlFor={htmlFor}
           >
             {itemLabel}
-          </label>
+          </span>
           <div
             id={htmlFor}
             name={htmlFor}
@@ -184,6 +186,7 @@ FormItem.propTypes = {
     PropTypes.string,
     PropTypes.bool,
   ]),
+  autoComplete: PropTypes.bool,
 };
 
 //size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
