@@ -31,11 +31,13 @@ export default function PropertyDetails() {
       {/* DIVIDER Image + detail for LScreen */}
       <div className="hidden gap-[16px] largeScreen:grid largeScreen:h-full largeScreen:grid-cols-[60%_1fr] largeScreen:rounded-[8px] largeScreen:bg-sky-200/80 largeScreen:p-[16px]">
         {/* image div */}
-        <div className="rounded-[8px] bg-gray-100">
-          {/* <img
-            className="h-full w-full rounded-[8px] object-cover"
-            src={dataSingleProperty?.image}
-          /> */}
+        <div className="flex items-center justify-center rounded-[8px] bg-gray-100">
+          <div className="h-full max-h-[328px] w-full">
+            <img
+              className="h-full w-full rounded-[8px] object-cover"
+              src={dataSingleProperty?.image}
+            />
+          </div>
         </div>
         {/* property details div */}
         <div className="largeScreen:grid largeScreen:grid-cols-2 largeScreen:gap-[16px]">
