@@ -1,4 +1,4 @@
-import supabase from "../../supabase";
+import supabase, { supabaseUrl } from "../../supabase";
 import { monthsArr } from "../utils/constants";
 
 // FUNCTION
@@ -135,23 +135,68 @@ export const getFlatEditData = async (flatId) => {
 // FUNCTION
 export const uploadFlatEditDetails = async (editFormData, flatId) => {
   // 1 :  destructure the necessary things out
-  const { floor, size, status, rent } = editFormData;
+  const { floor, size, status, rent, selectedPropertyImage } = editFormData;
 
-  // 2 : upload it supabase
-  const { error } = await supabase
-    .from("flats")
-    .update({
-      floor,
-      size,
-      status,
-      rent,
-    })
-    .eq("id", Number(flatId))
-    .select();
+  // 2 : DIVIDER if the user upload a form with a new image
+  if (selectedPropertyImage[0] !== undefined && selectedPropertyImage[0]) {
+    // 1 : prepare image name
+    const imageName = `${selectedPropertyImage[0]?.name}`;
 
-  // 3 : throw error if any
-  if (error)
-    throw new Error(
-      `Unable to upload property edit form tenant details ${error?.message}`,
-    );
+    // 2 : prepare image path
+    const imagePath = `${supabaseUrl}/storage/v1/object/public/flatsImages/${imageName}`;
+
+    // 3 : upload textual data to supabase tables
+    const { error } = await supabase
+      .from("flats")
+      .update({
+        floor,
+        size,
+        status,
+        rent,
+        image: imagePath,
+      })
+      .eq("id", Number(flatId))
+      .select();
+
+    // 3 : throw error if any
+    if (error)
+      throw new Error(
+        `Unable to upload property edit form flat details ${error?.message}`,
+      );
+
+    // 4 : if everything above were successful than upload the image to supabase
+    const { error2 } = await supabase.storage
+      .from("flatsImages")
+      .upload(imageName, selectedPropertyImage[0], {
+        upsert: true,
+      });
+
+    if (error2)
+      throw new Error(
+        `Unable to upload property edit form property image ${error2?.message}`,
+      );
+  }
+
+  // 3 : DIVIDER if the user upload form with out property image
+  else {
+    // 1 : upload it supabase
+    const { error } = await supabase
+      .from("flats")
+      .update({
+        floor,
+        size,
+        status,
+        rent,
+      })
+      .eq("id", Number(flatId))
+      .select();
+
+    // 3 : throw error if any
+    if (error)
+      throw new Error(
+        `Unable to upload property edit form tenant details ${error?.message}`,
+      );
+  }
 };
+
+//https://ibtqqypbjddszazggxmp.supabase.co/storage/v1/object/public/flatsImages/flatsImg1.jfif

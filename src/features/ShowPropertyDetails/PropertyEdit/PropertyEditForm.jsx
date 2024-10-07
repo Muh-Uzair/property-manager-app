@@ -27,8 +27,6 @@ export default function PropertyEditForm({ dataPropertyEditForm }) {
 
   // FUNCTION
   function properEditFormSubmit(formData) {
-    console.log(formData);
-
     // 1 : remove the notifications that are on the screen
     toast.dismiss();
 

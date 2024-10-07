@@ -8,20 +8,20 @@ import { useGetPropertyType } from "../../../hooks/useGetPropertyType";
 import { useNavigate, useParams } from "react-router-dom";
 
 // FUNCTION calls the actual upload function
-function uploadEditDetails(data) {
+async function uploadEditDetails(data) {
   // 1 : destructure the necessary vars out of data
   const { formData, renter_id, propertyType, propertyId } = data;
 
   // 2 : upload tenant details according to the received id
-  uploadTenantEditDetails(formData, renter_id);
+  await uploadTenantEditDetails(formData, renter_id);
 
   // 3 : upload property details according to the property type
   if (propertyType === "flats") {
-    uploadFlatEditDetails(formData, propertyId);
+    await uploadFlatEditDetails(formData, propertyId);
   } else if (propertyType === "rooms") {
-    uploadRoomEditDetails(formData, propertyId);
+    await uploadRoomEditDetails(formData, propertyId);
   } else {
-    uploadShopEditDetails(formData, propertyId);
+    await uploadShopEditDetails(formData, propertyId);
   }
 }
 
@@ -53,9 +53,12 @@ export function useUploadPropertyEditForm(dataPropertyEditForm) {
           propertyId,
           renter_id,
         ]);
-        queryClient.clear();
         toast.success("Successfully edited property details");
-        navigate(`/propertyDetails/${propertyType}/${propertyId}`);
+        queryClient.clear();
+        setTimeout(
+          navigate(`/propertyDetails/${propertyType}/${propertyId}`),
+          1000,
+        );
       },
     });
 
