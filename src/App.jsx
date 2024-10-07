@@ -22,7 +22,7 @@ import RentPaymentPG from "./Pages/RentPaymentPG";
 // import DummyPG1 from "./Pages/DummyPG1";
 import { Toaster } from "react-hot-toast";
 
-// skeleton implemented
+// property edit form complete
 
 const router = createBrowserRouter(
   createRoutesFromElements(
