@@ -58,12 +58,12 @@ export default function TenantDetailsEditForm() {
         validationObj={{
           required: "Contact information is required",
           pattern: {
-            value: /^(\+?\d{1,3}[- ]?)?\(?\d{3}\)?[- ]?\d{3}[- ]?\d{4}$/,
+            value: /^[0-9\s-]{1,20}$/,
             message:
-              "Invalid contact format. Expected format: (123) 456-7890, 123-456-7890, or similar.",
+              "Only numbers, spaces, and hyphens are allowed (max 20 characters).",
           },
         }}
-        placeholder={"(123) | 123-456-7890 etc"}
+        placeholder={"0331-9193878"}
       />
 
       <FormItem
