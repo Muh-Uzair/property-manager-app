@@ -44,7 +44,12 @@ export default function TenantDetails() {
 
           {/* image */}
           <div className="flex justify-center rounded-[8px] bg-gray-200">
-            <img src={dataRenterDetails.image} />
+            <div className="h-full w-[200px] bg-green-300">
+              <img
+                className="h-full w-full object-cover"
+                src={dataRenterDetails.image}
+              />
+            </div>
           </div>
         </div>
 
