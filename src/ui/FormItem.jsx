@@ -138,10 +138,15 @@ export default function FormItem({
           <label
             className="text-nowrap font-semibold"
             style={{ color: labelColor }}
+            htmlFor={htmlFor}
           >
             {itemLabel}
           </label>
-          <div className="h-[70px] w-[100px] rounded-[5px] border">
+          <div
+            id={htmlFor}
+            name={htmlFor}
+            className="h-[70px] w-[100px] rounded-[5px] border"
+          >
             <img
               className="h-full w-full rounded-[5px] object-cover"
               src={itemType?.src}

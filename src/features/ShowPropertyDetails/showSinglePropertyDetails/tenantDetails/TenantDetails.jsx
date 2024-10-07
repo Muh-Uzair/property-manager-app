@@ -26,7 +26,7 @@ export default function TenantDetails() {
       <div className="flex h-full grid-rows-[auto_1fr] flex-col largeScreen:grid">
         <Heading type="primary">Tenant Details</Heading>
 
-        {/* Tenant Details for Large screen */}
+        {/* DIVIDER Tenant Details for Large screen */}
         <div className="hidden grid-cols-[60%_1fr] gap-[16px] rounded-[8px] bg-gray-100 p-[16px] largeScreen:grid">
           {/* details */}
           <div className="grid h-full grid-rows-[1fr_40%] gap-[10px]">
@@ -48,7 +48,7 @@ export default function TenantDetails() {
           </div>
         </div>
 
-        {/* Tenant details for phone , STab , LTab */}
+        {/* DIVIDER Tenant details for phone , STab , LTab */}
         <div
           className={`flex flex-col gap-[7px] rounded-[5px] bg-gray-100 p-[7px] largeScreen:hidden`}
         >
@@ -61,7 +61,12 @@ export default function TenantDetails() {
 
           {/* renter image div */}
           <div className="flex h-[160px] justify-center rounded-[8px] bg-gray-200 smallTab:h-[250px]">
-            <img className="rounded-[3px]" src={dataRenterDetails.image} />
+            <div className="h-[full] w-[40%] bg-slate-400">
+              <img
+                className="h-full w-full object-cover"
+                src={dataRenterDetails.image}
+              />
+            </div>
           </div>
         </div>
       </div>
