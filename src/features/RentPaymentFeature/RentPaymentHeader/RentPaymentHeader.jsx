@@ -13,8 +13,8 @@ export default function RentPaymentHeader() {
       <div className="flex h-[55px] items-center justify-between border-y-[2px] border-brand-color-400 bg-brand-color-200/30 px-[8px] py-[5px]">
         <div className="largeScreen:block">
           <Heading type="primary">
-            Rent Payment :{" "}
-            {`${propertyType.at(0).toUpperCase()}${propertyType.slice(1, -1)}`}
+            Pay Rent:{" "}
+            {`${propertyType.at(0).toUpperCase()}${propertyType.slice(1, -1)}s`}
           </Heading>
         </div>
 

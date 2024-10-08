@@ -19,7 +19,6 @@ export default function PropertyDetailsPG() {
           {propertyType &&
             `${propertyType?.charAt(0).toUpperCase()}${propertyType?.slice(1).toLowerCase()}`}
         </Heading>
-        {/* <PropertyChangeButtons buttonLabelsArr={["FLATS", "ROOMS", "SHOPS"]} /> */}
         <PropertyChangeBtns
           btnsUrlArr={[
             { label: "flats", url: "propertyDetails/flats" },

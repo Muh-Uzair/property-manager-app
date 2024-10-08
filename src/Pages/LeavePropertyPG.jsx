@@ -1,3 +1,5 @@
+import LeaveProperty from "../features/leaveProperty/LeaveProperty";
+
 // COMPONENT START
 export default function LeavePropertyPG() {
   // VARIABLES
@@ -5,7 +7,7 @@ export default function LeavePropertyPG() {
   // FUNCTIONS
 
   // JSX
-  return <div>Leave Property</div>;
+  return <LeaveProperty />;
   // JSX
 }
 // COMPONENT END
