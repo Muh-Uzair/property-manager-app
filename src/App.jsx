@@ -20,6 +20,7 @@ import LoginPG from "./Pages/LoginPG";
 import SinglePropertyDetails from "./features/ShowPropertyDetails/showSinglePropertyDetails/SinglePropertyDetails";
 import PropertyEdit from "./features/ShowPropertyDetails/PropertyEdit/PropertyEdit";
 import RentPaymentPG from "./Pages/RentPaymentPG";
+import LeavePropertyPG from "./Pages/LeavePropertyPG";
 
 // property edit form complete
 
@@ -55,6 +56,8 @@ const router = createBrowserRouter(
           <Route path="expenses" element={<ExpensesPG />} />
           {/* DIVIDER */}
           <Route path="admissions" element={<AdmissionsPG />} />
+          {/* DIVIDER */}
+          <Route path="/leaveProperty" element={<LeavePropertyPG />} />
           {/* DIVIDER */}
           <Route path="*" element={<PageNotFound />} />
         </Route>

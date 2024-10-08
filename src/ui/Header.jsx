@@ -1,14 +1,14 @@
-import { NameLogo } from "./NameLogo";
 import { TbClipboardText, TbUser } from "react-icons/tb";
-
-import Uploader from "../features/Uploader/Uploader";
-import { brandColor500 } from "../styles/globalStyles";
 import { HiOutlineHome } from "react-icons/hi";
-import NavigationLinks from "./NavigationLinks";
 import { HiMiniArrowLeftOnRectangle } from "react-icons/hi2";
 import { AiOutlineDollarCircle } from "react-icons/ai";
 import { BiLineChartDown } from "react-icons/bi";
+import { HiMiniArrowRightOnRectangle } from "react-icons/hi2";
 
+import NavigationLinks from "./NavigationLinks";
+import Uploader from "../features/Uploader/Uploader";
+import { brandColor500 } from "../styles/globalStyles";
+import { NameLogo } from "./NameLogo";
 // COMPONENT START///////////////////////////////////////////////
 export function Header() {
   // STATE & VARIABLES
@@ -44,6 +44,11 @@ export function Header() {
                 url: "admissions",
                 label: "Admissions",
                 icon: <HiMiniArrowLeftOnRectangle />,
+              },
+              {
+                url: "leaveProperty",
+                label: "Leave Property",
+                icon: <HiMiniArrowRightOnRectangle />,
               },
             ]}
           />
