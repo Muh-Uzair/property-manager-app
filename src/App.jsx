@@ -29,12 +29,11 @@ const router = createBrowserRouter(
       <Route path="login" element={<LoginPG />} />
       <Route path="/" element={<AppLayout />} errorElement={<ErrorPG />}>
         <Route errorElement={<ErrorPG />}>
+          {/* DIVIDER */}
           <Route index element={<Navigate replace to="home" />} />
           <Route path="home" element={<HomePG />} />
-          <Route path="expenses" element={<ExpensesPG />} />
-          <Route path="admissions" element={<AdmissionsPG />} />
+          {/* DIVIDER */}
           <Route path="propertyDetails" element={<PropertyDetailsPG />} />
-          {/* <Route path="propertyDetails" element={<DummyPG1 />} /> */}
           <Route
             path="propertyDetails/:propertyType"
             element={<PropertyDetailsPG />}
@@ -47,11 +46,16 @@ const router = createBrowserRouter(
             path="propertyDetails/:propertyType/edit/:propertyId"
             element={<PropertyEdit />}
           />
+          {/* DIVIDER */}
           <Route path="rentPayment" element={<RentPaymentPG />}>
             {" "}
             <Route path=":propertyType" element={<RentPaymentPG />} />
           </Route>
-
+          {/* DIVIDER */}
+          <Route path="expenses" element={<ExpensesPG />} />
+          {/* DIVIDER */}
+          <Route path="admissions" element={<AdmissionsPG />} />
+          {/* DIVIDER */}
           <Route path="*" element={<PageNotFound />} />
         </Route>
       </Route>
