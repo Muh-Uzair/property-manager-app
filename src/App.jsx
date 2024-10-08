@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { Toaster } from "react-hot-toast";
 
 import HomePG from "./Pages/HomePG";
 import ExpensesPG from "./Pages/ExpensesPG";
@@ -19,8 +20,6 @@ import LoginPG from "./Pages/LoginPG";
 import SinglePropertyDetails from "./features/ShowPropertyDetails/showSinglePropertyDetails/SinglePropertyDetails";
 import PropertyEdit from "./features/ShowPropertyDetails/PropertyEdit/PropertyEdit";
 import RentPaymentPG from "./Pages/RentPaymentPG";
-// import DummyPG1 from "./Pages/DummyPG1";
-import { Toaster } from "react-hot-toast";
 
 // property edit form complete
 
