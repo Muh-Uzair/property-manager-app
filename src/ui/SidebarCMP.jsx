@@ -1,6 +1,9 @@
 import { HiOutlineHome } from "react-icons/hi";
 import { TbClipboardText } from "react-icons/tb";
-import { HiMiniArrowLeftOnRectangle } from "react-icons/hi2";
+import {
+  HiMiniArrowLeftOnRectangle,
+  HiMiniArrowRightOnRectangle,
+} from "react-icons/hi2";
 import NavigationLinks from "./NavigationLinks";
 import { AiOutlineDollarCircle } from "react-icons/ai";
 import { BiLineChartDown } from "react-icons/bi";
@@ -37,6 +40,11 @@ export default function Sidebar() {
               url: "admissions",
               label: "Admissions",
               icon: <HiMiniArrowLeftOnRectangle />,
+            },
+            {
+              url: "leaveProperty",
+              label: "Leave Property",
+              icon: <HiMiniArrowRightOnRectangle />,
             },
           ]}
         />
