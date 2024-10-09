@@ -76,10 +76,12 @@ export const getFlatNameOnId = async (flatId) => {
 export const getAllOccupiedFlats = async () => {
   let { data, error } = await supabase
     .from("flats")
-    .select("flat_number , floor , size , rent , renter_id , rent_details")
-    .eq("status", "occupied");
+    .select("id , flat_number , floor , size , rent , renter_id , rent_details")
+    .eq("status", "occupied")
+    .order("id", { ascending: true });
 
-  if (error) throw new Error("Unable to get all occupied flats");
+  if (error)
+    throw new Error(`Unable to get all occupied flats ${error.message}`);
 
   return data;
 };
