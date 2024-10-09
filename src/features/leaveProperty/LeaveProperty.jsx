@@ -1,5 +1,5 @@
-import Heading from "../../ui/Heading";
-import PropertyChangeBtns from "../../ui/PropertyChangeBtns";
+import LeavePropertyBody from "./LeavePropertyBody";
+import LeavePropertyHeader from "./LeavePropertyHeader";
 
 // COMPONENT START
 export default function LeaveProperty() {
@@ -8,22 +8,11 @@ export default function LeaveProperty() {
   // FUNCTIONS
 
   // JSX
-  return (
-    <div>
-      {/* DIVIDER  page header*/}
-      <div className="flex items-center justify-between">
-        <Heading type="primary">Leave property</Heading>
-        <PropertyChangeBtns
-          btnsUrlArr={[
-            { label: "flats", url: "leaveProperty/flats" },
-            { label: "rooms", url: "leaveProperty/rooms" },
-            { label: "shops", url: "leaveProperty/shops" },
-          ]}
-        />
-      </div>
 
-      {/* DIVIDER  page body*/}
-      <div></div>
+  return (
+    <div className="grid h-full grid-rows-[auto_1fr] gap-[10px]">
+      <LeavePropertyHeader />
+      <LeavePropertyBody />
     </div>
   );
   // JSX

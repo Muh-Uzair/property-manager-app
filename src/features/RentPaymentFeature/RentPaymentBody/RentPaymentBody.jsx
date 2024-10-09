@@ -6,7 +6,7 @@ import RentPayAccordionHeader from "./RentPayAccordionHeader";
 import RentPayAccordionBody from "./RentPayAccordionBody";
 import LoadingWrapperCenter from "../../../ui/LoadingWrapperCenter";
 
-import { useGetAllOccupiedProperty } from "./useGetAllOccupiedProperty";
+import { useGetAllOccupiedProperty } from "../../../hooks/useGetAllOccupiedProperty";
 import { brandColor500 } from "../../../styles/globalStyles";
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import { useGetScreenHeight } from "./useGetScreenHeight";
@@ -25,13 +25,6 @@ export default function RentPaymentBody() {
   };
 
   // JSX
-  if (statusOccupiedProperty === "pending") {
-    return (
-      <LoadingWrapperCenter>
-        <LoadingSpinner />
-      </LoadingWrapperCenter>
-    );
-  }
 
   if (dataOccupiedProperty.length > 0 && statusOccupiedProperty === "success") {
     return (
@@ -66,6 +59,14 @@ export default function RentPaymentBody() {
           ))}
         </ul>
       </main>
+    );
+  }
+
+  if (statusOccupiedProperty === "pending") {
+    return (
+      <LoadingWrapperCenter>
+        <LoadingSpinner />
+      </LoadingWrapperCenter>
     );
   }
 }
