@@ -15,6 +15,7 @@ export function useGetAllOccupiedProperty() {
   const { data: dataOccupiedProperty = [], status: statusOccupiedProperty } =
     useQuery({
       queryFn: async () => {
+        // DIVIDER
         if (propertyType === "flats") {
           queryClient.removeQueries({
             queryKey: ["occupiedProperty", "rooms"],
@@ -24,7 +25,9 @@ export function useGetAllOccupiedProperty() {
           });
           const data = await getAllOccupiedFlats();
           return data;
-        } else if (propertyType === "rooms") {
+        }
+        // DIVIDER
+        else if (propertyType === "rooms") {
           queryClient.removeQueries({
             queryKey: ["occupiedProperty", "flats"],
           });
@@ -33,7 +36,9 @@ export function useGetAllOccupiedProperty() {
           });
           const data = await getAllOccupiedRooms();
           return data;
-        } else if (propertyType === "shops") {
+        }
+        // DIVIDER
+        else if (propertyType === "shops") {
           queryClient.removeQueries({
             queryKey: ["occupiedProperty", "rooms"],
           });
