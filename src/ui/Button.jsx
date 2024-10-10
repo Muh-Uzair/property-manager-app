@@ -11,6 +11,7 @@ export default function Button({
   wide = false,
   uppercase = false,
   disabled = false,
+  onClick,
 }) {
   // VARIABLES
 
@@ -32,6 +33,7 @@ export default function Button({
   if (type === "red") {
     return (
       <button
+        onClick={() => onClick()}
         disabled={disabled}
         className={`bg-red-600 active:bg-red-500 disabled:cursor-not-allowed disabled:opacity-35 largeScreen:hover:bg-red-400 largeScreen:active:bg-red-500 ${uppercase ? "uppercase" : ""} ${primaryStyles} ${wide ? "w-full" : ""} ${size === "medium" ? "text-12px" : size === "large" ? "text-15px" : ""}`}
       >
@@ -49,6 +51,7 @@ Button.propTypes = {
   wide: PropTypes.bool,
   uppercase: PropTypes.bool,
   disabled: PropTypes.bool,
+  onClick: PropTypes.func,
 };
 //size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 // COMPONENT END
