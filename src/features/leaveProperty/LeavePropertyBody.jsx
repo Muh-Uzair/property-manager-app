@@ -1,27 +1,29 @@
-import { useGetAllOccupiedProperty } from "../../hooks/useGetAllOccupiedProperty";
 import { useGetPropertyType } from "../../hooks/useGetPropertyType";
 import Button from "../../ui/Button";
 import LoadingSpinner from "../../ui/LoadingSpinner";
 import LoadingWrapperCenter from "../../ui/LoadingWrapperCenter";
 import { useGetScreenHeight } from "../RentPaymentFeature/RentPaymentBody/useGetScreenHeight";
+import { useGetOccupiedPropertyNumber } from "./useGetOccupiedPropertyNumber";
 
 // COMPONENT START
 export default function LeavePropertyBody() {
   // VARIABLES
-  const { dataOccupiedProperty, statusOccupiedProperty } =
-    useGetAllOccupiedProperty();
+
   const screenHeight = useGetScreenHeight();
   const propertyType = useGetPropertyType();
+  const { dataOccupiedPropertyNumber, statusOccupiedPropertyNumber } =
+    useGetOccupiedPropertyNumber();
 
-  console.log(dataOccupiedProperty);
-
-  // FUNCTIONS
+  // FUNCTION
   function emptyButtonClicked() {
     console.log("empty button clicked");
   }
 
   // JSX
-  if (statusOccupiedProperty === "success" && dataOccupiedProperty.length > 0) {
+  if (
+    statusOccupiedPropertyNumber === "success" &&
+    dataOccupiedPropertyNumber.length > 0
+  ) {
     return (
       <ul
         style={{
@@ -29,7 +31,7 @@ export default function LeavePropertyBody() {
         }}
         className="overflow-y-auto px-[10px]"
       >
-        {dataOccupiedProperty.map((val, i) => (
+        {dataOccupiedPropertyNumber.map((val, i) => (
           <li
             key={i}
             className="mb-[10px] grid h-[300px] w-[100%] grid-rows-[65%_1fr] gap-[5px] rounded-[8px] border-[1px] border-brand-color-500 bg-brand-color-200 p-[8px]"
@@ -69,7 +71,7 @@ export default function LeavePropertyBody() {
       </ul>
     );
   }
-  if (statusOccupiedProperty === "pending") {
+  if (statusOccupiedPropertyNumber === "pending") {
     return (
       <LoadingWrapperCenter>
         <LoadingSpinner />

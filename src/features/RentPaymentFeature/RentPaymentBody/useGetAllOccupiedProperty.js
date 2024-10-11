@@ -1,8 +1,8 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-import { getAllOccupiedFlats } from "../Services/apiFlats";
-import { getAllOccupiedRooms } from "../Services/apiRooms";
-import { getAllOccupiedShops } from "../Services/apiShops";
+import { getAllOccupiedFlats } from "../../../Services/apiFlats";
+import { getAllOccupiedRooms } from "../../../Services/apiRooms";
+import { getAllOccupiedShops } from "../../../Services/apiShops";
 // import { getRenterOnID } from "../../../Services/apiRenters";
 
 export function useGetAllOccupiedProperty() {

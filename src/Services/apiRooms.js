@@ -157,3 +157,8 @@ export const uploadRoomEditDetails = async (editFormData, roomId) => {
       `Unable to upload property edit form tenant details ${error?.message}`,
     );
 };
+
+// FUNCTION
+export const getAllOccupiedRoomNumbers = async () => {
+  console.log("hello ");
+};

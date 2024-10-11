@@ -157,3 +157,6 @@ export const uploadShopEditDetails = async (editFormData, shopId) => {
       `Unable to upload property edit form tenant details ${error?.message}`,
     );
 };
+
+// FUNCTION
+export const getAllOccupiedShopNumbers = async () => {};

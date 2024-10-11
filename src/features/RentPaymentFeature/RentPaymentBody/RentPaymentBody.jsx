@@ -6,7 +6,7 @@ import RentPayAccordionHeader from "./RentPayAccordionHeader";
 import RentPayAccordionBody from "./RentPayAccordionBody";
 import LoadingWrapperCenter from "../../../ui/LoadingWrapperCenter";
 
-import { useGetAllOccupiedProperty } from "../../../hooks/useGetAllOccupiedProperty";
+import { useGetAllOccupiedProperty } from "./useGetAllOccupiedProperty";
 import { brandColor500 } from "../../../styles/globalStyles";
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import { useGetScreenHeight } from "./useGetScreenHeight";

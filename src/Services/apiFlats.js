@@ -1,4 +1,4 @@
-import supabase, { supabaseUrl } from "../../supabase";
+import supabase, { supabaseKey, supabaseUrl } from "../../supabase";
 import { monthsArr } from "../utils/constants";
 
 // FUNCTION
@@ -201,4 +201,28 @@ export const uploadFlatEditDetails = async (editFormData, flatId) => {
   }
 };
 
-//https://ibtqqypbjddszazggxmp.supabase.co/storage/v1/object/public/flatsImages/flatsImg1.jfif
+// FUNCTION
+export const getAllOccupiedFlatNumbers = async () => {
+  try {
+    // 1 : receive the response
+    const res = await fetch(
+      "https://ibtqqypbjddszazggxmp.supabase.co/rest/v1/flats?select=id,flat_number,renter_id&status=eq.occupied&id=gte.3001&id=lte.3016&order=id.asc",
+      {
+        method: "GET",
+        headers: {
+          apikey: supabaseKey,
+          Authorization: `Bearer ${supabaseKey}`,
+        },
+      },
+    );
+
+    // 2 : unpack the response
+    const data = await res.json();
+
+    // 3 : return the data
+    return data;
+  } catch (error) {
+    // 4 : catch and throw errors if any
+    throw new Error("Unable to fetch occupied flat numbers");
+  }
+};
