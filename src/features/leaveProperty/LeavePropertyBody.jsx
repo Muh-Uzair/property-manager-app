@@ -14,6 +14,8 @@ export default function LeavePropertyBody() {
   const { dataOccupiedPropertyNumber, statusOccupiedPropertyNumber } =
     useGetOccupiedPropertyNumber();
 
+  console.log(dataOccupiedPropertyNumber);
+
   // FUNCTION
   function emptyButtonClicked() {
     console.log("empty button clicked");
@@ -22,7 +24,7 @@ export default function LeavePropertyBody() {
   // JSX
   if (
     statusOccupiedPropertyNumber === "success" &&
-    dataOccupiedPropertyNumber.length > 0
+    dataOccupiedPropertyNumber?.length > 0
   ) {
     return (
       <ul

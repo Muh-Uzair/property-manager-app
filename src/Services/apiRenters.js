@@ -160,5 +160,10 @@ export const uploadTenantEditDetails = async (editFormData, tenantId) => {
   }
 };
 
-//https://ibtqqypbjddszazggxmp.supabase.co/storage/v1/object/public/tenantImages/tenantImage1.jfif
-//https://ibtqqypbjddszazggxmp.supabase.co/storage/v1/object/public/tenantImages/tenantImage3.jfif
+// FUNCTION
+// export const getOccupiedTenantNames = async (propertyType) => {
+//   try {
+//   } catch (error) {
+//     throw new Error("");
+//   }
+// };

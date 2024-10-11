@@ -1,4 +1,4 @@
-import supabase from "../../supabase";
+import supabase, { supabaseKey } from "../../supabase";
 import { monthsArr } from "../utils/constants";
 
 // FUNCTION
@@ -160,5 +160,25 @@ export const uploadRoomEditDetails = async (editFormData, roomId) => {
 
 // FUNCTION
 export const getAllOccupiedRoomNumbers = async () => {
-  console.log("hello ");
+  try {
+    // 1 : make a fetch call
+    const response = await fetch(
+      "https://ibtqqypbjddszazggxmp.supabase.co/rest/v1/rooms?select=room_number,renter_id&status=eq.occupied&id=gte.1001&id=lte.1010&order=id.asc",
+      {
+        method: "GET",
+        headers: {
+          apiKey: `${supabaseKey}`,
+          Authorization: `Bearer ${supabaseKey}`,
+        },
+      },
+    );
+
+    // 2 : unpack the response
+
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    throw new Error(`Unable to fetch occupied room number ${error.message}`);
+  }
 };

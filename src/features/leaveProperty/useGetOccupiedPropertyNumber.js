@@ -8,27 +8,42 @@ export function useGetOccupiedPropertyNumber() {
   // VARIABLES
   const propertyType = useGetPropertyType();
 
+  // Fetch occupied property numbers based on property type
   const {
     data: dataOccupiedPropertyNumber,
     status: statusOccupiedPropertyNumber,
   } = useQuery({
     queryFn: async () => {
       if (propertyType === "flats") {
-        const data = getAllOccupiedFlatNumbers();
-        return data;
+        return await getAllOccupiedFlatNumbers();
       }
       if (propertyType === "rooms") {
-        const data = getAllOccupiedRoomNumbers();
-        return data;
+        return await getAllOccupiedRoomNumbers();
       }
       if (propertyType === "shops") {
-        const data = getAllOccupiedShopNumbers();
-        return data;
+        return await getAllOccupiedShopNumbers();
       }
     },
-
     queryKey: ["occupiedPropertyNumbers", propertyType],
+    enabled: !!propertyType,
   });
 
-  return { dataOccupiedPropertyNumber, statusOccupiedPropertyNumber };
+  // Fetch tenant names only when occupied property numbers are successfully fetched
+  // const { data: dataOccupiedTenantNames, status: statusOccupiedTenantNames } =
+  //   useQuery({
+  //     queryFn: async () => {
+  //       const data = [] ;
+  //       dataOcc
+  //     },
+  //     queryKey: ["occupiedTenantNames", propertyType],
+  //     enabled:
+  //       !!propertyType &&
+  //       statusOccupiedPropertyNumber === "success" &&
+  //       dataOccupiedPropertyNumber?.length > 0, // Only run query if the first query succeeds
+  //   });
+
+  return {
+    dataOccupiedPropertyNumber,
+    statusOccupiedPropertyNumber,
+  };
 }

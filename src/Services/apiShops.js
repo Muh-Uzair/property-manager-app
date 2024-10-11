@@ -1,4 +1,4 @@
-import supabase from "../../supabase";
+import supabase, { supabaseKey } from "../../supabase";
 import { monthsArr } from "../utils/constants";
 
 // FUNCTION
@@ -159,4 +159,23 @@ export const uploadShopEditDetails = async (editFormData, shopId) => {
 };
 
 // FUNCTION
-export const getAllOccupiedShopNumbers = async () => {};
+export const getAllOccupiedShopNumbers = async () => {
+  try {
+    const response = await fetch(
+      "https://ibtqqypbjddszazggxmp.supabase.co/rest/v1/shops?select=shop_number,renter_id&status=eq.occupied&id=gte.2001&id=lte.2020&order=id.asc",
+      {
+        method: "GET",
+        headers: {
+          apiKey: `${supabaseKey}`,
+          Authorization: `Bearer ${supabaseKey}`,
+        },
+      },
+    );
+
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    throw new Error(`Unable to fetch occupied shop numbers ${error.message}`);
+  }
+};
