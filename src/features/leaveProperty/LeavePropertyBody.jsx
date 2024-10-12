@@ -1,7 +1,9 @@
-import { useGetPropertyType } from "../../hooks/useGetPropertyType";
+import { Skeleton } from "@/components/ui/skeleton";
+
 import Button from "../../ui/Button";
 import LoadingSpinner from "../../ui/LoadingSpinner";
 import LoadingWrapperCenter from "../../ui/LoadingWrapperCenter";
+import { useGetPropertyType } from "../../hooks/useGetPropertyType";
 import { useGetScreenHeight } from "../RentPaymentFeature/RentPaymentBody/useGetScreenHeight";
 import { useGetOccupiedPropertyNumber } from "./useGetOccupiedPropertyNumber";
 
@@ -11,10 +13,12 @@ export default function LeavePropertyBody() {
 
   const screenHeight = useGetScreenHeight();
   const propertyType = useGetPropertyType();
-  const { dataOccupiedPropertyNumber, statusOccupiedPropertyNumber } =
-    useGetOccupiedPropertyNumber();
-
-  console.log(dataOccupiedPropertyNumber);
+  const {
+    dataOccupiedPropertyNumber = [],
+    statusOccupiedPropertyNumber,
+    dataOccupiedTenantNames = [],
+    statusOccupiedTenantNames,
+  } = useGetOccupiedPropertyNumber();
 
   // FUNCTION
   function emptyButtonClicked() {
@@ -22,6 +26,14 @@ export default function LeavePropertyBody() {
   }
 
   // JSX
+  if (statusOccupiedPropertyNumber === "pending") {
+    return (
+      <LoadingWrapperCenter>
+        <LoadingSpinner />
+      </LoadingWrapperCenter>
+    );
+  }
+
   if (
     statusOccupiedPropertyNumber === "success" &&
     dataOccupiedPropertyNumber?.length > 0
@@ -58,7 +70,17 @@ export default function LeavePropertyBody() {
                         ? val?.shop_number
                         : ""}
                 </p>
-                <p className="text-gray-500">Tenant name</p>
+                {dataOccupiedTenantNames[i] &&
+                  dataOccupiedTenantNames.length > 0 && (
+                    <p className="text-gray-500">
+                      {dataOccupiedTenantNames[i]}
+                    </p>
+                  )}
+                {statusOccupiedTenantNames === "pending" && (
+                  <span>
+                    <Skeleton className="h-[20px] w-[100px] rounded-[3px] bg-brand-color-300" />
+                  </span>
+                )}
               </div>
 
               {/* DIVIDER div property details */}
@@ -71,13 +93,6 @@ export default function LeavePropertyBody() {
           </li>
         ))}
       </ul>
-    );
-  }
-  if (statusOccupiedPropertyNumber === "pending") {
-    return (
-      <LoadingWrapperCenter>
-        <LoadingSpinner />
-      </LoadingWrapperCenter>
     );
   }
   // JSX
