@@ -163,7 +163,7 @@ export const getAllOccupiedRoomNumbers = async () => {
   try {
     // 1 : make a fetch call
     const response = await fetch(
-      "https://ibtqqypbjddszazggxmp.supabase.co/rest/v1/rooms?select=room_number,renter_id&status=eq.occupied&id=gte.1001&id=lte.1010&order=id.asc",
+      "https://ibtqqypbjddszazggxmp.supabase.co/rest/v1/rooms?select=room_number,renter_id,image&status=eq.occupied&id=gte.1001&id=lte.1010&order=id.asc",
       {
         method: "GET",
         headers: {
