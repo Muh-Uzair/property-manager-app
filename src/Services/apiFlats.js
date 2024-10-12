@@ -206,7 +206,7 @@ export const getAllOccupiedFlatNumbers = async () => {
   try {
     // 1 : receive the response
     const res = await fetch(
-      "https://ibtqqypbjddszazggxmp.supabase.co/rest/v1/flats?select=flat_number,renter_id&status=eq.occupied&id=gte.3001&id=lte.3016&order=id.asc",
+      "https://ibtqqypbjddszazggxmp.supabase.co/rest/v1/flats?select=flat_number,renter_id,image&status=eq.occupied&id=gte.3001&id=lte.3016&order=id.asc",
       {
         method: "GET",
         headers: {
