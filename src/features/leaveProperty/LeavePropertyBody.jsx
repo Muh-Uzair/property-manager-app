@@ -39,9 +39,9 @@ export default function LeavePropertyBody() {
     return (
       <ul
         style={{
-          height: `calc(${screenHeight}px - 90px)`, // Inline style with dynamic calculation
+          height: `calc(${screenHeight}px - 90px)`,
         }}
-        className="overflow-y-auto px-[10px]"
+        className="overflow-y-auto bg-red-300 px-[10px] pb-[10px] smallTab:px-[20px] smallTab:pb-[50px]"
       >
         {dataOccupiedPropertyNumber.map((val, i) => (
           <LeavePropertyCard

@@ -19,7 +19,7 @@ export default function LeavePropertyCard({
   return (
     <li
       key={i}
-      className="mb-[10px] grid h-[300px] w-[100%] grid-rows-[65%_1fr] gap-[5px] rounded-[8px] border-[1px] border-brand-color-500 bg-brand-color-200 p-[8px]"
+      className="mobileL:h-[350px] mb-[10px] grid h-[300px] grid-rows-[65%_1fr] gap-[5px] rounded-[8px] border-[1px] border-brand-color-500 bg-brand-color-200 p-[8px] smallTab:h-[430px]"
     >
       {/* DIVIDER image div */}
       <div className="rounded-[8px] border border-gray-300 bg-gray-100">
