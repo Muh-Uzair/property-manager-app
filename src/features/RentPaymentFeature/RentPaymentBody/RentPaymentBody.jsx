@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { MdArrowDropDown } from "react-icons/md";
+import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 
 import LoadingSpinner from "../../../ui/LoadingSpinner";
 import RentPayAccordionHeader from "./RentPayAccordionHeader";
 import RentPayAccordionBody from "./RentPayAccordionBody";
 import LoadingWrapperCenter from "../../../ui/LoadingWrapperCenter";
-
 import { useGetAllOccupiedProperty } from "./useGetAllOccupiedProperty";
 import { brandColor500 } from "../../../styles/globalStyles";
-import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import { useGetScreenHeight } from "./useGetScreenHeight";
 
 // COMPONENT START

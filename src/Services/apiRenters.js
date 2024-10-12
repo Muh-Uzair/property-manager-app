@@ -161,9 +161,12 @@ export const uploadTenantEditDetails = async (editFormData, tenantId) => {
 };
 
 // FUNCTION
-// export const getOccupiedTenantNames = async (propertyType) => {
-//   try {
-//   } catch (error) {
-//     throw new Error("");
-//   }
-// };
+export const getOccupiedTenantNames = async () => {
+  const { data, error } = await supabase
+    .from("renters")
+    .select("name, rent_property");
+
+  if (error) throw new Error(`Unable to fetch renter names: ${error.message}`);
+
+  return data;
+};
