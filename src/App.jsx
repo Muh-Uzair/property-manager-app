@@ -23,7 +23,7 @@ import RentPaymentPG from "./Pages/RentPaymentPG";
 import LeavePropertyPG from "./Pages/LeavePropertyPG";
 import LeaveProperty from "./features/leaveProperty/LeaveProperty";
 
-// leaveProperty responsive all screen
+// leaving property almost working
 
 const router = createBrowserRouter(
   createRoutesFromElements(
