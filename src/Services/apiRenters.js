@@ -164,7 +164,7 @@ export const uploadTenantEditDetails = async (editFormData, tenantId) => {
 export const getOccupiedTenantNames = async () => {
   try {
     const response = await fetch(
-      "https://ibtqqypbjddszazggxmp.supabase.co/rest/v1/renters?select=name,rent_property",
+      "https://ibtqqypbjddszazggxmp.supabase.co/rest/v1/renters?select=id,name,rent_property",
       {
         method: "GET",
         headers: {

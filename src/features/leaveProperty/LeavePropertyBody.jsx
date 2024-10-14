@@ -4,6 +4,7 @@ import { useGetPropertyType } from "../../hooks/useGetPropertyType";
 import { useGetScreenHeight } from "../RentPaymentFeature/RentPaymentBody/useGetScreenHeight";
 import { useGetOccupiedPropertyNumber } from "./useGetOccupiedPropertyNumber";
 import LeavePropertyCard from "./LeavePropertyCard";
+import { useLeaveProperty } from "./useLeaveProperty";
 
 // COMPONENT START
 export default function LeavePropertyBody() {
@@ -17,10 +18,12 @@ export default function LeavePropertyBody() {
     dataOccupiedTenantNames = [],
     statusOccupiedTenantNames,
   } = useGetOccupiedPropertyNumber();
+  const { mutateLeaveProperty, statusLeaveProperty } = useLeaveProperty();
 
   // FUNCTION
-  function emptyButtonClicked() {
-    console.log("empty button clicked");
+  function emptyButtonClicked(propertyId) {
+    console.log(propertyId);
+    mutateLeaveProperty(propertyId);
   }
 
   // JSX
@@ -52,6 +55,7 @@ export default function LeavePropertyBody() {
             dataOccupiedTenantNames={dataOccupiedTenantNames}
             statusOccupiedTenantNames={statusOccupiedTenantNames}
             emptyButtonClicked={emptyButtonClicked}
+            statusLeaveProperty={statusLeaveProperty}
           />
         ))}
       </ul>

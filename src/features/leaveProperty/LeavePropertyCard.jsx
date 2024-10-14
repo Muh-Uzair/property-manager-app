@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { Skeleton } from "@/components/ui/skeleton";
 import Button from "../../ui/Button";
+import LoadingSpinner from "@/ui/LoadingSpinner";
 
 // COMPONENT START
 export default function LeavePropertyCard({
@@ -10,6 +11,7 @@ export default function LeavePropertyCard({
   dataOccupiedTenantNames,
   statusOccupiedTenantNames,
   emptyButtonClicked,
+  statusLeaveProperty,
 }) {
   // VARIABLES
 
@@ -19,7 +21,7 @@ export default function LeavePropertyCard({
   return (
     <li
       key={i}
-      className="mobileL:h-[350px] mb-[10px] grid h-[300px] grid-rows-[65%_1fr] gap-[5px] rounded-[8px] border-[1px] border-brand-color-500 bg-brand-color-200 p-[8px] smallTab:h-[430px]"
+      className="mb-[10px] grid h-[300px] grid-rows-[65%_1fr] gap-[5px] rounded-[8px] border-[1px] border-brand-color-500 bg-brand-color-200 p-[8px] mobileL:h-[350px] smallTab:h-[430px]"
     >
       {/* DIVIDER image div */}
       <div className="rounded-[8px] border border-gray-300 bg-gray-100">
@@ -56,8 +58,14 @@ export default function LeavePropertyCard({
 
         {/* DIVIDER div property details */}
         <div className="flex items-center justify-end">
-          <Button onClick={emptyButtonClicked} type="red">
-            Empty
+          <Button onClick={() => emptyButtonClicked(val?.id)} type="red">
+            {statusLeaveProperty === "pending" ? (
+              <>
+                <LoadingSpinner size={20} />
+              </>
+            ) : (
+              <>Empty</>
+            )}
           </Button>
         </div>
       </div>
@@ -74,6 +82,7 @@ LeavePropertyCard.propTypes = {
   dataOccupiedTenantNames: PropTypes.array,
   statusOccupiedTenantNames: PropTypes.string,
   emptyButtonClicked: PropTypes.func,
+  statusLeaveProperty: PropTypes.string,
 };
 //size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 // COMPONENT END
