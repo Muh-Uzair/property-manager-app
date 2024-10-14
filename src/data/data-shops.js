@@ -1,8 +1,8 @@
 const shopImageURL =
-  "https://ibtqqypbjddszazggxmp.supabase.co/storage/v1/object/sign/flats-images/cabin-001.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJmbGF0cy1pbWFnZXMvY2FiaW4tMDAxLmpwZyIsImlhdCI6MTcyMzExNjIwNSwiZXhwIjoxNzU0NjUyMjA1fQ.r-MfHOUgsIIzT888CG-Nb1ekoO7eg-l35AO_nxe_0FU&t=2024-08-08T11%3A23%3A25.434Z";
+  "https://ibtqqypbjddszazggxmp.supabase.co/storage/v1/object/public/flatsImages/flatsImg2.jfif";
 
 const shopImageURL2 =
-  "https://ibtqqypbjddszazggxmp.supabase.co/storage/v1/object/sign/flats-images/cabin-004.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJmbGF0cy1pbWFnZXMvY2FiaW4tMDA0LmpwZyIsImlhdCI6MTcyMzE4MTc5MCwiZXhwIjoxNzU0NzE3NzkwfQ.ENO6IFcBqO9zLlFf4anxh8ljjcRrfq7rPo3v-NS-hZc&t=2024-08-09T05%3A36%3A31.415Z";
+  "https://ibtqqypbjddszazggxmp.supabase.co/storage/v1/object/public/flatsImages/flatsImg2.jfif";
 
 export const shopsDataArr = [
   {
