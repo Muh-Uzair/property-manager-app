@@ -1,4 +1,4 @@
-import supabase from "../../supabase";
+import supabase, { supabaseKey } from "../../supabase";
 import { supabaseUrl } from "../../supabase";
 
 // FUNCTION
@@ -162,11 +162,22 @@ export const uploadTenantEditDetails = async (editFormData, tenantId) => {
 
 // FUNCTION
 export const getOccupiedTenantNames = async () => {
-  const { data, error } = await supabase
-    .from("renters")
-    .select("name, rent_property");
+  try {
+    const response = await fetch(
+      "https://ibtqqypbjddszazggxmp.supabase.co/rest/v1/renters?select=name,rent_property",
+      {
+        method: "GET",
+        headers: {
+          apikey: supabaseKey,
+          Authorization: `Bearer ${supabaseKey}`,
+        },
+      },
+    );
 
-  if (error) throw new Error(`Unable to fetch renter names: ${error.message}`);
+    const data = await response.json();
 
-  return data;
+    return data;
+  } catch (error) {
+    throw new Error(`Unable to fetch renter names: ${error.message}`);
+  }
 };
