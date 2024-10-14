@@ -1,28 +1,35 @@
 import { useGetPropertyType } from "@/hooks/useGetPropertyType";
 import { apiLeaveFlat } from "@/Services/apiFlats";
-import { useMutation } from "@tanstack/react-query";
+import { apiLeaveRoom } from "@/Services/apiRooms";
+import { apiLeaveShop } from "@/Services/apiShops";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export function useLeaveProperty() {
   const propertyType = useGetPropertyType();
+  const queryClient = useQueryClient();
+  const navigate = useNavigate();
 
   const { mutate: mutateLeaveProperty, status: statusLeaveProperty } =
     useMutation({
       mutationFn: async (propertyId) => {
         if (propertyType === "flats") {
-          return apiLeaveFlat(propertyId);
+          await apiLeaveFlat(propertyId);
         }
         if (propertyType === "rooms") {
-          console.log("hello rooms");
+          await apiLeaveRoom(propertyId);
         }
         if (propertyType === "shops") {
-          console.log("hello shops");
+          await apiLeaveShop(propertyId);
         }
       },
       onSuccess: () => {
         toast.success(
           `${propertyType.at(0).toUpperCase()}${propertyType.slice(1, 3)} successfully empty`,
         );
+        queryClient.clear();
+        navigate(`/propertyDetails/${propertyType}`);
       },
       onError: () => {
         toast.error(`Unable to leave ${propertyType}`);

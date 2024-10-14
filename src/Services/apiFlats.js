@@ -229,13 +229,11 @@ export const getAllOccupiedFlatNumbers = async () => {
 
 // FUNCTION
 export const apiLeaveFlat = async (flatId) => {
-  console.log(`apiLeaveFlat ${flatId}`);
   const { error } = await supabase
     .from("flats")
     .update({ status: "unoccupied", renter_id: null })
     .eq("id", flatId)
     .select();
 
-  if (error)
-    throw new Error(`Unable to leave flats ${flatId} ${error.message}`);
+  if (error) throw new Error(`Unable to leave flat ${flatId} ${error.message}`);
 };

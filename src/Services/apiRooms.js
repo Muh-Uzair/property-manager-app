@@ -182,3 +182,14 @@ export const getAllOccupiedRoomNumbers = async () => {
     throw new Error(`Unable to fetch occupied room number ${error.message}`);
   }
 };
+
+// FUNCTION
+export const apiLeaveRoom = async (roomId) => {
+  const { error } = await supabase
+    .from("rooms")
+    .update({ status: "unoccupied", renter_id: null })
+    .eq("id", roomId)
+    .select();
+
+  if (error) throw new Error(`Unable to leave room ${roomId} ${error.message}`);
+};

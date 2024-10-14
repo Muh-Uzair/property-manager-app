@@ -179,3 +179,14 @@ export const getAllOccupiedShopNumbers = async () => {
     throw new Error(`Unable to fetch occupied shop numbers ${error.message}`);
   }
 };
+
+// FUNCTION
+export const apiLeaveShop = async (shopId) => {
+  const { error } = await supabase
+    .from("shops")
+    .update({ status: "unoccupied", renter_id: null })
+    .eq("id", shopId)
+    .select();
+
+  if (error) throw new Error(`Unable to leave shop ${shopId} ${error.message}`);
+};
