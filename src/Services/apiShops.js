@@ -1,4 +1,4 @@
-import supabase, { supabaseKey } from "../../supabase";
+import supabase, { supabaseKey, supabaseUrl } from "../../supabase";
 import { monthsArr } from "../utils/constants";
 
 // FUNCTION
@@ -189,4 +189,38 @@ export const apiLeaveShop = async (shopId) => {
     .select();
 
   if (error) throw new Error(`Unable to leave shop ${shopId} ${error.message}`);
+};
+
+//FUNCTION
+export const apiGetShopDataOnTenantId = async (tenantId) => {
+  try {
+    // 1 : fetching
+    const response = await fetch(
+      `${supabaseUrl}/rest/v1/shops?renter_id=eq.${tenantId}&select=*`,
+      {
+        method: "GET",
+        headers: {
+          apikey: supabaseKey,
+          Authorization: `Bearer ${supabaseKey}`,
+        },
+      },
+    );
+
+    // 2 : if error than throw it
+    if (!response.ok) {
+      const errorMessage = await response.text();
+      throw new Error(
+        `Unable to get shop data on tenant id ${response.status} Error message => ${errorMessage}`,
+      );
+    }
+
+    // 3 : parse the json received
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    throw new Error(
+      `Unable to get shop data on tenant id Error message => ${error.message}`,
+    );
+  }
 };

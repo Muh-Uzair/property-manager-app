@@ -5,6 +5,7 @@ import { useGetPropertyType } from "../../hooks/useGetPropertyType";
 import { useGetScreenHeight } from "../RentPaymentFeature/RentPaymentBody/useGetScreenHeight";
 import { useGetOccupiedPropertyNumber } from "./useGetOccupiedPropertyNumber";
 import { useLeaveProperty } from "./useLeaveProperty";
+import { useState } from "react";
 
 // COMPONENT START
 export default function LeavePropertyBody() {
@@ -19,21 +20,16 @@ export default function LeavePropertyBody() {
     statusOccupiedTenantNames,
   } = useGetOccupiedPropertyNumber();
   const { mutateLeaveProperty, statusLeaveProperty } = useLeaveProperty();
+  const [clickedPropertyId, setClickedPropertyId] = useState(null);
 
   // FUNCTION
   function emptyButtonClicked(val) {
+    console.log(val);
+    setClickedPropertyId(val?.id);
     mutateLeaveProperty({ propertyId: val?.id, tenantId: val?.renter_id });
   }
 
   // JSX
-  if (statusOccupiedPropertyNumber === "pending") {
-    return (
-      <LoadingWrapperCenter>
-        <LoadingSpinner />
-      </LoadingWrapperCenter>
-    );
-  }
-
   if (
     statusOccupiedPropertyNumber === "success" &&
     dataOccupiedPropertyNumber?.length > 0
@@ -55,11 +51,20 @@ export default function LeavePropertyBody() {
             statusOccupiedTenantNames={statusOccupiedTenantNames}
             emptyButtonClicked={emptyButtonClicked}
             statusLeaveProperty={statusLeaveProperty}
+            clickedPropertyId={clickedPropertyId}
           />
         ))}
       </ul>
     );
   }
+  if (statusOccupiedPropertyNumber === "pending") {
+    return (
+      <LoadingWrapperCenter>
+        <LoadingSpinner />
+      </LoadingWrapperCenter>
+    );
+  }
+
   // JSX
 }
 // COMPONENT END

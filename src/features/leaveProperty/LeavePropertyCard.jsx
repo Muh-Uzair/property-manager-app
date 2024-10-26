@@ -12,6 +12,7 @@ export default function LeavePropertyCard({
   statusOccupiedTenantNames,
   emptyButtonClicked,
   statusLeaveProperty,
+  clickedPropertyId,
 }) {
   // VARIABLES
 
@@ -56,10 +57,18 @@ export default function LeavePropertyCard({
           )}
         </div>
 
-        {/* DIVIDER div property details */}
+        {/* DIVIDER empty buttons */}
         <div className="flex items-center justify-end">
           <Button onClick={() => emptyButtonClicked(val)} type="red">
-            {statusLeaveProperty === "pending" ? <>Removing...</> : <>Empty</>}
+            {statusLeaveProperty === "pending" ? (
+              val?.id === clickedPropertyId ? (
+                <>Removing...</>
+              ) : (
+                <>Empty</>
+              )
+            ) : (
+              <>Empty</>
+            )}
           </Button>
         </div>
       </div>
@@ -77,6 +86,6 @@ LeavePropertyCard.propTypes = {
   statusOccupiedTenantNames: PropTypes.string,
   emptyButtonClicked: PropTypes.func,
   statusLeaveProperty: PropTypes.string,
+  clickedPropertyId: PropTypes.number,
 };
-//size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 // COMPONENT END
