@@ -1,5 +1,6 @@
 import { useGetPropertyType } from "@/hooks/useGetPropertyType";
 import { apiLeaveFlat } from "@/Services/apiFlats";
+import { removeTenant } from "@/Services/apiRenters";
 import { apiLeaveRoom } from "@/Services/apiRooms";
 import { apiLeaveShop } from "@/Services/apiShops";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -13,7 +14,7 @@ export function useLeaveProperty() {
 
   const { mutate: mutateLeaveProperty, status: statusLeaveProperty } =
     useMutation({
-      mutationFn: async (propertyId) => {
+      mutationFn: async ({ propertyId, tenantId }) => {
         if (propertyType === "flats") {
           await apiLeaveFlat(propertyId);
         }
@@ -23,6 +24,8 @@ export function useLeaveProperty() {
         if (propertyType === "shops") {
           await apiLeaveShop(propertyId);
         }
+
+        await removeTenant(tenantId);
       },
       onSuccess: () => {
         toast.success(

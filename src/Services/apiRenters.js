@@ -181,3 +181,32 @@ export const getOccupiedTenantNames = async () => {
     throw new Error(`Unable to fetch renter names: ${error.message}`);
   }
 };
+
+// FUNCTION
+export const removeTenant = async (tenantId) => {
+  try {
+    const response = await fetch(
+      `${supabaseUrl}/rest/v1/renters?id=eq.${tenantId}`,
+      {
+        method: "DELETE",
+        headers: {
+          apikey: supabaseKey,
+          Authorization: `Bearer ${supabaseKey}`,
+        },
+      },
+    );
+
+    if (!response.ok) {
+      const errorMessage = await response.text();
+      throw new Error(
+        `Unable to remove tenant: ${response.status} - ${errorMessage}`,
+      );
+    }
+
+    if (response.ok) return true;
+  } catch (error) {
+    throw new Error(
+      `Unable to remove tenant Error message -> ${error.message}`,
+    );
+  }
+};
