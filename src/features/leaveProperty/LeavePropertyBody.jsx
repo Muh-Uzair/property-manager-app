@@ -1,9 +1,9 @@
 import LoadingSpinner from "../../ui/LoadingSpinner";
 import LoadingWrapperCenter from "../../ui/LoadingWrapperCenter";
+import LeavePropertyCard from "./LeavePropertyCard";
 import { useGetPropertyType } from "../../hooks/useGetPropertyType";
 import { useGetScreenHeight } from "../RentPaymentFeature/RentPaymentBody/useGetScreenHeight";
 import { useGetOccupiedPropertyNumber } from "./useGetOccupiedPropertyNumber";
-import LeavePropertyCard from "./LeavePropertyCard";
 import { useLeaveProperty } from "./useLeaveProperty";
 
 // COMPONENT START
@@ -21,9 +21,8 @@ export default function LeavePropertyBody() {
   const { mutateLeaveProperty, statusLeaveProperty } = useLeaveProperty();
 
   // FUNCTION
-  function emptyButtonClicked(propertyId) {
-    console.log(propertyId);
-    mutateLeaveProperty(propertyId);
+  function emptyButtonClicked(val) {
+    mutateLeaveProperty({ propertyId: val?.id, tenantId: val?.renter_id });
   }
 
   // JSX

@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { Skeleton } from "@/components/ui/skeleton";
+
 import Button from "../../ui/Button";
-import LoadingSpinner from "@/ui/LoadingSpinner";
 
 // COMPONENT START
 export default function LeavePropertyCard({
@@ -58,14 +58,8 @@ export default function LeavePropertyCard({
 
         {/* DIVIDER div property details */}
         <div className="flex items-center justify-end">
-          <Button onClick={() => emptyButtonClicked(val?.id)} type="red">
-            {statusLeaveProperty === "pending" ? (
-              <>
-                <LoadingSpinner size={20} />
-              </>
-            ) : (
-              <>Empty</>
-            )}
+          <Button onClick={() => emptyButtonClicked(val)} type="red">
+            {statusLeaveProperty === "pending" ? <>Removing...</> : <>Empty</>}
           </Button>
         </div>
       </div>
