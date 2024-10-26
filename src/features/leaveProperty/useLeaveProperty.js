@@ -1,13 +1,14 @@
 import { useGetPropertyType } from "@/hooks/useGetPropertyType";
-import { apiLeaveFlat } from "@/Services/apiFlats";
+import { apiGetFlatDataOnTenantId, apiLeaveFlat } from "@/Services/apiFlats";
 import { removeTenant } from "@/Services/apiRenters";
-import { apiLeaveRoom } from "@/Services/apiRooms";
-import { apiLeaveShop } from "@/Services/apiShops";
+import { apiGetRoomDataOnTenantId, apiLeaveRoom } from "@/Services/apiRooms";
+import { apiGetShopDataOnTenantId, apiLeaveShop } from "@/Services/apiShops";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 export function useLeaveProperty() {
+  // VARIABLES
   const propertyType = useGetPropertyType();
   const queryClient = useQueryClient();
   const navigate = useNavigate();
@@ -15,6 +16,16 @@ export function useLeaveProperty() {
   const { mutate: mutateLeaveProperty, status: statusLeaveProperty } =
     useMutation({
       mutationFn: async ({ propertyId, tenantId }) => {
+        let haveOtherProperties = false;
+
+        const flatDataOnTenantId = await apiGetFlatDataOnTenantId(tenantId);
+        const roomDataOnTenantId = await apiGetRoomDataOnTenantId(tenantId);
+        const shopDataOnTenantId = await apiGetShopDataOnTenantId(tenantId);
+
+        console.log(flatDataOnTenantId);
+        console.log(roomDataOnTenantId);
+        console.log(shopDataOnTenantId);
+
         if (propertyType === "flats") {
           await apiLeaveFlat(propertyId);
         }
@@ -25,7 +36,9 @@ export function useLeaveProperty() {
           await apiLeaveShop(propertyId);
         }
 
-        await removeTenant(tenantId);
+        if (haveOtherProperties) {
+          await removeTenant(tenantId);
+        }
       },
       onSuccess: () => {
         toast.success(
