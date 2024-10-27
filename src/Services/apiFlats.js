@@ -261,8 +261,6 @@ export const apiGetFlatDataOnTenantId = async (tenantId) => {
       );
     }
 
-    console.log(response);
-
     // 3 : parse the json received
     const data = await response.json();
 

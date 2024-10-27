@@ -24,7 +24,6 @@ export default function LeavePropertyBody() {
 
   // FUNCTION
   function emptyButtonClicked(val) {
-    console.log(val);
     setClickedPropertyId(val?.id);
     mutateLeaveProperty({ propertyId: val?.id, tenantId: val?.renter_id });
   }
