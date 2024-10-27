@@ -22,10 +22,6 @@ export function useLeaveProperty() {
         const roomDataOnTenantId = await apiGetRoomDataOnTenantId(tenantId);
         const shopDataOnTenantId = await apiGetShopDataOnTenantId(tenantId);
 
-        console.log(flatDataOnTenantId);
-        console.log(roomDataOnTenantId);
-        console.log(shopDataOnTenantId);
-
         if (propertyType === "flats") {
           await apiLeaveFlat(propertyId);
         }
@@ -38,6 +34,36 @@ export function useLeaveProperty() {
 
         if (haveOtherProperties) {
           await removeTenant(tenantId);
+        }
+
+        if (propertyType === "flats") {
+          if (
+            flatDataOnTenantId?.length === 1 &&
+            roomDataOnTenantId?.length === 0 &&
+            shopDataOnTenantId?.length === 0
+          ) {
+            await removeTenant(tenantId);
+          }
+        }
+
+        if (propertyType === "rooms") {
+          if (
+            flatDataOnTenantId?.length === 0 &&
+            roomDataOnTenantId?.length === 1 &&
+            shopDataOnTenantId?.length === 0
+          ) {
+            await removeTenant(tenantId);
+          }
+        }
+
+        if (propertyType === "shops") {
+          if (
+            flatDataOnTenantId?.length === 0 &&
+            roomDataOnTenantId?.length === 0 &&
+            shopDataOnTenantId?.length === 1
+          ) {
+            await removeTenant(tenantId);
+          }
         }
       },
       onSuccess: () => {
