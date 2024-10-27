@@ -23,7 +23,7 @@ import RentPaymentPG from "./Pages/RentPaymentPG";
 import LeavePropertyPG from "./Pages/LeavePropertyPG";
 import LeaveProperty from "./features/leaveProperty/LeaveProperty";
 
-// leaving property almost working
+// leaving property feature complete
 
 const router = createBrowserRouter(
   createRoutesFromElements(
