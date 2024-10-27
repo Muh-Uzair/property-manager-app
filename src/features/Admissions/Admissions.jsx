@@ -5,7 +5,7 @@ export default function Admissions() {
   // FUNCTIONS
 
   // JSX
-  return <div>Admissions</div>;
+  return <div>Admissions Page</div>;
   // JSX
 }
 // COMPONENT END
