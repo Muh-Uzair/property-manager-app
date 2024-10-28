@@ -227,3 +227,36 @@ export const apiGetRoomDataOnTenantId = async (tenantId) => {
     );
   }
 };
+
+// FUNCTION
+export const apiGetAllUnoccupiedRooms = async () => {
+  try {
+    const response = await fetch(
+      `${supabaseUrl}/rest/v1/rooms?status=eq.unoccupied&id=gte.1001&id=lte.1010&order=id.asc&select=*`,
+      {
+        method: "GET",
+        headers: {
+          apikey: supabaseKey,
+          Authorization: `Bearer ${supabaseKey}`,
+        },
+      },
+    );
+
+    if (!response.ok) {
+      const errorMessage = await response.text();
+      throw new Error(
+        `Unable to fetch all unoccupied rooms Error => ${errorMessage}`,
+      );
+    }
+
+    const responseText = await response.text();
+
+    const data = JSON.parse(responseText);
+
+    return data;
+  } catch (error) {
+    throw new Error(
+      `Unable to fetch all unoccupied rooms Error => ${error.message}`,
+    );
+  }
+};

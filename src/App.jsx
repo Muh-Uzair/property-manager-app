@@ -22,6 +22,7 @@ import PropertyEdit from "./features/ShowPropertyDetails/PropertyEdit/PropertyEd
 import RentPaymentPG from "./Pages/RentPaymentPG";
 import LeavePropertyPG from "./Pages/LeavePropertyPG";
 import LeaveProperty from "./features/leaveProperty/LeaveProperty";
+import Admissions from "./features/Admissions/Admissions";
 
 // leaving property feature complete
 
@@ -56,7 +57,9 @@ const router = createBrowserRouter(
           {/* DIVIDER */}
           <Route path="expenses" element={<ExpensesPG />} />
           {/* DIVIDER */}
-          <Route path="admissions" element={<AdmissionsPG />} />
+          <Route path="admissions" element={<AdmissionsPG />}>
+            <Route path=":propertyType" element={<Admissions />} />
+          </Route>
           {/* DIVIDER */}
           <Route path="/leaveProperty" element={<LeavePropertyPG />}>
             <Route path=":propertyType" element={<LeaveProperty />} />

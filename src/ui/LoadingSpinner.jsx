@@ -7,7 +7,7 @@ import { brandColor500 } from "../styles/globalStyles";
 // COMPONENT START
 export default function LoadingSpinner({
   disableShrink = false,
-  size = 35,
+  size = 30,
   thickness = 4,
   progressColor = "",
 }) {
