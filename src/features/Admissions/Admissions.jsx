@@ -1,3 +1,6 @@
+import AdmissionsBody from "./AdmissionsBody";
+import AdmissionsHeader from "./AdmissionsHeader";
+
 // COMPONENT START
 export default function Admissions() {
   // VARIABLES
@@ -5,7 +8,12 @@ export default function Admissions() {
   // FUNCTIONS
 
   // JSX
-  return <div>Admissions Page</div>;
+  return (
+    <div className="gap-[10px]s grid h-full grid-rows-[auto_1fr]">
+      <AdmissionsHeader />
+      <AdmissionsBody />
+    </div>
+  );
   // JSX
 }
 // COMPONENT END

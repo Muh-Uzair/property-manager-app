@@ -224,3 +224,36 @@ export const apiGetShopDataOnTenantId = async (tenantId) => {
     );
   }
 };
+
+// FUNCTION
+export const apiGetAllUnoccupiedShops = async () => {
+  try {
+    const response = await fetch(
+      `${supabaseUrl}/rest/v1/shops?status=eq.unoccupied&id=gte.2001&id=lte.2020&order=id.asc&select=*`,
+      {
+        method: "GET",
+        headers: {
+          apikey: supabaseKey,
+          Authorization: `Bearer ${supabaseKey}`,
+        },
+      },
+    );
+
+    if (!response.ok) {
+      const errorMessage = await response.text();
+      throw new Error(
+        `Unable to fetch all unoccupied shops Error => ${errorMessage}`,
+      );
+    }
+
+    const responseText = await response.text();
+
+    const data = JSON.parse(responseText);
+
+    return data;
+  } catch (error) {
+    throw new Error(
+      `Unable to fetch all unoccupied shops Error => ${error.message}`,
+    );
+  }
+};

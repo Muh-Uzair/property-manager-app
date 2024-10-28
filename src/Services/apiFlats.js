@@ -271,3 +271,36 @@ export const apiGetFlatDataOnTenantId = async (tenantId) => {
     );
   }
 };
+
+// FUNCTION
+export const apiGetAllUnoccupiedFlats = async () => {
+  try {
+    const response = await fetch(
+      `${supabaseUrl}/rest/v1/flats?status=eq.unoccupied&id=gte.3001&id=lte.3016&order=id.asc&select=*`,
+      {
+        method: "GET",
+        headers: {
+          apikey: supabaseKey,
+          Authorization: `Bearer ${supabaseKey}`,
+        },
+      },
+    );
+
+    if (!response.ok) {
+      const errorMessage = await response.text();
+      throw new Error(
+        `Unable to fetch all unoccupied flats Error => ${errorMessage}`,
+      );
+    }
+
+    const responseText = await response.text();
+
+    const data = JSON.parse(responseText);
+
+    return data;
+  } catch (error) {
+    throw new Error(
+      `Unable to fetch all unoccupied flats Error => ${error.message}`,
+    );
+  }
+};
