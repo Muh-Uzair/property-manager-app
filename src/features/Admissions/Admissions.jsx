@@ -9,7 +9,7 @@ export default function Admissions() {
 
   // JSX
   return (
-    <div className="gap-[10px]s grid h-full grid-rows-[auto_1fr]">
+    <div className="gap-[10px]s grid h-full grid-rows-[auto_1fr] gap-[10px]">
       <AdmissionsHeader />
       <AdmissionsBody />
     </div>

@@ -1,12 +1,15 @@
 import LoadingWrapperCenter from "@/ui/LoadingWrapperCenter";
 import LoadingSpinner from "@/ui/LoadingSpinner";
 import { useGetAllUnoccupiedProperty } from "./useGetAllUnoccupiedProperty";
+import { useGetPropertyType } from "@/hooks/useGetPropertyType";
 
 // COMPONENT START
 export default function AdmissionsBody() {
   // VARIABLES
   const { dataAllUnoccupiedProperty, statusAllUnoccupiedProperty } =
     useGetAllUnoccupiedProperty();
+  const propertyType = useGetPropertyType();
+  console.log(propertyType);
 
   if (statusAllUnoccupiedProperty === "success") {
     console.log(dataAllUnoccupiedProperty);
@@ -17,7 +20,7 @@ export default function AdmissionsBody() {
   // JSX
 
   if (statusAllUnoccupiedProperty === "success") {
-    return <div>component admissions body</div>;
+    return <>Leave property body</>;
   }
 
   if (statusAllUnoccupiedProperty === "pending") {
