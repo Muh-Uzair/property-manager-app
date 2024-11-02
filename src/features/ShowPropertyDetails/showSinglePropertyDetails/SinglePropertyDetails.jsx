@@ -8,7 +8,7 @@ import TenantDetails from "./tenantDetails/TenantDetails";
 import LoadingSpinner from "../../../ui/LoadingSpinner";
 
 import { useGetSinglePropertyDetails } from "./useGetSinglePropertyDetails";
-import { useGetScreenHeight } from "../../RentPaymentFeature/RentPaymentBody/useGetScreenHeight";
+import { useGetScreenHeight } from "../../../hooks/useGetScreenHeight";
 
 export const ContextSingleProperty = createContext();
 

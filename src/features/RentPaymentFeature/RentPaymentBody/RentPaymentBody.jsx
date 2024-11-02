@@ -8,7 +8,7 @@ import RentPayAccordionBody from "./RentPayAccordionBody";
 import LoadingWrapperCenter from "../../../ui/LoadingWrapperCenter";
 import { useGetAllOccupiedProperty } from "./useGetAllOccupiedProperty";
 import { brandColor500 } from "../../../styles/globalStyles";
-import { useGetScreenHeight } from "./useGetScreenHeight";
+import { useGetScreenHeight } from "../../../hooks/useGetScreenHeight";
 
 // COMPONENT START
 export default function RentPaymentBody() {
