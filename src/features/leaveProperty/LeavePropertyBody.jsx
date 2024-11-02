@@ -2,7 +2,7 @@ import LoadingSpinner from "../../ui/LoadingSpinner";
 import LoadingWrapperCenter from "../../ui/LoadingWrapperCenter";
 import LeavePropertyCard from "./LeavePropertyCard";
 import { useGetPropertyType } from "../../hooks/useGetPropertyType";
-import { useGetScreenHeight } from "../RentPaymentFeature/RentPaymentBody/useGetScreenHeight";
+import { useGetScreenHeight } from "../../hooks/useGetScreenHeight";
 import { useGetOccupiedPropertyNumber } from "./useGetOccupiedPropertyNumber";
 import { useLeaveProperty } from "./useLeaveProperty";
 import { useState } from "react";
