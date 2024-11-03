@@ -25,7 +25,7 @@ import LeaveProperty from "./features/leaveProperty/LeaveProperty";
 import Admissions from "./features/Admissions/Admissions";
 import SingleUnoccupiedPropertyDetails from "./features/Admissions/SingleUnoccupiedPropertyDetails";
 
-// leaving property feature complete
+// studied node js
 
 const router = createBrowserRouter(
   createRoutesFromElements(
