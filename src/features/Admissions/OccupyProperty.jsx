@@ -3,6 +3,11 @@ import { useGetSingleUnoccupiedPropertyData } from "./useGetSingleUnoccupiedProp
 import LoadingSpinner from "@/ui/LoadingSpinner";
 import UnoccupiedPropertyDetails from "./UnoccupiedPropertyDetails";
 import { useGetScreenHeight } from "@/hooks/useGetScreenHeight";
+import { useGetAllUnoccupiedProperty } from "./useGetAllUnoccupiedProperty";
+import { useParams } from "react-router-dom";
+import { FaBuilding, FaStore } from "react-icons/fa";
+import { MdBedroomChild } from "react-icons/md";
+import { useGetPropertyType } from "@/hooks/useGetPropertyType";
 
 const itemGap = "7px";
 
@@ -13,11 +18,23 @@ export default function OccupyProperty() {
     useGetSingleUnoccupiedPropertyData();
   dataSingleUnoccupied = dataSingleUnoccupied?.data?.[0];
   const screenHeight = useGetScreenHeight();
+  const { dataAllUnoccupiedProperty, statusAllUnoccupiedProperty } =
+    useGetAllUnoccupiedProperty();
+  const { propertyId } = useParams();
+  const propertyType = useGetPropertyType();
+
+  // FUNCTION
+  if (statusAllUnoccupiedProperty === "success") {
+    console.log(dataAllUnoccupiedProperty);
+  }
 
   // FUNCTIONS
 
   // JSX
-  if (statusSingleUnoccupied === "success") {
+  if (
+    statusSingleUnoccupied === "success" &&
+    statusAllUnoccupiedProperty === "success"
+  ) {
     return (
       <div
         style={{ height: `calc(${screenHeight}px - 60px)` }}
@@ -34,8 +51,32 @@ export default function OccupyProperty() {
               />
             </div>
 
-            <div className="rounded-[8px] bg-gray-200">
-              other unoccupied property
+            <div className="grid grid-cols-3 grid-rows-3 rounded-[8px] bg-gray-200 p-[20px]">
+              {dataAllUnoccupiedProperty.map(
+                (val, i) =>
+                  Number(val?.id) !== Number(propertyId) && (
+                    <div
+                      key={i}
+                      className="h-[70px] w-[180px] rounded-[8px] border border-brand-color-500 bg-brand-color-200"
+                    >
+                      {/* icon div */}
+                      <div>
+                        {propertyType === "flats" ? (
+                          <FaBuilding />
+                        ) : propertyType === "rooms" ? (
+                          <MdBedroomChild />
+                        ) : propertyType === "store" ? (
+                          <FaStore />
+                        ) : (
+                          ""
+                        )}
+                      </div>
+
+                      {/* details div */}
+                      <div></div>
+                    </div>
+                  ),
+              )}
             </div>
           </section>
 
@@ -60,7 +101,10 @@ export default function OccupyProperty() {
     );
   }
 
-  if (statusSingleUnoccupied === "pending") {
+  if (
+    statusSingleUnoccupied === "pending" &&
+    statusAllUnoccupiedProperty === "success"
+  ) {
     return (
       <LoadingWrapperCenter>
         <LoadingSpinner />
