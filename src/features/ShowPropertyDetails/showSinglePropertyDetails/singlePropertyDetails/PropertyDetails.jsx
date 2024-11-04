@@ -5,6 +5,7 @@ import Heading from "../../../../ui/Heading";
 import SinglePropertyDetailsItem from "./SinglePropertyDetailsItem";
 import { useContext } from "react";
 import { ContextSingleProperty } from "../SinglePropertyDetails";
+import PropertyDetailsCardFormat from "@/ui/PropertyDetailsCardFormat";
 
 const itemGap = "7px";
 
@@ -90,41 +91,10 @@ export default function PropertyDetails() {
         </div>
 
         {/* details div*/}
-        <div className={`grid grid-cols-2 gap-[${itemGap}]`}>
-          <SinglePropertyDetailsItem
-            itemHeading="Id No"
-            itemValue={dataSingleProperty?.id}
-          />
-
-          <SinglePropertyDetailsItem
-            itemHeading={`${propertyType.charAt(0).toLocaleUpperCase()}${propertyType.slice(1, propertyType.length - 1)} No`}
-            itemValue={
-              dataSingleProperty?.flat_number ||
-              dataSingleProperty?.room_number ||
-              dataSingleProperty?.shop_number
-            }
-          />
-
-          <SinglePropertyDetailsItem
-            itemHeading="Rent"
-            itemValue={dataSingleProperty?.rent}
-          />
-
-          <SinglePropertyDetailsItem
-            itemHeading="Floor"
-            itemValue={dataSingleProperty?.floor}
-          />
-
-          <SinglePropertyDetailsItem
-            itemHeading="Size"
-            itemValue={dataSingleProperty?.size}
-          />
-
-          <SinglePropertyDetailsItem
-            itemHeading="Status"
-            itemValue={dataSingleProperty?.status}
-          />
-        </div>
+        <PropertyDetailsCardFormat
+          propertyData={dataSingleProperty}
+          itemGap={itemGap}
+        />
       </div>
     </div>
   );
