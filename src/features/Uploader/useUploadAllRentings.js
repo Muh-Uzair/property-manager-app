@@ -9,7 +9,7 @@ export const useUploadAllRentings = () => {
     useMutation({
       mutationFn: uploadAllRentings,
       onError: (error) => {
-        console.log(error);
+        throw new error(`Unable to mutate all renting ${error}`);
       },
       onSuccess: () => {},
       onMutate: async () => {
