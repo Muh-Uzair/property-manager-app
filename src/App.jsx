@@ -23,7 +23,7 @@ import RentPaymentPG from "./Pages/RentPaymentPG";
 import LeavePropertyPG from "./Pages/LeavePropertyPG";
 import LeaveProperty from "./features/leaveProperty/LeaveProperty";
 import Admissions from "./features/Admissions/Admissions";
-import SingleUnoccupiedPropertyDetails from "./features/Admissions/SingleUnoccupiedPropertyDetails";
+import OccupyProperty from "./features/Admissions/OccupyProperty";
 
 // studied node js
 
@@ -63,7 +63,7 @@ const router = createBrowserRouter(
           <Route path="admissions/:propertyType" element={<Admissions />} />
           <Route
             path="admissions/:propertyType/:propertyId"
-            element={<SingleUnoccupiedPropertyDetails />}
+            element={<OccupyProperty />}
           />
           {/* DIVIDER */}
           <Route path="/leaveProperty" element={<LeavePropertyPG />}>
