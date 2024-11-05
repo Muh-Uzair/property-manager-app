@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import { FaBuilding, FaStore } from "react-icons/fa";
 import { MdBedroomChild } from "react-icons/md";
 import { useGetPropertyType } from "@/hooks/useGetPropertyType";
+import TenantAdmissionForm from "./TenantAdmissionForm";
 
 const itemGap = "7px";
 
@@ -22,11 +23,6 @@ export default function OccupyProperty() {
     useGetAllUnoccupiedProperty();
   const { propertyId } = useParams();
   const propertyType = useGetPropertyType();
-
-  // FUNCTION
-  if (statusAllUnoccupiedProperty === "success") {
-    console.log(dataAllUnoccupiedProperty);
-  }
 
   // FUNCTIONS
 
@@ -91,11 +87,11 @@ export default function OccupyProperty() {
           {/*  section property details */}
           <UnoccupiedPropertyDetails
             dataSingleUnoccupied={dataSingleUnoccupied}
-            itemGap={itemGap}
+            itemGap={"7px"}
           />
 
           {/* section property details */}
-          <section>Tenant info collection form</section>
+          <TenantAdmissionForm />
         </div>
       </div>
     );
