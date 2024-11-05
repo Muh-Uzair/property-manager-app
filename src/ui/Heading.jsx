@@ -7,7 +7,7 @@ const medium =
 
 // COMPONENT START
 export default function Heading({
-  type,
+  type = "primary",
   children,
   headingColor = "",
   uppercase,
