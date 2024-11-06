@@ -34,7 +34,7 @@ export default function OccupyProperty() {
     return (
       <div
         style={{ height: `calc(${screenHeight}px - 60px)` }}
-        className="overflow-y-auto overflow-x-hidden"
+        className="overflow-y-auto overflow-x-hidden pb-[30px]"
       >
         {/* DIVIDER  display for large screens */}
         <div className="hidden h-full grid-cols-[60%_1fr] gap-[20px] pb-[40px] pt-[20px] largeScreen:grid">
