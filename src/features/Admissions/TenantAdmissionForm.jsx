@@ -1,13 +1,15 @@
-import Heading from "@/ui/Heading";
 import { useForm } from "react-hook-form";
-import AdmissionFormRow from "./AdmissionFormRow";
 import { FloatingLabelInput } from "@/components/ui/FloatingLabelInput";
+
+import Heading from "@/ui/Heading";
+import AdmissionFormRow from "./AdmissionFormRow";
 import FormErrorDisplay from "@/ui/FormErrorDisplay";
+import HookFormSelect from "./HookFormSelect";
 
 // COMPONENT START
 export default function TenantAdmissionForm() {
   // VARIABLES
-  const { register, handleSubmit, formState } = useForm();
+  const { register, setValue, handleSubmit, formState } = useForm();
   const { errors } = formState;
 
   // FUNCTIONS
@@ -136,12 +138,15 @@ export default function TenantAdmissionForm() {
           </AdmissionFormRow>
 
           <AdmissionFormRow>
-            <FloatingLabelInput
+            <HookFormSelect
               id="nationality"
-              label="Nationality"
+              placeholder="Select a nationality"
               {...register("nationality", {
-                required: "Tenant nationality is required",
+                required: "Nationality is required",
               })}
+              onValueChange={(value) =>
+                setValue("nationality", value, { shouldValidate: true })
+              }
             />
             {errors.nationality && (
               <FormErrorDisplay>{`* ${errors.nationality.message}`}</FormErrorDisplay>
@@ -156,3 +161,34 @@ export default function TenantAdmissionForm() {
   // JSX
 }
 // COMPONENT END
+
+{
+  /* 
+          <AdmissionFormRow>
+            <Select
+              id="nationality"
+              {...register("nationality", {
+                required: "Nationality is required",
+              })} 
+              onValueChange={(value) =>
+                setValue("nationality", value, { shouldValidate: true })
+              } 
+            >
+              <SelectTrigger className="border border-gray-300">
+                <SelectValue placeholder="Select a nationality" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectLabel>{"Nationalities"}</SelectLabel>
+                  <SelectItem value="art">Argentina Time (ART)</SelectItem>
+                  <SelectItem value="bot">Bolivia Time (BOT)</SelectItem>
+                  <SelectItem value="brt">Brasilia Time (BRT)</SelectItem>
+                  <SelectItem value="clt">Chile Standard Time (CLT)</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+            {errors.nationality && (
+              <FormErrorDisplay>{`* ${errors.nationality.message}`}</FormErrorDisplay>
+            )}
+          </AdmissionFormRow> */
+}
