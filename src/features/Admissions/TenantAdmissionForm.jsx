@@ -161,34 +161,3 @@ export default function TenantAdmissionForm() {
   // JSX
 }
 // COMPONENT END
-
-{
-  /* 
-          <AdmissionFormRow>
-            <Select
-              id="nationality"
-              {...register("nationality", {
-                required: "Nationality is required",
-              })} 
-              onValueChange={(value) =>
-                setValue("nationality", value, { shouldValidate: true })
-              } 
-            >
-              <SelectTrigger className="border border-gray-300">
-                <SelectValue placeholder="Select a nationality" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectLabel>{"Nationalities"}</SelectLabel>
-                  <SelectItem value="art">Argentina Time (ART)</SelectItem>
-                  <SelectItem value="bot">Bolivia Time (BOT)</SelectItem>
-                  <SelectItem value="brt">Brasilia Time (BRT)</SelectItem>
-                  <SelectItem value="clt">Chile Standard Time (CLT)</SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-            {errors.nationality && (
-              <FormErrorDisplay>{`* ${errors.nationality.message}`}</FormErrorDisplay>
-            )}
-          </AdmissionFormRow> */
-}
