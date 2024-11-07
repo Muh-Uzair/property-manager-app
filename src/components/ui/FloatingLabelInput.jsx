@@ -28,7 +28,7 @@ FloatingInput.displayName = "FloatingInput";
 
 // COMPONENT START
 const labelCustomAddedStyles =
-  " peer-focus:text-brand-color-500 peer-focus:rounded-full peer-focus:border-brand-color-500 peer-focus:border-[0.5px]  peer-focus:bg-brand-color-100";
+  " peer-focus:text-brand-color-500 peer-focus:rounded-full font-[400]  peer-focus:border-brand-color-500 peer-focus:border-[0.5px]  peer-focus:bg-brand-color-100";
 const FloatingLabel = React.forwardRef(function FloatingLabel(
   { className, ...props },
   ref,
