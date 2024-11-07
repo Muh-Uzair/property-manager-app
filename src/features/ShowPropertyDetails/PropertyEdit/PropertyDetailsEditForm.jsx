@@ -1,6 +1,6 @@
-import { useGetPropertyType } from "../../../hooks/useGetPropertyType";
 import FormItem from "../../../ui/FormItem";
 import FormPortion from "../../../ui/FormPortion";
+import { useGetPropertyType } from "../../../hooks/useGetPropertyType";
 import { usePropertyEditContext } from "./usePropertyEditContext";
 
 const shopsValidationObj = {
