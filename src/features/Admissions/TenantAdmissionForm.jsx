@@ -1,18 +1,37 @@
+import Select from "react-select";
 import { useForm } from "react-hook-form";
 import { FloatingLabelInput } from "@/components/ui/FloatingLabelInput";
+import { useEffect, useState } from "react";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 import Heading from "@/ui/Heading";
 import AdmissionFormRow from "./AdmissionFormRow";
 import FormErrorDisplay from "@/ui/FormErrorDisplay";
-import HookFormSelect from "./HookFormSelect";
+import { brandColor500 } from "@/styles/globalStyles";
+import { Button } from "@/components/ui/button";
 
 // COMPONENT START
 export default function TenantAdmissionForm() {
   // VARIABLES
-  const { register, setValue, handleSubmit, formState } = useForm();
+  const { register, handleSubmit, formState } = useForm();
   const { errors } = formState;
+  const [countries, setCountries] = useState([]);
+  const [selectedCountry, setSelectedCountry] = useState({});
 
   // FUNCTIONS
+
+  //    FUNCTION
+  useEffect(() => {
+    fetch(
+      "https://valid.layercode.workers.dev/list/countries?format=select&flags=true&value=code",
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setCountries(data.countries);
+        setSelectedCountry(data.userSelectValue);
+      });
+  }, []);
 
   //    FUNCTION
   const admissionFormSubmit = (data) => {
@@ -20,6 +39,7 @@ export default function TenantAdmissionForm() {
   };
 
   const errorSubmitAdmissionForm = (errors) => {
+    console.log(selectedCountry);
     console.log(errors);
   };
 
@@ -138,22 +158,64 @@ export default function TenantAdmissionForm() {
           </AdmissionFormRow>
 
           <AdmissionFormRow>
-            <HookFormSelect
-              id="nationality"
-              placeholder="Select a nationality"
-              {...register("nationality", {
-                required: "Nationality is required",
-              })}
-              onValueChange={(value) =>
-                setValue("nationality", value, { shouldValidate: true })
-              }
+            <Select
+              className="z-[100]"
+              menuPlacement="top"
+              options={countries}
+              value={selectedCountry}
+              onChange={(selectedOption) => setSelectedCountry(selectedOption)}
+              styles={{
+                control: (provided, state) => ({
+                  ...provided, // Keep the default styles
+                  borderColor: state.isFocused ? `${brandColor500}` : "#d1d5db", // Red when focused, gray when not
+                  borderWidth: "1px",
+                  borderRadius: "6px", // Rounded edges
+                  padding: "1px", // Adjust padding as needed
+                  boxShadow: state.isFocused
+                    ? `0 0 0 0px ${brandColor500}80`
+                    : "none",
+                }),
+              }}
             />
-            {errors.nationality && (
-              <FormErrorDisplay>{`* ${errors.nationality.message}`}</FormErrorDisplay>
-            )}
           </AdmissionFormRow>
 
-          <button>Submit</button>
+          <AdmissionFormRow>
+            <RadioGroup>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem
+                  className="text-brand-color-500"
+                  name="statusMarried"
+                  value="statusMarried"
+                  id="statusMarried"
+                />
+                <Label className="text-brand-color-500" htmlFor="statusMarried">
+                  Married
+                </Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem
+                  className="text-brand-color-500"
+                  name="statusSingle"
+                  value="statusSingle"
+                  id="statusSingle"
+                />
+                <Label className="text-brand-color-500" htmlFor="statusSingle">
+                  Single
+                </Label>
+              </div>
+            </RadioGroup>
+          </AdmissionFormRow>
+
+          <AdmissionFormRow>
+            <div className="flex items-center justify-end">
+              <Button
+                className="border border-brand-color-500 bg-brand-color-100 text-brand-color-500 active:bg-brand-color-200 largeScreen:hover:bg-brand-color-300"
+                variant="outline"
+              >
+                Submit
+              </Button>
+            </div>
+          </AdmissionFormRow>
         </form>
       </div>
     </div>
@@ -161,3 +223,25 @@ export default function TenantAdmissionForm() {
   // JSX
 }
 // COMPONENT END
+
+{
+  /* <div className="flex gap-[20px]">
+              <div className="flex gap-[10px]">
+                <label htmlFor="statusMarried">Married</label>
+                <input
+                  id="statusMarried"
+                  name="statusMarried"
+                  type="radio"
+                ></input>
+              </div>
+
+              <div className="flex gap-[10px]">
+                <label htmlFor="statusUnMarried">Single</label>
+                <input
+                  id="statusUnMarried"
+                  name="statusUnMarried"
+                  type="radio"
+                ></input>
+              </div>
+            </div> */
+}
