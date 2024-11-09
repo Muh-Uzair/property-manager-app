@@ -80,3 +80,9 @@ export function helperUpdateAmountReceived(
     setStOccupiedProperty(newStOccupiedProperty);
   }
 }
+
+// FUNCTION
+export const getPropertyTypeValidForm = (propertyType) => {
+  if (!propertyType) return ""; // Handle edge cases where propertyType is undefined or empty
+  return `${propertyType[0].toUpperCase()}${propertyType.slice(1, -1).toLowerCase()}`;
+};

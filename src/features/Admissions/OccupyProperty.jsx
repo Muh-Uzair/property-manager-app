@@ -1,14 +1,12 @@
-import LoadingWrapperCenter from "@/ui/LoadingWrapperCenter";
 import { useGetSingleUnoccupiedPropertyData } from "./useGetSingleUnoccupiedPropertyData";
+import { useGetAllUnoccupiedProperty } from "./useGetAllUnoccupiedProperty";
+
 import LoadingSpinner from "@/ui/LoadingSpinner";
 import UnoccupiedPropertyDetails from "./UnoccupiedPropertyDetails";
-import { useGetScreenHeight } from "@/hooks/useGetScreenHeight";
-import { useGetAllUnoccupiedProperty } from "./useGetAllUnoccupiedProperty";
-import { useParams } from "react-router-dom";
-import { FaBuilding, FaStore } from "react-icons/fa";
-import { MdBedroomChild } from "react-icons/md";
-import { useGetPropertyType } from "@/hooks/useGetPropertyType";
+import LoadingWrapperCenter from "@/ui/LoadingWrapperCenter";
 import TenantAdmissionForm from "./TenantAdmissionForm";
+import OtherUnoccupiedProperties from "./OtherUnoccupiedProperties";
+import { useGetScreenHeight } from "@/hooks/useGetScreenHeight";
 
 const itemGap = "7px";
 
@@ -21,8 +19,6 @@ export default function OccupyProperty() {
   const screenHeight = useGetScreenHeight();
   const { dataAllUnoccupiedProperty, statusAllUnoccupiedProperty } =
     useGetAllUnoccupiedProperty();
-  const { propertyId } = useParams();
-  const propertyType = useGetPropertyType();
 
   // FUNCTIONS
 
@@ -47,33 +43,9 @@ export default function OccupyProperty() {
               />
             </div>
 
-            <div className="grid grid-cols-3 grid-rows-3 rounded-[8px] bg-gray-200 p-[20px]">
-              {dataAllUnoccupiedProperty.map(
-                (val, i) =>
-                  Number(val?.id) !== Number(propertyId) && (
-                    <div
-                      key={i}
-                      className="h-[70px] w-[180px] rounded-[8px] border border-brand-color-500 bg-brand-color-200"
-                    >
-                      {/* icon div */}
-                      <div>
-                        {propertyType === "flats" ? (
-                          <FaBuilding />
-                        ) : propertyType === "rooms" ? (
-                          <MdBedroomChild />
-                        ) : propertyType === "store" ? (
-                          <FaStore />
-                        ) : (
-                          ""
-                        )}
-                      </div>
-
-                      {/* details div */}
-                      <div></div>
-                    </div>
-                  ),
-              )}
-            </div>
+            <OtherUnoccupiedProperties
+              dataAllUnoccupiedProperty={dataAllUnoccupiedProperty}
+            />
           </section>
 
           {/* form */}
