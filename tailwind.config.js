@@ -31,5 +31,4 @@ export default {
       largeScreen: "1200px",
     },
   },
-  plugins: [require("tailwindcss-animate")],
 };
