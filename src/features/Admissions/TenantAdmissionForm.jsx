@@ -71,7 +71,7 @@ export default function TenantAdmissionForm() {
           <AdmissionFormRow>
             <div className="flex items-center justify-end">
               <Button
-                className="border border-brand-color-500 bg-brand-color-100 text-brand-color-500 active:bg-brand-color-200 largeScreen:hover:bg-brand-color-300"
+                className="border border-brand-color-500 bg-brand-color-100 text-brand-color-500 active:bg-brand-color-200 largeScreen:hover:bg-brand-color-300 largeScreen:active:bg-brand-color-200"
                 variant="outline"
               >
                 Submit
