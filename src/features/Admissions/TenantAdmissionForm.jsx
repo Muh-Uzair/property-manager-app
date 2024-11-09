@@ -1,46 +1,34 @@
 import Select from "react-select";
-import { useForm } from "react-hook-form";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
+// import FormLabel from "@mui/material/FormLabel
+import { Controller, useForm } from "react-hook-form";
 import { FloatingLabelInput } from "@/components/ui/FloatingLabelInput";
-import { useEffect, useState } from "react";
-import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 import Heading from "@/ui/Heading";
 import AdmissionFormRow from "./AdmissionFormRow";
 import FormErrorDisplay from "@/ui/FormErrorDisplay";
 import { brandColor500 } from "@/styles/globalStyles";
 import { Button } from "@/components/ui/button";
+import { useGetAllCountries } from "./useGetAllCountries";
 
 // COMPONENT START
 export default function TenantAdmissionForm() {
   // VARIABLES
-  const { register, handleSubmit, formState } = useForm();
+  const { register, handleSubmit, control, formState } = useForm();
   const { errors } = formState;
-  const [countries, setCountries] = useState([]);
-  const [selectedCountry, setSelectedCountry] = useState({});
+  const { countries, selectedCountry, setSelectedCountry } =
+    useGetAllCountries();
 
   // FUNCTIONS
 
   //    FUNCTION
-  useEffect(() => {
-    fetch(
-      "https://valid.layercode.workers.dev/list/countries?format=select&flags=true&value=code",
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setCountries(data.countries);
-        setSelectedCountry(data.userSelectValue);
-      });
-  }, []);
-
-  //    FUNCTION
   const admissionFormSubmit = (data) => {
-    console.log(data);
-  };
-
-  const errorSubmitAdmissionForm = (errors) => {
-    console.log(selectedCountry);
-    console.log(errors);
+    const selectedCountryName = selectedCountry?.label.slice(5);
+    const formData = { ...data, selectedCountryName };
+    console.log(formData);
   };
 
   // JSX
@@ -52,7 +40,7 @@ export default function TenantAdmissionForm() {
 
       <div className="rounded-[8px] border border-brand-color-100 p-[10px]">
         <form
-          onSubmit={handleSubmit(admissionFormSubmit, errorSubmitAdmissionForm)}
+          onSubmit={handleSubmit(admissionFormSubmit)}
           className="flex flex-col gap-[10px]"
         >
           <AdmissionFormRow>
@@ -180,30 +168,50 @@ export default function TenantAdmissionForm() {
           </AdmissionFormRow>
 
           <AdmissionFormRow>
-            <RadioGroup>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem
-                  className="text-brand-color-500"
-                  name="statusMarried"
-                  value="statusMarried"
-                  id="statusMarried"
-                />
-                <Label className="text-brand-color-500" htmlFor="statusMarried">
-                  Married
-                </Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem
-                  className="text-brand-color-500"
-                  name="statusSingle"
-                  value="statusSingle"
-                  id="statusSingle"
-                />
-                <Label className="text-brand-color-500" htmlFor="statusSingle">
-                  Single
-                </Label>
-              </div>
-            </RadioGroup>
+            <FormControl>
+              <Controller
+                name="martialStatus"
+                control={control}
+                defaultValue="married"
+                render={({ field }) => (
+                  <RadioGroup
+                    aria-labelledby="demo-radio-buttons-group-label"
+                    name="martialStatus"
+                    value={field.value}
+                    onChange={field.onChange}
+                  >
+                    <FormControlLabel
+                      value="married"
+                      control={
+                        <Radio
+                          sx={{
+                            color: "#0ea5e9",
+                            "&.Mui-checked": { color: "#0ea5e9" },
+                          }}
+                        />
+                      }
+                      label="Married"
+                      className="h-[30px]"
+                    />
+                    <FormControlLabel
+                      value="single"
+                      control={
+                        <Radio
+                          sx={{
+                            color: "#0ea5e9",
+                            "&.Mui-checked": { color: "#0ea5e9" },
+                          }}
+                        />
+                      }
+                      label="Single"
+                    />
+                  </RadioGroup>
+                )}
+              />
+            </FormControl>
+            {errors.martialStatus && (
+              <FormErrorDisplay>{`* ${errors.martialStatus.message}`}</FormErrorDisplay>
+            )}
           </AdmissionFormRow>
 
           <AdmissionFormRow>
@@ -223,25 +231,3 @@ export default function TenantAdmissionForm() {
   // JSX
 }
 // COMPONENT END
-
-{
-  /* <div className="flex gap-[20px]">
-              <div className="flex gap-[10px]">
-                <label htmlFor="statusMarried">Married</label>
-                <input
-                  id="statusMarried"
-                  name="statusMarried"
-                  type="radio"
-                ></input>
-              </div>
-
-              <div className="flex gap-[10px]">
-                <label htmlFor="statusUnMarried">Single</label>
-                <input
-                  id="statusUnMarried"
-                  name="statusUnMarried"
-                  type="radio"
-                ></input>
-              </div>
-            </div> */
-}
