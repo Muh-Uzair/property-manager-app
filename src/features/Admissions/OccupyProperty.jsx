@@ -77,8 +77,10 @@ export default function OccupyProperty() {
           </section>
 
           {/* form */}
-          <section className="rounded-[8px] bg-gray-100">
-            <div>property occupying form</div>
+          <section className="rounded-[8px] border border-brand-color-500 p-[10px]">
+            <div>
+              <TenantAdmissionForm />
+            </div>
           </section>
         </div>
 
