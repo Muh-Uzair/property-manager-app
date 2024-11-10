@@ -23,13 +23,13 @@ export default function OtherUnoccupiedProperties({
 
   // JSX
   return (
-    <div className="grid h-[520px] grid-cols-3 gap-[20px] overflow-y-auto rounded-[8px] bg-gray-200 p-[20px]">
+    <div className="grid h-[400px] grid-cols-3 gap-[20px] overflow-y-auto rounded-[8px] bg-gray-200 p-[20px]">
       {dataAllUnoccupiedProperty.map(
         (val, i) =>
           Number(val?.id) !== Number(propertyId) && (
             <div
               key={i}
-              className="flex h-[180px] flex-col justify-between rounded-[8px] border border-brand-color-500 bg-brand-color-200 p-[10px]"
+              className="flex h-[170px] flex-col justify-between rounded-[8px] border border-brand-color-500 bg-brand-color-200 p-[10px]"
             >
               {/* icon div */}
               <div className="flex gap-[10px] rounded-[5px] bg-brand-color-500 p-[10px]">
