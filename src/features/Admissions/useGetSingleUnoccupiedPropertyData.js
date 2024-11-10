@@ -29,7 +29,7 @@ export const useGetSingleUnoccupiedPropertyData = () => {
         }
       },
 
-      queryKey: ["singleUnoccupiedPropertyData", propertyType],
+      queryKey: ["singleUnoccupiedPropertyData", propertyType, propertyId],
     });
 
   return { dataSingleUnoccupied, statusSingleUnoccupied };
