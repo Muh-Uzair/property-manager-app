@@ -210,3 +210,31 @@ export const removeTenant = async (tenantId) => {
     );
   }
 };
+
+export const uploadNewTenantData = async (newTenantData = {}) => {
+  console.log(newTenantData);
+
+  // try {
+  //   const response = await fetch(`${supabaseUrl}/rest/v1/renters`, {
+  //     method: "POST",
+  //     headers: {
+  //       apikey: supabaseKey,
+  //       Authorization: `Bearer ${supabaseKey}`,
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(newTenantData),
+  //   });
+
+  //   if (!response.ok) {
+  //     const errorMessage = await response.text();
+  //     throw new Error(
+  //       `Unable to upload new tenant data Error => ${errorMessage}`,
+  //     );
+  //   }
+
+  //   const responseText = await response.text();
+  //   return JSON.parse(responseText);
+  // } catch (err) {
+  //   throw new Error(`Unable to upload new tenant data Error => ${err.message}`);
+  // }
+};
