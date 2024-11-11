@@ -260,3 +260,9 @@ export const apiGetAllUnoccupiedRooms = async () => {
     );
   }
 };
+
+// FUNCTION
+export const admissionRoom = (newTenantData, propertyId) => {
+  console.log(propertyId);
+  console.log(newTenantData);
+};

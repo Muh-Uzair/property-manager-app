@@ -304,3 +304,9 @@ export const apiGetAllUnoccupiedFlats = async () => {
     );
   }
 };
+
+// FUNCTION
+export const admissionFlat = (newTenantData, propertyId) => {
+  console.log(propertyId);
+  console.log(newTenantData);
+};

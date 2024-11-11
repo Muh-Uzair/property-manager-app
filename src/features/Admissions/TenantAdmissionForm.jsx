@@ -6,11 +6,18 @@ import AdmissionFormRowName from "./AdmissionFormRowName";
 import AdmissionFormRowContact from "./AdmissionFormRowContact";
 import AdmissionFormRowId from "./AdmissionFormRowId";
 import AdmissionsFormRowOccupation from "./AdmissionsFormRowOccupation";
-import { Button } from "@/components/ui/button";
-import { useGetAllCountries } from "./useGetAllCountries";
 import AdmissionFormRowMarital from "./AdmissionFormRowMarital";
+import { Button } from "@/components/ui/button";
+
+import { useGetAllCountries } from "./useGetAllCountries";
 import { useForm } from "react-hook-form";
 import { brandColor500 } from "@/styles/globalStyles";
+import AdmissionFormRowImage from "./AdmissionFormRowImage";
+import { useUploadTenantData } from "./useUploadTenantData";
+import LoadingWrapperCenter from "@/ui/LoadingWrapperCenter";
+import LoadingSpinner from "@/ui/LoadingSpinner";
+import { useGetPropertyType } from "@/hooks/useGetPropertyType";
+import { useParams } from "react-router-dom";
 
 // COMPONENT START
 export default function TenantAdmissionForm() {
@@ -19,14 +26,39 @@ export default function TenantAdmissionForm() {
   const { errors } = formState;
   const { countries, selectedCountry, setSelectedCountry } =
     useGetAllCountries();
+  const { mutateUploadNewTenant, statusUploadNewTenant } =
+    useUploadTenantData();
+  const propertyType = useGetPropertyType();
+  const { propertyId } = useParams();
 
   // FUNCTIONS
 
   //    FUNCTION
   const admissionFormSubmit = (data) => {
+    // destructure the file from data object
+    const { tenantImage: tenantImageFile } = data;
+
+    // checks wether that file exist
+    let tenantImage = null;
+    if (tenantImageFile && tenantImageFile.length > 0) {
+      const { name: tenantImageName } = tenantImageFile[0];
+      tenantImage = tenantImageName;
+    } else {
+      tenantImage = null;
+    }
+
+    // destructure the country name
     const selectedCountryName = selectedCountry?.label.slice(5);
-    const formData = { ...data, selectedCountryName };
-    console.log(formData);
+
+    // prepare the object of all data
+    const formData = { ...data, selectedCountryName, tenantImage };
+
+    // run the mutation function
+    mutateUploadNewTenant({
+      newTenantData: formData,
+      propertyType,
+      propertyId,
+    });
   };
 
   // JSX
@@ -67,6 +99,9 @@ export default function TenantAdmissionForm() {
               }}
             />
           </AdmissionFormRow>
+
+          <AdmissionFormRowImage register={register} />
+
           <AdmissionFormRowMarital control={control} errors={errors} />
           <AdmissionFormRow>
             <div className="flex items-center justify-end">
@@ -74,6 +109,11 @@ export default function TenantAdmissionForm() {
                 className="border border-brand-color-500 bg-brand-color-100 text-brand-color-500 active:bg-brand-color-200 largeScreen:hover:bg-brand-color-300 largeScreen:active:bg-brand-color-200"
                 variant="outline"
               >
+                {statusUploadNewTenant === "pending" && (
+                  <LoadingWrapperCenter>
+                    <LoadingSpinner size={20} />
+                  </LoadingWrapperCenter>
+                )}
                 Submit
               </Button>
             </div>

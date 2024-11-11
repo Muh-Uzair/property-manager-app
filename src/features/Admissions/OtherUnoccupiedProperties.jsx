@@ -17,8 +17,6 @@ export default function OtherUnoccupiedProperties({
   const { propertyId } = useParams();
   const propertyType = useGetPropertyType();
 
-  console.log(dataAllUnoccupiedProperty);
-
   // FUNCTIONS
 
   // JSX

@@ -257,3 +257,9 @@ export const apiGetAllUnoccupiedShops = async () => {
     );
   }
 };
+
+// FUNCTION
+export const admissionShop = (newTenantData, propertyId) => {
+  console.log(propertyId);
+  console.log(newTenantData);
+};
