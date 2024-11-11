@@ -211,30 +211,82 @@ export const removeTenant = async (tenantId) => {
   }
 };
 
-export const uploadNewTenantData = async (newTenantData = {}) => {
+// FUNCTION
+export const admitExistingTenant = async (
+  newTenantData = {},
+  propertyType,
+  propertyId,
+) => {
   console.log(newTenantData);
+  console.log(propertyType);
+  console.log(propertyId);
+};
 
-  // try {
-  //   const response = await fetch(`${supabaseUrl}/rest/v1/renters`, {
-  //     method: "POST",
-  //     headers: {
-  //       apikey: supabaseKey,
-  //       Authorization: `Bearer ${supabaseKey}`,
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(newTenantData),
-  //   });
+// FUNCTION
+export const admitNewTenant = async (
+  newTenantData = {},
+  propertyType,
+  propertyId,
+) => {
+  console.log(newTenantData);
+  const currentDate = new Date();
+  const renter_from = `${currentDate.getDate()}, ${currentDate.toLocaleString("en-GB", { month: "short" })} ${currentDate.getFullYear()}`;
 
-  //   if (!response.ok) {
-  //     const errorMessage = await response.text();
-  //     throw new Error(
-  //       `Unable to upload new tenant data Error => ${errorMessage}`,
-  //     );
-  //   }
+  const dataToUpload = new Object({
+    name: newTenantData?.name,
+    contact_info: newTenantData?.contact,
+    id_card_number: newTenantData?.idCard,
+    renter_from,
+    occupation: newTenantData?.occupation,
+    marital_status:
+      newTenantData?.martialStatus === "married" ? "married" : "unmarried",
+    rent_property: new Object({
+      rent_property: [`${propertyType.slice(0, -1)}`],
+    }),
+    propertyID: new Object({ property_id: [propertyId] }),
+    image: newTenantData?.tenantImage,
+    nationality: newTenantData?.selectedCountryName,
+  });
 
-  //   const responseText = await response.text();
-  //   return JSON.parse(responseText);
-  // } catch (err) {
-  //   throw new Error(`Unable to upload new tenant data Error => ${err.message}`);
-  // }
+  console.log(dataToUpload);
+
+  try {
+    const response = await fetch(`${supabaseUrl}/rest/v1/renters`, {
+      method: "POST",
+      headers: {
+        apikey: supabaseKey,
+        Authorization: `Bearer ${supabaseKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(dataToUpload),
+    });
+
+    if (!response.ok) {
+      const errorMessage = await response.text();
+      throw new Error(
+        `Unable to upload new tenant data Error => ${errorMessage}`,
+      );
+    }
+  } catch (err) {
+    throw new Error(`Unable to upload new tenant data Error => ${err.message}`);
+  }
+};
+
+// FUNCTION
+export const uploadTenantAdmissionData = async (
+  newTenantData = {},
+  propertyType,
+  propertyId,
+) => {
+  //name, contact_info, nationality, id_card_number, renter from, occupation, marital_status, rent_property, propertyID, image
+
+  // check wether the tenant is new or existing
+
+  const newTenant = true;
+
+  if (newTenant) {
+    admitNewTenant(newTenantData, propertyType, propertyId);
+  } else {
+    admitExistingTenant(newTenantData, propertyType, propertyId);
+  }
 };
