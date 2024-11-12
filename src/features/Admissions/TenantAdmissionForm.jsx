@@ -36,22 +36,22 @@ export default function TenantAdmissionForm() {
   //    FUNCTION
   const admissionFormSubmit = (data) => {
     // destructure the file from data object
-    const { tenantImage: tenantImageFile } = data;
+
+    let { tenantImage: tenantImageFile } = data;
 
     // checks wether that file exist
-    let tenantImage = null;
-    if (tenantImageFile && tenantImageFile.length > 0) {
-      const { name: tenantImageName } = tenantImageFile[0];
-      tenantImage = tenantImageName;
-    } else {
-      tenantImage = null;
+    if (tenantImageFile.length <= 0) {
+      tenantImageFile = null;
     }
-
     // destructure the country name
     const selectedCountryName = selectedCountry?.label.slice(5);
 
     // prepare the object of all data
-    const formData = { ...data, selectedCountryName, tenantImage };
+    const formData = {
+      ...data,
+      selectedCountryName,
+      tenantImage: tenantImageFile,
+    };
 
     // run the mutation function
     mutateUploadNewTenant({
