@@ -211,6 +211,33 @@ export const removeTenant = async (tenantId) => {
   }
 };
 
+export const getTenantOnIdCard = async (tenantIdCard) => {
+  if (!tenantIdCard) {
+    throw new Error("Tenant ID card number is required.");
+  }
+
+  console.log(`Searching for tenant with ID card number: ${tenantIdCard}`);
+
+  let { data, error } = await supabase
+    .from("renters") // Update to the correct table name if needed
+    .select("id")
+    .eq("id_card_number", Number(tenantIdCard));
+
+  if (error) {
+    throw new Error(
+      `Unable to get tenant on ID card. Error => ${error.message}`,
+    );
+  }
+
+  if (!data || data.length === 0) {
+    return null; // Or handle the "not found" case as needed
+  }
+
+  console.log(data[0]?.id);
+
+  return data[0]?.id;
+};
+
 // FUNCTION
 export const checkTenantNewOld = async (tenantIdCard) => {
   let newTenant = true;
@@ -336,13 +363,9 @@ export const uploadTenantAdmissionData = async (
   const newTenant = await checkTenantNewOld(newTenantData?.idCard);
 
   if (newTenant) {
-    console.log("new tenant");
     admitNewTenant(newTenantData, propertyType, propertyId);
   } else {
     console.log("existing tenant");
     // admitExistingTenant(newTenantData, propertyType, propertyId);
   }
 };
-
-//https://ibtqqypbjddszazggxmp.supabase.co/storage/v1/object/public/tenantImages/tenantImage1.jfif?t=2024-11-12T08%3A04%3A06.411Z;
-//https://ibtqqypbjddszazggxmp.supabase.co/storage/v1/object/public/tenantImages/tenantImage2.jfif?t=2024-11-12T08%3A04%3A42.798Z;
