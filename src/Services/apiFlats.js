@@ -310,8 +310,6 @@ export const apiGetAllUnoccupiedFlats = async () => {
 export const admissionFlat = async (newTenantData, propertyId) => {
   const tenantId = await getTenantOnIdCard(newTenantData?.idCard);
 
-  console.log(tenantId);
-
   const { data, error } = await supabase
     .from("flats")
     .update({ status: "occupied", renter_id: Number(tenantId) })

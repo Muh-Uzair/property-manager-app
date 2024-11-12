@@ -216,8 +216,6 @@ export const getTenantOnIdCard = async (tenantIdCard) => {
     throw new Error("Tenant ID card number is required.");
   }
 
-  console.log(`Searching for tenant with ID card number: ${tenantIdCard}`);
-
   let { data, error } = await supabase
     .from("renters") // Update to the correct table name if needed
     .select("id")
@@ -232,8 +230,6 @@ export const getTenantOnIdCard = async (tenantIdCard) => {
   if (!data || data.length === 0) {
     return null; // Or handle the "not found" case as needed
   }
-
-  console.log(data[0]?.id);
 
   return data[0]?.id;
 };
