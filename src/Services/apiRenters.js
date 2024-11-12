@@ -228,7 +228,6 @@ export const admitNewTenant = async (
   propertyType,
   propertyId,
 ) => {
-  console.log(newTenantData);
   const currentDate = new Date();
   const renter_from = `${currentDate.getDate()}, ${currentDate.toLocaleString("en-GB", { month: "short" })} ${currentDate.getFullYear()}`;
 
@@ -247,8 +246,6 @@ export const admitNewTenant = async (
     image: newTenantData?.tenantImage,
     nationality: newTenantData?.selectedCountryName,
   });
-
-  console.log(dataToUpload);
 
   try {
     const response = await fetch(`${supabaseUrl}/rest/v1/renters`, {
@@ -273,6 +270,42 @@ export const admitNewTenant = async (
 };
 
 // FUNCTION
+export const checkTenantNewOld = async (tenantIdCard) => {
+  let newTenant = true;
+  try {
+    const response = await fetch(
+      `${supabaseUrl}//rest/v1/renters?id_card_number=eq.${tenantIdCard}&select=*`,
+      {
+        method: "GET",
+        headers: {
+          apikey: supabaseKey,
+          Authorization: `Bearer ${supabaseKey}`,
+        },
+      },
+    );
+
+    if (!response.ok) {
+      const errorMessage = await response.text();
+      throw new Error(
+        `Unable tp fetch a tenant by id card Error => ${errorMessage}`,
+      );
+    }
+
+    const responseText = await response.text();
+
+    const data = JSON.parse(responseText);
+
+    if (data.length > 0) {
+      newTenant = false;
+    }
+  } catch (err) {
+    throw new Error(`Unable to fetch a tenant by id card Error => ${err}`);
+  }
+
+  return newTenant;
+};
+
+// FUNCTION
 export const uploadTenantAdmissionData = async (
   newTenantData = {},
   propertyType,
@@ -282,11 +315,12 @@ export const uploadTenantAdmissionData = async (
 
   // check wether the tenant is new or existing
 
-  const newTenant = true;
+  const newTenant = await checkTenantNewOld(newTenantData?.idCard);
 
   if (newTenant) {
     admitNewTenant(newTenantData, propertyType, propertyId);
   } else {
+    console.log("existing tenant");
     admitExistingTenant(newTenantData, propertyType, propertyId);
   }
 };
