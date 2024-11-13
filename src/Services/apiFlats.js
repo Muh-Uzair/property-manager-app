@@ -310,15 +310,20 @@ export const apiGetAllUnoccupiedFlats = async () => {
 export const admissionFlat = async (newTenantData, propertyId) => {
   const tenantId = await getTenantOnIdCard(newTenantData?.idCard);
 
-  const { data, error } = await supabase
-    .from("flats")
-    .update({ status: "occupied", renter_id: Number(tenantId) })
-    .eq("id", propertyId)
-    .select();
+  // Only proceed with the update if tenantId is a valid number greater than zero
+  if (tenantId >= 0 || tenantId) {
+    const { data, error } = await supabase
+      .from("flats")
+      .update({ status: "occupied", renter_id: Number(tenantId) })
+      .eq("id", propertyId)
+      .select();
 
-  if (error) {
-    throw new Error(`Unable to admit tenant in flat Error => ${error}`);
+    if (error) {
+      throw new Error(`Unable to admit tenant in flat Error => ${error}`);
+    }
+
+    return data;
+  } else {
+    throw new Error("Invalid tenant ID. Admission cannot proceed.");
   }
-
-  return data;
 };

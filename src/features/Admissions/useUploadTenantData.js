@@ -1,12 +1,12 @@
 import toast from "react-hot-toast";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useNavigate, useParams } from "react-router-dom";
 
+import { useGetPropertyType } from "@/hooks/useGetPropertyType";
 import { uploadTenantAdmissionData } from "@/Services/apiRenters";
 import { admissionFlat } from "@/Services/apiFlats";
 import { admissionRoom } from "@/Services/apiRooms";
 import { admissionShop } from "@/Services/apiShops";
-import { useNavigate, useParams } from "react-router-dom";
-import { useGetPropertyType } from "@/hooks/useGetPropertyType";
 
 const admitTenant = async ({ newTenantData, propertyType, propertyId }) => {
   await uploadTenantAdmissionData(newTenantData, propertyType, propertyId);
@@ -31,7 +31,7 @@ export const useUploadTenantData = () => {
       mutationFn: admitTenant,
       onSuccess: () => {
         queryClient.clear();
-        toast.success("Admission successful");
+        toast.success("Admission successful", { duration: 5000 });
         navigate(`/propertyDetails/${propertyType}/${propertyId}`);
       },
       onError: () => {

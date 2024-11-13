@@ -97,7 +97,7 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
       <RouterProvider router={router} />
-      <Toaster position="top-center" />
+      <Toaster position="top-center" toastOptions={{ duration: 5000 }} />
     </QueryClientProvider>
   );
   // JSX//////////////////////////////////////////

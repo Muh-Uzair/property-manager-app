@@ -263,15 +263,17 @@ export const apiGetAllUnoccupiedShops = async () => {
 export const admissionShop = async (newTenantData, propertyId) => {
   const tenantId = await getTenantOnIdCard(newTenantData?.idCard);
 
-  const { data, error } = await supabase
-    .from("shops")
-    .update({ status: "occupied", renter_id: Number(tenantId) })
-    .eq("id", propertyId)
-    .select();
+  if (tenantId >= 0 || tenantId) {
+    const { data, error } = await supabase
+      .from("shops")
+      .update({ status: "occupied", renter_id: Number(tenantId) })
+      .eq("id", propertyId)
+      .select();
 
-  if (error) {
-    throw new Error(`Unable to admit tenant in shop Error => ${error}`);
+    if (error) {
+      throw new Error(`Unable to admit tenant in shop Error => ${error}`);
+    }
+
+    return data;
   }
-
-  return data;
 };
