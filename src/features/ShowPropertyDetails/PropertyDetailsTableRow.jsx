@@ -25,12 +25,6 @@ export default function PropertyDetailsTableRow({
         gridTemplateColumns: `${colSize.join(" ")}`,
       }}
     >
-      {/* property image */}
-      <TableRowItem>
-        {/* <img className="h-[40px] rounded-[3px]" src={`${val.image}`} /> */}
-        img
-      </TableRowItem>
-
       {/* property number */}
       <TableRowItem>
         {val?.flat_number || val?.room_number || val?.shop_number}

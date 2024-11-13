@@ -227,10 +227,6 @@ export const getTenantOnIdCard = async (tenantIdCard) => {
     );
   }
 
-  if (!data || data.length === 0) {
-    return null; // Or handle the "not found" case as needed
-  }
-
   return data[0]?.id;
 };
 
