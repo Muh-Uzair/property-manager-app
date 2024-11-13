@@ -1,5 +1,6 @@
 import supabase, { supabaseKey, supabaseUrl } from "../../supabase";
 import { monthsArr } from "../utils/constants";
+import { getTenantOnIdCard } from "./apiRenters";
 
 // FUNCTION
 export const uploadAllRooms = async (roomsDataArr) => {
@@ -262,7 +263,18 @@ export const apiGetAllUnoccupiedRooms = async () => {
 };
 
 // FUNCTION
-export const admissionRoom = (newTenantData, propertyId) => {
-  console.log(propertyId);
-  console.log(newTenantData);
+export const admissionRoom = async (newTenantData, propertyId) => {
+  const tenantId = await getTenantOnIdCard(newTenantData?.idCard);
+
+  const { data, error } = await supabase
+    .from("rooms")
+    .update({ status: "occupied", renter_id: Number(tenantId) })
+    .eq("id", propertyId)
+    .select();
+
+  if (error) {
+    throw new Error(`Unable to admit tenant in room Error => ${error}`);
+  }
+
+  return data;
 };

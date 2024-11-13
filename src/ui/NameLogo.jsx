@@ -19,7 +19,7 @@ export function NameLogo() {
   // JSX//////////////////////////////////////////
 }
 
-const NamePropleLogo = () => {
+export const NamePropleLogo = () => {
   const navigate = useNavigate();
   return (
     <span

@@ -7,7 +7,7 @@ import TableBody from "../../ui/TableBody";
 import LoadingSpinner from "../../ui/LoadingSpinner";
 import { useGetPropertyType } from "../../hooks/useGetPropertyType";
 
-const colSize = ["1fr", "1fr", "1fr", "1fr", "1fr", "1fr", "1fr"];
+const colSize = ["1fr", "1fr", "1fr", "1fr", "1fr", "1fr"];
 
 // COMPONENT START
 export default function PropertyDetailsTable() {
@@ -39,7 +39,6 @@ export default function PropertyDetailsTable() {
         {/* table header */}
         <TableHeader
           colLabels={[
-            "IMAGE",
             `${propertyType?.toLocaleUpperCase().slice(0, -1)} NO`,
             "STATUS",
             "FLOOR",
