@@ -232,7 +232,6 @@ export const getTenantOnIdCard = async (tenantIdCard) => {
 
 // FUNCTION
 export const checkTenantNewOld = async (tenantIdCard) => {
-  let newTenant = true;
   try {
     const response = await fetch(
       `${supabaseUrl}//rest/v1/renters?id_card_number=eq.${tenantIdCard}&select=*`,
@@ -257,13 +256,13 @@ export const checkTenantNewOld = async (tenantIdCard) => {
     const data = JSON.parse(responseText);
 
     if (data.length > 0) {
-      newTenant = false;
+      return { newTenant: false, data: data?.[0] };
     }
   } catch (err) {
     throw new Error(`Unable to fetch a tenant by id card Error => ${err}`);
   }
 
-  return newTenant;
+  return { newTenant: true, data: [] };
 };
 
 // FUNCTION
@@ -287,13 +286,17 @@ export const admitNewTenant = async (
   const currentDate = new Date();
   const renter_from = `${currentDate.getDate()}, ${currentDate.toLocaleString("en-GB", { month: "short" })} ${currentDate.getFullYear()}`;
 
-  // prepare the image path
-  const imageName =
-    `${Math.random()}-${newTenantData?.tenantImage[0]?.name}`.replaceAll(
-      "/",
-      "",
-    );
-  const imagePath = `${supabaseUrl}/storage/v1/object/public/tenantImages/${imageName}`;
+  // prepare the image path only if it exists
+  let imageName = "";
+  let imagePath = null;
+  if (newTenantData?.tenantImage) {
+    imageName =
+      `${Math.random()}-${newTenantData?.tenantImage[0]?.name}`.replaceAll(
+        "/",
+        "",
+      );
+    imagePath = `${supabaseUrl}/storage/v1/object/public/tenantImages/${imageName}`;
+  }
 
   // preparing the object to upload
   const dataToUpload = new Object({
@@ -331,14 +334,16 @@ export const admitNewTenant = async (
       );
     }
 
-    const { tenantImageError } = await supabase.storage
-      .from("tenantImages")
-      .upload(imageName, newTenantData?.tenantImage[0], {
-        upsert: false,
-      });
+    if (newTenantData?.tenantImage) {
+      const { tenantImageError } = await supabase.storage
+        .from("tenantImages")
+        .upload(imageName, newTenantData?.tenantImage[0], {
+          upsert: false,
+        });
 
-    if (tenantImageError) {
-      throw new Error("Unable to upload tenant image");
+      if (tenantImageError) {
+        throw new Error("Unable to upload tenant image");
+      }
     }
   } catch (err) {
     throw new Error(`Unable to upload new tenant data Error => ${err.message}`);
@@ -352,12 +357,13 @@ export const uploadTenantAdmissionData = async (
   propertyId,
 ) => {
   // check wether the tenant is new or existing
-  const newTenant = await checkTenantNewOld(newTenantData?.idCard);
+  const { newTenant, data } = await checkTenantNewOld(newTenantData?.idCard);
 
   if (newTenant) {
-    admitNewTenant(newTenantData, propertyType, propertyId);
+    await admitNewTenant(newTenantData, propertyType, propertyId);
   } else {
-    console.log("existing tenant");
-    // admitExistingTenant(newTenantData, propertyType, propertyId);
+    console.log("old tenant");
+    console.log(data);
+    // await admitExistingTenant(newTenantData, propertyType, propertyId);
   }
 };

@@ -68,7 +68,7 @@ export function useLeaveProperty() {
       },
       onSuccess: () => {
         toast.success(
-          `${propertyType.at(0).toUpperCase()}${propertyType.slice(1, 3)} successfully empty`,
+          `${propertyType.at(0).toUpperCase()}${propertyType.slice(1, -1)} successfully empty`,
         );
         queryClient.clear();
         navigate(`/propertyDetails/${propertyType}`);
