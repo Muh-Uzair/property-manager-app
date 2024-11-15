@@ -30,7 +30,7 @@ export default function RentDuration({ dataRenterDetails }) {
         </Heading>
       </header>
       {dataRenterDetails.renter_from && (
-        <span className="text-[12px] font-bold text-gray-600">{`${dataRenterDetails.name} rented almost ${formatDistanceStrict(new Date(dataRenterDetails.renter_from), new Date())} ago`}</span>
+        <span className="text-[12px] font-bold text-gray-600">{`${dataRenterDetails.name} is customer from last ${formatDistanceStrict(new Date(dataRenterDetails.renter_from), new Date())}`}</span>
       )}
     </div>
   );

@@ -14,7 +14,6 @@ import { rentersDataArr } from "../../data/data-renters";
 import { useUploadAllRentings } from "./useUploadAllRentings";
 import { allRentingsDataArr } from "../../data/data-allRentings";
 import { useEffect } from "react";
-import { FaCheck } from "react-icons/fa";
 
 // COMPONENT START///////////////////////////////////////////////
 function Uploader() {
@@ -39,12 +38,7 @@ function Uploader() {
   // FUNCTION to set the uploadSuccess
   useEffect(() => {
     function displaySuccessToast() {
-      toast("Upload success", {
-        duration: 3000,
-        position: "top-center",
-        icon: <FaCheck />,
-        className: "text-green-600 font-semibold",
-      });
+      toast.success("Upload success");
     }
     if (
       statusRoomsUpload === "success" &&
