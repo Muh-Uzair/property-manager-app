@@ -1,3 +1,4 @@
+import { prepareRentDetailsArr } from "@/utils/helpers";
 import supabase, { supabaseKey, supabaseUrl } from "../../supabase";
 import { monthsArr } from "../utils/constants";
 import { getTenantOnIdCard } from "./apiRenters";
@@ -310,11 +311,13 @@ export const apiGetAllUnoccupiedFlats = async () => {
 export const admissionFlat = async (newTenantData, propertyId) => {
   const tenantId = await getTenantOnIdCard(newTenantData?.idCard);
 
+  const rent_details = prepareRentDetailsArr();
+
   // Only proceed with the update if tenantId is a valid number greater than zero
   if (tenantId >= 0 || tenantId) {
     const { data, error } = await supabase
       .from("flats")
-      .update({ status: "occupied", renter_id: Number(tenantId) })
+      .update({ status: "occupied", renter_id: Number(tenantId), rent_details })
       .eq("id", propertyId)
       .select();
 

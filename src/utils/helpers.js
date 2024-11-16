@@ -1,3 +1,5 @@
+import { monthsArr } from "./constants";
+
 // FUNCTION
 export const calculateTotalPages = (totalProperty) => {
   return Math.ceil(totalProperty / 10);
@@ -85,4 +87,18 @@ export function helperUpdateAmountReceived(
 export const getPropertyTypeValidForm = (propertyType) => {
   if (!propertyType) return ""; // Handle edge cases where propertyType is undefined or empty
   return `${propertyType[0].toUpperCase()}${propertyType.slice(1, -1).toLowerCase()}`;
+};
+
+// FUNCTION
+export const prepareRentDetailsArr = () => {
+  const currentMonth = new Date().getMonth();
+  const rent_details = monthsArr.map((val, i) => {
+    if (i < currentMonth) {
+      return { paid: true, month: val };
+    } else if (i >= currentMonth) {
+      return { paid: false, month: val };
+    }
+  });
+
+  return rent_details;
 };
