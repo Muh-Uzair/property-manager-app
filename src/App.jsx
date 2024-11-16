@@ -25,7 +25,7 @@ import LeaveProperty from "./features/leaveProperty/LeaveProperty";
 import Admissions from "./features/Admissions/Admissions";
 import OccupyProperty from "./features/Admissions/OccupyProperty";
 
-// LMS work done
+// homePage created
 
 const router = createBrowserRouter(
   createRoutesFromElements(
