@@ -37,6 +37,18 @@ export const getRenterOnID = async (renter_id) => {
 };
 
 // FUNCTION
+export const getTotalTenantsQuantity = async () => {
+  let { count: totalTenantsQuantity, error } = await supabase
+    .from("renters")
+    .select("*", { count: "exact" });
+
+  if (error)
+    throw new Error(`Unable to fetch flats quantity : ${error?.message}`);
+
+  return { totalTenantsQuantity };
+};
+
+// FUNCTION
 export const getRenterDetailsOnId = async (renterId) => {
   if (!renterId) return {};
 

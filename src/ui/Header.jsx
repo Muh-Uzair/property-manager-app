@@ -2,7 +2,6 @@ import { TbClipboardText, TbUser } from "react-icons/tb";
 import { HiOutlineHome } from "react-icons/hi";
 import { HiMiniArrowLeftOnRectangle } from "react-icons/hi2";
 import { AiOutlineDollarCircle } from "react-icons/ai";
-import { BiLineChartDown } from "react-icons/bi";
 import { HiMiniArrowRightOnRectangle } from "react-icons/hi2";
 
 import NavigationLinks from "./NavigationLinks";
@@ -34,11 +33,6 @@ export function Header() {
                 url: "rentPayment",
                 label: "Rent Payment",
                 icon: <AiOutlineDollarCircle />,
-              },
-              {
-                url: "expenses",
-                label: "Expenses",
-                icon: <BiLineChartDown />,
               },
               {
                 url: "admissions",

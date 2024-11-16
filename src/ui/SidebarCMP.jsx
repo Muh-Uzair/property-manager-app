@@ -6,7 +6,6 @@ import {
 } from "react-icons/hi2";
 import NavigationLinks from "./NavigationLinks";
 import { AiOutlineDollarCircle } from "react-icons/ai";
-import { BiLineChartDown } from "react-icons/bi";
 
 // COMPONENT START///////////////////////////////////////////////
 export default function Sidebar() {
@@ -30,11 +29,6 @@ export default function Sidebar() {
               url: "rentPayment",
               label: "Rent Payment",
               icon: <AiOutlineDollarCircle />,
-            },
-            {
-              url: "expenses",
-              label: "Expenses",
-              icon: <BiLineChartDown />,
             },
             {
               url: "admissions",

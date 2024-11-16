@@ -1,3 +1,5 @@
+import Home from "@/features/home/Home";
+
 // COMPONENT START///////////////////////////////////////////////
 export default function HomePG() {
   // STATE & VARIABLES
@@ -5,7 +7,7 @@ export default function HomePG() {
   // FUNCTIONS
 
   // JSX//////////////////////////////////////////
-  return <div>Home</div>;
+  return <Home />;
   // JSX//////////////////////////////////////////
 }
 // COMPONENT END/////////////////////////////////////////////////
