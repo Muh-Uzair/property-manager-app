@@ -330,3 +330,16 @@ export const admissionFlat = async (newTenantData, propertyId) => {
     throw new Error("Invalid tenant ID. Admission cannot proceed.");
   }
 };
+
+// FUNCTION
+export const getAllFlatsForHome = async () => {
+  let { data, error } = await supabase
+    .from("flats")
+    .select("id,flat_number, status , renter_id , image ");
+
+  if (error) {
+    throw new Error(`Unable to get flats for home page Error => ${error}`);
+  }
+
+  return data;
+};
