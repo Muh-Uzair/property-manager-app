@@ -36,6 +36,7 @@ const router = createBrowserRouter(
           {/* DIVIDER */}
           <Route index element={<Navigate replace to="home" />} />
           <Route path="home" element={<HomePG />} />
+
           {/* DIVIDER */}
           <Route path="propertyDetails" element={<PropertyDetailsPG />} />
           <Route
@@ -50,13 +51,16 @@ const router = createBrowserRouter(
             path="propertyDetails/:propertyType/edit/:propertyId"
             element={<PropertyEdit />}
           />
+
           {/* DIVIDER */}
           <Route path="rentPayment" element={<RentPaymentPG />}>
             {" "}
             <Route path=":propertyType" element={<RentPaymentPG />} />
           </Route>
+
           {/* DIVIDER */}
           <Route path="expenses" element={<ExpensesPG />} />
+
           {/* DIVIDER */}
           <Route path="admissions" element={<AdmissionsPG />} />
 
@@ -65,10 +69,12 @@ const router = createBrowserRouter(
             path="admissions/:propertyType/:propertyId"
             element={<OccupyProperty />}
           />
+
           {/* DIVIDER */}
           <Route path="/leaveProperty" element={<LeavePropertyPG />}>
             <Route path=":propertyType" element={<LeaveProperty />} />
           </Route>
+
           {/* DIVIDER */}
           <Route path="*" element={<PageNotFound />} />
         </Route>
