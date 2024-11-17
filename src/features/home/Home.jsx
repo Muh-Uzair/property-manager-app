@@ -2,32 +2,43 @@ import LoadingWrapperCenter from "@/ui/LoadingWrapperCenter";
 import Totals from "./Totals";
 import { useGetAllTotals } from "./useGetAllTotals";
 import LoadingSpinner from "@/ui/LoadingSpinner";
+import FlatsDisplayHome from "./FlatsDisplayHome";
+import CheckOtherProperties from "./CheckOtherProperties";
+import CircularCharts from "./CircularCharts";
+import { useGetScreenHeight } from "@/hooks/useGetScreenHeight";
+import PropertyValueChart from "./PropertyValueChart";
 
 // COMPONENT START
 export default function Home() {
   // VARIABLES
   const { dataTotals, statusTotals } = useGetAllTotals();
+  const screenHeight = useGetScreenHeight();
 
   // FUNCTIONS
 
   // JSX
   if (statusTotals === "success") {
     return (
-      <div className="flex flex-col gap-[10px] largeScreen:pl-[20%] largeScreen:pr-[20%]">
+      <div
+        style={{
+          height: `calc(${screenHeight}px - 60px)`,
+        }}
+        className="grid grid-rows-[auto_auto_auto_auto_auto] gap-[10px] overflow-x-hidden overflow-y-scroll px-[5px] pb-[20px] pt-[10px] largeScreen:pl-[20%] largeScreen:pr-[20px]"
+      >
         {/* total flats etc */}
         <Totals dataTotals={dataTotals} />
 
-        {/* flats*/}
-        <section>flats</section>
+        {/* flats */}
+        <FlatsDisplayHome />
 
-        {/* rooms */}
-        <section>rooms</section>
-
-        {/* shops */}
-        <section>rooms</section>
+        {/* check other propertied */}
+        <CheckOtherProperties />
 
         {/* shops */}
-        <section>charts</section>
+        <CircularCharts />
+
+        {/* shops */}
+        <PropertyValueChart />
       </div>
     );
   }
