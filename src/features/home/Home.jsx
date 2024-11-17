@@ -5,19 +5,22 @@ import LoadingSpinner from "@/ui/LoadingSpinner";
 import FlatsDisplayHome from "./FlatsDisplayHome";
 import CheckOtherProperties from "./CheckOtherProperties";
 import CircularCharts from "./CircularCharts";
-import { useGetScreenHeight } from "@/hooks/useGetScreenHeight";
+import { useGetFlatsHome } from "./useGetFlatsHome";
 import PropertyValueChart from "./PropertyValueChart";
+import { useGetScreenHeight } from "@/hooks/useGetScreenHeight";
 
 // COMPONENT START
 export default function Home() {
   // VARIABLES
   const { dataTotals, statusTotals } = useGetAllTotals();
+  const { dataFlatsHome = [], statusFlatsHome } = useGetFlatsHome();
+
   const screenHeight = useGetScreenHeight();
 
   // FUNCTIONS
 
   // JSX
-  if (statusTotals === "success") {
+  if (statusTotals === "success" && statusFlatsHome === "success") {
     return (
       <div
         style={{
@@ -29,7 +32,7 @@ export default function Home() {
         <Totals dataTotals={dataTotals} />
 
         {/* flats */}
-        <FlatsDisplayHome />
+        <FlatsDisplayHome dataFlatsHome={dataFlatsHome} />
 
         {/* check other propertied */}
         <CheckOtherProperties />
@@ -43,7 +46,7 @@ export default function Home() {
     );
   }
 
-  if (statusTotals === "pending") {
+  if (statusTotals === "pending" && statusFlatsHome === "success") {
     return (
       <LoadingWrapperCenter>
         <LoadingSpinner />

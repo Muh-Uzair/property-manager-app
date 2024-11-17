@@ -1,6 +1,10 @@
+import PropTypes from "prop-types";
+
 // COMPONENT START
-export default function FlatsDisplayHome() {
+export default function FlatsDisplayHome({ dataFlatsHome }) {
   // VARIABLES
+
+  console.log(dataFlatsHome);
 
   // FUNCTIONS
 
@@ -10,4 +14,9 @@ export default function FlatsDisplayHome() {
   );
   // JSX
 }
+
+FlatsDisplayHome.propTypes = {
+  dataFlatsHome: PropTypes.array,
+};
+//size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 // COMPONENT END
