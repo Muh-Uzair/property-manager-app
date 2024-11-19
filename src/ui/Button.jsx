@@ -48,7 +48,7 @@ export default function Button({
 Button.propTypes = {
   size: PropTypes.string,
   children: PropTypes.node,
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string,
   wide: PropTypes.bool,
   uppercase: PropTypes.bool,
   disabled: PropTypes.bool,

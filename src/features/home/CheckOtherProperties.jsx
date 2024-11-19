@@ -1,4 +1,5 @@
 import Button from "@/ui/Button";
+import { Link } from "react-router-dom";
 
 // COMPONENT START
 export default function CheckOtherProperties() {
@@ -17,7 +18,7 @@ export default function CheckOtherProperties() {
         uppercase={true}
         paddingY="10px"
       >
-        Check other properties
+        <Link to="/propertyDetails/flats">Check other properties</Link>
       </Button>
     </section>
   );
