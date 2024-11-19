@@ -22,7 +22,11 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      boxShadow: {
+        basicShadow: "0px 5px 10px 0px rgb(0 0 0 / 0.2)",
+      },
     },
+
     screens: {
       mobileL: "412px",
       mobileM: "375px",
