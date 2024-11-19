@@ -26,7 +26,7 @@ export default function Home() {
         style={{
           height: `calc(${screenHeight}px - 60px)`,
         }}
-        className="grid grid-rows-[auto_auto_auto_auto_auto] gap-[10px] overflow-x-hidden overflow-y-scroll px-[5px] pb-[20px] pt-[10px] largeScreen:pl-[20%] largeScreen:pr-[20px]"
+        className="grid grid-rows-[auto_auto_auto_auto_auto] gap-[10px] overflow-x-hidden overflow-y-scroll px-[5px] pb-[20px] pt-[10px] largeScreen:pl-[20%] largeScreen:pr-[20%]"
       >
         {/* total flats etc */}
         <Totals dataTotals={dataTotals} />
