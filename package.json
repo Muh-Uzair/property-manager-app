@@ -38,6 +38,7 @@
     "react-icons": "^5.2.1",
     "react-router-dom": "^6.25.1",
     "react-select": "^5.8.2",
+    "recharts": "^2.13.3",
     "tailwind-merge": "^2.5.3",
     "tailwindcss-animate": "^1.0.7"
   },

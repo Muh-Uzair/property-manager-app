@@ -12,7 +12,7 @@ import { useGetScreenHeight } from "@/hooks/useGetScreenHeight";
 // COMPONENT START
 export default function Home() {
   // VARIABLES
-  const { dataTotals, statusTotals } = useGetAllTotals();
+  const { dataTotals = [], statusTotals } = useGetAllTotals();
   const { dataFlatsHome = [], statusFlatsHome } = useGetFlatsHome();
   const screenHeight = useGetScreenHeight();
 
@@ -38,7 +38,7 @@ export default function Home() {
           <CheckOtherProperties />
 
           {/* shops */}
-          <CircularCharts />
+          <CircularCharts dataTotals={dataTotals} />
 
           {/* shops */}
           <PropertyValueChart />

@@ -15,7 +15,6 @@ export default function FlatsDisplayHome({ dataFlatsHome }) {
   // VARIABLES
 
   // FUNCTIONS
-  console.log(dataFlatsHome);
 
   // JSX
   return (
