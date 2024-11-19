@@ -14,7 +14,6 @@ export default function Home() {
   // VARIABLES
   const { dataTotals, statusTotals } = useGetAllTotals();
   const { dataFlatsHome = [], statusFlatsHome } = useGetFlatsHome();
-
   const screenHeight = useGetScreenHeight();
 
   // FUNCTIONS
@@ -26,22 +25,24 @@ export default function Home() {
         style={{
           height: `calc(${screenHeight}px - 60px)`,
         }}
-        className="grid grid-rows-[auto_auto_auto_auto_auto] gap-[10px] overflow-x-hidden overflow-y-scroll px-[5px] pb-[20px] pt-[10px] largeScreen:pl-[20%] largeScreen:pr-[20px]"
+        className="flex justify-center overflow-x-hidden overflow-y-scroll"
       >
-        {/* total flats etc */}
-        <Totals dataTotals={dataTotals} />
+        <div className="grid grid-rows-[auto_auto_auto_auto_auto] gap-[10px] px-[5px] pb-[20px] pt-[10px] largeScreen:w-[800px]">
+          {/* total flats etc */}
+          <Totals dataTotals={dataTotals} />
 
-        {/* flats */}
-        <FlatsDisplayHome dataFlatsHome={dataFlatsHome} />
+          {/* flats */}
+          <FlatsDisplayHome dataFlatsHome={dataFlatsHome} />
 
-        {/* check other propertied */}
-        <CheckOtherProperties />
+          {/* check other propertied */}
+          <CheckOtherProperties />
 
-        {/* shops */}
-        <CircularCharts />
+          {/* shops */}
+          <CircularCharts />
 
-        {/* shops */}
-        <PropertyValueChart />
+          {/* shops */}
+          <PropertyValueChart />
+        </div>
       </div>
     );
   }

@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-
 import {
   Carousel,
   CarouselContent,
@@ -8,30 +7,29 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
+import FlatDisplayCard from "./FlatDisplayCard";
+// import { Card, CardContent } from "@/components/ui/card";
+
 // COMPONENT START
 export default function FlatsDisplayHome({ dataFlatsHome }) {
   // VARIABLES
 
-  console.log(dataFlatsHome);
-
   // FUNCTIONS
+  console.log(dataFlatsHome);
 
   // JSX
   return (
-    <section className="h-[250px] rounded-[5px] bg-gray-200">
-      {" "}
+    <section className="shadow-basicShadow flex h-[300px] items-center justify-center rounded-[5px] p-[10px]">
       <Carousel
         opts={{
           align: "start",
         }}
-        className="w-full max-w-sm"
+        className="h-[280px] w-[280px] overflow-hidden mobileM:w-[335px] mobileL:w-[370px] smallTab:w-[490px] largeTab:w-[520px] largeScreen:w-[680px] largeScreen:overflow-visible"
       >
-        <CarouselContent>
-          {Array.from({ length: 5 }).map((_, index) => (
-            <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-              <div className="h-[100px] w-[100px] bg-brand-color-300">
-                {index}
-              </div>
+        <CarouselContent className="flex gap-[10px]">
+          {dataFlatsHome.map((val, index) => (
+            <CarouselItem key={index} className="flex-none">
+              <FlatDisplayCard val={val} />
             </CarouselItem>
           ))}
         </CarouselContent>
@@ -46,5 +44,3 @@ export default function FlatsDisplayHome({ dataFlatsHome }) {
 FlatsDisplayHome.propTypes = {
   dataFlatsHome: PropTypes.array,
 };
-//size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-// COMPONENT END

@@ -335,7 +335,10 @@ export const admissionFlat = async (newTenantData, propertyId) => {
 export const getAllFlatsForHome = async () => {
   let { data, error } = await supabase
     .from("flats")
-    .select("id,flat_number, status , renter_id , image ");
+    .select("id,flat_number, status , renter_id , image ")
+    .gte("id", 3001)
+    .lte("id", 3016)
+    .order("id", { ascending: true });
 
   if (error) {
     throw new Error(`Unable to get flats for home page Error => ${error}`);
