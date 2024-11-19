@@ -6,7 +6,7 @@ export default function PropertyValueChart() {
 
   // JSX
   return (
-    <section className="h-[300px] rounded-[5px] bg-gray-200">charts</section>
+    <section className="h-[500px] rounded-[5px] bg-gray-200">charts</section>
   );
   // JSX
 }

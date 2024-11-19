@@ -23,12 +23,12 @@ export default function FlatsDisplayHome({ dataFlatsHome }) {
         opts={{
           align: "start",
         }}
-        className="h-[230px] w-[280px] overflow-hidden bg-green-400 mobileM:w-[335px] mobileL:w-[370px] smallTab:w-[490px] largeTab:w-[520px]"
+        className="h-[230px] w-[280px] overflow-hidden bg-green-400 mobileM:w-[335px] mobileL:w-[370px] smallTab:w-[490px] largeTab:w-[520px] largeScreen:w-[680px] largeScreen:overflow-visible"
       >
         <CarouselContent className="flex gap-[10px]">
-          {Array.from({ length: 5 }).map((_, index) => (
+          {Array.from({ length: 10 }).map((_, index) => (
             <CarouselItem key={index} className="flex-none">
-              <div className="h-[100vh] w-[200px] bg-amber-200">{index}</div>
+              <div className="h-[200px] w-[200px] bg-amber-200">{index}</div>
             </CarouselItem>
           ))}
         </CarouselContent>
