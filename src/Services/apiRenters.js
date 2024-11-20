@@ -446,3 +446,14 @@ export const uploadTenantAdmissionData = async (
     );
   }
 };
+
+// FUNCTION
+export const getAllTenantsQt = async () => {
+  const { data, error } = await supabase.from("renters").select("id");
+
+  if (error) {
+    throw new Error(`Unable to get renters quantity ${error}`);
+  }
+
+  return data;
+};

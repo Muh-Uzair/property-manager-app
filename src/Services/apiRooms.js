@@ -283,3 +283,28 @@ export const admissionRoom = async (newTenantData, propertyId) => {
     return data;
   }
 };
+
+// FUNCTION
+export const getAllRoomsQt = async () => {
+  const { data, error } = await supabase.from("rooms").select("id");
+
+  if (error) {
+    throw new Error(`Unable to get rooms quantity ${error}`);
+  }
+
+  return data;
+};
+
+// FUNCTION
+export const getAllOccupiedRoomsQt = async () => {
+  const { data, error } = await supabase
+    .from("rooms")
+    .select("id")
+    .eq("status", "occupied");
+
+  if (error) {
+    throw new Error(`Unable to get occupied rooms quantity ${error}`);
+  }
+
+  return data;
+};
