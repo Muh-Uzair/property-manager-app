@@ -346,3 +346,28 @@ export const getAllFlatsForHome = async () => {
 
   return data;
 };
+
+// FUNCTION
+export const getAllFlatsQt = async () => {
+  const { data, error } = await supabase.from("flats").select("id");
+
+  if (error) {
+    throw new Error(`Unable to get flats quantity ${error}`);
+  }
+
+  return data;
+};
+
+// FUNCTION
+export const getAllOccupiedFlatsQt = async () => {
+  const { data, error } = await supabase
+    .from("flats")
+    .select("id")
+    .eq("status", "occupied");
+
+  if (error) {
+    throw new Error(`Unable to get occupied flats quantity ${error}`);
+  }
+
+  return data;
+};

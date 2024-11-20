@@ -280,3 +280,28 @@ export const admissionShop = async (newTenantData, propertyId) => {
     return data;
   }
 };
+
+// FUNCTION
+export const getAllShopsQt = async () => {
+  const { data, error } = await supabase.from("shops").select("id");
+
+  if (error) {
+    throw new Error(`Unable to get shops quantity ${error}`);
+  }
+
+  return data;
+};
+
+// FUNCTION
+export const getAllOccupiedShopsQt = async () => {
+  const { data, error } = await supabase
+    .from("shops")
+    .select("id")
+    .eq("status", "occupied");
+
+  if (error) {
+    throw new Error(`Unable to get occupied shops quantity ${error}`);
+  }
+
+  return data;
+};
