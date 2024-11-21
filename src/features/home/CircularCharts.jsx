@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import TotalAndOccupiedPie from "./TotalAndOccupiedPie";
+import TotalOccupiedUnoccupiedPie from "./TotalOccupiedUnoccupiedPie";
 
 const preparePieArr = (dataTotals) => {
   const pieData = dataTotals
@@ -19,6 +20,7 @@ const preparePieArr = (dataTotals) => {
 export default function CircularCharts({
   dataTotals,
   dataAllOccupiedPropertiesQt,
+  dataAllOccupiedQt,
 }) {
   // VARIABLES
   const pieData = preparePieArr(dataTotals);
@@ -31,7 +33,10 @@ export default function CircularCharts({
           dataAllOccupiedPropertiesQt={dataAllOccupiedPropertiesQt}
           pieData={pieData}
         />
-        <div>another chart</div>
+        <TotalOccupiedUnoccupiedPie
+          dataTotals={dataTotals}
+          dataAllOccupiedQt={dataAllOccupiedQt}
+        />
       </div>
     </section>
   );
@@ -40,4 +45,5 @@ export default function CircularCharts({
 CircularCharts.propTypes = {
   dataTotals: PropTypes.array,
   dataAllOccupiedPropertiesQt: PropTypes.array,
+  dataAllOccupiedQt: PropTypes.number,
 };

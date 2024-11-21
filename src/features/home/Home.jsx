@@ -9,6 +9,7 @@ import { useGetFlatsHome } from "./useGetFlatsHome";
 import PropertyValueChart from "./PropertyValueChart";
 import { useGetScreenHeight } from "@/hooks/useGetScreenHeight";
 import { useGetPropertyQt } from "./useGetPropertyQt";
+import { useGetOccupiedQt } from "./useGetOccupiedQt";
 
 // COMPONENT START
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
   const { dataAllOccupiedPropertiesQt = [], statusAllOccupiedPropertiesQt } =
     useGetPropertyQt();
   const screenHeight = useGetScreenHeight();
+  const { dataAllOccupiedQt = null, statusAllOccupiedQt } = useGetOccupiedQt();
 
   // FUNCTIONS
 
@@ -25,7 +27,8 @@ export default function Home() {
   if (
     statusTotals === "success" &&
     statusFlatsHome === "success" &&
-    statusAllOccupiedPropertiesQt === "success"
+    statusAllOccupiedPropertiesQt === "success" &&
+    statusAllOccupiedQt === "success"
   ) {
     return (
       <div
@@ -48,6 +51,7 @@ export default function Home() {
           <CircularCharts
             dataTotals={dataTotals}
             dataAllOccupiedPropertiesQt={dataAllOccupiedPropertiesQt}
+            dataAllOccupiedQt={dataAllOccupiedQt}
           />
 
           {/* shops */}
@@ -60,7 +64,8 @@ export default function Home() {
   if (
     statusTotals === "pending" &&
     statusFlatsHome === "success" &&
-    statusAllOccupiedPropertiesQt === "success"
+    statusAllOccupiedPropertiesQt === "success" &&
+    statusAllOccupiedQt === "success"
   ) {
     return (
       <LoadingWrapperCenter>

@@ -58,7 +58,7 @@ export default function TotalAndOccupiedPie({
             ))}
             <LabelList />
           </Pie>
-          <Legend layout="horizontal" iconType="line" align="left" />
+          <Legend layout="horizontal" align="left" />
         </PieChart>
       </div>
     </div>
