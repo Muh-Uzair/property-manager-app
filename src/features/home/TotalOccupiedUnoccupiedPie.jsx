@@ -66,7 +66,7 @@ export default function TotalOccupiedUnoccupiedPie({
         <Heading>Occupied/Unoccupied chart</Heading>
       </div>
 
-      <div className="pb-[50px]">
+      <div className="flex justify-center pb-[50px]">
         {" "}
         <PieChart width={240} height={220}>
           <Pie
