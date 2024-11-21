@@ -18,7 +18,7 @@ export default function FlatsDisplayHome({ dataFlatsHome }) {
 
   // JSX
   return (
-    <section className="shadow-basicShadow flex h-[300px] items-center justify-center rounded-[5px] p-[10px]">
+    <section className="flex h-[300px] items-center justify-center rounded-[5px] p-[10px] shadow-basicShadow">
       <Carousel
         opts={{
           align: "start",

@@ -50,8 +50,8 @@ export default function Heading({
 // COMPONENT END
 
 Heading.propTypes = {
-  type: PropTypes.string.isRequired, // Ensure 'type' is a required string
-  children: PropTypes.node.isRequired, // 'children' can be any renderable content
+  type: PropTypes.string, // Ensure 'type' is a required string
+  children: PropTypes.node, // 'children' can be any renderable content
   headingColor: PropTypes.string,
   uppercase: PropTypes.bool,
   bold: PropTypes.bool,
