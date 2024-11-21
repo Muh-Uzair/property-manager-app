@@ -37,7 +37,7 @@ export default function Home() {
         }}
         className="flex justify-center overflow-x-hidden overflow-y-scroll"
       >
-        <div className="grid grid-rows-[auto_auto_auto_auto_auto] gap-[10px] px-[5px] pb-[20px] pt-[10px] largeScreen:w-[800px]">
+        <div className="grid grid-rows-[auto_auto_auto_auto_auto] gap-[20px] px-[5px] pb-[20px] pt-[10px] largeScreen:w-[1000px]">
           {/* total flats etc */}
           <Totals dataTotals={dataTotals} />
 
