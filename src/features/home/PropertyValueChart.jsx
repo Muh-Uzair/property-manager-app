@@ -9,47 +9,33 @@ import {
   YAxis,
 } from "recharts";
 
-const data = [
-  {
-    name: "Page A",
-    uv: 4000,
-    pv: 2400,
-  },
-  {
-    name: "Page B",
-    uv: 3000,
-    pv: 1398,
-  },
-  {
-    name: "Page C",
-    uv: 2000,
-    pv: 9800,
-  },
-  {
-    name: "Page D",
-    uv: 2780,
-    pv: 3908,
-  },
-  {
-    name: "Page E",
-    uv: 1890,
-    pv: 4800,
-  },
-  {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-  },
-  {
-    name: "Page G",
-    uv: 3490,
-    pv: 4300,
-  },
-];
+const getPropertyValueData = () => {
+  const propertyCreatedYear = 2010;
+  const currentYear = new Date().getFullYear();
+
+  let propertyValueArr = [];
+  let initialValue = 50000000;
+
+  for (let i = propertyCreatedYear; i <= currentYear; i++) {
+    propertyValueArr.push({
+      name: i,
+      value: Number(
+        (i === propertyCreatedYear
+          ? initialValue
+          : (initialValue *= 1.1)
+        ).toFixed(0),
+      ),
+    });
+  }
+
+  return propertyValueArr;
+};
 
 // COMPONENT START
 export default function PropertyValueChart() {
   // VARIABLES
+
+  const propertyValueDate = getPropertyValueData();
 
   // FUNCTIONS
 
@@ -62,14 +48,18 @@ export default function PropertyValueChart() {
             <Heading>Property value chart</Heading>
           </div>
           <div className="flex items-center justify-start">
-            <BarChart width={500} height={250} data={data}>
+            <BarChart width={780} height={250} data={propertyValueDate}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip />
+              <YAxis
+                dataKey="value"
+                tickFormatter={(value) => `${(value / 1_000_000).toFixed(1)}M`} // Format Y-axis ticks
+              />
+              <Tooltip
+                formatter={(value) => `${(value / 1_000_000).toFixed(2)}M`} // Format tooltip values
+              />
               <Legend />
-              <Bar dataKey="pv" fill="#075985" />
-              <Bar dataKey="uv" fill="#0ea5e9" />
+              <Bar dataKey="value" fill="#075985" />
             </BarChart>
           </div>
         </div>
