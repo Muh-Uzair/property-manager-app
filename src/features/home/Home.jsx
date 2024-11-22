@@ -58,15 +58,15 @@ export default function Home() {
           {/* flats */}
           <RoomsDisplayHome dataRoomsHome={dataRoomsHome} />
 
-          {/* flats */}
-          <ShopsDisplayHome dataShopsHome={dataShopsHome} />
-
           {/* shops */}
           <CircularCharts
             dataTotals={dataTotals}
             dataAllOccupiedPropertiesQt={dataAllOccupiedPropertiesQt}
             dataAllOccupiedQt={dataAllOccupiedQt}
           />
+
+          {/* flats */}
+          <ShopsDisplayHome dataShopsHome={dataShopsHome} />
 
           {/* shops */}
           <PropertyValueChart />

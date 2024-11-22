@@ -18,7 +18,7 @@ export default function RoomsDisplayHome({ dataRoomsHome }) {
 
   // JSX
   return (
-    <section className="flex h-[300px] items-center justify-center rounded-[5px] p-[10px] shadow-basicShadow">
+    <section className="flex h-[300px] items-center justify-center rounded-[5px] bg-brand-color-900 p-[10px] shadow-basicShadow">
       <Carousel
         opts={{
           align: "start",

@@ -22,15 +22,13 @@ export default function FlatDisplayCard({ val, type = "flats" }) {
       <div className="grid grid-cols-[60%_1fr] rounded-b-[5px] border-t-[1px] border-brand-color-200 bg-white p-[5px]">
         <div className="flex flex-col pl-[5px]">
           <p className="text-[18px] font-bold text-brand-color-700">
-            <p className="text-[18px] font-bold text-brand-color-700">
-              {type === "flats"
-                ? `Flat ${val?.flat_number}`
-                : type === "rooms"
-                  ? `Room ${val?.room_number}`
-                  : type === "shops"
-                    ? `Shop ${val?.shop_number}`
-                    : ""}
-            </p>
+            {type === "flats"
+              ? `Flat ${val?.flat_number}`
+              : type === "rooms"
+                ? `Room ${val?.room_number}`
+                : type === "shops"
+                  ? `Shop ${val?.shop_number}`
+                  : "Flat"}
           </p>
           <Chip
             sx={{
@@ -41,6 +39,7 @@ export default function FlatDisplayCard({ val, type = "flats" }) {
               fontWeight: "700",
               color: "#0ea5e9",
               border: "1px solid #0ea5e9 ",
+              paddingTop: "2px",
             }}
             label={val?.status}
             className="uppercase"

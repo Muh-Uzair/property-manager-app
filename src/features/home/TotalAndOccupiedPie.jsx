@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 import { Cell, LabelList, Legend, Pie, PieChart } from "recharts";
-import { lime500, teal500, yellow500 } from "@/styles/globalStyles";
+
 import Heading from "@/ui/Heading";
 
 const pieColors = ["#7dd3fc", "#0284c7", "#0c4a6e"];
-const insidePieColors = [lime500, teal500, yellow500];
+const insidePieColors = ["#5eead4", "#14b8a6", "#115e59"];
 
 // COMPONENT START
 export default function TotalAndOccupiedPie({
