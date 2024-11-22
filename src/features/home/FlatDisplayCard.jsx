@@ -5,7 +5,7 @@ import { Chip } from "@mui/material";
 import Button from "@/ui/Button";
 
 // COMPONENT START
-export default function FlatDisplayCard({ val }) {
+export default function FlatDisplayCard({ val, type = "flats" }) {
   // VARIABLES
 
   // FUNCTIONS
@@ -22,7 +22,15 @@ export default function FlatDisplayCard({ val }) {
       <div className="grid grid-cols-[60%_1fr] rounded-b-[5px] border-t-[1px] border-brand-color-200 bg-white p-[5px]">
         <div className="flex flex-col pl-[5px]">
           <p className="text-[18px] font-bold text-brand-color-700">
-            Flat {val?.flat_number}
+            <p className="text-[18px] font-bold text-brand-color-700">
+              {type === "flats"
+                ? `Flat ${val?.flat_number}`
+                : type === "rooms"
+                  ? `Room ${val?.room_number}`
+                  : type === "shops"
+                    ? `Shop ${val?.shop_number}`
+                    : ""}
+            </p>
           </p>
           <Chip
             sx={{
@@ -43,8 +51,8 @@ export default function FlatDisplayCard({ val }) {
             <Link
               to={
                 val?.status === "occupied"
-                  ? `/propertyDetails/flats/${val?.id}`
-                  : `/admissions/flats/${val?.id}`
+                  ? `/propertyDetails/${type}/${val?.id}`
+                  : `/admissions/${type}/${val?.id}`
               }
             >
               {val?.status === "occupied" ? "view" : "occupy"}
@@ -59,6 +67,7 @@ export default function FlatDisplayCard({ val }) {
 
 FlatDisplayCard.propTypes = {
   val: PropTypes.object,
+  type: PropTypes.string,
 };
 //size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 // COMPONENT END

@@ -10,12 +10,18 @@ import PropertyValueChart from "./PropertyValueChart";
 import { useGetScreenHeight } from "@/hooks/useGetScreenHeight";
 import { useGetPropertyQt } from "./useGetPropertyQt";
 import { useGetOccupiedQt } from "./useGetOccupiedQt";
+import RoomsDisplayHome from "./RoomsDisplayHome";
+import { useGetRoomsHome } from "./useGetRoomsHome";
+import { useGetShopsHome } from "./useGetShopsHome";
+import ShopsDisplayHome from "./ShopsDisplayHome";
 
 // COMPONENT START
 export default function Home() {
   // VARIABLES
   const { dataTotals = [], statusTotals } = useGetAllTotals();
   const { dataFlatsHome = [], statusFlatsHome } = useGetFlatsHome();
+  const { dataRoomsHome = [], statusRoomsHome } = useGetRoomsHome();
+  const { dataShopsHome = [], statusShopsHome } = useGetShopsHome();
   const { dataAllOccupiedPropertiesQt = [], statusAllOccupiedPropertiesQt } =
     useGetPropertyQt();
   const screenHeight = useGetScreenHeight();
@@ -28,7 +34,9 @@ export default function Home() {
     statusTotals === "success" &&
     statusFlatsHome === "success" &&
     statusAllOccupiedPropertiesQt === "success" &&
-    statusAllOccupiedQt === "success"
+    statusAllOccupiedQt === "success" &&
+    statusRoomsHome === "success" &&
+    statusShopsHome === "success"
   ) {
     return (
       <div
@@ -37,7 +45,7 @@ export default function Home() {
         }}
         className="flex justify-center overflow-x-hidden overflow-y-scroll"
       >
-        <div className="grid grid-rows-[auto_auto_auto_auto_auto] gap-[20px] px-[5px] pb-[20px] pt-[10px] largeScreen:w-[1000px]">
+        <div className="grid grid-rows-[auto_auto_auto_auto_auto_auto_auto] gap-[30px] px-[5px] pb-[20px] pt-[10px] largeScreen:w-[900px]">
           {/* total flats etc */}
           <Totals dataTotals={dataTotals} />
 
@@ -46,6 +54,12 @@ export default function Home() {
 
           {/* check other propertied */}
           <CheckOtherProperties />
+
+          {/* flats */}
+          <RoomsDisplayHome dataRoomsHome={dataRoomsHome} />
+
+          {/* flats */}
+          <ShopsDisplayHome dataShopsHome={dataShopsHome} />
 
           {/* shops */}
           <CircularCharts
@@ -63,9 +77,11 @@ export default function Home() {
 
   if (
     statusTotals === "pending" &&
-    statusFlatsHome === "success" &&
-    statusAllOccupiedPropertiesQt === "success" &&
-    statusAllOccupiedQt === "success"
+    statusFlatsHome === "pending" &&
+    statusAllOccupiedPropertiesQt === "pending" &&
+    statusAllOccupiedQt === "pending" &&
+    statusRoomsHome === "pending" &&
+    statusShopsHome === "success"
   ) {
     return (
       <LoadingWrapperCenter>

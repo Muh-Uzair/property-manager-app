@@ -305,3 +305,19 @@ export const getAllOccupiedShopsQt = async () => {
 
   return data;
 };
+
+// FUNCTION
+export const getAllShopsForHome = async () => {
+  let { data, error } = await supabase
+    .from("shops")
+    .select("id,shop_number, status , renter_id , image")
+    .gte("id", 2001)
+    .lte("id", 2020)
+    .order("id", { ascending: true });
+
+  if (error) {
+    throw new Error(`Unable to get shops for home page Error => ${error}`);
+  }
+
+  return data;
+};
