@@ -81,7 +81,7 @@ export default function Home() {
     statusAllOccupiedPropertiesQt === "pending" &&
     statusAllOccupiedQt === "pending" &&
     statusRoomsHome === "pending" &&
-    statusShopsHome === "success"
+    statusShopsHome === "pending"
   ) {
     return (
       <LoadingWrapperCenter>
