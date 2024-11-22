@@ -25,7 +25,7 @@ import LeaveProperty from "./features/leaveProperty/LeaveProperty";
 import Admissions from "./features/Admissions/Admissions";
 import OccupyProperty from "./features/Admissions/OccupyProperty";
 
-// homePage created
+// auth created
 
 const router = createBrowserRouter(
   createRoutesFromElements(
