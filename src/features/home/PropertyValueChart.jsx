@@ -48,7 +48,7 @@ export default function PropertyValueChart() {
             <Heading>Property value chart</Heading>
           </div>
           <div className="flex items-center justify-start">
-            <BarChart width={700} height={250} data={propertyValueDate}>
+            <BarChart width={780} height={250} data={propertyValueDate}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="name" />
               <YAxis
