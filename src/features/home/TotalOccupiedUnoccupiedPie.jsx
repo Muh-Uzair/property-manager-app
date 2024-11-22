@@ -68,7 +68,7 @@ export default function TotalOccupiedUnoccupiedPie({
 
       <div className="flex justify-center pb-[50px]">
         {" "}
-        <PieChart width={240} height={220}>
+        <PieChart width={240} height={270}>
           <Pie
             data={occupiedUnoccupiedPieData}
             cx="50%"
@@ -86,7 +86,7 @@ export default function TotalOccupiedUnoccupiedPie({
               />
             ))}
           </Pie>
-          <Legend />
+          <Legend layout="vertical" />
         </PieChart>
       </div>
     </div>
