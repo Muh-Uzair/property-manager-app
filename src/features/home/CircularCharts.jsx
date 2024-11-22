@@ -28,7 +28,7 @@ export default function CircularCharts({
   // JSX
   return (
     <section className="flex justify-center gap-[10px] rounded-[5px] p-[10px] shadow-basicShadow">
-      <div>
+      <div className="largeScreen:flex largeScreen:gap-[100px]">
         <TotalAndOccupiedPie
           dataAllOccupiedPropertiesQt={dataAllOccupiedPropertiesQt}
           pieData={pieData}
