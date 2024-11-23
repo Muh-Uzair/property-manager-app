@@ -1,11 +1,13 @@
-// COMPONENT START///////////////////////////////////////////////
+import Authentication from "@/features/auth/Authentication";
+
+// COMPONENT START
 export default function LoginPG() {
-  // STATE & VARIABLES
+  // VARIABLES
 
   // FUNCTIONS
 
-  // JSX//////////////////////////////////////////
-  return <div>LoginPG</div>;
-  // JSX//////////////////////////////////////////
+  // JSX
+  return <Authentication />;
+  // JSX
 }
-// COMPONENT END/////////////////////////////////////////////////
+// COMPONENT END

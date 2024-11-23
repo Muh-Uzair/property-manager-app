@@ -10,7 +10,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
 
 import HomePG from "./Pages/HomePG";
-import ExpensesPG from "./Pages/ExpensesPG";
+
 import AdmissionsPG from "./Pages/AdmissionsPG";
 import AppLayout from "./ui/AppLayout";
 import ErrorPG from "./Pages/ErrorPG";
@@ -24,14 +24,23 @@ import LeavePropertyPG from "./Pages/LeavePropertyPG";
 import LeaveProperty from "./features/leaveProperty/LeaveProperty";
 import Admissions from "./features/Admissions/Admissions";
 import OccupyProperty from "./features/Admissions/OccupyProperty";
+import ProtectedRoutePG from "./Pages/ProtectedRoutePG";
 
-// auth created
+// auth  created
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
       <Route path="login" element={<LoginPG />} />
-      <Route path="/" element={<AppLayout />} errorElement={<ErrorPG />}>
+      <Route
+        path="/"
+        element={
+          <ProtectedRoutePG>
+            <AppLayout />
+          </ProtectedRoutePG>
+        }
+        errorElement={<ErrorPG />}
+      >
         <Route errorElement={<ErrorPG />}>
           {/* DIVIDER */}
           <Route index element={<Navigate replace to="home" />} />
@@ -57,9 +66,6 @@ const router = createBrowserRouter(
             {" "}
             <Route path=":propertyType" element={<RentPaymentPG />} />
           </Route>
-
-          {/* DIVIDER */}
-          <Route path="expenses" element={<ExpensesPG />} />
 
           {/* DIVIDER */}
           <Route path="admissions" element={<AdmissionsPG />} />

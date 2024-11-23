@@ -6,7 +6,7 @@ import FormControl from "@mui/material/FormControl";
 import { Controller } from "react-hook-form";
 
 import FormErrorDisplay from "@/ui/FormErrorDisplay";
-import AdmissionFormRow from "./AdmissionFormRow";
+import AdmissionFormRow from "../../ui/AdmissionFormRow";
 
 // COMPONENT START
 export default function AdmissionFormRowMarital({ control, errors }) {

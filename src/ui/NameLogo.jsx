@@ -1,33 +1,51 @@
+import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import { Logo } from "./Logo";
 import { brandColor500 } from "../styles/globalStyles";
 
-// COMPONENT END/////////////////////////////////////////////////
 // COMPONENT START///////////////////////////////////////////////
-export function NameLogo() {
+export function NameLogo({ logoSize = "30px" }) {
   // STATE & VARIABLES
 
   // FUNCTIONS
 
-  // JSX//////////////////////////////////////////
+  // JSX
   return (
     <div className="flex items-center pl-[10px]">
-      <Logo size={"30px"} />
+      <Logo size={logoSize} />
       <NamePropleLogo />
     </div>
   );
-  // JSX//////////////////////////////////////////
+  // JSX
 }
 
-export const NamePropleLogo = () => {
+NameLogo.propTypes = {
+  logoSize: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+};
+
+export const NamePropleLogo = ({
+  namePropleSize = "20px",
+  loginForm = false,
+}) => {
   const navigate = useNavigate();
   return (
-    <span
-      className={`hidden cursor-pointer pl-[5px] text-[20px] font-bold smallTab:block`}
+    <p
+      className={`cursor-pointer pl-[5px] text-[${namePropleSize}] font-bold`}
       style={{ color: brandColor500 }}
-      onClick={() => navigate("/home")}
+      onClick={
+        loginForm
+          ? () => {
+              return null;
+            }
+          : () => navigate("/home")
+      }
     >
       PROPLE
-    </span>
+    </p>
   );
+};
+
+NamePropleLogo.propTypes = {
+  namePropleSize: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  loginForm: PropTypes.bool,
 };
