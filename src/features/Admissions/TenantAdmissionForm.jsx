@@ -1,7 +1,7 @@
 // import Select from "react-select
 import Select from "react-select";
 import Heading from "@/ui/Heading";
-import AdmissionFormRow from "./AdmissionFormRow";
+import AdmissionFormRow from "../../ui/AdmissionFormRow";
 import AdmissionFormRowName from "./AdmissionFormRowName";
 import AdmissionFormRowContact from "./AdmissionFormRowContact";
 import AdmissionFormRowId from "./AdmissionFormRowId";

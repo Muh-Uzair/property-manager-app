@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { FloatingLabelInput } from "@/components/ui/FloatingLabelInput";
 
-import AdmissionFormRow from "./AdmissionFormRow";
+import AdmissionFormRow from "../../ui/AdmissionFormRow";
 import FormErrorDisplay from "@/ui/FormErrorDisplay";
 
 // COMPONENT START

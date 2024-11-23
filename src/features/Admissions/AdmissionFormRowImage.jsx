@@ -1,4 +1,4 @@
-import AdmissionFormRow from "./AdmissionFormRow";
+import AdmissionFormRow from "../../ui/AdmissionFormRow";
 import FileUploadButton from "@mui/material/Button";
 import PropTypes from "prop-types";
 import { IoMdCloudUpload } from "react-icons/io";
