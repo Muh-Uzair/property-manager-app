@@ -76,11 +76,11 @@ export default function Home() {
   }
 
   if (
-    statusTotals === "pending" &&
-    statusFlatsHome === "pending" &&
-    statusAllOccupiedPropertiesQt === "pending" &&
-    statusAllOccupiedQt === "pending" &&
-    statusRoomsHome === "pending" &&
+    statusTotals === "pending" ||
+    statusFlatsHome === "pending" ||
+    statusAllOccupiedPropertiesQt === "pending" ||
+    statusAllOccupiedQt === "pending" ||
+    statusRoomsHome === "pending" ||
     statusShopsHome === "pending"
   ) {
     return (
