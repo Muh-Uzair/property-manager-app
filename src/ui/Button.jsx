@@ -13,6 +13,7 @@ export default function Button({
   disabled = false,
   onClick,
   paddingY = "3px",
+  submitStatus = false,
 }) {
   // VARIABLES
 
@@ -23,6 +24,7 @@ export default function Button({
   if (type === "primary") {
     return (
       <button
+        type={submitStatus === true ? "submit" : "button"}
         disabled={disabled}
         className={`bg-brand-color-500 active:bg-brand-color-600 disabled:cursor-not-allowed disabled:opacity-35 largeScreen:hover:bg-brand-color-400 largeScreen:active:bg-brand-color-600 ${uppercase ? "uppercase" : ""} ${primaryStyles} ${wide ? "w-full" : ""} ${size === "medium" ? "text-12px" : size === "large" ? "text-15px" : ""} py-[${paddingY}]`}
       >
@@ -34,6 +36,7 @@ export default function Button({
   if (type === "red") {
     return (
       <button
+        type={type}
         onClick={() => onClick()}
         disabled={disabled}
         className={`bg-red-600 active:bg-red-500 disabled:cursor-not-allowed disabled:opacity-35 largeScreen:hover:bg-red-400 largeScreen:active:bg-red-500 ${uppercase ? "uppercase" : ""} ${primaryStyles} ${wide ? "w-full" : ""} ${size === "medium" ? "text-12px" : size === "large" ? "text-15px" : ""}`}
@@ -54,6 +57,7 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   onClick: PropTypes.func,
   paddingY: PropTypes.string,
+  submitStatus: PropTypes.bool,
 };
 //size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 // COMPONENT END

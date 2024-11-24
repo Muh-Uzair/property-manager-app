@@ -1,26 +1,43 @@
+import { useGetUser } from "@/features/auth/useGetUser";
+import LoadingSpinner from "@/ui/LoadingSpinner";
+import LoadingWrapperCenter from "@/ui/LoadingWrapperCenter";
 import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 // COMPONENT START
 export default function ProtectedRoutePG({ children }) {
   // VARIABLES
+  const { dataUser, statusUser } = useGetUser();
   const navigate = useNavigate();
-  const [isAuth] = useState(false);
 
   // FUNCTIONS
+
+  //    FUNCTION
   useEffect(() => {
     const redirectToLogin = () => {
-      if (!isAuth) {
+      if (dataUser?.role !== "authenticated" && statusUser !== "pending") {
         navigate("/login");
       }
     };
+
     redirectToLogin();
-  }, [isAuth, navigate]);
+  }, [statusUser, dataUser, navigate]);
 
   // JSX
-  if (isAuth) {
-    return <>{children}</>;
+
+  if (statusUser === "pending") {
+    return (
+      <div className="h-[100vh] w-full">
+        <LoadingWrapperCenter>
+          <LoadingSpinner />
+        </LoadingWrapperCenter>
+      </div>
+    );
+  }
+
+  if (statusUser === "success" && dataUser?.role === "authenticated") {
+    return children;
   }
 
   // JSX
@@ -29,5 +46,4 @@ export default function ProtectedRoutePG({ children }) {
 ProtectedRoutePG.propTypes = {
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.element]),
 };
-//size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 // COMPONENT END

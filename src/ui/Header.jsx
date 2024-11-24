@@ -5,9 +5,11 @@ import { AiOutlineDollarCircle } from "react-icons/ai";
 import { HiMiniArrowRightOnRectangle } from "react-icons/hi2";
 
 import NavigationLinks from "./NavigationLinks";
-import Uploader from "../features/Uploader/Uploader";
+// import Uploader from "../features/Uploader/Uploader";
 import { brandColor500 } from "../styles/globalStyles";
 import { NameLogo } from "./NameLogo";
+import { Logo } from "./Logo";
+
 // COMPONENT START///////////////////////////////////////////////
 export function Header() {
   // STATE & VARIABLES
@@ -16,11 +18,16 @@ export function Header() {
 
   // JSX//////////////////////////////////////////
   return (
-    <header className="grid grid-cols-[auto_1fr_auto] gap-[10px] bg-gray-100">
-      <NameLogo />
+    <header className="grid grid-cols-[auto_1fr_auto] gap-[20px] bg-gray-100 smallTab:grid-cols-[auto_1fr_auto]">
+      <div className="hidden smallTab:flex">
+        <NameLogo />
+      </div>
 
+      <div className="ml-[10px] flex items-center smallTab:hidden">
+        <Logo size="25px" />
+      </div>
       <div className="flex items-center justify-center smallTab:hidden">
-        <nav>
+        <nav className="w-full mobileM:w-[250px]">
           <NavigationLinks
             navigationLinksArr={[
               { url: "home", label: "Home", icon: <HiOutlineHome /> },
@@ -50,7 +57,7 @@ export function Header() {
       </div>
 
       <div className="smallTab: col-start-3 flex items-center gap-[5px] pr-[10px] smallTab:gap-[18px] smallTab:pr-[20px]">
-        <Uploader />
+        {/* <Uploader /> */}
         <UserDetails />
       </div>
     </header>
@@ -62,7 +69,7 @@ export function Header() {
 const UserDetails = () => {
   return (
     <div
-      className={`flex h-[35px] w-[35px] items-center justify-center rounded-full`}
+      className={`flex h-[30px] w-[30px] items-center justify-center rounded-full`}
       style={{ backgroundColor: `${brandColor500}` }}
     >
       <TbUser size={"20px"} color={"white"} />

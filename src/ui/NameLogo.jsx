@@ -11,7 +11,7 @@ export function NameLogo({ logoSize = "30px" }) {
 
   // JSX
   return (
-    <div className="flex items-center pl-[10px]">
+    <div className="flex items-center gap-[10px] pl-[10px]">
       <Logo size={logoSize} />
       <NamePropleLogo />
     </div>
@@ -30,8 +30,8 @@ export const NamePropleLogo = ({
   const navigate = useNavigate();
   return (
     <p
-      className={`cursor-pointer pl-[5px] text-[${namePropleSize}] font-bold`}
-      style={{ color: brandColor500 }}
+      className={`cursor-pointer font-bold`}
+      style={{ color: brandColor500, fontSize: namePropleSize }}
       onClick={
         loginForm
           ? () => {
