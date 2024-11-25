@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 // COMPONENT START
 export default function ProtectedRoutePG({ children }) {
   // VARIABLES
-  const { dataUser, statusUser } = useGetUser();
+  const { dataUser = {}, statusUser } = useGetUser();
   const navigate = useNavigate();
 
   // FUNCTIONS
@@ -16,7 +16,12 @@ export default function ProtectedRoutePG({ children }) {
   //    FUNCTION
   useEffect(() => {
     const redirectToLogin = () => {
-      if (dataUser?.role !== "authenticated" && statusUser !== "pending") {
+      if (
+        (dataUser?.user?.role !== "authenticated" &&
+          statusUser !== "pending") ||
+        dataUser?.session === null ||
+        !dataUser
+      ) {
         navigate("/login");
       }
     };

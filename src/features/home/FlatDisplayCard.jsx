@@ -39,7 +39,6 @@ export default function FlatDisplayCard({ val, type = "flats" }) {
               fontWeight: "700",
               color: "#0ea5e9",
               border: "1px solid #0ea5e9 ",
-              paddingTop: "2px",
             }}
             label={val?.status}
             className="uppercase"

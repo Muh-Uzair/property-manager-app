@@ -33,6 +33,5 @@ export const apiGetCurrentUser = async () => {
   }
 
   // and return that user
-
   return user || {};
 };
