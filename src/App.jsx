@@ -100,7 +100,7 @@ const queryClient = new QueryClient({
 
 // COMPONENT START///////////////////////////////////////////////
 export default function App() {
-  // STATE & VARIABLES`
+  //  VARIABLES`
 
   // FUNCTIONS
 

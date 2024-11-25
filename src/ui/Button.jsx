@@ -11,7 +11,7 @@ export default function Button({
   wide = false,
   uppercase = false,
   disabled = false,
-  onClick,
+  onClick = () => {},
   paddingY = "3px",
   submitStatus = false,
 }) {
@@ -19,11 +19,12 @@ export default function Button({
 
   // FUNCTIONS
 
-  // JSX
+  //
 
   if (type === "primary") {
     return (
       <button
+        onClick={() => onClick()}
         type={submitStatus === true ? "submit" : "button"}
         disabled={disabled}
         className={`bg-brand-color-500 active:bg-brand-color-600 disabled:cursor-not-allowed disabled:opacity-35 largeScreen:hover:bg-brand-color-400 largeScreen:active:bg-brand-color-600 ${uppercase ? "uppercase" : ""} ${primaryStyles} ${wide ? "w-full" : ""} ${size === "medium" ? "text-12px" : size === "large" ? "text-15px" : ""} py-[${paddingY}]`}
