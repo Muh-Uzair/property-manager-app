@@ -15,7 +15,7 @@ export const useLogin = () => {
       const user = await login({ email, password });
       return user;
     },
-    onSuccess: (user) => {
+    onSuccess: ({ user }) => {
       queryClient.setQueryData(["currentUser"], user);
       toast.success("Login successful");
       navigate("/");

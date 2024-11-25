@@ -11,18 +11,14 @@ export default function ProtectedRoutePG({ children }) {
   const { dataUser = {}, statusUser } = useGetUser();
   const navigate = useNavigate();
 
-  console.log(dataUser);
-
   // FUNCTIONS
 
   //    FUNCTION
   useEffect(() => {
     const redirectToLogin = () => {
       if (
-        (dataUser?.user?.role !== "authenticated" &&
-          statusUser !== "pending") ||
-        dataUser?.session === null ||
-        !dataUser
+        (dataUser?.role !== "authenticated" || dataUser === null) &&
+        statusUser === "success"
       ) {
         navigate("/login");
       }
