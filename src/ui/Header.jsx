@@ -1,4 +1,4 @@
-import { TbClipboardText, TbUser } from "react-icons/tb";
+import { TbClipboardText } from "react-icons/tb";
 import { HiOutlineHome } from "react-icons/hi";
 import { HiMiniArrowLeftOnRectangle } from "react-icons/hi2";
 import { AiOutlineDollarCircle } from "react-icons/ai";
@@ -6,9 +6,10 @@ import { HiMiniArrowRightOnRectangle } from "react-icons/hi2";
 
 import NavigationLinks from "./NavigationLinks";
 // import Uploader from "../features/Uploader/Uploader";
-import { brandColor500 } from "../styles/globalStyles";
+
 import { NameLogo } from "./NameLogo";
 import { Logo } from "./Logo";
+import { UserDetails } from "./UserDetails";
 
 // COMPONENT START///////////////////////////////////////////////
 export function Header() {
@@ -26,6 +27,7 @@ export function Header() {
       <div className="ml-[10px] flex items-center smallTab:hidden">
         <Logo size="25px" />
       </div>
+
       <div className="flex items-center justify-center smallTab:hidden">
         <nav className="w-full mobileM:w-[250px]">
           <NavigationLinks
@@ -64,16 +66,3 @@ export function Header() {
   );
   // JSX//////////////////////////////////////////
 }
-
-// COMPONENT START
-const UserDetails = () => {
-  return (
-    <div
-      className={`flex h-[30px] w-[30px] items-center justify-center rounded-full`}
-      style={{ backgroundColor: `${brandColor500}` }}
-    >
-      <TbUser size={"20px"} color={"white"} />
-    </div>
-  );
-};
-// COMPONENT END
