@@ -11,6 +11,8 @@ export default function ProtectedRoutePG({ children }) {
   const { dataUser = {}, statusUser } = useGetUser();
   const navigate = useNavigate();
 
+  console.log(dataUser);
+
   // FUNCTIONS
 
   //    FUNCTION
