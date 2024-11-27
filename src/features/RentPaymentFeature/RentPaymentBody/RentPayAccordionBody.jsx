@@ -23,7 +23,11 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
   let { dataTenantDetailRentForm, statusTenantDetailRentForm } =
     useGetTenantDetailRentForm(occupiedProperty.renter_id);
   dataTenantDetailRentForm = dataTenantDetailRentForm?.data?.[0] ?? {};
-  const { register, handleSubmit, getValues } = useForm();
+  const { register, handleSubmit, getValues } = useForm({
+    defaultValues: {
+      rfReceivedPaymentCheck: false,
+    },
+  });
   const [receivedPayment, setReceivedPayment] = useState(false);
   const [amountReceived, setAmountReceived] = useState(0);
   const { mutatePayRent, statusPayRent } = usePayRent(setReceivedPayment);
@@ -36,6 +40,8 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
 
   // FUNCTION executed when validation at any field fails
   function rentPayFormSubmitError(errors) {
+    if (!errors) return;
+
     const { rfReceivedPaymentCheck: { message } = {} } = errors;
     toast.error(message);
   }
@@ -92,6 +98,8 @@ export default function RentPayAccordionBody({ occupiedProperty }) {
               className="flex justify-end largeScreen:justify-start"
             >
               <Button
+                submitStatus={true}
+                onClick={rentPayFormSubmitError}
                 disabled={statusPayRent === "pending"}
                 type="primary"
                 uppercase={true}
