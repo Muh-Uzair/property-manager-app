@@ -26,7 +26,7 @@ import Admissions from "./features/Admissions/Admissions";
 import OccupyProperty from "./features/Admissions/OccupyProperty";
 import ProtectedRoutePG from "./Pages/ProtectedRoutePG";
 
-// MATLAB work today
+// rent payment error rmv
 
 const router = createBrowserRouter(
   createRoutesFromElements(
