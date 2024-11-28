@@ -25,6 +25,7 @@ import LeaveProperty from "./features/leaveProperty/LeaveProperty";
 import Admissions from "./features/Admissions/Admissions";
 import OccupyProperty from "./features/Admissions/OccupyProperty";
 import ProtectedRoutePG from "./Pages/ProtectedRoutePG";
+import SignUpPG from "./Pages/SignUpPG";
 
 // rent payment error rmv
 
@@ -32,6 +33,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
       <Route path="login" element={<LoginPG />} />
+      <Route path="/register" element={<SignUpPG />} />
       <Route
         path="/"
         element={

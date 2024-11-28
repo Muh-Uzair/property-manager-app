@@ -4,6 +4,7 @@ import { useState } from "react";
 import LoginForm from "./LoginForm";
 import { useLogin } from "./useLogin";
 import { NamePropleLogo } from "@/ui/NameLogo";
+import { useLocation } from "react-router-dom";
 
 // COMPONENT START
 export default function Authentication() {
@@ -15,9 +16,11 @@ export default function Authentication() {
   } = useForm({ defaultValues: { email: "uzair@gmail.com" } });
   const [showPassword, setShowPassword] = useState(true);
   const { mutateLogin, statusLogin } = useLogin();
+  const { pathname } = useLocation();
+  const registerLogin = pathname?.slice(1);
 
   // FUNCTIONS
-  const authFormSubmit = async (data) => {
+  const loginFormSubmit = async (data) => {
     const { email, password } = data;
     await mutateLogin({ email, password });
   };
@@ -30,18 +33,24 @@ export default function Authentication() {
       </div>
 
       <div>
-        <p className="text-[20px] font-bold">Log in to your account</p>
+        <p className="text-[20px] font-bold">
+          {registerLogin === "login" && <>Log in to your account</>}
+          {registerLogin === "register" && <>Enter details to create account</>}
+        </p>
       </div>
 
-      <LoginForm
-        handleSubmit={handleSubmit}
-        authFormSubmit={authFormSubmit}
-        register={register}
-        errors={errors}
-        showPassword={showPassword}
-        setShowPassword={setShowPassword}
-        statusLogin={statusLogin}
-      />
+      {registerLogin === "login" && (
+        <LoginForm
+          handleSubmit={handleSubmit}
+          loginFormSubmit={loginFormSubmit}
+          register={register}
+          errors={errors}
+          showPassword={showPassword}
+          setShowPassword={setShowPassword}
+          statusLogin={statusLogin}
+        />
+      )}
+      {registerLogin === "register" && <span>register form</span>}
     </div>
   );
   // JSX
