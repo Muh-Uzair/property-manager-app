@@ -3,6 +3,7 @@ import { ThemeProvider } from "@emotion/react";
 import { createTheme } from "@mui/material";
 import { FaRegEyeSlash } from "react-icons/fa6";
 import { FaRegEye } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 import FormRow from "@/ui/AdmissionFormRow";
 import FormErrorDisplay from "@/ui/FormErrorDisplay";
@@ -21,7 +22,7 @@ const theme = createTheme({
 // COMPONENT START
 export default function LoginForm({
   handleSubmit,
-  authFormSubmit,
+  loginFormSubmit = () => {},
   register,
   errors,
   showPassword,
@@ -37,7 +38,7 @@ export default function LoginForm({
     <div className="w-[300px] smallTab:w-[400px] largeTab:w-[500px]">
       <ThemeProvider theme={theme}>
         <form
-          onSubmit={handleSubmit(authFormSubmit)}
+          onSubmit={handleSubmit(loginFormSubmit)}
           className="flex w-[100%] flex-col gap-[20px] rounded-[8px] px-[15px] pb-[20px] pt-[40px] shadow-basicShadow"
         >
           <FormRow>
@@ -106,7 +107,7 @@ export default function LoginForm({
             <p className="text-[12px]">
               To register{" "}
               <span className="cursor-pointer font-semibold text-brand-color-500 underline">
-                click here
+                <Link to={"/register"}>click here</Link>
               </span>
             </p>
           </FormRow>
@@ -125,7 +126,7 @@ export default function LoginForm({
                   </LoadingWrapperCenter>
                 </div>
               ) : (
-                <span>submit </span>
+                <span>submit</span>
               )}
             </Button>
           </FormRow>
@@ -138,12 +139,14 @@ export default function LoginForm({
 
 LoginForm.propTypes = {
   handleSubmit: PropTypes.func,
-  authFormSubmit: PropTypes.func,
+  loginFormSubmit: PropTypes.func,
   register: PropTypes.func,
   errors: PropTypes.object,
   showPassword: PropTypes.bool,
   setShowPassword: PropTypes.func,
   statusLogin: PropTypes.string,
+  searchParams: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+  setSearchParams: PropTypes.func,
 };
 //size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 // COMPONENT END
