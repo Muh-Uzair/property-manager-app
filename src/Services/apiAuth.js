@@ -45,3 +45,22 @@ export const apiLogOut = async () => {
     throw new Error(`Unable to log out Error => ${error}`);
   }
 };
+
+// FUNCTION
+export const apiSignUp = async ({ email, password, userName }) => {
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+    options: {
+      data: {
+        userName,
+      },
+    },
+  });
+
+  if (error) {
+    throw new Error(`Unable to sign up user Error => ${error}`);
+  }
+
+  return data;
+};

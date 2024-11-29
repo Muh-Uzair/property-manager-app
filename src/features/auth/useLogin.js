@@ -21,7 +21,7 @@ export const useLogin = () => {
       navigate("/");
     },
     onError: () => {
-      toast.error("Wrong credentials");
+      toast.error("Wrong credentials or register first", { duration: 6000 });
     },
   });
 
