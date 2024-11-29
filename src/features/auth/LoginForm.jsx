@@ -10,6 +10,7 @@ import FormErrorDisplay from "@/ui/FormErrorDisplay";
 import Button from "@/ui/Button";
 import LoadingSpinner from "@/ui/LoadingSpinner";
 import LoadingWrapperCenter from "@/ui/LoadingWrapperCenter";
+import FormInputText from "@/ui/FormInputText";
 
 const theme = createTheme({
   palette: {
@@ -42,31 +43,21 @@ export default function LoginForm({
           className="flex w-[100%] flex-col gap-[20px] rounded-[8px] px-[15px] pb-[20px] pt-[40px] shadow-basicShadow"
         >
           <FormRow>
-            <div className="relative">
-              <input
-                id="email"
-                autoComplete="email"
-                type="text"
-                className="peer w-[100%] rounded-[5px] border-[2px] py-[7px] pl-[10px] focus:border-brand-color-500 focus:outline-none"
-                {...register("email", {
-                  required: "Email is required",
-                  pattern: {
-                    value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-                    message: "Enter a valid email address",
-                  },
-                })}
-              />
-
-              <label
-                htmlFor="email"
-                className="absolute left-[10px] top-[-12px] bg-white px-[5px] font-semibold text-gray-400 peer-focus:text-brand-color-500"
-              >
-                Email
-              </label>
-            </div>
-            {errors.email && (
-              <FormErrorDisplay>{`* ${errors.email.message}`}</FormErrorDisplay>
-            )}
+            <FormInputText
+              textFieldType={"labelUpNoAnimation"}
+              id={"email"}
+              autoComplete={true}
+              register={register}
+              validationObject={{
+                required: "Email is required",
+                pattern: {
+                  value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                  message: "Enter a valid email address",
+                },
+              }}
+              labelText="Email"
+              errors={errors}
+            />
           </FormRow>
 
           <FormRow>

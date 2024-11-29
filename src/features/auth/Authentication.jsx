@@ -5,6 +5,7 @@ import LoginForm from "./LoginForm";
 import { useLogin } from "./useLogin";
 import { NamePropleLogo } from "@/ui/NameLogo";
 import { useLocation } from "react-router-dom";
+import SignUp from "./SignUp";
 
 // COMPONENT START
 export default function Authentication() {
@@ -50,7 +51,7 @@ export default function Authentication() {
           statusLogin={statusLogin}
         />
       )}
-      {registerLogin === "register" && <span>register form</span>}
+      {registerLogin === "register" && <SignUp />}
     </div>
   );
   // JSX
