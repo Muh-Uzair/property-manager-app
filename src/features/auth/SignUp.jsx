@@ -1,7 +1,13 @@
+import Modal from "@mui/material/Modal";
+import { useForm } from "react-hook-form";
+import { useEffect, useState } from "react";
+
 import FormRow from "@/ui/AdmissionFormRow";
 import Button from "@/ui/Button";
 import FormInputText from "@/ui/FormInputText";
-import { useForm } from "react-hook-form";
+import LoadingSpinner from "@/ui/LoadingSpinner";
+import { useSignUp } from "./useSignUp";
+import { useNavigate } from "react-router-dom";
 
 // COMPONENT START
 export default function SignUp() {
@@ -12,9 +18,19 @@ export default function SignUp() {
     handleSubmit,
     getValues,
   } = useForm();
+  const { mutateSignUp, mutateStatusSignUp, signUpStatus } = useSignUp();
+  const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   // FUNCTIONS
+
+  //     FUNCTION
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  //     FUNCTION
   const registerFormSubmit = (data) => {
+    // trimming all the data from the fields
     const trimmedData = {};
     for (const i of Object.keys(data)) {
       if (typeof data[i] === "string") {
@@ -24,10 +40,46 @@ export default function SignUp() {
       }
     }
 
-    console.log(trimmedData);
+    // running mutation
+    mutateSignUp(data);
   };
 
+  useEffect(() => {
+    const handleOpenModal = () => {
+      handleOpen();
+    };
+
+    if (signUpStatus === "checkMail") {
+      handleOpenModal();
+    }
+  }, [signUpStatus]);
+
   // JSX
+  if (signUpStatus === "checkMail") {
+    return (
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <div
+          onClick={() => {
+            handleClose();
+            navigate("/login");
+          }}
+          className="flex h-full w-full items-center justify-center p-[10px]"
+        >
+          <div className="max-w-[290px] rounded-[5px] bg-white p-[10px] largeTab:max-w-[400px]">
+            <p className="font-semibold largeTab:text-[23px]">
+              Please check your inbox. If the email address you entered is
+              correct, you will receive a confirmation email shortly.
+            </p>
+          </div>
+        </div>
+      </Modal>
+    );
+  }
   return (
     <div className="w-[300px] smallTab:w-[400px] largeTab:w-[500px]">
       {" "}
@@ -138,7 +190,15 @@ export default function SignUp() {
             wide={true}
             uppercase={true}
           >
-            register
+            {mutateStatusSignUp === "pending" && (
+              <div className="flex items-center justify-center gap-[10px]">
+                <div className="flex items-center justify-center">
+                  <LoadingSpinner size={20} progressColor="white" />
+                </div>
+                <div>register</div>
+              </div>
+            )}
+            {mutateStatusSignUp !== "pending" && <>register</>}
           </Button>
         </FormRow>
       </form>
