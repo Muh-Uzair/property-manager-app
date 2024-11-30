@@ -35,9 +35,15 @@ export default function Authentication() {
 
       <div className="">
         {registerLogin === "login" && (
-          <p className="text-center text-[20px] font-bold">
-            Log in to your account
-          </p>
+          <div className="flex flex-col items-center">
+            <p className="text-center text-[20px] font-bold">
+              Log in to your account
+            </p>
+
+            <p className="text-center text-red-600">
+              * register if you do not have an account
+            </p>
+          </div>
         )}
         {registerLogin === "register" && (
           <div className="flex flex-col items-center">

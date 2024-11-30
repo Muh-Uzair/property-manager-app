@@ -1,13 +1,14 @@
 import Modal from "@mui/material/Modal";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
+import { TbInfoTriangle } from "react-icons/tb";
+import { useNavigate } from "react-router-dom";
 
 import FormRow from "@/ui/AdmissionFormRow";
 import Button from "@/ui/Button";
 import FormInputText from "@/ui/FormInputText";
 import LoadingSpinner from "@/ui/LoadingSpinner";
 import { useSignUp } from "./useSignUp";
-import { useNavigate } from "react-router-dom";
 
 // COMPONENT START
 export default function SignUp() {
@@ -26,7 +27,10 @@ export default function SignUp() {
 
   //     FUNCTION
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false);
+    navigate("/login");
+  };
 
   //     FUNCTION
   const registerFormSubmit = (data) => {
@@ -62,21 +66,36 @@ export default function SignUp() {
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        className="flex items-center justify-center px-[10px]"
       >
-        <div
-          onClick={() => {
-            handleClose();
-            navigate("/login");
-          }}
-          className="flex h-full w-full items-center justify-center p-[10px]"
-        >
-          <div className="max-w-[290px] rounded-[5px] bg-white p-[10px] largeTab:max-w-[400px]">
-            <p className="font-semibold largeTab:text-[23px]">
+        <main className="grid max-w-[320px] grid-rows-[50px_100px_50px] gap-[10px] rounded bg-white">
+          <section className="flex items-center gap-[10px] bg-brand-color-500 p-[10px] text-[18px] text-white">
+            <div>
+              <TbInfoTriangle />
+            </div>
+            <div>Informational message</div>
+          </section>
+
+          <section className="p-[10px]">
+            <p className="text-stone-500">
               Please check your inbox. If the email address you entered is
               correct, you will receive a confirmation email shortly.
             </p>
-          </div>
-        </div>
+          </section>
+
+          <section className="flex justify-end border-t-[1px] p-[10px]">
+            <Button
+              onClick={() => {
+                handleClose();
+                navigate("/login");
+              }}
+              type="red"
+              uppercase={true}
+            >
+              cancel
+            </Button>
+          </section>
+        </main>
       </Modal>
     );
   }
@@ -207,3 +226,26 @@ export default function SignUp() {
   // JSX
 }
 // COMPONENT END
+
+// <div
+//           onClick={() => {
+//             navigate("/login");
+//           }}
+//           className="flex h-full w-full items-center justify-center p-[10px]"
+//         >
+//           <div className="grid grid-rows-[30%_1fr_10%] gap-[10px] rounded-[5px] bg-white">
+//             <div className="flex bg-brand-color-500">
+//               <div>icon</div>
+//               <div>Informational message</div>
+//             </div>
+//             <div>
+//               <p className="">
+//                 Please check your inbox. If the email address you entered is
+//                 correct, you will receive a confirmation email shortly.
+//               </p>
+//             </div>
+//             <div>
+//               <Button>close</Button>
+//             </div>
+//           </div>
+//         </div>

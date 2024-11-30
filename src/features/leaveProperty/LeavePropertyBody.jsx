@@ -38,7 +38,7 @@ export default function LeavePropertyBody() {
         style={{
           height: `calc(${screenHeight}px - 90px)`,
         }}
-        className="grid-cols-2 gap-x-[40px] gap-y-[20px] overflow-y-auto px-[10px] pb-[10px] smallTab:px-[20px] smallTab:pb-[50px] largeScreen:grid largeScreen:pl-[150px] largeScreen:pr-[150px]"
+        className="grid-cols-2 gap-x-[40px] gap-y-[20px] overflow-y-auto px-[10px] pb-[10px] smallTab:px-[20px] smallTab:pb-[50px] largeScreen:grid"
       >
         {dataOccupiedPropertyNumber.map((val, i) => (
           <LeavePropertyCard

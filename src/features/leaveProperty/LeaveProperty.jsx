@@ -10,7 +10,7 @@ export default function LeaveProperty() {
   // JSX
 
   return (
-    <div className="grid h-full grid-rows-[auto_1fr] gap-[10px]">
+    <div className="grid h-full grid-rows-[auto_1fr] gap-[10px] largeScreen:px-[150px]">
       <LeavePropertyHeader />
       <LeavePropertyBody />
     </div>
