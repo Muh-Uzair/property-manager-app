@@ -7,7 +7,9 @@ export default function RentPayment() {
 
   // JSX
   return (
-    <div className={`grid h-[100%] w-[100%] grid-rows-[auto_1fr] gap-[10px]`}>
+    <div
+      className={`grid h-[100%] w-[100%] grid-rows-[auto_1fr] gap-[10px] largeScreen:px-[150px]`}
+    >
       <RentPaymentHeader />
       <RentPaymentBody />
     </div>

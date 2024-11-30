@@ -9,7 +9,7 @@ import { useGetPropertyType } from "@/hooks/useGetPropertyType";
 import CenteredFlexBox from "@/ui/CenteredFlexBox";
 
 const tableCellCommonStyles =
-  "px-[0px] text-center align-middle text-[10px] largeScreen:text-[15px]";
+  "px-[0px] text-center align-middle text-[10px] largeScreen:text-[13px]";
 
 // COMPONENT START
 export default function AdmissionsBodyTableBody({ dataAllUnoccupiedProperty }) {
@@ -35,10 +35,10 @@ export default function AdmissionsBodyTableBody({ dataAllUnoccupiedProperty }) {
           <TableCell className={`${tableCellCommonStyles}`}>
             <CenteredFlexBox>
               <Badge
-                className={`pointer-events-none flex h-[15px] w-[70px] items-center justify-center rounded-[8px] bg-brand-color-200 px-[3px] py-[0px] text-brand-color-500 largeScreen:h-[22px] largeScreen:w-[100px] largeScreen:rounded-full`}
+                className={`pointer-events-none flex h-[15px] w-[60px] items-center justify-center rounded-[8px] bg-brand-color-200 px-[3px] py-[0px] text-brand-color-500 largeScreen:h-[22px] largeScreen:w-[100px] largeScreen:rounded-full`}
               >
                 {" "}
-                <p className="text-[8px] font-bold uppercase largeScreen:text-[13px]">
+                <p className="text-[8px] font-bold uppercase largeScreen:text-[11px]">
                   {val?.status}
                 </p>
               </Badge>
@@ -54,7 +54,7 @@ export default function AdmissionsBodyTableBody({ dataAllUnoccupiedProperty }) {
             <CenteredFlexBox>
               <Button
                 size={"default"}
-                className="bg-brand-color-500 px-[5px] py-[3px] text-[10px] text-white hover:bg-brand-color-400 active:bg-brand-color-700 largeScreen:px-[10px] largeScreen:py-[5px] largeScreen:text-[15px]"
+                className="bg-brand-color-500 px-[5px] py-[3px] text-[10px] text-white hover:bg-brand-color-400 active:bg-brand-color-700 largeScreen:px-[10px] largeScreen:py-[5px] largeScreen:text-[13px]"
                 variant="default"
                 asChild
               >

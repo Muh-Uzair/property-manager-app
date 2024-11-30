@@ -12,7 +12,7 @@ export default function PropertyDetailsPG() {
 
   // JSX//////////////////////////////////////////
   return (
-    <div className="flex h-[100%] flex-col gap-[20px]">
+    <div className="flex h-[100%] flex-col gap-[20px] largeScreen:px-[150px]">
       <div className="flex items-center justify-between">
         <Heading type="primary">
           {!propertyType && "Flats"}

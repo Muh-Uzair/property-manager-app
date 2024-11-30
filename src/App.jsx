@@ -32,7 +32,7 @@ import SignUpPG from "./Pages/SignUpPG";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
-      <Route path="login" element={<LoginPG />} />
+      <Route path="/login" element={<LoginPG />} />
       <Route path="/register" element={<SignUpPG />} />
       <Route
         path="/"
@@ -45,36 +45,36 @@ const router = createBrowserRouter(
       >
         <Route errorElement={<ErrorPG />}>
           {/* DIVIDER */}
-          <Route index element={<Navigate replace to="home" />} />
-          <Route path="home" element={<HomePG />} />
+          <Route index element={<Navigate replace to="/home" />} />
+          <Route path="/home" element={<HomePG />} />
 
           {/* DIVIDER */}
-          <Route path="propertyDetails" element={<PropertyDetailsPG />} />
+          <Route path="/propertyDetails" element={<PropertyDetailsPG />} />
           <Route
-            path="propertyDetails/:propertyType"
+            path="/propertyDetails/:propertyType"
             element={<PropertyDetailsPG />}
           />
           <Route
-            path="propertyDetails/:propertyType/:propertyId"
+            path="/propertyDetails/:propertyType/:propertyId"
             element={<SinglePropertyDetails />}
           />
           <Route
-            path="propertyDetails/:propertyType/edit/:propertyId"
+            path="/propertyDetails/:propertyType/edit/:propertyId"
             element={<PropertyEdit />}
           />
 
           {/* DIVIDER */}
-          <Route path="rentPayment" element={<RentPaymentPG />}>
+          <Route path="/rentPayment" element={<RentPaymentPG />}>
             {" "}
             <Route path=":propertyType" element={<RentPaymentPG />} />
           </Route>
 
           {/* DIVIDER */}
-          <Route path="admissions" element={<AdmissionsPG />} />
+          <Route path="/admissions" element={<AdmissionsPG />} />
 
-          <Route path="admissions/:propertyType" element={<Admissions />} />
+          <Route path="/admissions/:propertyType" element={<Admissions />} />
           <Route
-            path="admissions/:propertyType/:propertyId"
+            path="/admissions/:propertyType/:propertyId"
             element={<OccupyProperty />}
           />
 
