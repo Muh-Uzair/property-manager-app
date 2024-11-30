@@ -33,11 +33,23 @@ export default function Authentication() {
         <NamePropleLogo loginForm={true} namePropleSize={"50px"} />
       </div>
 
-      <div>
-        <p className="text-[20px] font-bold">
-          {registerLogin === "login" && <>Log in to your account</>}
-          {registerLogin === "register" && <>Enter details to create account</>}
-        </p>
+      <div className="">
+        {registerLogin === "login" && (
+          <p className="text-center text-[20px] font-bold">
+            Log in to your account
+          </p>
+        )}
+        {registerLogin === "register" && (
+          <div className="flex flex-col items-center">
+            <p className="text-center text-[20px] font-bold">
+              Enter details to create account
+            </p>
+
+            <p className="text-center text-red-600">
+              * enter a valid email as you will receive a confirmation mail
+            </p>
+          </div>
+        )}
       </div>
 
       {registerLogin === "login" && (
