@@ -206,6 +206,11 @@ export const uploadFlatEditDetails = async (editFormData, flatId) => {
 // FUNCTION
 export const getAllOccupiedFlatNumbers = async () => {
   try {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+    const jwtToken = session?.access_token;
+
     // 1 : receive the response
     const res = await fetch(
       "https://ibtqqypbjddszazggxmp.supabase.co/rest/v1/flats?select=id,flat_number,renter_id,image&status=eq.occupied&id=gte.3001&id=lte.3016&order=id.asc",
@@ -213,7 +218,7 @@ export const getAllOccupiedFlatNumbers = async () => {
         method: "GET",
         headers: {
           apikey: supabaseKey,
-          Authorization: `Bearer ${supabaseKey}`,
+          Authorization: `Bearer ${jwtToken}`,
         },
       },
     );
@@ -243,6 +248,11 @@ export const apiLeaveFlat = async (flatId) => {
 //FUNCTION
 export const apiGetFlatDataOnTenantId = async (tenantId) => {
   try {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+    const jwtToken = session?.access_token;
+
     // 1 : fetching
     const response = await fetch(
       `${supabaseUrl}/rest/v1/flats?renter_id=eq.${tenantId}&select=*`,
@@ -250,7 +260,7 @@ export const apiGetFlatDataOnTenantId = async (tenantId) => {
         method: "GET",
         headers: {
           apikey: supabaseKey,
-          Authorization: `Bearer ${supabaseKey}`,
+          Authorization: `Bearer ${jwtToken}`,
         },
       },
     );
@@ -292,8 +302,6 @@ export const apiGetAllUnoccupiedFlats = async () => {
         },
       },
     );
-
-    console.log(response);
 
     if (!response.ok) {
       const errorMessage = await response.text();

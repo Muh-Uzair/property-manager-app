@@ -163,13 +163,18 @@ export const uploadShopEditDetails = async (editFormData, shopId) => {
 // FUNCTION
 export const getAllOccupiedShopNumbers = async () => {
   try {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+    const jwtToken = session?.access_token;
+
     const response = await fetch(
       "https://ibtqqypbjddszazggxmp.supabase.co/rest/v1/shops?select=id,shop_number,renter_id,image&status=eq.occupied&id=gte.2001&id=lte.2020&order=id.asc",
       {
         method: "GET",
         headers: {
           apiKey: `${supabaseKey}`,
-          Authorization: `Bearer ${supabaseKey}`,
+          Authorization: `Bearer ${jwtToken}`,
         },
       },
     );
@@ -196,6 +201,11 @@ export const apiLeaveShop = async (shopId) => {
 //FUNCTION
 export const apiGetShopDataOnTenantId = async (tenantId) => {
   try {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+    const jwtToken = session?.access_token;
+
     // 1 : fetching
     const response = await fetch(
       `${supabaseUrl}/rest/v1/shops?renter_id=eq.${tenantId}&select=*`,
@@ -203,7 +213,7 @@ export const apiGetShopDataOnTenantId = async (tenantId) => {
         method: "GET",
         headers: {
           apikey: supabaseKey,
-          Authorization: `Bearer ${supabaseKey}`,
+          Authorization: `Bearer ${jwtToken}`,
         },
       },
     );
