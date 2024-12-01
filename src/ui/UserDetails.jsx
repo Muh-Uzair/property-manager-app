@@ -1,27 +1,24 @@
-import { brandColor500 } from "@/styles/globalStyles";
+import PropTypes from "prop-types";
 import { TbInfoTriangle, TbUser } from "react-icons/tb";
+import { useState } from "react";
 
 import Modal from "@mui/material/Modal";
-import { useState } from "react";
 import Button from "./Button";
-import { useLogOut } from "@/features/auth/useLogOut";
 import LoadingWrapperCenter from "./LoadingWrapperCenter";
 import LoadingSpinner from "./LoadingSpinner";
 import FormRow from "./AdmissionFormRow";
 import FormInputText from "./FormInputText";
+import { useLogOut } from "@/features/auth/useLogOut";
+import { brandColor500 } from "@/styles/globalStyles";
 import { useForm } from "react-hook-form";
 
 // COMPONENT START
-export const UserDetails = () => {
+export const UserDetails = ({ userNameEmail }) => {
   // VARIABLES
   const [open, setOpen] = useState(false);
   const { mutateLogOut, statusLogOut } = useLogOut();
   const { register } = useForm({
-    defaultValues: {
-      userName: "uzair",
-      email: "uzair@gmail.com",
-      password: "000000",
-    },
+    defaultValues: { ...userNameEmail },
   });
 
   // FUNCTIONS
@@ -64,24 +61,17 @@ export const UserDetails = () => {
             <form className="flex w-full flex-col gap-[20px]">
               <FormRow>
                 <FormInputText
-                  id={"userName"}
-                  labelText={"User Name"}
-                  register={register}
-                />
-              </FormRow>
-
-              <FormRow>
-                <FormInputText
                   id={"email"}
                   labelText={"Email"}
                   register={register}
+                  disabled={true}
                 />
               </FormRow>
 
               <FormRow>
                 <FormInputText
-                  id={"password"}
-                  labelText={"Password"}
+                  id={"userName"}
+                  labelText={"User Name"}
                   register={register}
                 />
               </FormRow>
@@ -116,4 +106,9 @@ export const UserDetails = () => {
     </div>
   );
 };
+
+UserDetails.propTypes = {
+  userNameEmail: PropTypes.object,
+};
+//size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 // COMPONENT END

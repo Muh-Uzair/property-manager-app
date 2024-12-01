@@ -16,8 +16,6 @@ export default function AdmissionsBody() {
 
   // FUNCTIONS
 
-  console.log(dataAllUnoccupiedProperty);
-
   // JSX
 
   if (statusAllUnoccupiedProperty === "success") {

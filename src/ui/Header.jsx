@@ -10,10 +10,21 @@ import NavigationLinks from "./NavigationLinks";
 import { NameLogo } from "./NameLogo";
 import { Logo } from "./Logo";
 import { UserDetails } from "./UserDetails";
+import { useGetUser } from "@/features/auth/useGetUser";
 
-// COMPONENT START///////////////////////////////////////////////
+// COMPONENT START
 export function Header() {
-  // STATE & VARIABLES
+  // VARIABLES
+  const { dataUser } = useGetUser();
+  const {
+    email = "test@gamil.com",
+    user_metadata: { userName = "testUser" },
+  } = dataUser;
+
+  const userNameEmail = {
+    email,
+    userName,
+  };
 
   // FUNCTIONS
 
@@ -60,9 +71,9 @@ export function Header() {
 
       <div className="smallTab: col-start-3 flex items-center gap-[5px] pr-[10px] smallTab:gap-[18px] smallTab:pr-[20px]">
         {/* <Uploader /> */}
-        <UserDetails />
+        <UserDetails userNameEmail={userNameEmail} />
       </div>
     </header>
   );
-  // JSX//////////////////////////////////////////
+  // JSX
 }

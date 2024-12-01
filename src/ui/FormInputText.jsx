@@ -26,7 +26,7 @@ export default function FormInputText({
             id={id}
             autoComplete={autoComplete ? "on" : "off"}
             type="text"
-            className="peer w-[100%] rounded-[5px] border-[2px] py-[7px] pl-[10px] focus:border-brand-color-500 focus:outline-none"
+            className={`peer w-[100%] rounded-[5px] border-[2px] py-[7px] pl-[10px] focus:border-brand-color-500 focus:outline-none ${disabled ? "bg-white text-gray-400" : "bg-white"}`}
             {...register(id, { ...validationObject })}
             disabled={disabled}
           />
