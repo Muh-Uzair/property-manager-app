@@ -1,14 +1,16 @@
-import { useGetUser } from "@/features/auth/useGetUser";
+import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+
 import LoadingSpinner from "@/ui/LoadingSpinner";
 import LoadingWrapperCenter from "@/ui/LoadingWrapperCenter";
-import PropTypes from "prop-types";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useGetUser } from "@/features/auth/useGetUser";
 
 // COMPONENT START
 export default function ProtectedRoutePG({ children }) {
   // VARIABLES
   const { dataUser = {}, statusUser } = useGetUser();
+
   const navigate = useNavigate();
 
   // FUNCTIONS

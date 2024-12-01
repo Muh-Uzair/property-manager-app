@@ -7,7 +7,6 @@ import { login } from "@/Services/apiAuth";
 export const useLogin = () => {
   //VARIABLES
   const queryClient = useQueryClient();
-
   const navigate = useNavigate();
 
   const { mutate: mutateLogin, status: statusLogin } = useMutation({
