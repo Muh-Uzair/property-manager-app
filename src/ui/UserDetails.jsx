@@ -11,15 +11,17 @@ import FormInputText from "./FormInputText";
 import { useLogOut } from "@/features/auth/useLogOut";
 import { brandColor500 } from "@/styles/globalStyles";
 import { useForm } from "react-hook-form";
+import { useUpdateUser } from "@/hooks/useUpdateUser";
 
 // COMPONENT START
 export const UserDetails = ({ userNameEmail }) => {
   // VARIABLES
   const [open, setOpen] = useState(false);
   const { mutateLogOut, statusLogOut } = useLogOut();
-  const { register } = useForm({
+  const { register, handleSubmit } = useForm({
     defaultValues: { ...userNameEmail },
   });
+  const { mutateUpdateUser, statusUpdateUser } = useUpdateUser();
 
   // FUNCTIONS
 
@@ -30,9 +32,12 @@ export const UserDetails = ({ userNameEmail }) => {
 
   //    FUNCTION
   const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   //    FUNCTION
-  const handleClose = () => setOpen(false);
+  const updateUserFormSubmit = ({ userName }) => {
+    mutateUpdateUser(userName);
+  };
 
   // JSX
   return (
@@ -58,13 +63,16 @@ export const UserDetails = ({ userNameEmail }) => {
           </section>
 
           <section className="p-[10px]">
-            <form className="flex w-full flex-col gap-[20px]">
+            <form
+              onSubmit={handleSubmit(updateUserFormSubmit)}
+              className="flex w-full flex-col gap-[20px]"
+            >
               <FormRow>
                 <FormInputText
                   id={"email"}
                   labelText={"Email"}
-                  register={register}
                   disabled={true}
+                  register={register}
                 />
               </FormRow>
 
@@ -75,13 +83,31 @@ export const UserDetails = ({ userNameEmail }) => {
                   register={register}
                 />
               </FormRow>
+
+              <FormRow>
+                <Button submitStatus={true}>
+                  {statusUpdateUser === "pending" && (
+                    <div className="flex gap-[10px]">
+                      <div>
+                        <>Update user</>
+                      </div>
+                      <div>
+                        <LoadingWrapperCenter>
+                          <LoadingSpinner progressColor="white" size={20} />
+                        </LoadingWrapperCenter>
+                      </div>
+                    </div>
+                  )}
+                  {statusUpdateUser !== "pending" && <>Update user</>}{" "}
+                </Button>
+              </FormRow>
             </form>
           </section>
 
           <section className="flex justify-end gap-[10px] border-t-[1px] p-[10px]">
             <div>
-              <Button type="red">
-                <div>Delete Account</div>
+              <Button onClick={handleClose} type="red">
+                Cancel
               </Button>
             </div>
             <div>
@@ -109,6 +135,7 @@ export const UserDetails = ({ userNameEmail }) => {
 
 UserDetails.propTypes = {
   userNameEmail: PropTypes.object,
+  userId: PropTypes.string,
 };
 //size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 // COMPONENT END

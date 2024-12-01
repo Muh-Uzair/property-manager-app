@@ -16,6 +16,7 @@ import { useGetUser } from "@/features/auth/useGetUser";
 export function Header() {
   // VARIABLES
   const { dataUser } = useGetUser();
+
   const {
     email = "test@gamil.com",
     user_metadata: { userName = "testUser" },

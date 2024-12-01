@@ -64,3 +64,14 @@ export const apiSignUp = async ({ email, password, userName }) => {
 
   return data;
 };
+
+// FUNCTION
+export const apiUpdateUser = async (userName) => {
+  const { error } = await supabase.auth.updateUser({
+    data: { userName },
+  });
+
+  if (error) {
+    throw new Error(`Unable to update user Error => ${error}`);
+  }
+};
