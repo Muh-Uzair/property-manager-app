@@ -175,13 +175,18 @@ export const uploadTenantEditDetails = async (editFormData, tenantId) => {
 // FUNCTION
 export const getOccupiedTenantNames = async () => {
   try {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+    const jwtToken = session?.access_token;
+
     const response = await fetch(
       "https://ibtqqypbjddszazggxmp.supabase.co/rest/v1/renters?select=id,name,rent_property",
       {
         method: "GET",
         headers: {
           apikey: supabaseKey,
-          Authorization: `Bearer ${supabaseKey}`,
+          Authorization: `Bearer ${jwtToken}`,
         },
       },
     );
@@ -197,13 +202,18 @@ export const getOccupiedTenantNames = async () => {
 // FUNCTION
 export const removeTenant = async (tenantId) => {
   try {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+    const jwtToken = session?.access_token;
+
     const response = await fetch(
       `${supabaseUrl}/rest/v1/renters?id=eq.${tenantId}`,
       {
         method: "DELETE",
         headers: {
           apikey: supabaseKey,
-          Authorization: `Bearer ${supabaseKey}`,
+          Authorization: `Bearer ${jwtToken}`,
         },
       },
     );
@@ -245,13 +255,18 @@ export const getTenantOnIdCard = async (tenantIdCard) => {
 // FUNCTION
 export const checkTenantNewOld = async (tenantIdCard) => {
   try {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+    const jwtToken = session?.access_token;
+
     const response = await fetch(
       `${supabaseUrl}//rest/v1/renters?id_card_number=eq.${tenantIdCard}&select=*`,
       {
         method: "GET",
         headers: {
           apikey: supabaseKey,
-          Authorization: `Bearer ${supabaseKey}`,
+          Authorization: `Bearer ${jwtToken}`,
         },
       },
     );

@@ -48,6 +48,7 @@ export default function SignUp() {
     mutateSignUp(data);
   };
 
+  //     FUNCTION
   useEffect(() => {
     const handleOpenModal = () => {
       handleOpen();
@@ -226,26 +227,3 @@ export default function SignUp() {
   // JSX
 }
 // COMPONENT END
-
-// <div
-//           onClick={() => {
-//             navigate("/login");
-//           }}
-//           className="flex h-full w-full items-center justify-center p-[10px]"
-//         >
-//           <div className="grid grid-rows-[30%_1fr_10%] gap-[10px] rounded-[5px] bg-white">
-//             <div className="flex bg-brand-color-500">
-//               <div>icon</div>
-//               <div>Informational message</div>
-//             </div>
-//             <div>
-//               <p className="">
-//                 Please check your inbox. If the email address you entered is
-//                 correct, you will receive a confirmation email shortly.
-//               </p>
-//             </div>
-//             <div>
-//               <Button>close</Button>
-//             </div>
-//           </div>
-//         </div>

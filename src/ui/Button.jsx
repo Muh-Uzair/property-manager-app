@@ -40,7 +40,7 @@ export default function Button({
         type={type}
         onClick={() => onClick()}
         disabled={disabled}
-        className={`bg-red-600 active:bg-red-500 disabled:cursor-not-allowed disabled:opacity-35 largeScreen:hover:bg-red-400 largeScreen:active:bg-red-500 ${uppercase ? "uppercase" : ""} ${primaryStyles} ${wide ? "w-full" : ""} ${size === "medium" ? "text-12px" : size === "large" ? "text-15px" : ""}`}
+        className={`bg-red-600 active:bg-red-500 disabled:cursor-not-allowed disabled:opacity-35 largeScreen:hover:bg-red-400 largeScreen:active:bg-red-500 ${uppercase ? "uppercase" : ""} ${primaryStyles} ${wide ? "w-full" : ""} ${size === "medium" ? "text-12px" : size === "large" ? "text-15px" : ""} py-[${paddingY}]`}
       >
         {children}
       </button>
