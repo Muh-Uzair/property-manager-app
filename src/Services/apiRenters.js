@@ -333,11 +333,16 @@ export const admitNewTenant = async (
 
   // uploading the actual data
   try {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+    const jwtToken = session?.access_token;
+
     const response = await fetch(`${supabaseUrl}/rest/v1/renters`, {
       method: "POST",
       headers: {
         apikey: supabaseKey,
-        Authorization: `Bearer ${supabaseKey}`,
+        Authorization: `Bearer ${jwtToken}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(dataToUpload),

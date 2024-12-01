@@ -163,6 +163,11 @@ export const uploadRoomEditDetails = async (editFormData, roomId) => {
 // FUNCTION
 export const getAllOccupiedRoomNumbers = async () => {
   try {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+    const jwtToken = session?.access_token;
+
     // 1 : make a fetch call
     const response = await fetch(
       "https://ibtqqypbjddszazggxmp.supabase.co/rest/v1/rooms?select=id,room_number,renter_id,image&status=eq.occupied&id=gte.1001&id=lte.1010&order=id.asc",
@@ -170,7 +175,7 @@ export const getAllOccupiedRoomNumbers = async () => {
         method: "GET",
         headers: {
           apiKey: `${supabaseKey}`,
-          Authorization: `Bearer ${supabaseKey}`,
+          Authorization: `Bearer ${jwtToken}`,
         },
       },
     );
@@ -199,6 +204,11 @@ export const apiLeaveRoom = async (roomId) => {
 //FUNCTION
 export const apiGetRoomDataOnTenantId = async (tenantId) => {
   try {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+    const jwtToken = session?.access_token;
+
     // 1 : fetching
     const response = await fetch(
       `${supabaseUrl}/rest/v1/rooms?renter_id=eq.${tenantId}&select=*`,
@@ -206,7 +216,7 @@ export const apiGetRoomDataOnTenantId = async (tenantId) => {
         method: "GET",
         headers: {
           apikey: supabaseKey,
-          Authorization: `Bearer ${supabaseKey}`,
+          Authorization: `Bearer ${jwtToken}`,
         },
       },
     );
