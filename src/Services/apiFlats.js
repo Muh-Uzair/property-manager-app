@@ -277,16 +277,23 @@ export const apiGetFlatDataOnTenantId = async (tenantId) => {
 // FUNCTION
 export const apiGetAllUnoccupiedFlats = async () => {
   try {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+    const jwtToken = session?.access_token;
+
     const response = await fetch(
       `${supabaseUrl}/rest/v1/flats?status=eq.unoccupied&id=gte.3001&id=lte.3016&order=id.asc&select=*`,
       {
         method: "GET",
         headers: {
           apikey: supabaseKey,
-          Authorization: `Bearer ${supabaseKey}`,
+          Authorization: `Bearer ${jwtToken}`,
         },
       },
     );
+
+    console.log(response);
 
     if (!response.ok) {
       const errorMessage = await response.text();

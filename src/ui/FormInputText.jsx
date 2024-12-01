@@ -10,6 +10,7 @@ export default function FormInputText({
   validationObject = {},
   labelText = "",
   errors = {},
+  disabled = false,
 }) {
   // VARIABLES
 
@@ -27,6 +28,7 @@ export default function FormInputText({
             type="text"
             className="peer w-[100%] rounded-[5px] border-[2px] py-[7px] pl-[10px] focus:border-brand-color-500 focus:outline-none"
             {...register(id, { ...validationObject })}
+            disabled={disabled}
           />
 
           <label
@@ -56,6 +58,7 @@ FormInputText.propTypes = {
   validationObject: PropTypes.object,
   labelText: PropTypes.string,
   errors: PropTypes.object,
+  disabled: PropTypes.bool,
 };
 //size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 // COMPONENT END

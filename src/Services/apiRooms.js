@@ -233,13 +233,18 @@ export const apiGetRoomDataOnTenantId = async (tenantId) => {
 // FUNCTION
 export const apiGetAllUnoccupiedRooms = async () => {
   try {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+    const jwtToken = session?.access_token;
+
     const response = await fetch(
       `${supabaseUrl}/rest/v1/rooms?status=eq.unoccupied&id=gte.1001&id=lte.1010&order=id.asc&select=*`,
       {
         method: "GET",
         headers: {
           apikey: supabaseKey,
-          Authorization: `Bearer ${supabaseKey}`,
+          Authorization: `Bearer ${jwtToken}`,
         },
       },
     );

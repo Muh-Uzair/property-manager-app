@@ -10,18 +10,19 @@ import { useGetScreenHeight } from "../../hooks/useGetScreenHeight";
 // COMPONENT START
 export default function AdmissionsBody() {
   // VARIABLES
-  const { dataAllUnoccupiedProperty, statusAllUnoccupiedProperty } =
+  const { dataAllUnoccupiedProperty = [], statusAllUnoccupiedProperty } =
     useGetAllUnoccupiedProperty();
   const screenHeight = useGetScreenHeight();
 
   // FUNCTIONS
+
+  console.log(dataAllUnoccupiedProperty);
 
   // JSX
 
   if (statusAllUnoccupiedProperty === "success") {
     return (
       <div
-        id="admissionsBody"
         style={{
           height: `calc(${screenHeight}px - 90px)`,
         }}
