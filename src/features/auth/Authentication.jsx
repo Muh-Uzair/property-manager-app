@@ -14,7 +14,9 @@ export default function Authentication() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ defaultValues: { email: "uzair@gmail.com" } });
+  } = useForm({
+    defaultValues: { email: "uzair@gmail.com", password: "000000" },
+  });
   const [showPassword, setShowPassword] = useState(true);
   const { mutateLogin, statusLogin } = useLogin();
   const { pathname } = useLocation();
