@@ -8,24 +8,37 @@ import {
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
+import { lazy, Suspense } from "react";
+import LoadingWrapperCenter from "./ui/LoadingWrapperCenter";
+import LoadingSpinner from "./ui/LoadingSpinner";
 
-import HomePG from "./Pages/HomePG";
-
-import AdmissionsPG from "./Pages/AdmissionsPG";
-import AppLayout from "./ui/AppLayout";
-import ErrorPG from "./Pages/ErrorPG";
-import PageNotFound from "./Pages/PageNotFound";
-import PropertyDetailsPG from "./Pages/PropertyDetailsPG";
-import LoginPG from "./Pages/LoginPG";
-import SinglePropertyDetails from "./features/ShowPropertyDetails/showSinglePropertyDetails/SinglePropertyDetails";
-import PropertyEdit from "./features/ShowPropertyDetails/PropertyEdit/PropertyEdit";
-import RentPaymentPG from "./Pages/RentPaymentPG";
-import LeavePropertyPG from "./Pages/LeavePropertyPG";
-import LeaveProperty from "./features/leaveProperty/LeaveProperty";
-import Admissions from "./features/Admissions/Admissions";
-import OccupyProperty from "./features/Admissions/OccupyProperty";
-import ProtectedRoutePG from "./Pages/ProtectedRoutePG";
-import SignUpPG from "./Pages/SignUpPG";
+const HomePG = lazy(() => import("./Pages/HomePG"));
+const AdmissionsPG = lazy(() => import("./Pages/AdmissionsPG"));
+const AppLayout = lazy(() => import("./ui/AppLayout"));
+const ErrorPG = lazy(() => import("./Pages/ErrorPG"));
+const PageNotFound = lazy(() => import("./Pages/PageNotFound"));
+const PropertyDetailsPG = lazy(() => import("./Pages/PropertyDetailsPG"));
+const LoginPG = lazy(() => import("./Pages/LoginPG"));
+const SinglePropertyDetails = lazy(
+  () =>
+    import(
+      "./features/ShowPropertyDetails/showSinglePropertyDetails/SinglePropertyDetails"
+    ),
+);
+const PropertyEdit = lazy(
+  () => import("./features/ShowPropertyDetails/PropertyEdit/PropertyEdit"),
+);
+const RentPaymentPG = lazy(() => import("./Pages/RentPaymentPG"));
+const LeavePropertyPG = lazy(() => import("./Pages/LeavePropertyPG"));
+const LeaveProperty = lazy(
+  () => import("./features/leaveProperty/LeaveProperty"),
+);
+const Admissions = lazy(() => import("./features/Admissions/Admissions"));
+const OccupyProperty = lazy(
+  () => import("./features/Admissions/OccupyProperty"),
+);
+const ProtectedRoutePG = lazy(() => import("./Pages/ProtectedRoutePG"));
+const SignUpPG = lazy(() => import("./Pages/SignUpPG"));
 
 // rent payment error rmv
 
@@ -110,7 +123,17 @@ export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
-      <RouterProvider router={router} />
+      <Suspense
+        fallback={
+          <div className="flex h-[100vh] items-center justify-center">
+            <LoadingWrapperCenter>
+              <LoadingSpinner />
+            </LoadingWrapperCenter>
+          </div>
+        }
+      >
+        <RouterProvider router={router} />
+      </Suspense>
       <Toaster position="top-center" toastOptions={{ duration: 5000 }} />
     </QueryClientProvider>
   );
