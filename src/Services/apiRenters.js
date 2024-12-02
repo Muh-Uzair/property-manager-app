@@ -233,13 +233,56 @@ export const removeTenant = async (tenantId) => {
   }
 };
 
+// FUNCTION
+export const updateTenantRentProperties = async (
+  tenantId,
+  propertyId,
+  propertyType,
+) => {
+  let { data = [], error } = await supabase
+    .from("renters")
+    .select("rent_property,propertyID")
+    .eq("id", tenantId);
+
+  if (error) {
+    throw new Error(
+      `Unable to get rent_property, propertyID Error => ${error}`,
+    );
+  }
+
+  const {
+    propertyID: { property_id },
+    rent_property: { rent_property },
+  } = data[0];
+
+  const newRentProperty = rent_property.filter((val) => val !== propertyType);
+  const newPropertyId = property_id.filter((val) => val !== propertyId);
+
+  const { data2, error2 } = await supabase
+    .from("renters")
+    .update({
+      rent_property: { rent_property: [...newRentProperty] },
+      propertyID: { property_id: [...newPropertyId] },
+    })
+    .eq("id", tenantId)
+    .select();
+
+  if (error2) {
+    throw new Error(
+      `Unable to update tenant rent properties Error => ${error2}`,
+    );
+  }
+
+  return data2;
+};
+
 export const getTenantOnIdCard = async (tenantIdCard) => {
   if (!tenantIdCard) {
     throw new Error("Tenant ID card number is required.");
   }
 
   let { data, error } = await supabase
-    .from("renters") // Update to the correct table name if needed
+    .from("renters")
     .select("id")
     .eq("id_card_number", Number(tenantIdCard));
 
