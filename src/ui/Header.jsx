@@ -5,7 +5,7 @@ import { AiOutlineDollarCircle } from "react-icons/ai";
 import { HiMiniArrowRightOnRectangle } from "react-icons/hi2";
 
 import NavigationLinks from "./NavigationLinks";
-// import Uploader from "../features/Uploader/Uploader";
+import Uploader from "../features/Uploader/Uploader";
 
 import { NameLogo } from "./NameLogo";
 import { Logo } from "./Logo";
@@ -70,8 +70,8 @@ export function Header() {
         </nav>
       </div>
 
-      <div className="smallTab: col-start-3 flex items-center gap-[5px] pr-[10px] smallTab:gap-[18px] smallTab:pr-[20px]">
-        {/* <Uploader /> */}
+      <div className="smallTab: col-start-3 flex cursor-pointer items-center gap-[5px] pr-[10px] smallTab:gap-[18px] smallTab:pr-[20px]">
+        <Uploader />
         <UserDetails userNameEmail={userNameEmail} />
       </div>
     </header>

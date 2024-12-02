@@ -1,6 +1,9 @@
 import { useGetPropertyType } from "@/hooks/useGetPropertyType";
 import { apiGetFlatDataOnTenantId, apiLeaveFlat } from "@/Services/apiFlats";
-import { removeTenant } from "@/Services/apiRenters";
+import {
+  removeTenant,
+  updateTenantRentProperties,
+} from "@/Services/apiRenters";
 import { apiGetRoomDataOnTenantId, apiLeaveRoom } from "@/Services/apiRooms";
 import { apiGetShopDataOnTenantId, apiLeaveShop } from "@/Services/apiShops";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -16,8 +19,6 @@ export function useLeaveProperty() {
   const { mutate: mutateLeaveProperty, status: statusLeaveProperty } =
     useMutation({
       mutationFn: async ({ propertyId, tenantId }) => {
-        let haveOtherProperties = false;
-
         const flatDataOnTenantId = await apiGetFlatDataOnTenantId(tenantId);
         const roomDataOnTenantId = await apiGetRoomDataOnTenantId(tenantId);
         const shopDataOnTenantId = await apiGetShopDataOnTenantId(tenantId);
@@ -30,10 +31,6 @@ export function useLeaveProperty() {
         }
         if (propertyType === "shops") {
           await apiLeaveShop(propertyId);
-        }
-
-        if (haveOtherProperties) {
-          await removeTenant(tenantId);
         }
 
         if (propertyType === "flats") {
@@ -65,6 +62,12 @@ export function useLeaveProperty() {
             await removeTenant(tenantId);
           }
         }
+
+        await updateTenantRentProperties(
+          tenantId,
+          propertyId,
+          propertyType.slice(0, -1),
+        );
       },
       onSuccess: () => {
         toast.success(
