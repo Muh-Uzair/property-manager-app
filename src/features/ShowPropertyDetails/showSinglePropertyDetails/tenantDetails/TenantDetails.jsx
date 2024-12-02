@@ -4,6 +4,7 @@ import Heading from "../../../../ui/Heading";
 import OtherPropertiesRented from "./OtherPropertiesRented";
 import RentDuration from "./RentDuration";
 import AllTenantDetailsItem from "./AllTenantDetailsItem";
+import { FaUserLarge } from "react-icons/fa6";
 
 import { useContext } from "react";
 import { ContextSingleProperty } from "../SinglePropertyDetails";
@@ -44,12 +45,21 @@ export default function TenantDetails() {
 
           {/* image */}
           <div className="flex justify-center rounded-[8px] bg-gray-200">
-            <div className="h-full w-[200px]">
-              <img
-                className="h-full w-full object-cover"
-                src={dataRenterDetails.image}
-              />
-            </div>
+            {!dataRenterDetails?.image && (
+              <div className="max-h-[342px] w-[230px] rounded-[2px] bg-gray-300">
+                <img
+                  className="h-full w-full object-cover"
+                  src={dataRenterDetails.image}
+                />
+              </div>
+            )}
+            {dataRenterDetails?.image && (
+              <div className="flex h-[full] w-[230px] items-center justify-center bg-gray-300/70">
+                <p className="text-[50px] text-gray-200">
+                  <FaUserLarge />
+                </p>
+              </div>
+            )}
           </div>
         </div>
 
@@ -65,13 +75,22 @@ export default function TenantDetails() {
           <RentDuration dataRenterDetails={dataRenterDetails} />
 
           {/* renter image div */}
-          <div className="flex h-[160px] justify-center rounded-[8px] bg-gray-200 smallTab:h-[250px]">
-            <div className="h-[full] w-[40%] bg-slate-400">
-              <img
-                className="h-full w-full object-cover"
-                src={dataRenterDetails.image}
-              />
-            </div>
+          <div className="flex h-[160px] justify-center rounded-[8px] bg-gray-200 p-[2px] smallTab:h-[250px]">
+            {dataRenterDetails?.image && (
+              <div className="h-[full] w-[100px] rounded-[2px] bg-gray-300 smallTab:w-[180px]">
+                <img
+                  className="h-full w-full object-cover"
+                  src={dataRenterDetails.image}
+                />
+              </div>
+            )}
+            {!dataRenterDetails?.image && (
+              <div className="flex h-[full] w-[100px] items-center justify-center bg-gray-300/70 smallTab:w-[180px]">
+                <p className="text-[50px] text-gray-200">
+                  <FaUserLarge />
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>

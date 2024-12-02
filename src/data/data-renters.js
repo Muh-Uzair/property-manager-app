@@ -10,7 +10,8 @@ export const rentersDataArr = [
     marital_status: "unmarried",
     rent_property: { rent_property: ["room", "shop"] },
     propertyID: { property_id: [1001, 2005] },
-    image: null,
+    image:
+      "https://ibtqqypbjddszazggxmp.supabase.co/storage/v1/object/public/tenantImages/tenantImage1.jfif",
   },
   {
     id: 7401,
@@ -23,7 +24,8 @@ export const rentersDataArr = [
     marital_status: "married",
     rent_property: { rent_property: ["flat", "room"] },
     propertyID: { property_id: [3007, 1005] },
-    image: null,
+    image:
+      "https://ibtqqypbjddszazggxmp.supabase.co/storage/v1/object/public/tenantImages/tenantImage1.jfif",
   },
   {
     id: 86137,
@@ -36,7 +38,8 @@ export const rentersDataArr = [
     marital_status: "unmarried",
     rent_property: { rent_property: ["shop", "room"] },
     propertyID: { property_id: [2014, 1002] },
-    image: null,
+    image:
+      "https://ibtqqypbjddszazggxmp.supabase.co/storage/v1/object/public/tenantImages/tenantImage2.jfif",
   },
   {
     id: 56350,
@@ -49,7 +52,8 @@ export const rentersDataArr = [
     marital_status: "unmarried",
     rent_property: { rent_property: ["flat", "shop"] },
     propertyID: { property_id: [3004, 2003] },
-    image: null,
+    image:
+      "https://ibtqqypbjddszazggxmp.supabase.co/storage/v1/object/public/tenantImages/tenantImage2.jfif",
   },
   {
     id: 79403,
@@ -62,7 +66,8 @@ export const rentersDataArr = [
     marital_status: "unmarried",
     rent_property: { rent_property: ["flat"] },
     propertyID: { property_id: [3003] },
-    image: null,
+    image:
+      "https://ibtqqypbjddszazggxmp.supabase.co/storage/v1/object/public/tenantImages/tenantImage2.jfif",
   },
   {
     id: 98540,
@@ -75,7 +80,8 @@ export const rentersDataArr = [
     marital_status: "married",
     rent_property: { rent_property: ["room"] },
     propertyID: { property_id: [1006] },
-    image: null,
+    image:
+      "https://ibtqqypbjddszazggxmp.supabase.co/storage/v1/object/public/tenantImages/tenantImage4.jfif",
   },
   {
     id: 22303,
@@ -88,7 +94,8 @@ export const rentersDataArr = [
     marital_status: "married",
     rent_property: { rent_property: ["flat", "shop"] },
     propertyID: { property_id: [3014, 2004] },
-    image: null,
+    image:
+      "https://ibtqqypbjddszazggxmp.supabase.co/storage/v1/object/public/tenantImages/tenantImage2.jfif",
   },
   {
     id: 46698,
@@ -101,7 +108,8 @@ export const rentersDataArr = [
     marital_status: "married",
     rent_property: { rent_property: ["flat", "shop"] },
     propertyID: { property_id: [3008, 2013] },
-    image: null,
+    image:
+      "https://ibtqqypbjddszazggxmp.supabase.co/storage/v1/object/public/tenantImages/tenantImage2.jfif",
   },
   {
     id: 52063,
@@ -114,7 +122,8 @@ export const rentersDataArr = [
     marital_status: "married",
     rent_property: { rent_property: ["room", "shop"] },
     propertyID: { property_id: [1009, 2012] },
-    image: null,
+    image:
+      "https://ibtqqypbjddszazggxmp.supabase.co/storage/v1/object/public/tenantImages/tenantImage4.jfif",
   },
   {
     id: 77467,
@@ -127,7 +136,8 @@ export const rentersDataArr = [
     marital_status: "married",
     rent_property: { rent_property: ["room", "shop"] },
     propertyID: { property_id: [1007, 2006] },
-    image: null,
+    image:
+      "https://ibtqqypbjddszazggxmp.supabase.co/storage/v1/object/public/tenantImages/tenantImage2.jfif",
   },
   {
     id: 74692,
@@ -140,7 +150,8 @@ export const rentersDataArr = [
     marital_status: "married",
     rent_property: { rent_property: ["flat", "room", "shop"] },
     propertyID: { property_id: [3005, 1003, 2008] },
-    image: null,
+    image:
+      "https://ibtqqypbjddszazggxmp.supabase.co/storage/v1/object/public/tenantImages/tenantImage5.jfif",
   },
   {
     id: 50953,
@@ -153,7 +164,8 @@ export const rentersDataArr = [
     marital_status: "unmarried",
     rent_property: { rent_property: ["flat", "shop"] },
     propertyID: { property_id: [3010, 2009] },
-    image: null,
+    image:
+      "https://ibtqqypbjddszazggxmp.supabase.co/storage/v1/object/public/tenantImages/tenantImage5.jfif",
   },
   {
     id: 26097,
@@ -166,7 +178,8 @@ export const rentersDataArr = [
     marital_status: "unmarried",
     rent_property: { rent_property: ["shop", "shop"] },
     propertyID: { property_id: [2007, 2002] },
-    image: null,
+    image:
+      "https://ibtqqypbjddszazggxmp.supabase.co/storage/v1/object/public/tenantImages/tenantImage3.jfif",
   },
   {
     id: 32417,
@@ -179,7 +192,8 @@ export const rentersDataArr = [
     marital_status: "married",
     rent_property: { rent_property: ["flat"] },
     propertyID: { property_id: [3015] },
-    image: null,
+    image:
+      "https://ibtqqypbjddszazggxmp.supabase.co/storage/v1/object/public/tenantImages/tenantImage2.jfif",
   },
   {
     id: 88790,
@@ -192,7 +206,8 @@ export const rentersDataArr = [
     marital_status: "unmarried",
     rent_property: { rent_property: ["shop", "room"] },
     propertyID: { property_id: [2015, 1004] },
-    image: null,
+    image:
+      "https://ibtqqypbjddszazggxmp.supabase.co/storage/v1/object/public/tenantImages/tenantImage3.jfif",
   },
   {
     id: 44839,
@@ -205,7 +220,8 @@ export const rentersDataArr = [
     marital_status: "unmarried",
     rent_property: { rent_property: ["flat"] },
     propertyID: { property_id: [3016] },
-    image: null,
+    image:
+      "https://ibtqqypbjddszazggxmp.supabase.co/storage/v1/object/public/tenantImages/tenantImage2.jfif",
   },
   {
     id: 99123,
@@ -218,7 +234,8 @@ export const rentersDataArr = [
     marital_status: "married",
     rent_property: { rent_property: ["shop"] },
     propertyID: { property_id: [2011, 2020] },
-    image: null,
+    image:
+      "https://ibtqqypbjddszazggxmp.supabase.co/storage/v1/object/public/tenantImages/tenantImage3.jfif",
   },
   {
     id: 76325,
@@ -231,6 +248,7 @@ export const rentersDataArr = [
     marital_status: "married",
     rent_property: { rent_property: ["room"] },
     propertyID: { property_id: [1010] },
-    image: null,
+    image:
+      "https://ibtqqypbjddszazggxmp.supabase.co/storage/v1/object/public/tenantImages/tenantImage2.jfif",
   },
 ];
