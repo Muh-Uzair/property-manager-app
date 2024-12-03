@@ -1,11 +1,12 @@
 import Table from "../../ui/Table";
-import { useGetPropertyData } from "./useGetPropertyData";
+
 import TableHeader from "../../ui/TableHeader";
 import TableFooter from "../../ui/TableFooter";
 import TableBody from "../../ui/TableBody";
 
 import LoadingSpinner from "../../ui/LoadingSpinner";
 import { useGetPropertyType } from "../../hooks/useGetPropertyType";
+import { useGetPropertyData } from "./useGetPropertyData";
 
 const colSize = ["1fr", "1fr", "1fr", "1fr", "1fr", "1fr"];
 
