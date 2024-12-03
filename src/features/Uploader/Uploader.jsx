@@ -2,16 +2,16 @@
 
 import toast from "react-hot-toast";
 import { useUploadAllRooms } from "./useUploadAllRooms";
-import { useUploadAllShops } from "./useUploadAllShops";
-import { useUploadAllFlats } from "./useUploadAllFlats";
 import { BsDatabaseUp } from "react-icons/bs";
 
 import { roomsDataArr } from "../../data/data-rooms";
 import { shopsDataArr } from "../../data/data-shops";
 import { flatsDataArr } from "../../data/data-flats";
-import { useUploadAllRenters } from "./useUploadAllRenters";
 import { rentersDataArr } from "../../data/data-renters";
 import { useEffect } from "react";
+import { useUploadAllShops } from "./useUploadAllShops";
+import { useUploadAllFlats } from "./useUploadAllFlats";
+import { useUploadAllRenters } from "./useUploadAllRenters";
 
 // COMPONENT START///////////////////////////////////////////////
 function Uploader() {

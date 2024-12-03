@@ -33,7 +33,7 @@ const OccupyProperty = lazy(
 );
 const ProtectedRoutePG = lazy(() => import("./Pages/ProtectedRoutePG"));
 const SignUpPG = lazy(() => import("./Pages/SignUpPG"));
-const PropertyEdit = lazy(() => "./features/propertyEdit/PropertyEdit");
+const PropertyEdit = lazy(() => import("./features/propertyEdit/PropertyEdit"));
 
 // refactor branch created
 
