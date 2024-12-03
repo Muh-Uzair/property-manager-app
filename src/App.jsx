@@ -11,28 +11,27 @@ import { Toaster } from "react-hot-toast";
 import { lazy, Suspense } from "react";
 import LoadingWrapperCenter from "./ui/LoadingWrapperCenter";
 import LoadingSpinner from "./ui/LoadingSpinner";
-import Admissions from "./features/admissions/Admissions";
 
-const HomePG = lazy(() => import("./Pages/HomePG"));
-const AdmissionsPG = lazy(() => import("./Pages/AdmissionsPG"));
-const AppLayout = lazy(() => import("./ui/AppLayout"));
 const ErrorPG = lazy(() => import("./Pages/ErrorPG"));
-const PageNotFound = lazy(() => import("./Pages/PageNotFound"));
-const PropertyDetailsPG = lazy(() => import("./Pages/PropertyDetailsPG"));
 const LoginPG = lazy(() => import("./Pages/LoginPG"));
+const SignUpPG = lazy(() => import("./Pages/SignUpPG"));
+const ProtectedRoutePG = lazy(() => import("./Pages/ProtectedRoutePG"));
+const PageNotFound = lazy(() => import("./Pages/PageNotFound"));
+const HomePG = lazy(() => import("./Pages/HomePG"));
+const PropertyDetailsPG = lazy(() => import("./Pages/PropertyDetailsPG"));
 const SinglePropertyDetails = lazy(
   () => import("./features/showSinglePropertyDetails/SinglePropertyDetails"),
 );
-const OccupyProperty = lazy(() => "./features/admissions/OccupyProperty");
+const PropertyEdit = lazy(() => import("./features/propertyEdit/PropertyEdit"));
 const RentPaymentPG = lazy(() => import("./Pages/RentPaymentPG"));
+const AdmissionsPG = lazy(() => import("./Pages/AdmissionsPG"));
+const Admissions = lazy(() => import("./features/admissions/Admissions"));
+const OccupyProperty = lazy(() => "./features/admissions/OccupyProperty");
 const LeavePropertyPG = lazy(() => import("./Pages/LeavePropertyPG"));
 const LeaveProperty = lazy(
   () => import("./features/leaveProperty/LeaveProperty"),
 );
-
-const ProtectedRoutePG = lazy(() => import("./Pages/ProtectedRoutePG"));
-const SignUpPG = lazy(() => import("./Pages/SignUpPG"));
-const PropertyEdit = lazy(() => import("./features/propertyEdit/PropertyEdit"));
+const AppLayout = lazy(() => import("./ui/AppLayout"));
 
 // refactor branch created
 
