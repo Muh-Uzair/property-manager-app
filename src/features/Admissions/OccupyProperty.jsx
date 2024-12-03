@@ -3,9 +3,9 @@ import UnoccupiedPropertyDetails from "./UnoccupiedPropertyDetails";
 import LoadingWrapperCenter from "@/ui/LoadingWrapperCenter";
 import TenantAdmissionForm from "./TenantAdmissionForm";
 import OtherUnoccupiedProperties from "./OtherUnoccupiedProperties";
-import { useGetSingleUnoccupiedPropertyData } from "./useGetSingleUnoccupiedPropertyData";
 import { useGetScreenHeight } from "@/hooks/useGetScreenHeight";
 import { useGetAllUnoccupiedProperty } from "./useGetAllUnoccupiedProperty";
+import { useGetSingleUnoccupiedPropertyData } from "./useGetSingleUnoccupiedPropertyData";
 
 const itemGap = "7px";
 

@@ -25,8 +25,10 @@ const SinglePropertyDetails = lazy(
 const PropertyEdit = lazy(() => import("./features/propertyEdit/PropertyEdit"));
 const RentPaymentPG = lazy(() => import("./Pages/RentPaymentPG"));
 const AdmissionsPG = lazy(() => import("./Pages/AdmissionsPG"));
-const Admissions = lazy(() => import("./features/admissions/Admissions"));
-const OccupyProperty = lazy(() => "./features/admissions/OccupyProperty");
+const Admissions = lazy(() => import("./features/Admissions/Admissions"));
+const OccupyProperty = lazy(
+  () => import("./features/Admissions/OccupyProperty"),
+);
 const LeavePropertyPG = lazy(() => import("./Pages/LeavePropertyPG"));
 const LeaveProperty = lazy(
   () => import("./features/leaveProperty/LeaveProperty"),
