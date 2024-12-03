@@ -11,6 +11,7 @@ import { Toaster } from "react-hot-toast";
 import { lazy, Suspense } from "react";
 import LoadingWrapperCenter from "./ui/LoadingWrapperCenter";
 import LoadingSpinner from "./ui/LoadingSpinner";
+import Admissions from "./features/admissions/Admissions";
 
 const HomePG = lazy(() => import("./Pages/HomePG"));
 const AdmissionsPG = lazy(() => import("./Pages/AdmissionsPG"));
@@ -28,7 +29,6 @@ const LeavePropertyPG = lazy(() => import("./Pages/LeavePropertyPG"));
 const LeaveProperty = lazy(
   () => import("./features/leaveProperty/LeaveProperty"),
 );
-const Admissions = lazy(() => import("./features/admissions/Admissions"));
 
 const ProtectedRoutePG = lazy(() => import("./Pages/ProtectedRoutePG"));
 const SignUpPG = lazy(() => import("./Pages/SignUpPG"));
