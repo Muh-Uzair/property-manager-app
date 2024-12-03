@@ -40,6 +40,7 @@ export function useLeaveProperty() {
             shopDataOnTenantId?.length === 0
           ) {
             await removeTenant(tenantId);
+            return;
           }
         }
 
@@ -50,6 +51,7 @@ export function useLeaveProperty() {
             shopDataOnTenantId?.length === 0
           ) {
             await removeTenant(tenantId);
+            return;
           }
         }
 
@@ -60,6 +62,7 @@ export function useLeaveProperty() {
             shopDataOnTenantId?.length === 1
           ) {
             await removeTenant(tenantId);
+            return;
           }
         }
 

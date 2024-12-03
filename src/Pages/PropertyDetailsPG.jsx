@@ -1,4 +1,4 @@
-import PropertyDetailsTable from "../features/ShowPropertyDetails/PropertyDetailsTable";
+import PropertyDetailsTable from "../features/showPropertyDetails/PropertyDetailsTable";
 import Heading from "../ui/Heading";
 import PropertyChangeBtns from "../ui/PropertyChangeBtns";
 import { useGetPropertyType } from "../hooks/useGetPropertyType";

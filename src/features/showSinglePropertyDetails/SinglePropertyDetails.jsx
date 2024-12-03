@@ -6,7 +6,6 @@ import RentDetails from "./RentDetails";
 import PropertyDetails from "./PropertyDetails";
 import TenantDetails from "./TenantDetails";
 import LoadingSpinner from "../../ui/LoadingSpinner";
-
 import { useGetScreenHeight } from "../../hooks/useGetScreenHeight";
 import { useGetSinglePropertyDetails } from "./useGetSinglePropertyDetails";
 
@@ -62,7 +61,7 @@ export default function SinglePropertyDetails() {
             <HiOutlineArrowLongLeft size={"25px"} />
           </button>
 
-          {/* property details & tenant details for LScreen */}
+          {/* DIVIDER property details & tenant details for LScreen */}
           <div
             className={`hidden h-[80%] w-[80%] grid-cols-[80%_350px] gap-[16px] largeScreen:grid`}
           >
@@ -81,7 +80,7 @@ export default function SinglePropertyDetails() {
             </div>
           </div>
 
-          {/* all details for phone smallTab largeTab */}
+          {/* DIVIDER all details for phone smallTab largeTab */}
           <div
             style={{
               height: `calc(${screenHeight}px - 90px)`, // Inline style with dynamic calculation

@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
-import PropertyDetailsTableRow from "../features/ShowPropertyDetails/PropertyDetailsTableRow";
+import PropertyDetailsTableRow from "../features/showPropertyDetails/PropertyDetailsTableRow";
 
 // COMPONENT START
 export default function TableBody({ tableData, colSize }) {
