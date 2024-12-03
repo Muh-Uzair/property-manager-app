@@ -1,6 +1,6 @@
 //
 
-import Heading from "../../../ui/Heading";
+import Heading from "../../ui/Heading";
 import OtherPropertiesRented from "./OtherPropertiesRented";
 import RentDuration from "./RentDuration";
 import AllTenantDetailsItem from "./AllTenantDetailsItem";

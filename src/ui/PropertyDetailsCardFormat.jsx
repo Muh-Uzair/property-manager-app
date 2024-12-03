@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-import SinglePropertyDetailsItem from "@/features/ShowPropertyDetails/showSinglePropertyDetails/SinglePropertyDetailsItem";
+import SinglePropertyDetailsItem from "@/features/showSinglePropertyDetails/SinglePropertyDetailsItem";
 import { useGetPropertyType } from "@/hooks/useGetPropertyType";
 
 // COMPONENT START

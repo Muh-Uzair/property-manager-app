@@ -2,12 +2,12 @@ import { useNavigate } from "react-router-dom";
 import { HiOutlineArrowLongLeft } from "react-icons/hi2";
 import { createContext } from "react";
 
-import RentDetails from "./rentDetails/RentDetails";
+import RentDetails from "./RentDetails";
 import PropertyDetails from "./PropertyDetails";
 import TenantDetails from "./TenantDetails";
-import LoadingSpinner from "../../../ui/LoadingSpinner";
+import LoadingSpinner from "../../ui/LoadingSpinner";
 
-import { useGetScreenHeight } from "../../../hooks/useGetScreenHeight";
+import { useGetScreenHeight } from "../../hooks/useGetScreenHeight";
 import { useGetSinglePropertyDetails } from "./useGetSinglePropertyDetails";
 
 export const ContextSingleProperty = createContext();

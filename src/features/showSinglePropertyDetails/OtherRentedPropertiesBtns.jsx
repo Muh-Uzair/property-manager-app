@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { MdBedroomChild } from "react-icons/md";
 import { FaBuilding, FaStore } from "react-icons/fa";
 
-import { brandColor500 } from "../../../styles/globalStyles";
+import { brandColor500 } from "../../styles/globalStyles";
 import { ContextSingleProperty } from "./SinglePropertyDetails";
 
 const rentPropIconSize = "10px";

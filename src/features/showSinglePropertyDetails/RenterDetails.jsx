@@ -1,5 +1,5 @@
-import Portion from "../../../ui/Portion";
-import Heading from "../../../ui/Heading";
+import Portion from "../../ui/Portion";
+import Heading from "../../ui/Heading";
 import PropTypes from "prop-types";
 import { useGetRenterDetailsOnId } from "../propertyDetails/useGetRenterDetailsOnId";
 import OtherPropertiesRented from "../OtherPropertiesRented";

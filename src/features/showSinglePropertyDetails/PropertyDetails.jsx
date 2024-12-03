@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
 import { useContext } from "react";
 
-import Heading from "../../../ui/Heading";
+import Heading from "../../ui/Heading";
 import SinglePropertyDetailsItem from "./SinglePropertyDetailsItem";
 import PropertyDetailsCardFormat from "@/ui/PropertyDetailsCardFormat";
 import { ContextSingleProperty } from "./SinglePropertyDetails";

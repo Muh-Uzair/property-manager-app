@@ -1,4 +1,4 @@
-import Heading from "../../../../ui/Heading";
+import Heading from "../../ui/Heading";
 import DisplayRentDetails from "./DisplayRentDetails";
 
 export default function RentDetails() {

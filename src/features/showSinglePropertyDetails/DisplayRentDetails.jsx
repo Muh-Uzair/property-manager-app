@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { ContextSingleProperty } from "../SinglePropertyDetails";
+import { ContextSingleProperty } from "./SinglePropertyDetails";
 import { useGetScreenHeight } from "@/hooks/useGetScreenHeight";
 
 const innerElementStyles =

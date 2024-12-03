@@ -1,4 +1,4 @@
-import { brandColor500 } from "../../../styles/globalStyles";
+import { brandColor500 } from "../../styles/globalStyles";
 import { FaFlag, FaHeart, FaPhoneAlt, FaUser } from "react-icons/fa";
 import { MdWork } from "react-icons/md";
 import PropTypes from "prop-types";
