@@ -1,11 +1,12 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import { uploadTenantEditDetails } from "../../../Services/apiRenters";
-import { uploadFlatEditDetails } from "../../../Services/apiFlats";
-import { uploadRoomEditDetails } from "../../../Services/apiRooms";
-import { uploadShopEditDetails } from "../../../Services/apiShops";
-import { useGetPropertyType } from "../../../hooks/useGetPropertyType";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router-dom";
+
+import { uploadTenantEditDetails } from "../../Services/apiRenters";
+import { uploadFlatEditDetails } from "../../Services/apiFlats";
+import { uploadRoomEditDetails } from "../../Services/apiRooms";
+import { uploadShopEditDetails } from "../../Services/apiShops";
+import { useGetPropertyType } from "../../hooks/useGetPropertyType";
 
 // FUNCTION calls the actual upload function
 async function uploadEditDetails(data) {
