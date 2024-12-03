@@ -44,7 +44,7 @@ const SignUpPG = lazy(() => import("./Pages/SignUpPG"));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route>
+    <Route errorElement={<ErrorPG />}>
       <Route path="/login" element={<LoginPG />} />
       <Route path="/register" element={<SignUpPG />} />
       <Route
@@ -56,51 +56,48 @@ const router = createBrowserRouter(
         }
         errorElement={<ErrorPG />}
       >
-        <Route errorElement={<ErrorPG />}>
-          {/* DIVIDER */}
-          <Route index element={<Navigate replace to="/home" />} />
-          <Route path="/home" element={<HomePG />} />
+        {/* DIVIDER */}
+        <Route index element={<Navigate replace to="/home" />} />
+        <Route path="/home" element={<HomePG />} />
 
-          {/* DIVIDER */}
-          <Route path="/propertyDetails" element={<PropertyDetailsPG />} />
-          <Route
-            path="/propertyDetails/:propertyType"
-            element={<PropertyDetailsPG />}
-          />
-          <Route
-            path="/propertyDetails/:propertyType/:propertyId"
-            element={<SinglePropertyDetails />}
-          />
-          <Route
-            path="/propertyDetails/:propertyType/edit/:propertyId"
-            element={<PropertyEdit />}
-          />
+        {/* DIVIDER */}
+        <Route path="/propertyDetails" element={<PropertyDetailsPG />} />
+        <Route
+          path="/propertyDetails/:propertyType"
+          element={<PropertyDetailsPG />}
+        />
+        <Route
+          path="/propertyDetails/:propertyType/:propertyId"
+          element={<SinglePropertyDetails />}
+        />
+        <Route
+          path="/propertyDetails/:propertyType/edit/:propertyId"
+          element={<PropertyEdit />}
+        />
 
-          {/* DIVIDER */}
-          <Route path="/rentPayment" element={<RentPaymentPG />}>
-            {" "}
-            <Route path=":propertyType" element={<RentPaymentPG />} />
-          </Route>
-
-          {/* DIVIDER */}
-          <Route path="/admissions" element={<AdmissionsPG />} />
-
-          <Route path="/admissions/:propertyType" element={<Admissions />} />
-          <Route
-            path="/admissions/:propertyType/:propertyId"
-            element={<OccupyProperty />}
-          />
-
-          {/* DIVIDER */}
-          <Route path="/leaveProperty" element={<LeavePropertyPG />}>
-            <Route path=":propertyType" element={<LeaveProperty />} />
-          </Route>
-
-          {/* DIVIDER */}
-          <Route path="*" element={<PageNotFound />} />
+        {/* DIVIDER */}
+        <Route path="/rentPayment" element={<RentPaymentPG />}>
+          {" "}
+          <Route path=":propertyType" element={<RentPaymentPG />} />
         </Route>
+
+        {/* DIVIDER */}
+        <Route path="/admissions" element={<AdmissionsPG />} />
+
+        <Route path="/admissions/:propertyType" element={<Admissions />} />
+        <Route
+          path="/admissions/:propertyType/:propertyId"
+          element={<OccupyProperty />}
+        />
+
+        {/* DIVIDER */}
+        <Route path="/leaveProperty" element={<LeavePropertyPG />}>
+          <Route path=":propertyType" element={<LeaveProperty />} />
+        </Route>
+
+        {/* DIVIDER */}
+        <Route path="*" element={<PageNotFound />} />
       </Route>
-      ,
     </Route>,
   ),
 );
