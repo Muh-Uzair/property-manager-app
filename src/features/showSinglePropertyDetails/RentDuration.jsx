@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 import { formatDistanceStrict } from "date-fns";
 import { GiHourglass } from "react-icons/gi";
-import Heading from "../../../../ui/Heading";
+import Heading from "../../ui/Heading";
 import TenantDetailsIcon from "./TenantDetailsIcon";
-import { brandColor500 } from "../../../../styles/globalStyles";
+import { brandColor500 } from "../../styles/globalStyles";
 
 // COMPONENT START
 RentDuration.propTypes = {

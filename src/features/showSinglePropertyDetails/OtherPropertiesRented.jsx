@@ -1,13 +1,12 @@
 import PropTypes from "prop-types";
 import { MdHomeWork } from "react-icons/md";
 
-import NoOtherRentedProperties from "./NoOtherRentedProperties";
 import OtherRentedPropertiesBtns from "./OtherRentedPropertiesBtns";
-import Heading from "../../../../ui/Heading";
+import Heading from "../../ui/Heading";
 import TenantDetailsIcon from "./TenantDetailsIcon";
-
-import { brandColor500 } from "../../../../styles/globalStyles";
-import { ContextSingleProperty } from "../SinglePropertyDetails";
+import NoOtherRentedProperties from "./NoOtherRentedProperties";
+import { brandColor500 } from "../../styles/globalStyles";
+import { ContextSingleProperty } from "./SinglePropertyDetails";
 import { useContext } from "react";
 
 // COMPONENT START

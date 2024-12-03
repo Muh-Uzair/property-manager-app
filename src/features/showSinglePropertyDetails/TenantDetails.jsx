@@ -1,13 +1,13 @@
 //
 
-import Heading from "../../../../ui/Heading";
+import Heading from "../../ui/Heading";
 import OtherPropertiesRented from "./OtherPropertiesRented";
 import RentDuration from "./RentDuration";
 import AllTenantDetailsItem from "./AllTenantDetailsItem";
 import { FaUserLarge } from "react-icons/fa6";
 
 import { useContext } from "react";
-import { ContextSingleProperty } from "../SinglePropertyDetails";
+import { ContextSingleProperty } from "./SinglePropertyDetails";
 
 // COMPONENT START
 

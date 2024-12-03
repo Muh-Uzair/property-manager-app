@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 
-import { getFlatDataOnId } from "../../../Services/apiFlats";
-import { getRoomDataOnId } from "../../../Services/apiRooms";
-import { getShopDataOnId } from "../../../Services/apiShops";
-import { getRenterDetailsOnId } from "../../../Services/apiRenters";
-import { apiGetPropertyName } from "./tenantDetails/apiOtherRentedProperties";
+import { getFlatDataOnId } from "../../Services/apiFlats";
+import { getRoomDataOnId } from "../../Services/apiRooms";
+import { getShopDataOnId } from "../../Services/apiShops";
+import { getRenterDetailsOnId } from "../../Services/apiRenters";
+import { apiGetPropertyName } from "./apiOtherRentedProperties";
 
 export const useGetSinglePropertyDetails = () => {
   const { propertyType } = useParams();

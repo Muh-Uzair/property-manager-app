@@ -1,5 +1,5 @@
+import Heading from "@/ui/Heading";
 import PropTypes from "prop-types";
-import Heading from "../../../../ui/Heading";
 
 // COMPONENT START
 SinglePropertyDetailsItem.propTypes = {

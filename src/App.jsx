@@ -19,13 +19,8 @@ const ErrorPG = lazy(() => import("./Pages/ErrorPG"));
 const PageNotFound = lazy(() => import("./Pages/PageNotFound"));
 const PropertyDetailsPG = lazy(() => import("./Pages/PropertyDetailsPG"));
 const LoginPG = lazy(() => import("./Pages/LoginPG"));
-const SinglePropertyDetails = lazy(
-  () =>
-    import(
-      "./features/ShowPropertyDetails/showSinglePropertyDetails/SinglePropertyDetails"
-    ),
-);
-// const PropertyEdit = lazy(() => import("./features/propertyEdit/PropertyEdit"));
+import SinglePropertyDetails from "./features/showSinglePropertyDetails/SinglePropertyDetails";
+
 const RentPaymentPG = lazy(() => import("./Pages/RentPaymentPG"));
 const LeavePropertyPG = lazy(() => import("./Pages/LeavePropertyPG"));
 const LeaveProperty = lazy(
