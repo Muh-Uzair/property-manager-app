@@ -3,12 +3,12 @@ import { HiOutlineArrowLongLeft } from "react-icons/hi2";
 import { createContext } from "react";
 
 import RentDetails from "./rentDetails/RentDetails";
-import PropertyDetails from "./singlePropertyDetails/PropertyDetails";
-import TenantDetails from "./tenantDetails/TenantDetails";
+import PropertyDetails from "./PropertyDetails";
+import TenantDetails from "./TenantDetails";
 import LoadingSpinner from "../../../ui/LoadingSpinner";
 
-import { useGetSinglePropertyDetails } from "./useGetSinglePropertyDetails";
 import { useGetScreenHeight } from "../../../hooks/useGetScreenHeight";
+import { useGetSinglePropertyDetails } from "./useGetSinglePropertyDetails";
 
 export const ContextSingleProperty = createContext();
 

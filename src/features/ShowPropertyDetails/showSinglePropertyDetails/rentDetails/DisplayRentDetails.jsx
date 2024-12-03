@@ -1,6 +1,7 @@
 import { useContext } from "react";
+
 import { ContextSingleProperty } from "../SinglePropertyDetails";
-import { useGetScreenHeight } from "../../../../hooks/useGetScreenHeight";
+import { useGetScreenHeight } from "@/hooks/useGetScreenHeight";
 
 const innerElementStyles =
   "align-center flex justify-center text-nowrap rounded-[3px] bg-sky-500 p-[2px]";

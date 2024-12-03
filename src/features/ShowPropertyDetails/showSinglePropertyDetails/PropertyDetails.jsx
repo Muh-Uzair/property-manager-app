@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
-
-import Heading from "../../../../ui/Heading";
-import SinglePropertyDetailsItem from "./SinglePropertyDetailsItem";
 import { useContext } from "react";
-import { ContextSingleProperty } from "../SinglePropertyDetails";
+
+import Heading from "../../../ui/Heading";
+import SinglePropertyDetailsItem from "./SinglePropertyDetailsItem";
 import PropertyDetailsCardFormat from "@/ui/PropertyDetailsCardFormat";
+import { ContextSingleProperty } from "./SinglePropertyDetails";
 
 const itemGap = "7px";
 

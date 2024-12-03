@@ -1,12 +1,10 @@
-// import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-// import { apiGetPropertyName } from "./apiOtherRentedProperties";
-import { brandColor500 } from "../../../../styles/globalStyles";
-// import PropTypes from "prop-types";
-import { FaBuilding, FaStore } from "react-icons/fa";
-import { MdBedroomChild } from "react-icons/md";
 import { useContext } from "react";
-import { ContextSingleProperty } from "../SinglePropertyDetails";
+import { useNavigate, useParams } from "react-router-dom";
+import { MdBedroomChild } from "react-icons/md";
+import { FaBuilding, FaStore } from "react-icons/fa";
+
+import { brandColor500 } from "../../../styles/globalStyles";
+import { ContextSingleProperty } from "./SinglePropertyDetails";
 
 const rentPropIconSize = "10px";
 
