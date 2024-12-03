@@ -22,7 +22,6 @@ const LoginPG = lazy(() => import("./Pages/LoginPG"));
 const SinglePropertyDetails = lazy(
   () => import("./features/showSinglePropertyDetails/SinglePropertyDetails"),
 );
-
 const RentPaymentPG = lazy(() => import("./Pages/RentPaymentPG"));
 const LeavePropertyPG = lazy(() => import("./Pages/LeavePropertyPG"));
 const LeaveProperty = lazy(
@@ -34,7 +33,7 @@ const OccupyProperty = lazy(
 );
 const ProtectedRoutePG = lazy(() => import("./Pages/ProtectedRoutePG"));
 const SignUpPG = lazy(() => import("./Pages/SignUpPG"));
-import PropertyEdit from "./features/propertyEdit/PropertyEdit";
+const PropertyEdit = lazy(() => "./features/propertyEdit/PropertyEdit");
 
 // refactor branch created
 
