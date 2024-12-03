@@ -19,16 +19,18 @@ const ErrorPG = lazy(() => import("./Pages/ErrorPG"));
 const PageNotFound = lazy(() => import("./Pages/PageNotFound"));
 const PropertyDetailsPG = lazy(() => import("./Pages/PropertyDetailsPG"));
 const LoginPG = lazy(() => import("./Pages/LoginPG"));
-import SinglePropertyDetails from "./features/showSinglePropertyDetails/SinglePropertyDetails";
+const SinglePropertyDetails = lazy(
+  () => import("./features/showSinglePropertyDetails/SinglePropertyDetails"),
+);
 
 const RentPaymentPG = lazy(() => import("./Pages/RentPaymentPG"));
 const LeavePropertyPG = lazy(() => import("./Pages/LeavePropertyPG"));
 const LeaveProperty = lazy(
   () => import("./features/leaveProperty/LeaveProperty"),
 );
-const Admissions = lazy(() => import("./features/Admissions/Admissions"));
+const Admissions = lazy(() => import("./features/admissions/Admissions"));
 const OccupyProperty = lazy(
-  () => import("./features/Admissions/OccupyProperty"),
+  () => import("./features/admissions/OccupyProperty"),
 );
 const ProtectedRoutePG = lazy(() => import("./Pages/ProtectedRoutePG"));
 const SignUpPG = lazy(() => import("./Pages/SignUpPG"));

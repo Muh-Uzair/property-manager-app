@@ -1,4 +1,4 @@
-import Admissions from "../features/Admissions/Admissions";
+import Admissions from "../features/admissions/Admissions";
 
 // COMPONENT START///////////////////////////////////////////////
 export default function AdmissionsPG() {
