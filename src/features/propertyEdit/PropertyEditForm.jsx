@@ -4,11 +4,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { createContext } from "react";
 
-import FormButton from "../../../ui/FormButton";
+import FormButton from "../../ui/FormButton";
 import PropertyDetailsEditForm from "./PropertyDetailsEditForm";
 import TenantDetailsEditForm from "./TenantDetailsEditForm";
 import { useUploadPropertyEditForm } from "./useUploadPropertyEditForm";
-import { useGetPropertyType } from "../../../hooks/useGetPropertyType";
+import { useGetPropertyType } from "../../hooks/useGetPropertyType";
 
 export const PropertyEditContext = createContext();
 

@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { useGetPropertyType } from "../../../hooks/useGetPropertyType";
+import { useGetPropertyType } from "../../hooks/useGetPropertyType";
 import { useParams } from "react-router-dom";
-import { getFlatEditData } from "../../../Services/apiFlats";
-import { getRoomEditData } from "../../../Services/apiRooms";
-import { getShopEditData } from "../../../Services/apiShops";
-import { getTenantDataPropertyEdit } from "../../../Services/apiRenters";
+import { getFlatEditData } from "../../Services/apiFlats";
+import { getRoomEditData } from "../../Services/apiRooms";
+import { getShopEditData } from "../../Services/apiShops";
+import { getTenantDataPropertyEdit } from "../../Services/apiRenters";
 
 export function useGetPropertyEditData() {
   const propertyType = useGetPropertyType();

@@ -1,9 +1,9 @@
-import Heading from "../../../ui/Heading";
-import LoadingSpinner from "../../../ui/LoadingSpinner";
+import Heading from "../../ui/Heading";
+import LoadingSpinner from "../../ui/LoadingSpinner";
 import PropertyEditForm from "./PropertyEditForm";
-import { useGetPropertyType } from "../../../hooks/useGetPropertyType";
+import { useGetPropertyType } from "../../hooks/useGetPropertyType";
 import { useGetPropertyEditData } from "./useGetPropertyEditData";
-import { useGetScreenHeight } from "../../../hooks/useGetScreenHeight";
+import { useGetScreenHeight } from "../../hooks/useGetScreenHeight";
 
 // COMPONENT START
 export default function PropertyEdit() {

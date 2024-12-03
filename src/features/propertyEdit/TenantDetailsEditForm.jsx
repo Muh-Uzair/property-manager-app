@@ -1,5 +1,5 @@
-import FormItem from "../../../ui/FormItem";
-import FormPortion from "../../../ui/FormPortion";
+import FormItem from "../../ui/FormItem";
+import FormPortion from "../../ui/FormPortion";
 import countries from "i18n-iso-countries";
 import enLocale from "i18n-iso-countries/langs/en.json";
 countries.registerLocale(enLocale);
