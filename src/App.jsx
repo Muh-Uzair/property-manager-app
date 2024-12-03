@@ -40,7 +40,7 @@ const OccupyProperty = lazy(
 const ProtectedRoutePG = lazy(() => import("./Pages/ProtectedRoutePG"));
 const SignUpPG = lazy(() => import("./Pages/SignUpPG"));
 
-// rent payment error rmv
+// refactor branch created
 
 const router = createBrowserRouter(
   createRoutesFromElements(
