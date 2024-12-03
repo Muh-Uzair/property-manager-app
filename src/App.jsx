@@ -35,7 +35,7 @@ const LeaveProperty = lazy(
 );
 const AppLayout = lazy(() => import("./ui/AppLayout"));
 
-// refactor branch created
+// new node dist
 
 const router = createBrowserRouter(
   createRoutesFromElements(
