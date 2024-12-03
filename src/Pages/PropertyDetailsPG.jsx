@@ -1,7 +1,7 @@
-import PropertyDetailsTable from "../features/showPropertyDetails/PropertyDetailsTable";
 import Heading from "../ui/Heading";
 import PropertyChangeBtns from "../ui/PropertyChangeBtns";
 import { useGetPropertyType } from "../hooks/useGetPropertyType";
+import PropertyDetailsTable from "@/features/showPropertyDetails/PropertyDetailsTable";
 
 // COMPONENT START///////////////////////////////////////////////
 export default function PropertyDetailsPG() {
