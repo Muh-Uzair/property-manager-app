@@ -35,7 +35,7 @@ const LeaveProperty = lazy(
 );
 const AppLayout = lazy(() => import("./ui/AppLayout"));
 
-// new node dist
+// uploader
 
 const router = createBrowserRouter(
   createRoutesFromElements(

@@ -10,7 +10,7 @@ import { NameLogo } from "./NameLogo";
 import { Logo } from "./Logo";
 import { UserDetails } from "./UserDetails";
 import { useGetUser } from "@/features/auth/useGetUser";
-import Uploader from "@/features/uploader/Uploader";
+import Uploader from "@/features/Uploader/Uploader";
 
 // COMPONENT START
 export function Header() {
