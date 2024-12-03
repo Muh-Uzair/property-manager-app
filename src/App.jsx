@@ -22,15 +22,14 @@ const LoginPG = lazy(() => import("./Pages/LoginPG"));
 const SinglePropertyDetails = lazy(
   () => import("./features/showSinglePropertyDetails/SinglePropertyDetails"),
 );
+const OccupyProperty = lazy(() => "./features/admissions/OccupyProperty");
 const RentPaymentPG = lazy(() => import("./Pages/RentPaymentPG"));
 const LeavePropertyPG = lazy(() => import("./Pages/LeavePropertyPG"));
 const LeaveProperty = lazy(
   () => import("./features/leaveProperty/LeaveProperty"),
 );
 const Admissions = lazy(() => import("./features/admissions/Admissions"));
-const OccupyProperty = lazy(
-  () => import("./features/admissions/OccupyProperty"),
-);
+
 const ProtectedRoutePG = lazy(() => import("./Pages/ProtectedRoutePG"));
 const SignUpPG = lazy(() => import("./Pages/SignUpPG"));
 const PropertyEdit = lazy(() => import("./features/propertyEdit/PropertyEdit"));

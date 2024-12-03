@@ -1,12 +1,11 @@
-import { useGetSingleUnoccupiedPropertyData } from "./useGetSingleUnoccupiedPropertyData";
-import { useGetAllUnoccupiedProperty } from "./useGetAllUnoccupiedProperty";
-
 import LoadingSpinner from "@/ui/LoadingSpinner";
 import UnoccupiedPropertyDetails from "./UnoccupiedPropertyDetails";
 import LoadingWrapperCenter from "@/ui/LoadingWrapperCenter";
 import TenantAdmissionForm from "./TenantAdmissionForm";
 import OtherUnoccupiedProperties from "./OtherUnoccupiedProperties";
+import { useGetSingleUnoccupiedPropertyData } from "./useGetSingleUnoccupiedPropertyData";
 import { useGetScreenHeight } from "@/hooks/useGetScreenHeight";
+import { useGetAllUnoccupiedProperty } from "./useGetAllUnoccupiedProperty";
 
 const itemGap = "7px";
 
