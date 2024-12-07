@@ -12,7 +12,7 @@ import { UserDetails } from "./UserDetails";
 import { useGetUser } from "@/features/auth/useGetUser";
 // import Uploader from "@/features/Uploader/Uploader";
 
-// COMPONENT START
+// CMP
 export function Header() {
   // VARIABLES
   const { dataUser } = useGetUser();
