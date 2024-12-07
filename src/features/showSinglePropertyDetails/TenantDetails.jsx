@@ -45,7 +45,7 @@ export default function TenantDetails() {
 
           {/* image */}
           <div className="flex justify-center rounded-[8px] bg-gray-200">
-            {!dataRenterDetails?.image && (
+            {dataRenterDetails?.image && (
               <div className="max-h-[342px] w-[230px] rounded-[2px] bg-gray-300">
                 <img
                   className="h-full w-full object-cover"
@@ -53,7 +53,7 @@ export default function TenantDetails() {
                 />
               </div>
             )}
-            {dataRenterDetails?.image && (
+            {!dataRenterDetails?.image && (
               <div className="flex h-[full] w-[230px] items-center justify-center bg-gray-300/70">
                 <p className="text-[50px] text-gray-200">
                   <FaUserLarge />
