@@ -80,6 +80,23 @@ export const UserDetails = ({ userNameEmail }) => {
                 <FormInputText
                   id={"userName"}
                   labelText={"User Name"}
+                  validationObject={{
+                    required: "Username is required",
+                    validate: {
+                      length: (value) =>
+                        value.length >= 3 && value.length <= 20
+                          ? true
+                          : "Username must be between 3 and 20 characters",
+                      format: (value) =>
+                        /^[a-zA-Z0-9_]+$/.test(value)
+                          ? true
+                          : "Username can only contain alphanumeric characters and underscores",
+                      singleUnderscore: (value) =>
+                        /^[a-zA-Z0-9]+(_[a-zA-Z0-9]+)?$/.test(value)
+                          ? true
+                          : "Username cannot start or end with an underscore, and only one underscore is allowed",
+                    },
+                  }}
                   register={register}
                 />
               </FormRow>

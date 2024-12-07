@@ -120,13 +120,13 @@ export default function SignUp() {
                     ? true
                     : "Username must be between 3 and 20 characters",
                 format: (value) =>
-                  /^[a-zA-Z0-9.]+$/.test(value)
+                  /^[a-zA-Z0-9_]+$/.test(value)
                     ? true
-                    : "Username can only contain alphanumeric characters and no empty space at start or end",
-                singleDot: (value) =>
-                  /^[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)?$/.test(value)
+                    : "Username can only contain alphanumeric characters and underscores",
+                singleUnderscore: (value) =>
+                  /^[a-zA-Z0-9]+(_[a-zA-Z0-9]+)?$/.test(value)
                     ? true
-                    : "Username cannot start or end with a dot, and only one dot is allowed",
+                    : "Username cannot start or end with an underscore, and only one underscore is allowed",
               },
             }}
             labelText="User Name"
