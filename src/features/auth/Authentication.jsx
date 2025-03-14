@@ -7,6 +7,7 @@ import { NamePropleLogo } from "@/ui/NameLogo";
 import { useLocation, useSearchParams } from "react-router-dom";
 import SignUp from "./SignUp";
 import toast from "react-hot-toast";
+import { useSigninTenant } from "./useSigninTenant";
 
 // COMPONENT START
 export default function Authentication() {
@@ -15,24 +16,21 @@ export default function Authentication() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
-    defaultValues: { email: "uzair@gmail.com", password: "000000" },
-  });
+  } = useForm();
   const [showPassword, setShowPassword] = useState(true);
   const { mutateLogin, statusLogin } = useLogin();
   const { pathname } = useLocation();
   const registerLogin = pathname?.slice(1);
   const [searchParams] = useSearchParams();
   const userType = searchParams.get("userType");
+  const signInTenant = useSigninTenant();
 
   // FUNCTIONS
   const loginFormSubmit = async (data) => {
     const { email, password } = data;
 
     if (userType === "tenant") {
-      const propertyId = email;
-
-      console.log(propertyId, password);
+      signInTenant();
     } else if (
       userType === "admin" &&
       email === "admin@prople.com" &&

@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import supabase from "../../supabase";
 
 // FUNCTION
@@ -74,4 +75,10 @@ export const apiUpdateUser = async (userName) => {
   if (error) {
     throw new Error(`Unable to update user Error => ${error}`);
   }
+};
+
+// FUNCTION
+export const useApiSignInTenant = async () => {
+  const navigate = useNavigate();
+  navigate("/tenant-operation-page");
 };

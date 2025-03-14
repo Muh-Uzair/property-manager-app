@@ -4,7 +4,6 @@ import { createTheme } from "@mui/material";
 import { FaRegEyeSlash } from "react-icons/fa6";
 import { FaRegEye } from "react-icons/fa6";
 import { Link, useSearchParams } from "react-router-dom";
-
 import FormRow from "@/ui/AdmissionFormRow";
 import FormErrorDisplay from "@/ui/FormErrorDisplay";
 import Button from "@/ui/Button";
