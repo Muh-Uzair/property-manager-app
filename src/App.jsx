@@ -13,6 +13,7 @@ import LoadingWrapperCenter from "./ui/LoadingWrapperCenter";
 import LoadingSpinner from "./ui/LoadingSpinner";
 
 const ErrorPG = lazy(() => import("./Pages/ErrorPG"));
+const LoginAsPG = lazy(() => import("./Pages/LoginAsPG"));
 const LoginPG = lazy(() => import("./Pages/LoginPG"));
 const SignUpPG = lazy(() => import("./Pages/SignUpPG"));
 const ProtectedRoutePG = lazy(() => import("./Pages/ProtectedRoutePG"));
@@ -40,7 +41,10 @@ const AppLayout = lazy(() => import("./ui/AppLayout"));
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route errorElement={<ErrorPG />}>
+      <Route path="/login-as" element={<LoginAsPG />} />
       <Route path="/login" element={<LoginPG />} />
+      {/* <Route path="/login-admin" element={<LoginPG />} />
+      <Route path="/login-tenant" element={<LoginPG />} /> */}
       <Route path="/register" element={<SignUpPG />} />
       <Route
         path="/"

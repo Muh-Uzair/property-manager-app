@@ -4,8 +4,9 @@ import { useState } from "react";
 import LoginForm from "./LoginForm";
 import { useLogin } from "./useLogin";
 import { NamePropleLogo } from "@/ui/NameLogo";
-import { useLocation } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import SignUp from "./SignUp";
+import toast from "react-hot-toast";
 
 // COMPONENT START
 export default function Authentication() {
@@ -21,11 +22,28 @@ export default function Authentication() {
   const { mutateLogin, statusLogin } = useLogin();
   const { pathname } = useLocation();
   const registerLogin = pathname?.slice(1);
+  const [searchParams] = useSearchParams();
+  const userType = searchParams.get("userType");
 
   // FUNCTIONS
   const loginFormSubmit = async (data) => {
     const { email, password } = data;
-    await mutateLogin({ email, password });
+
+    if (userType === "tenant") {
+      const propertyId = email;
+
+      console.log(propertyId, password);
+    } else if (
+      userType === "admin" &&
+      email === "admin@prople.com" &&
+      password === "admin"
+    ) {
+      await mutateLogin({ email, password });
+    } else {
+      toast.error("Invalid credentials", { duration: 6000 });
+    }
+
+    return;
   };
 
   // JSX

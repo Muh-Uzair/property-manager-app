@@ -22,7 +22,7 @@ export default function ProtectedRoutePG({ children }) {
         (dataUser?.role !== "authenticated" || dataUser === null) &&
         statusUser === "success"
       ) {
-        navigate("/login");
+        navigate("/login-as");
       }
     };
 

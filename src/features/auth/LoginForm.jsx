@@ -3,7 +3,7 @@ import { ThemeProvider } from "@emotion/react";
 import { createTheme } from "@mui/material";
 import { FaRegEyeSlash } from "react-icons/fa6";
 import { FaRegEye } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 import FormRow from "@/ui/AdmissionFormRow";
 import FormErrorDisplay from "@/ui/FormErrorDisplay";
@@ -30,7 +30,9 @@ export default function LoginForm({
   setShowPassword,
   statusLogin,
 }) {
-  // VARIABLES
+  // VARS
+  const [searchParams] = useSearchParams();
+  const userType = searchParams.get("userType");
 
   // FUNCTIONS
 
@@ -49,13 +51,12 @@ export default function LoginForm({
               autoComplete={true}
               register={register}
               validationObject={{
-                required: "Email is required",
+                required: `${userType === "admin" ? "Username" : "Property id"} is required`,
                 pattern: {
-                  value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-                  message: "Enter a valid email address",
+                  message: `Enter a valid ${userType === "admin" ? "username" : "property id"} address`,
                 },
               }}
-              labelText="Email"
+              labelText={userType === "admin" ? "Username" : "property id"}
               errors={errors}
             />
           </FormRow>
@@ -69,8 +70,8 @@ export default function LoginForm({
                 {...register("password", {
                   required: "Password is required",
                   minLength: {
-                    value: 6,
-                    message: "Minimum length of password is 6",
+                    value: 5,
+                    message: "Minimum length of password is 5",
                   },
                 })}
               />
