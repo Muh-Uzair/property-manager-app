@@ -1,19 +1,60 @@
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const TenantOperationLayout = ({ children }) => {
+  const location = useLocation();
+
   return (
     <div className="p-[10px]">
       <div className="mt-[10px] grid grid-cols-2 gap-[10px]">
-        <TenantOperationButton buttonText="Rent payment" />
-        <TenantOperationButton buttonText="Register complaint" />
+        <TenantOperationButtonRent
+          buttonText="Rent payment"
+          url={`/tenant-operation-page/rent-payment${location.search}`}
+        />
+        <TenantOperationButtonComplaint
+          buttonText="Register complaint"
+          url={`/tenant-operation-page/register-complaint${location.search}`}
+        />
       </div>
       <div className="mt-[10px]">{children}</div>
     </div>
   );
 };
 
-const TenantOperationButton = ({ buttonText = "button", url = "/" }) => {
+const TenantOperationButtonRent = ({ buttonText = "button", url = "/" }) => {
+  return (
+    <TenantOperationButton
+      buttonText={buttonText}
+      includes="rent-payment"
+      url={url}
+    />
+  );
+};
+
+const TenantOperationButtonComplaint = ({
+  buttonText = "button",
+  url = "/",
+}) => {
+  return (
+    <TenantOperationButton
+      buttonText={buttonText}
+      includes="register-complaint"
+      url={url}
+    />
+  );
+};
+
+const TenantOperationButton = ({ includes, buttonText, url }) => {
+  const location = useLocation();
+
+  if (location.pathname.includes(includes)) {
+    return (
+      <button className="w-full rounded-[5px] border-[1px] border-sky-700 bg-sky-200 px-[10px] py-[5px] font-semibold text-sky-700">
+        {" "}
+        {buttonText}{" "}
+      </button>
+    );
+  }
   return (
     <Link to={url}>
       {" "}
@@ -25,7 +66,18 @@ const TenantOperationButton = ({ buttonText = "button", url = "/" }) => {
   );
 };
 
+TenantOperationButtonRent.propTypes = {
+  buttonText: PropTypes.string,
+  url: PropTypes.string,
+};
+
+TenantOperationButtonComplaint.propTypes = {
+  buttonText: PropTypes.string,
+  url: PropTypes.string,
+};
+
 TenantOperationButton.propTypes = {
+  includes: PropTypes.string,
   buttonText: PropTypes.string,
   url: PropTypes.string,
 };
