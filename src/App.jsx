@@ -11,8 +11,6 @@ import { Toaster } from "react-hot-toast";
 import { lazy, Suspense } from "react";
 import LoadingWrapperCenter from "./ui/LoadingWrapperCenter";
 import LoadingSpinner from "./ui/LoadingSpinner";
-import TenantOperationPage from "./Pages/TenantOperationPage";
-import TenantOperationLayout from "./ui/TenantOperationLayout";
 
 const ErrorPG = lazy(() => import("./Pages/ErrorPG"));
 const LoginAsPG = lazy(() => import("./Pages/LoginAsPG"));
@@ -37,6 +35,14 @@ const LeaveProperty = lazy(
   () => import("./features/leaveProperty/LeaveProperty"),
 );
 const AppLayout = lazy(() => import("./ui/AppLayout"));
+const TenantOperationRentPayment = lazy(
+  () =>
+    import(
+      "./features/tenant-operations-rent-payment/TenantOperationRentPayment"
+    ),
+);
+
+const TenantOperationLayout = lazy(() => import("./ui/TenantOperationLayout"));
 
 // uploader
 
@@ -45,13 +51,12 @@ const router = createBrowserRouter(
     <Route errorElement={<ErrorPG />}>
       <Route path="/login-as" element={<LoginAsPG />} />
       <Route path="/login" element={<LoginPG />} />
-      <Route path="/tenant-operation-page" element={<TenantOperationPage />} />
       <Route path="/register" element={<SignUpPG />} />
       <Route
         path="/tenant-operation-page/rent-payment"
         element={
           <TenantOperationLayout>
-            <div>rent payment</div>
+            <TenantOperationRentPayment />
           </TenantOperationLayout>
         }
       />

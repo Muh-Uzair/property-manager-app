@@ -37,7 +37,7 @@ export const useSigninTenant = () => {
         }
 
         navigate(
-          `/tenant-operation-page?propertyType=${propertyType}&propertyId=${email}`,
+          `/tenant-operation-page/rent-payment?propertyType=${propertyType}&propertyId=${email}`,
         );
       },
       onSuccess: () => {
