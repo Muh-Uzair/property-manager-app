@@ -12,6 +12,7 @@ import { lazy, Suspense } from "react";
 import LoadingWrapperCenter from "./ui/LoadingWrapperCenter";
 import LoadingSpinner from "./ui/LoadingSpinner";
 import TenantOperationPage from "./Pages/TenantOperationPage";
+import TenantOperationLayout from "./ui/TenantOperationLayout";
 
 const ErrorPG = lazy(() => import("./Pages/ErrorPG"));
 const LoginAsPG = lazy(() => import("./Pages/LoginAsPG"));
@@ -46,6 +47,22 @@ const router = createBrowserRouter(
       <Route path="/login" element={<LoginPG />} />
       <Route path="/tenant-operation-page" element={<TenantOperationPage />} />
       <Route path="/register" element={<SignUpPG />} />
+      <Route
+        path="/tenant-operation-page/rent-payment"
+        element={
+          <TenantOperationLayout>
+            <div>rent payment</div>
+          </TenantOperationLayout>
+        }
+      />
+      <Route
+        path="/tenant-operation-page/register-complaint"
+        element={
+          <TenantOperationLayout>
+            <div>register</div>
+          </TenantOperationLayout>
+        }
+      />
       <Route
         path="/"
         element={
