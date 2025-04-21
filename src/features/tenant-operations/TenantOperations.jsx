@@ -1,5 +1,7 @@
+import TenantOperationLayout from "@/ui/TenantOperationLayout";
+
 const TenantOperations = () => {
-  return <div>tenant operation branch</div>;
+  return <TenantOperationLayout>Hello g</TenantOperationLayout>;
 };
 
 export default TenantOperations;
