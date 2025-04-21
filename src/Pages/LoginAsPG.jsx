@@ -65,21 +65,21 @@ const LoginAsButtonTenant = ({ buttonText = "Provide text" }) => {
         <div className="mt-[10px] max-w-[300px] rounded-[5px] border-[1px] p-[10px]">
           <div>Select which type of property have you rented ?</div>
           <Link
-            to={`/login?userType=${buttonText.split(" ")[2].toLowerCase()}&propertyType=flat`}
+            to={`/login?userType=${buttonText.split(" ")[2].toLowerCase()}&propertyType=flats`}
           >
             <button className="mt-[10px] w-full border p-[5px] font-semibold">
               Flat
             </button>
           </Link>
           <Link
-            to={`/login?userType=${buttonText.split(" ")[2].toLowerCase()}&propertyType=room`}
+            to={`/login?userType=${buttonText.split(" ")[2].toLowerCase()}&propertyType=rooms`}
           >
             <button className="mt-[10px] w-full border p-[5px] font-semibold">
               Room
             </button>
           </Link>
           <Link
-            to={`/login?userType=${buttonText.split(" ")[2].toLowerCase()}&propertyType=shop`}
+            to={`/login?userType=${buttonText.split(" ")[2].toLowerCase()}&propertyType=shops`}
           >
             <button className="mt-[10px] w-full border p-[5px] font-semibold">
               Shop

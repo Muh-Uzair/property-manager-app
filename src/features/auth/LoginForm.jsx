@@ -3,7 +3,7 @@ import { ThemeProvider } from "@emotion/react";
 import { createTheme } from "@mui/material";
 import { FaRegEyeSlash } from "react-icons/fa6";
 import { FaRegEye } from "react-icons/fa6";
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import FormRow from "@/ui/AdmissionFormRow";
 import FormErrorDisplay from "@/ui/FormErrorDisplay";
 import Button from "@/ui/Button";
@@ -28,6 +28,7 @@ export default function LoginForm({
   showPassword,
   setShowPassword,
   statusLogin,
+  isPendingSignInTenant = false,
 }) {
   // VARS
   const [searchParams] = useSearchParams();
@@ -94,14 +95,14 @@ export default function LoginForm({
             )}
           </FormRow>
 
-          <FormRow>
+          {/* <FormRow>
             <p className="text-[12px]">
               To register{" "}
               <span className="cursor-pointer font-semibold text-brand-color-500 underline">
                 <Link to={"/register"}>click here</Link>
               </span>
             </p>
-          </FormRow>
+          </FormRow> */}
 
           <FormRow>
             <Button
@@ -110,7 +111,7 @@ export default function LoginForm({
               wide={true}
               uppercase={true}
             >
-              {statusLogin === "pending" ? (
+              {isPendingSignInTenant === true || statusLogin === "pending" ? (
                 <div className="my-[2px]">
                   <LoadingWrapperCenter>
                     <LoadingSpinner size={20} progressColor="white" />
@@ -138,6 +139,7 @@ LoginForm.propTypes = {
   statusLogin: PropTypes.string,
   searchParams: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
   setSearchParams: PropTypes.func,
+  isPendingSignInTenant: PropTypes.bool,
 };
 //size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 // COMPONENT END
