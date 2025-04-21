@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { NamePropleLogo } from "@/ui/NameLogo";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const LoginAsPg = () => {
   return (
@@ -19,7 +20,7 @@ const LoginAsPg = () => {
       </div>
 
       <div>
-        <LoginAsButton buttonText="Login as Tenant" />
+        <LoginAsButtonTenant buttonText="Login as Tenant" />
       </div>
     </div>
   );
@@ -40,5 +41,56 @@ const LoginAsButton = ({ buttonText = "Provide text" }) => {
 };
 
 LoginAsButton.propTypes = {
+  buttonText: PropTypes.string.isRequired, // Ensures buttonText is a required string
+};
+
+const LoginAsButtonTenant = ({ buttonText = "Provide text" }) => {
+  const [showPropertyTypes, setShowPropertyTypes] = useState(false);
+
+  return (
+    <>
+      <div className="flex items-center justify-center">
+        <button
+          onClick={() => {
+            setShowPropertyTypes((prev) => !prev);
+          }}
+          className="flex cursor-pointer items-center justify-center rounded border-2 border-brand-color-600 bg-brand-color-200/50 px-4 py-2"
+        >
+          <p className="text-[22px] font-bold text-brand-color-500">
+            {buttonText}
+          </p>
+        </button>
+      </div>
+      {showPropertyTypes && (
+        <div className="mt-[10px] max-w-[300px] rounded-[5px] border-[1px] p-[10px]">
+          <div>Select which type of property have you rented ?</div>
+          <Link
+            to={`/login?userType=${buttonText.split(" ")[2].toLowerCase()}&propertyType=flat`}
+          >
+            <button className="mt-[10px] w-full border p-[5px] font-semibold">
+              Flat
+            </button>
+          </Link>
+          <Link
+            to={`/login?userType=${buttonText.split(" ")[2].toLowerCase()}&propertyType=room`}
+          >
+            <button className="mt-[10px] w-full border p-[5px] font-semibold">
+              Room
+            </button>
+          </Link>
+          <Link
+            to={`/login?userType=${buttonText.split(" ")[2].toLowerCase()}&propertyType=shop`}
+          >
+            <button className="mt-[10px] w-full border p-[5px] font-semibold">
+              Shop
+            </button>
+          </Link>
+        </div>
+      )}
+    </>
+  );
+};
+
+LoginAsButtonTenant.propTypes = {
   buttonText: PropTypes.string.isRequired, // Ensures buttonText is a required string
 };

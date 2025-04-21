@@ -28,6 +28,7 @@ export const flatsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
 
   {
@@ -53,6 +54,7 @@ export const flatsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 3003,
@@ -77,6 +79,7 @@ export const flatsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 3004,
@@ -101,6 +104,7 @@ export const flatsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 3005,
@@ -125,6 +129,7 @@ export const flatsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 3006,
@@ -149,6 +154,7 @@ export const flatsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 3007,
@@ -173,6 +179,7 @@ export const flatsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 3008,
@@ -197,6 +204,7 @@ export const flatsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 3009,
@@ -221,6 +229,7 @@ export const flatsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 3010,
@@ -245,6 +254,7 @@ export const flatsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 3011,
@@ -269,6 +279,7 @@ export const flatsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 3012,
@@ -293,6 +304,7 @@ export const flatsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 3013,
@@ -317,6 +329,7 @@ export const flatsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 3014,
@@ -341,6 +354,7 @@ export const flatsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 3015,
@@ -365,6 +379,7 @@ export const flatsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 3016,
@@ -389,5 +404,6 @@ export const flatsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
 ];

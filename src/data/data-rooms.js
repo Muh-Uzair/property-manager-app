@@ -28,6 +28,7 @@ export const roomsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 1002,
@@ -52,6 +53,7 @@ export const roomsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 1003,
@@ -76,6 +78,7 @@ export const roomsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 1004,
@@ -100,6 +103,7 @@ export const roomsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 1005,
@@ -124,6 +128,7 @@ export const roomsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 1006,
@@ -148,6 +153,7 @@ export const roomsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 1007,
@@ -172,6 +178,7 @@ export const roomsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 1008,
@@ -196,6 +203,7 @@ export const roomsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 1009,
@@ -220,6 +228,7 @@ export const roomsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 1010,
@@ -244,5 +253,6 @@ export const roomsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
 ];

@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import supabase from "../../supabase";
 
 // FUNCTION
@@ -78,7 +77,31 @@ export const apiUpdateUser = async (userName) => {
 };
 
 // FUNCTION
-export const useApiSignInTenant = async () => {
-  const navigate = useNavigate();
-  navigate("/tenant-operation-page");
+export const useApiSignInTenant = async (propertyId, password) => {
+  // 1 : check if any flats  are available for the providedId and password
+  const { data: dataFlats, error: errorFlats } = await supabase
+    .from("flats")
+    .select("id, password")
+    .eq("propertyId", propertyId)
+    .eq("password", password);
+
+  // 2 : check if any rooms  are available for the providedId and password
+  const { data: dataRooms, error: errorRooms } = await supabase
+    .from("rooms")
+    .select("id, password")
+    .eq("propertyId", propertyId)
+    .eq("password", password);
+
+  // 2 : check if any shops  are available for the providedId and password
+  const { data: dataShops, error: errorShops } = await supabase
+    .from("shops")
+    .select("id, password")
+    .eq("propertyId", propertyId)
+    .eq("password", password);
+
+  return {
+    flats: { dataFlats, errorFlats },
+    rooms: { dataRooms, errorRooms },
+    shops: { dataShops, errorShops },
+  };
 };

@@ -28,6 +28,7 @@ export const shopsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 2002,
@@ -52,6 +53,7 @@ export const shopsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 2003,
@@ -76,6 +78,7 @@ export const shopsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 2004,
@@ -100,6 +103,7 @@ export const shopsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 2005,
@@ -124,6 +128,7 @@ export const shopsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 2006,
@@ -148,6 +153,7 @@ export const shopsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 2007,
@@ -172,6 +178,7 @@ export const shopsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 2008,
@@ -196,6 +203,7 @@ export const shopsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 2009,
@@ -220,6 +228,7 @@ export const shopsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 2010,
@@ -244,6 +253,7 @@ export const shopsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 2011,
@@ -268,6 +278,7 @@ export const shopsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 2012,
@@ -292,6 +303,7 @@ export const shopsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 2013,
@@ -316,6 +328,7 @@ export const shopsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 2014,
@@ -340,6 +353,7 @@ export const shopsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 2015,
@@ -364,6 +378,7 @@ export const shopsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 2016,
@@ -388,6 +403,7 @@ export const shopsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 2017,
@@ -412,6 +428,7 @@ export const shopsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 2018,
@@ -436,6 +453,7 @@ export const shopsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 2019,
@@ -460,6 +478,7 @@ export const shopsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
   {
     id: 2020,
@@ -484,5 +503,6 @@ export const shopsDataArr = [
       { month: "november", paid: false },
       { month: "december", paid: false },
     ],
+    password: 12345,
   },
 ];

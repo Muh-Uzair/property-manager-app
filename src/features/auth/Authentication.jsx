@@ -4,10 +4,10 @@ import { useState } from "react";
 import LoginForm from "./LoginForm";
 import { useLogin } from "./useLogin";
 import { NamePropleLogo } from "@/ui/NameLogo";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import SignUp from "./SignUp";
 import toast from "react-hot-toast";
-import { useSigninTenant } from "./useSigninTenant";
+// import { useSigninTenant } from "./useSigninTenant";
 
 // COMPONENT START
 export default function Authentication() {
@@ -23,25 +23,21 @@ export default function Authentication() {
   const registerLogin = pathname?.slice(1);
   const [searchParams] = useSearchParams();
   const userType = searchParams.get("userType");
-  const signInTenant = useSigninTenant();
+  const navigate = useNavigate();
 
   // FUNCTIONS
   const loginFormSubmit = async (data) => {
     const { email, password } = data;
 
-    if (userType === "tenant") {
-      signInTenant();
-    } else if (
-      userType === "admin" &&
-      email === "admin@prople.com" &&
-      password === "admin"
-    ) {
-      await mutateLogin({ email, password });
-    } else {
-      toast.error("Invalid credentials", { duration: 6000 });
+    if (userType === "admin") {
+      if (email === "admin@prople.com" && password === "admin") {
+        await mutateLogin({ email, password });
+      } else {
+        toast.error("Invalid credentials", { duration: 6000 });
+      }
+    } else if (userType === "tenant") {
+      navigate("/tenant-operation-page");
     }
-
-    return;
   };
 
   // JSX
