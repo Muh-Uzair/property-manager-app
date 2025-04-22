@@ -5,18 +5,22 @@ const TenantOperationLayout = ({ children }) => {
   const location = useLocation();
 
   return (
-    <div className="p-[10px]">
-      <div className="mt-[10px] grid grid-cols-2 gap-[10px]">
-        <TenantOperationButtonRent
-          buttonText="Rent payment"
-          url={`/tenant-operation-page/rent-payment${location.search}`}
-        />
-        <TenantOperationButtonComplaint
-          buttonText="Register complaint"
-          url={`/tenant-operation-page/register-complaint${location.search}`}
-        />
+    <div className="bg-red flex h-[100vh] w-full justify-center">
+      <div className="w-full max-w-[800px]">
+        <div className="p-[10px]">
+          <div className="mt-[10px] grid grid-cols-2 gap-[10px]">
+            <TenantOperationButtonRent
+              buttonText="Rent payment"
+              url={`/tenant-operation-page/rent-payment${location.search}`}
+            />
+            <TenantOperationButtonComplaint
+              buttonText="Register complaint"
+              url={`/tenant-operation-page/register-complaint${location.search}`}
+            />
+          </div>
+          <div className="mt-[10px]">{children}</div>
+        </div>
       </div>
-      <div className="mt-[10px]">{children}</div>
     </div>
   );
 };
