@@ -17,7 +17,7 @@ export const useSigninTenant = () => {
       mutationFn: async ({ email, password }) => {
         const { data, error: dataFetchError } = await supabase
           .from(propertyType)
-          .select("id, status")
+          .select("id, status, rent")
           .eq("id", email)
           .eq("password", password);
 
@@ -26,6 +26,8 @@ export const useSigninTenant = () => {
             `Unable to sign in tenant Error => ${dataFetchError}`,
           );
         }
+
+        console.log("data", data);
 
         if (
           !data ||

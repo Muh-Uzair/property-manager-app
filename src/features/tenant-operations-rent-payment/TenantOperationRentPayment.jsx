@@ -3,6 +3,8 @@ import { useGetRentDetailsPropId } from "./useGetRentDetailsPropId";
 import { useForm } from "react-hook-form";
 import LoadingSpinner from "@/ui/LoadingSpinner";
 import { useState } from "react";
+import { useTenantPayRent } from "./useTenantPayRent";
+import toast from "react-hot-toast";
 
 const TenantOperationRentPayment = () => {
   // VARS
@@ -15,17 +17,21 @@ const TenantOperationRentPayment = () => {
   const { register, handleSubmit } = useForm();
   const [amountToPay, setAmountToPay] = useState(0);
   const rentAmount = propertyRentData?.rent;
-  const rentDetails = propertyRentData?.data;
-
-  console.log(rentDetails);
+  const unpaidRentMonths = propertyRentData?.data;
+  const { mutateTenantPayRent, pendingTenantPayRent } = useTenantPayRent();
 
   // HANDLE SUBMIT
   const onSubmit = (data) => {
     const selectedMonths = Object.keys(data).filter(
       (key) => data[key] === true,
     );
-    console.log("Selected months for rent payment:", selectedMonths);
-    // You can now send this data to Supabase or your backend
+
+    if (selectedMonths.length === 0) {
+      toast.error("Please select at least one month to pay rent");
+      return;
+    }
+
+    mutateTenantPayRent({ selectedMonths, unpaidRentMonths });
   };
 
   if (statusPropertyRentDetails === "pending")
@@ -78,7 +84,7 @@ const TenantOperationRentPayment = () => {
           type="submit"
           className="mt-[20px] rounded-[5px] border-[1px] border-sky-500 px-[10px] py-[5px] text-sky-500"
         >
-          Pay rent
+          {!pendingTenantPayRent ? "Pay rent" : "Paying rent..."}
         </button>
       </form>
     </div>
