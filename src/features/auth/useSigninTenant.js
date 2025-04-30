@@ -17,7 +17,7 @@ export const useSigninTenant = () => {
       mutationFn: async ({ email, password }) => {
         const { data, error: dataFetchError } = await supabase
           .from(propertyType)
-          .select("id, status, rent")
+          .select("id, status, rent, renter_id")
           .eq("id", email)
           .eq("password", password);
 
@@ -26,8 +26,6 @@ export const useSigninTenant = () => {
             `Unable to sign in tenant Error => ${dataFetchError}`,
           );
         }
-
-        console.log("data", data);
 
         if (
           !data ||
@@ -38,8 +36,10 @@ export const useSigninTenant = () => {
           throw new Error("Invalid credentials or no data found");
         }
 
+        // console.log("data", data);
+
         navigate(
-          `/tenant-operation-page/rent-payment?propertyType=${propertyType}&propertyId=${email}`,
+          `/tenant-operation-page/rent-payment?propertyType=${propertyType}&propertyId=${email}&renterId=${data[0].renter_id}`,
         );
       },
       onSuccess: () => {

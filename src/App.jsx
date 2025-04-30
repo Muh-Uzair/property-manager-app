@@ -11,6 +11,7 @@ import { Toaster } from "react-hot-toast";
 import { lazy, Suspense } from "react";
 import LoadingWrapperCenter from "./ui/LoadingWrapperCenter";
 import LoadingSpinner from "./ui/LoadingSpinner";
+import ComplaintTenantPG from "./Pages/ComplaintTenantPG";
 
 const ErrorPG = lazy(() => import("./Pages/ErrorPG"));
 const LoginAsPG = lazy(() => import("./Pages/LoginAsPG"));
@@ -64,7 +65,7 @@ const router = createBrowserRouter(
         path="/tenant-operation-page/register-complaint"
         element={
           <TenantOperationLayout>
-            <div>register</div>
+            <ComplaintTenantPG />
           </TenantOperationLayout>
         }
       />
