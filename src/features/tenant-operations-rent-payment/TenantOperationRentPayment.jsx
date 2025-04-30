@@ -147,7 +147,7 @@ const TenantOperationRentPayment = () => {
       return;
     }
 
-    mutateTenantPayRent({ selectedMonths, unpaidRentMonths });
+    mutateTenantPayRent({ selectedMonths, unpaidRentMonths, setAmountToPay });
   };
 
   if (statusPropertyRentDetails === "pending")
