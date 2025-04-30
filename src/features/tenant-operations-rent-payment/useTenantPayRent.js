@@ -15,7 +15,11 @@ export const useTenantPayRent = () => {
   // FUNCTION
   const { mutate: mutateTenantPayRent, isPending: pendingTenantPayRent } =
     useMutation({
-      mutationFn: async ({ selectedMonths, unpaidRentMonths }) => {
+      mutationFn: async ({
+        selectedMonths,
+        unpaidRentMonths,
+        setAmountToPay,
+      }) => {
         if (propertyType === "flats") {
           const { error } = await supabase
             .from("flats")
@@ -66,6 +70,7 @@ export const useTenantPayRent = () => {
             throw new Error(`Unable to pay rent Error => ${error}`);
           }
         }
+        setAmountToPay(0);
       },
       onSuccess: () => {
         toast.success("Rent payment successful");
