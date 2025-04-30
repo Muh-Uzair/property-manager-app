@@ -12,6 +12,7 @@ import { lazy, Suspense } from "react";
 import LoadingWrapperCenter from "./ui/LoadingWrapperCenter";
 import LoadingSpinner from "./ui/LoadingSpinner";
 import ComplaintTenantPG from "./Pages/ComplaintTenantPG";
+import ComplaintsAdminMgmtPG from "./Pages/ComplaintsAdminMgmtPG";
 
 const ErrorPG = lazy(() => import("./Pages/ErrorPG"));
 const LoginAsPG = lazy(() => import("./Pages/LoginAsPG"));
@@ -44,6 +45,7 @@ const TenantOperationRentPayment = lazy(
 );
 
 const TenantOperationLayout = lazy(() => import("./ui/TenantOperationLayout"));
+// import ComplaintsAdminPG from "./Pages/ComplaintsAdminPG";
 
 // uploader
 
@@ -116,6 +118,9 @@ const router = createBrowserRouter(
         <Route path="/leaveProperty" element={<LeavePropertyPG />}>
           <Route path=":propertyType" element={<LeaveProperty />} />
         </Route>
+
+        {/* DIVIDER */}
+        <Route path="/tenantComplaints" element={<ComplaintsAdminMgmtPG />} />
 
         {/* DIVIDER */}
         <Route path="*" element={<PageNotFound />} />
