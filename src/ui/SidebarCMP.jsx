@@ -6,6 +6,7 @@ import {
 } from "react-icons/hi2";
 import NavigationLinks from "./NavigationLinks";
 import { AiOutlineDollarCircle } from "react-icons/ai";
+import { MdOutlineSupportAgent } from "react-icons/md";
 
 // COMPONENT START///////////////////////////////////////////////
 export default function Sidebar() {
@@ -39,6 +40,11 @@ export default function Sidebar() {
               url: "leaveProperty",
               label: "Leave Property",
               icon: <HiMiniArrowRightOnRectangle />,
+            },
+            {
+              url: "tenantComplaints",
+              label: "Tenant Complaints",
+              icon: <MdOutlineSupportAgent />,
             },
           ]}
         />
