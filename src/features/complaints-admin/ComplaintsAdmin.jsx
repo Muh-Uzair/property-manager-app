@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useSearchParams } from "react-router-dom";
 import { useLoadAllComplaints } from "./useLoadAllComplaints";
 import ComplaintCard from "./ComplaintCard";
+import LoadingSpinner from "@/ui/LoadingSpinner";
 
 // Create a QueryClient instance
 const queryClient = new QueryClient({
@@ -47,8 +48,8 @@ const ComplaintsAdminContent = () => {
 
   if (isLoading) {
     return (
-      <div className="flex h-64 w-full items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-blue-500 border-t-transparent"></div>
+      <div className="flex h-[100vh] w-full items-center justify-center">
+        <LoadingSpinner />
       </div>
     );
   }
