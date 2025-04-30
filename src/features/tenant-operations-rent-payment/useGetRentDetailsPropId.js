@@ -24,7 +24,7 @@ export const useGetRentDetailsPropId = (propertyType, propertyId) => {
       if (propertyType === "rooms") {
         const { data: rooms, error } = await supabase
           .from("rooms")
-          .select("rent_details")
+          .select("rent_details, rent")
           .eq("id", propertyId);
 
         if (error) {
@@ -37,7 +37,7 @@ export const useGetRentDetailsPropId = (propertyType, propertyId) => {
       if (propertyType === "shops") {
         const { data: shops, error } = await supabase
           .from("shops")
-          .select("rent_details")
+          .select("rent_details, rent")
           .eq("id", propertyId);
 
         if (error) {
@@ -50,15 +50,11 @@ export const useGetRentDetailsPropId = (propertyType, propertyId) => {
 
       const currMonth = Number(new Date().getMonth()) + 1;
 
-      console.log(data);
-
       data = data.filter((val, i) => {
         if (i < currMonth) {
           return val.paid !== true;
         }
       });
-
-      console.log(data);
 
       return { data, rent };
     },
