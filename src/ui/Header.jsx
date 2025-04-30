@@ -7,10 +7,11 @@ import { HiMiniArrowRightOnRectangle } from "react-icons/hi2";
 import NavigationLinks from "./NavigationLinks";
 
 import { NameLogo } from "./NameLogo";
-import { Logo } from "./Logo";
+// import { Logo } from "./Logo";
 import { UserDetails } from "./UserDetails";
 import { useGetUser } from "@/features/auth/useGetUser";
-import Uploader from "@/features/Uploader/Uploader";
+// import Uploader from "@/features/Uploader/Uploader";
+import { MdOutlineSupportAgent } from "react-icons/md";
 
 // CMP
 export function Header() {
@@ -31,17 +32,17 @@ export function Header() {
 
   // JSX//////////////////////////////////////////
   return (
-    <header className="grid grid-cols-[auto_1fr_auto] gap-[20px] bg-gray-100 smallTab:grid-cols-[auto_1fr_auto]">
+    <header className="grid grid-cols-[1fr_auto] bg-gray-100 smallTab:grid-cols-[auto_1fr_auto] smallTab:gap-[20px]">
       <div className="hidden smallTab:flex">
         <NameLogo />
       </div>
 
-      <div className="ml-[10px] flex items-center smallTab:hidden">
+      {/* <div className="ml-[10px] flex items-center smallTab:hidden">
         <Logo size="25px" />
-      </div>
+      </div> */}
 
-      <div className="flex items-center justify-center smallTab:hidden">
-        <nav className="w-full mobileM:w-[250px]">
+      <div className="flex w-full items-center justify-center px-[20px] smallTab:hidden">
+        <nav className="w-full">
           <NavigationLinks
             navigationLinksArr={[
               { url: "home", label: "Home", icon: <HiOutlineHome /> },
@@ -65,13 +66,18 @@ export function Header() {
                 label: "Leave Property",
                 icon: <HiMiniArrowRightOnRectangle />,
               },
+              {
+                url: "tenantComplaints",
+                label: "Tenant Complaints",
+                icon: <MdOutlineSupportAgent />,
+              },
             ]}
           />
         </nav>
       </div>
 
-      <div className="smallTab: col-start-3 flex cursor-pointer items-center gap-[5px] pr-[10px] smallTab:gap-[18px] smallTab:pr-[20px]">
-        <Uploader />
+      <div className="col-start-3 flex cursor-pointer items-center gap-[5px] pr-[10px] smallTab:gap-[18px] smallTab:pr-[20px]">
+        {/* <Uploader /> */}
         <UserDetails userNameEmail={userNameEmail} />
       </div>
     </header>
