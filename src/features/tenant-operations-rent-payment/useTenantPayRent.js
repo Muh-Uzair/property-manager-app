@@ -1,8 +1,8 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { useLocation, useSearchParams } from "react-router-dom";
-// import supabase from "../../../supabase";
-// import { monthsArr } from "@/utils/constants";
+import supabase from "../../../supabase";
+import { monthsArr } from "@/utils/constants";
 
 // FUNCTION
 const getStripeSession = async (
@@ -49,8 +49,6 @@ export const useTenantPayRent = () => {
   const tenantId = searchParams.get("renterId");
   const location = useLocation();
 
-  console.log(location);
-
   // FUNCTION
   const { mutate: mutateTenantPayRent, isPending: pendingTenantPayRent } =
     useMutation({
@@ -66,8 +64,56 @@ export const useTenantPayRent = () => {
         const host = window.location.host;
         const successUrl = `${protocol}//${host}${location.pathname}${location.search}`;
 
-        console.log("selectedMonths", selectedMonths);
-        console.log("unpaidRentMonths", unpaidRentMonths);
+        if (propertyType === "flats") {
+          const { error } = await supabase
+            .from("flats")
+            .update({
+              rent_details: monthsArr.map((val, i) => {
+                if (selectedMonths[i] === val) {
+                  return { ...unpaidRentMonths[i], paid: true };
+                }
+                return { month: monthsArr[i], paid: false };
+              }),
+            })
+            .eq("id", propertyId);
+          if (error) {
+            throw new Error(`Unable to pay rent Error => ${error}`);
+          }
+        }
+        if (propertyType === "rooms") {
+          const { error } = await supabase
+            .from("rooms")
+            .update({
+              rent_details: monthsArr.map((val, i) => {
+                if (selectedMonths[i] === val) {
+                  return { ...unpaidRentMonths[i], paid: true };
+                }
+                return { month: monthsArr[i], paid: false };
+              }),
+            })
+            .eq("id", propertyId);
+          if (error) {
+            throw new Error(`Unable to pay rent Error => ${error}`);
+          }
+        }
+        if (propertyType === "shops") {
+          const { error } = await supabase
+            .from("shops")
+            .update({
+              rent_details: monthsArr.map((val, i) => {
+                if (selectedMonths[i] === val) {
+                  return { ...unpaidRentMonths[i], paid: true };
+                }
+                return { month: monthsArr[i], paid: false };
+              }),
+            })
+            .eq("id", propertyId);
+          if (error) {
+            throw new Error(`Unable to pay rent Error => ${error}`);
+          }
+        }
+
+        // DIVIDER stripe payments
 
         const stripeSession = await getStripeSession(
           propertyId,
@@ -80,60 +126,15 @@ export const useTenantPayRent = () => {
 
         const stripeUrl = stripeSession?.data?.stripeSession?.url;
 
-        console.log(stripeUrl);
-
-        // if (propertyType === "flats") {
-        //   const { error } = await supabase
-        //     .from("flats")
-        //     .update({
-        //       rent_details: monthsArr.map((val, i) => {
-        //         if (selectedMonths[i] === val) {
-        //           return { ...unpaidRentMonths[i], paid: true };
-        //         }
-        //         return { month: monthsArr[i], paid: false };
-        //       }),
-        //     })
-        //     .eq("id", propertyId);
-        //   if (error) {
-        //     throw new Error(`Unable to pay rent Error => ${error}`);
-        //   }
-        // }
-        // if (propertyType === "rooms") {
-        //   const { error } = await supabase
-        //     .from("rooms")
-        //     .update({
-        //       rent_details: monthsArr.map((val, i) => {
-        //         if (selectedMonths[i] === val) {
-        //           return { ...unpaidRentMonths[i], paid: true };
-        //         }
-        //         return { month: monthsArr[i], paid: false };
-        //       }),
-        //     })
-        //     .eq("id", propertyId);
-        //   if (error) {
-        //     throw new Error(`Unable to pay rent Error => ${error}`);
-        //   }
-        // }
-        // if (propertyType === "shops") {
-        //   const { error } = await supabase
-        //     .from("shops")
-        //     .update({
-        //       rent_details: monthsArr.map((val, i) => {
-        //         if (selectedMonths[i] === val) {
-        //           return { ...unpaidRentMonths[i], paid: true };
-        //         }
-        //         return { month: monthsArr[i], paid: false };
-        //       }),
-        //     })
-        //     .eq("id", propertyId);
-        //   if (error) {
-        //     throw new Error(`Unable to pay rent Error => ${error}`);
-        //   }
-        // }
         setAmountToPay(0);
+
+        if (!stripeUrl) {
+          throw new Error("Unable to get stripe session url");
+        }
+
+        window.location.href = stripeUrl;
       },
       onSuccess: () => {
-        toast.success("Rent payment successful");
         queryClient.invalidateQueries({
           queryKey: ["rentDetails", propertyType, propertyId],
         });
