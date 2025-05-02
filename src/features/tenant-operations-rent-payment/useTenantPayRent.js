@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import { useSearchParams } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 // import supabase from "../../../supabase";
 // import { monthsArr } from "@/utils/constants";
 
@@ -47,6 +47,9 @@ export const useTenantPayRent = () => {
   const propertyId = searchParams.get("propertyId");
   const propertyType = searchParams.get("propertyType");
   const tenantId = searchParams.get("renterId");
+  const location = useLocation();
+
+  console.log(location);
 
   // FUNCTION
   const { mutate: mutateTenantPayRent, isPending: pendingTenantPayRent } =
@@ -57,9 +60,11 @@ export const useTenantPayRent = () => {
         setAmountToPay,
         rentAmount,
       }) => {
-        const propertyRent = rentAmount;
+        const propertyRent = rentAmount * selectedMonths.length;
         const propertyNumber = propertyId.slice(-1);
-        const successUrl = "http://localhost:5173";
+        const protocol = window.location.protocol;
+        const host = window.location.host;
+        const successUrl = `${protocol}//${host}${location.pathname}${location.search}`;
 
         console.log("selectedMonths", selectedMonths);
         console.log("unpaidRentMonths", unpaidRentMonths);
@@ -72,7 +77,10 @@ export const useTenantPayRent = () => {
           tenantId,
           successUrl,
         );
-        console.log("stripeSession", stripeSession);
+
+        const stripeUrl = stripeSession?.data?.stripeSession?.url;
+
+        console.log(stripeUrl);
 
         // if (propertyType === "flats") {
         //   const { error } = await supabase
