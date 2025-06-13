@@ -2,7 +2,6 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { useLocation, useSearchParams } from "react-router-dom";
 import supabase from "../../../supabase";
-import { monthsArr } from "@/utils/constants";
 
 // FUNCTION
 const getStripeSession = async (
@@ -77,48 +76,49 @@ export const useTenantPayRent = () => {
   // FUNCTION
   const { mutate: mutateTenantPayRent, isPending: pendingTenantPayRent } =
     useMutation({
-      mutationFn: async ({
-        selectedMonths,
-        unpaidRentMonths,
-        setAmountToPay,
-        rentAmount,
-      }) => {
+      mutationFn: async ({ selectedMonths, setAmountToPay, rentAmount }) => {
         const propertyRent = rentAmount * selectedMonths.length; // total rent amount to pay
         const propertyNumber = propertyId.slice(-1);
         const protocol = window.location.protocol;
         const host = window.location.host;
         const successUrl = `${protocol}//${host}${location.pathname}${location.search}`;
+        let totalSelectedMonths = selectedMonths?.length;
 
-        const rentPayMonths = monthsArr.map((val, i) => {
-          if (selectedMonths[i] === val) {
-            return { ...unpaidRentMonths[i], paid: true };
-          }
-          return { month: monthsArr[i], paid: false };
-        });
-
-        console.log(rentPayMonths);
+        if (totalSelectedMonths === 0) {
+          throw new Error("Please select at least one month to pay rent");
+        }
 
         const currentRentDetails = await getCurrentRentDetails(
           propertyType,
           propertyId,
         );
 
-        if (status === "error") {
-          throw new Error("Unable to fetch currently paid months");
+        if (!currentRentDetails) {
+          throw new Error("No rent details found for this property");
         }
 
         console.log("currentRentDetails", currentRentDetails);
 
+        const newArr = currentRentDetails?.map((val) => {
+          if (val.paid === true) {
+            return val;
+          } else if (val.paid === false && totalSelectedMonths > 0) {
+            totalSelectedMonths--;
+            return { month: val.month, paid: true };
+          } else if (val.paid === false && totalSelectedMonths === 0) {
+            return { month: val.month, paid: false };
+          }
+        });
+
+        console.log("newArr");
+        console.log(newArr);
+
         if (propertyType === "flats") {
+          console.log("hello");
           const { error } = await supabase
             .from("flats")
             .update({
-              rent_details: monthsArr.map((val, i) => {
-                if (selectedMonths[i] === val) {
-                  return { ...unpaidRentMonths[i], paid: true };
-                }
-                return { month: monthsArr[i], paid: false };
-              }),
+              rent_details: newArr,
             })
             .eq("id", propertyId);
           if (error) {
@@ -129,12 +129,7 @@ export const useTenantPayRent = () => {
           const { error } = await supabase
             .from("rooms")
             .update({
-              rent_details: monthsArr.map((val, i) => {
-                if (selectedMonths[i] === val) {
-                  return { ...unpaidRentMonths[i], paid: true };
-                }
-                return { month: monthsArr[i], paid: false };
-              }),
+              rent_details: newArr,
             })
             .eq("id", propertyId);
           if (error) {
@@ -145,12 +140,7 @@ export const useTenantPayRent = () => {
           const { error } = await supabase
             .from("shops")
             .update({
-              rent_details: monthsArr.map((val, i) => {
-                if (selectedMonths[i] === val) {
-                  return { ...unpaidRentMonths[i], paid: true };
-                }
-                return { month: monthsArr[i], paid: false };
-              }),
+              rent_details: newArr,
             })
             .eq("id", propertyId);
           if (error) {
@@ -177,7 +167,7 @@ export const useTenantPayRent = () => {
           throw new Error("Unable to get stripe session url");
         }
 
-        // window.location.href = stripeUrl;
+        window.location.href = stripeUrl;
       },
       onSuccess: () => {
         queryClient.invalidateQueries({
