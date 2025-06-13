@@ -2,7 +2,6 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { useLocation, useSearchParams } from "react-router-dom";
 import supabase from "../../../supabase";
-import { monthsArr } from "@/utils/constants";
 
 // FUNCTION
 const getStripeSession = async (
@@ -13,8 +12,11 @@ const getStripeSession = async (
   tenantId,
   successUrl,
 ) => {
+  // const stripeSessionUrl = "http://localhost:3000/stripe-session"
+  const stripeSessionUrl =
+    "https://5-stripe-payment-prople.vercel.app/stripe-session";
   try {
-    const response = await fetch("http://localhost:3000/stripe-session", {
+    const response = await fetch(stripeSessionUrl, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -40,6 +42,26 @@ const getStripeSession = async (
   }
 };
 
+// FUNCTION
+const getCurrentRentDetails = async (propertyType, propertyId) => {
+  try {
+    const { data, error } = await supabase
+      .from(propertyType)
+      .select("rent_details")
+      .eq("id", propertyId)
+      .single();
+
+    if (error) {
+      throw new Error(`Unable to fetch rent details`);
+    }
+
+    return data?.rent_details;
+  } catch (error) {
+    throw new Error(`Unable to fetch currently paid months: ${error}`);
+  }
+};
+
+// FUNCTION
 export const useTenantPayRent = () => {
   // VARS
 
@@ -54,28 +76,49 @@ export const useTenantPayRent = () => {
   // FUNCTION
   const { mutate: mutateTenantPayRent, isPending: pendingTenantPayRent } =
     useMutation({
-      mutationFn: async ({
-        selectedMonths,
-        unpaidRentMonths,
-        setAmountToPay,
-        rentAmount,
-      }) => {
+      mutationFn: async ({ selectedMonths, setAmountToPay, rentAmount }) => {
         const propertyRent = rentAmount * selectedMonths.length; // total rent amount to pay
         const propertyNumber = propertyId.slice(-1);
         const protocol = window.location.protocol;
         const host = window.location.host;
         const successUrl = `${protocol}//${host}${location.pathname}${location.search}`;
+        let totalSelectedMonths = selectedMonths?.length;
+
+        if (totalSelectedMonths === 0) {
+          throw new Error("Please select at least one month to pay rent");
+        }
+
+        const currentRentDetails = await getCurrentRentDetails(
+          propertyType,
+          propertyId,
+        );
+
+        if (!currentRentDetails) {
+          throw new Error("No rent details found for this property");
+        }
+
+        console.log("currentRentDetails", currentRentDetails);
+
+        const newArr = currentRentDetails?.map((val) => {
+          if (val.paid === true) {
+            return val;
+          } else if (val.paid === false && totalSelectedMonths > 0) {
+            totalSelectedMonths--;
+            return { month: val.month, paid: true };
+          } else if (val.paid === false && totalSelectedMonths === 0) {
+            return { month: val.month, paid: false };
+          }
+        });
+
+        console.log("newArr");
+        console.log(newArr);
 
         if (propertyType === "flats") {
+          console.log("hello");
           const { error } = await supabase
             .from("flats")
             .update({
-              rent_details: monthsArr.map((val, i) => {
-                if (selectedMonths[i] === val) {
-                  return { ...unpaidRentMonths[i], paid: true };
-                }
-                return { month: monthsArr[i], paid: false };
-              }),
+              rent_details: newArr,
             })
             .eq("id", propertyId);
           if (error) {
@@ -86,12 +129,7 @@ export const useTenantPayRent = () => {
           const { error } = await supabase
             .from("rooms")
             .update({
-              rent_details: monthsArr.map((val, i) => {
-                if (selectedMonths[i] === val) {
-                  return { ...unpaidRentMonths[i], paid: true };
-                }
-                return { month: monthsArr[i], paid: false };
-              }),
+              rent_details: newArr,
             })
             .eq("id", propertyId);
           if (error) {
@@ -102,12 +140,7 @@ export const useTenantPayRent = () => {
           const { error } = await supabase
             .from("shops")
             .update({
-              rent_details: monthsArr.map((val, i) => {
-                if (selectedMonths[i] === val) {
-                  return { ...unpaidRentMonths[i], paid: true };
-                }
-                return { month: monthsArr[i], paid: false };
-              }),
+              rent_details: newArr,
             })
             .eq("id", propertyId);
           if (error) {

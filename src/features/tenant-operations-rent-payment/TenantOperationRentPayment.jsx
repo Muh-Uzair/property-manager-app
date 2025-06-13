@@ -183,6 +183,7 @@ const TenantOperationRentPayment = () => {
         className="rounded-[5px] border-[1px] border-gray-400 bg-white p-[10px]"
       >
         <div className="mb-4 font-medium">Select months to pay:</div>
+
         {propertyRentData?.data?.map((val, i) =>
           i < currentMonth ? (
             <div key={i} className="mb-2 flex items-center">
