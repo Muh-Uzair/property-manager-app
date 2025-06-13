@@ -14,7 +14,7 @@ const getStripeSession = async (
   successUrl,
 ) => {
   try {
-    const response = await fetch("http://127.0.0.1:3000/api/pay-rent", {
+    const response = await fetch("http://localhost:3000/stripe-session", {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -31,6 +31,8 @@ const getStripeSession = async (
     });
 
     const data = await response.json();
+
+    console.log(data);
 
     return data;
   } catch (error) {
@@ -58,7 +60,7 @@ export const useTenantPayRent = () => {
         setAmountToPay,
         rentAmount,
       }) => {
-        const propertyRent = rentAmount * selectedMonths.length;
+        const propertyRent = rentAmount * selectedMonths.length; // total rent amount to pay
         const propertyNumber = propertyId.slice(-1);
         const protocol = window.location.protocol;
         const host = window.location.host;
@@ -124,7 +126,7 @@ export const useTenantPayRent = () => {
           successUrl,
         );
 
-        const stripeUrl = stripeSession?.data?.stripeSession?.url;
+        const stripeUrl = stripeSession?.stripeSession?.url;
 
         setAmountToPay(0);
 
