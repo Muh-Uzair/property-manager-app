@@ -13,8 +13,11 @@ const getStripeSession = async (
   tenantId,
   successUrl,
 ) => {
+  // const stripeSessionUrl = "http://localhost:3000/stripe-session"
+  const stripeSessionUrl =
+    "https://5-stripe-payment-prople.vercel.app/stripe-session";
   try {
-    const response = await fetch("http://localhost:3000/stripe-session", {
+    const response = await fetch(stripeSessionUrl, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -40,6 +43,26 @@ const getStripeSession = async (
   }
 };
 
+// FUNCTION
+const getCurrentRentDetails = async (propertyType, propertyId) => {
+  try {
+    const { data, error } = await supabase
+      .from(propertyType)
+      .select("rent_details")
+      .eq("id", propertyId)
+      .single();
+
+    if (error) {
+      throw new Error(`Unable to fetch rent details`);
+    }
+
+    return data?.rent_details;
+  } catch (error) {
+    throw new Error(`Unable to fetch currently paid months: ${error}`);
+  }
+};
+
+// FUNCTION
 export const useTenantPayRent = () => {
   // VARS
 
@@ -65,6 +88,26 @@ export const useTenantPayRent = () => {
         const protocol = window.location.protocol;
         const host = window.location.host;
         const successUrl = `${protocol}//${host}${location.pathname}${location.search}`;
+
+        const rentPayMonths = monthsArr.map((val, i) => {
+          if (selectedMonths[i] === val) {
+            return { ...unpaidRentMonths[i], paid: true };
+          }
+          return { month: monthsArr[i], paid: false };
+        });
+
+        console.log(rentPayMonths);
+
+        const currentRentDetails = await getCurrentRentDetails(
+          propertyType,
+          propertyId,
+        );
+
+        if (status === "error") {
+          throw new Error("Unable to fetch currently paid months");
+        }
+
+        console.log("currentRentDetails", currentRentDetails);
 
         if (propertyType === "flats") {
           const { error } = await supabase
@@ -134,7 +177,7 @@ export const useTenantPayRent = () => {
           throw new Error("Unable to get stripe session url");
         }
 
-        window.location.href = stripeUrl;
+        // window.location.href = stripeUrl;
       },
       onSuccess: () => {
         queryClient.invalidateQueries({
