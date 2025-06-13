@@ -34,8 +34,6 @@ const getStripeSession = async (
 
     const data = await response.json();
 
-    console.log(data);
-
     return data;
   } catch (error) {
     throw new Error(`Unable to generate session`);
@@ -97,8 +95,6 @@ export const useTenantPayRent = () => {
           throw new Error("No rent details found for this property");
         }
 
-        console.log("currentRentDetails", currentRentDetails);
-
         const newArr = currentRentDetails?.map((val) => {
           if (val.paid === true) {
             return val;
@@ -110,11 +106,7 @@ export const useTenantPayRent = () => {
           }
         });
 
-        console.log("newArr");
-        console.log(newArr);
-
         if (propertyType === "flats") {
-          console.log("hello");
           const { error } = await supabase
             .from("flats")
             .update({
