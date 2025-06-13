@@ -171,7 +171,7 @@ const TenantOperationRentPayment = () => {
   }
 
   return (
-    <div>
+    <div className="w-full p-[10px]">
       {/* Notifications for unpaid rent */}
       <RentNotifications
         unpaidMonths={unpaidRentMonths}
@@ -180,7 +180,7 @@ const TenantOperationRentPayment = () => {
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="rounded-[5px] border-[1px] border-gray-400 p-[10px]"
+        className="rounded-[5px] border-[1px] border-gray-400 bg-white p-[10px]"
       >
         <div className="mb-4 font-medium">Select months to pay:</div>
         {propertyRentData?.data?.map((val, i) =>

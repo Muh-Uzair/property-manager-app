@@ -40,7 +40,6 @@ export function useDeleteComplaint() {
       toast.success("Complaint deleted successfully");
     },
     onError: (error) => {
-      console.error("Error deleting complaint:", error);
       toast.error(error.message || "Failed to delete complaint");
     },
   });

@@ -3,9 +3,11 @@ import { Link, useLocation } from "react-router-dom";
 
 const TenantOperationLayout = ({ children }) => {
   const location = useLocation();
+  const host = window.location.host;
+  const protocol = window.location.protocol;
 
   return (
-    <div className="bg-red flex h-[100vh] w-full justify-center">
+    <div className="bg-red flex h-[100vh] justify-center overflow-auto">
       <div className="w-full max-w-[800px]">
         <div className="p-[10px]">
           <div className="mt-[10px] grid grid-cols-2 gap-[10px]">
@@ -19,6 +21,13 @@ const TenantOperationLayout = ({ children }) => {
             />
           </div>
           <div className="mt-[10px]">{children}</div>
+          <div>
+            <Link to={`${protocol}//${host}/login-as`}>
+              <button className="flex w-full items-center justify-center rounded-sm border-[1px] border-sky-500 bg-sky-200 px-[10px] py-[5px] font-semibold text-gray-700">
+                Home
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
