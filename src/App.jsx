@@ -13,6 +13,8 @@ import LoadingWrapperCenter from "./ui/LoadingWrapperCenter";
 import LoadingSpinner from "./ui/LoadingSpinner";
 import ComplaintTenantPG from "./Pages/ComplaintTenantPG";
 import ComplaintsAdminMgmtPG from "./Pages/ComplaintsAdminMgmtPG";
+import NewVisitorPG from "./Pages/NewVisitorPG";
+import NewBookingsPG from "./Pages/NewBookingsPG";
 
 const ErrorPG = lazy(() => import("./Pages/ErrorPG"));
 const LoginAsPG = lazy(() => import("./Pages/LoginAsPG"));
@@ -52,6 +54,8 @@ const TenantOperationLayout = lazy(() => import("./ui/TenantOperationLayout"));
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route errorElement={<ErrorPG />}>
+      {/* DIVIDER */}
+      <Route path="/new-visitor" element={<NewVisitorPG />} />
       <Route path="/login-as" element={<LoginAsPG />} />
       <Route path="/login" element={<LoginPG />} />
       <Route path="/register" element={<SignUpPG />} />
@@ -121,6 +125,13 @@ const router = createBrowserRouter(
 
         {/* DIVIDER */}
         <Route path="/tenantComplaints" element={<ComplaintsAdminMgmtPG />} />
+
+        {/* DIVIDER */}
+
+        <Route path="/new-bookings" element={<NewBookingsPG />} />
+
+        {/* DIVIDER */}
+        <Route path="/new-visitor" element={<NewVisitorPG />} />
 
         {/* DIVIDER */}
         <Route path="*" element={<PageNotFound />} />

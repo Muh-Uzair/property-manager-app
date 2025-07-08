@@ -7,6 +7,7 @@ import {
 import NavigationLinks from "./NavigationLinks";
 import { AiOutlineDollarCircle } from "react-icons/ai";
 import { MdOutlineSupportAgent } from "react-icons/md";
+import { FaRegCalendarCheck } from "react-icons/fa";
 
 // COMPONENT START///////////////////////////////////////////////
 export default function Sidebar() {
@@ -45,6 +46,11 @@ export default function Sidebar() {
               url: "tenantComplaints",
               label: "Tenant Complaints",
               icon: <MdOutlineSupportAgent />,
+            },
+            {
+              url: "new-bookings",
+              label: "New Bookings",
+              icon: <FaRegCalendarCheck />,
             },
           ]}
         />
