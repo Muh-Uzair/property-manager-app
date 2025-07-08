@@ -12,6 +12,7 @@ import { UserDetails } from "./UserDetails";
 import { useGetUser } from "@/features/auth/useGetUser";
 // import Uploader from "@/features/Uploader/Uploader";
 import { MdOutlineSupportAgent } from "react-icons/md";
+import { FaRegCalendarCheck } from "react-icons/fa";
 
 // CMP
 export function Header() {
@@ -70,6 +71,11 @@ export function Header() {
                 url: "tenantComplaints",
                 label: "Tenant Complaints",
                 icon: <MdOutlineSupportAgent />,
+              },
+              {
+                url: "new-bookings",
+                label: "New Bookings",
+                icon: <FaRegCalendarCheck />,
               },
             ]}
           />

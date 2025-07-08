@@ -1,4 +1,4 @@
-import Authentication from "@/features/auth/Authentication";
+// import Authentication from "@/features/auth/Authentication";
 
 // COMPONENT START
 export default function SignUpPG() {
@@ -7,7 +7,7 @@ export default function SignUpPG() {
   // FUNCTIONS
 
   // JSX
-  return <Authentication />;
+  return <div>hello</div>;
   // JSX
 }
 // COMPONENT END

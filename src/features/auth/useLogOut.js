@@ -14,7 +14,7 @@ export const useLogOut = () => {
     },
     onSuccess: () => {
       queryClient.clear();
-      navigate("/login-as", { replace: true });
+      navigate("/new-visitor", { replace: true });
     },
     onError: () => {
       toast.error("Unable to log out");
