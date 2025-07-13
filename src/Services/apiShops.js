@@ -277,6 +277,15 @@ export const admissionShop = async (newTenantData, propertyId) => {
       throw new Error(`Unable to admit tenant in shop Error => ${error}`);
     }
 
+    const { error2 } = await supabase
+      .from("bookings")
+      .delete()
+      .eq("property_id", propertyId);
+
+    if (error2) {
+      throw new Error(`Unable to admit tenant in flat Error => ${error}`);
+    }
+
     return data;
   }
 };
