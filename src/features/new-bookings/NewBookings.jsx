@@ -42,6 +42,10 @@ const NewBookings = () => {
     );
   }
 
+  if (bookings.length === 0) {
+    return <span>No bookings at the moment</span>;
+  }
+
   return (
     <div className="flex justify-center overflow-y-scroll p-6 pb-[100px]">
       <div className="sm:grid-cols-2 lg:grid-cols-3 grid w-full max-w-5xl grid-cols-1 gap-6">
